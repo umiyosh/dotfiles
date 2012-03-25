@@ -89,3 +89,9 @@ function! s:toggle_qf_window()
 endfunction
 nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
 
+"INSERTモードやネオコンの補完時にカーソルを使えるようにする
+imap OA <up>
+imap OB <down>
+imap OC <right>
+imap OD <left>
+
