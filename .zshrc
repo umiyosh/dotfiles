@@ -48,23 +48,6 @@ setopt prompt_subst
 PROMPT='${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}'
 RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${WINDOW:+"[$WINDOW]"} ${RESET}'
 
-#
-# Vi入力モードでPROMPTの色を変える
-# http://memo.officebrook.net/20090226.html
-function zle-line-init zle-keymap-select {
-  case $KEYMAP in
-    vicmd)
-    PROMPT="${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%{$fg_bold[cyan]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
-    ;;
-    main|viins)
-    PROMPT="${RESET}${GREEN}${WINDOW:+"[$WINDOW]"}${RESET}%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
-    ;;
-  esac
-  zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
 # 直前のコマンドの終了ステータスが0以外のときは赤くする。
 # ${MY_MY_PROMPT_COLOR}はprecmdで変化させている数値。
 local MY_COLOR="$ESCX"'%(0?.${MY_PROMPT_COLOR}.31)'m
@@ -201,7 +184,7 @@ setopt extended_glob
 # emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes
 #   to end of it)
 #
-bindkey -v
+bindkey -e
 
 # historical backward/forward search with linehead string binded to ^P/^N
 #
