@@ -297,6 +297,7 @@ zle -N cdup
 # ctrl-w, ctrl-bキーで単語移動
 bindkey "^W" forward-word
 bindkey "^B" backward-word
+bindkey "∑" backward-kill-word
 
 # back-wordでの単語境界の設定
 autoload -Uz select-word-style
