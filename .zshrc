@@ -645,3 +645,17 @@ esac
 ## local固有設定
 #
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+#screen setting
+case "${TERM}" in screen)
+    preexec() {
+        echo -ne "\ek#${1%% *}\e\\"
+    }
+    precmd() {
+        echo -ne "\ek$(basename $(pwd))\e\\"
+    }
+esac
+if [ -z "$STY" ] ; then
+    screen -U
+fi
+
