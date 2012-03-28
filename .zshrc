@@ -647,7 +647,7 @@ esac
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 #screen setting
-case "${TERM}" in screen)
+case "${TERM}" in screen|xterm*)
     preexec() {
         echo -ne "\ek#${1%% *}\e\\"
     }
