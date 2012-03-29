@@ -53,7 +53,6 @@ RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${WINDOW:+"[$WI
 local MY_COLOR="$ESCX"'%(0?.${MY_PROMPT_COLOR}.31)'m
 local NORMAL_COLOR="$ESCX"m
 
-
 # Show git branch when you are in git repository
 # http://d.hatena.ne.jp/mollifier/20100906/p1
 
@@ -434,6 +433,15 @@ kterm*|xterm*)
 
     zstyle ':completion:*' list-colors \
         'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+    _preexec_screenwindow() {
+        echo -ne "\ek#${1%% *}\e\\"
+    }
+    _precmd_screenwindow() {
+        echo -ne "\ek$(basename $(pwd))\e\\"
+    }
+    add-zsh-hook preexec _preexec_screenwindow
+    add-zsh-hook precmd _precmd_screenwindow
+
     ;;
 
 dumb)
@@ -648,15 +656,7 @@ esac
 #
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-#screen setting
-case "${TERM}" in screen|xterm*)
-    preexec() {
-        echo -ne "\ek#${1%% *}\e\\"
-    }
-    precmd() {
-        echo -ne "\ek$(basename $(pwd))\e\\"
-    }
-esac
+#screen 起動
 if [ -z "$STY" ] ; then
     screen -U
 fi
