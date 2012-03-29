@@ -100,6 +100,8 @@ function _git_not_pushed()
 }
 
 RPROMPT="%1(v|%F${CYAN}%1v%2v%f|)${vcs_info_git_pushed}${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${WINDOW:+"[$WINDOW]"} ${RESET}"
+eol=$'\n'
+PROMPT="$eol ${RPROMPT} $eol ${PROMPT} "
 
     ;;
 esac
