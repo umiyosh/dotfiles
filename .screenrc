@@ -1,5 +1,6 @@
 escape ^t^t
 startup_message off
+term xterm-256color
 
 hardstatus alwayslastline
 termcapinfo xterm*|kterm*|screen* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
@@ -16,5 +17,10 @@ bind ^E encoding euc
 bind ^J encoding sjis
 bind w windowlist -b
 
+#screen paste bufferをpbcopyに流しこむ
+bindkey -m ' ' eval 'stuff " "' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
+bindkey -m 'Y' eval 'stuff "Y"' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
+bindkey -m 'W' eval 'stuff "W"' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
+
 shell -zsh
-term xterm-256color
+
