@@ -415,7 +415,7 @@ kterm*|xterm*)
         echo -ne "\ek#${1%% *}\e\\"
     }
     _precmd_screenwindow() {
-        echo -ne "\ek$(basename $(pwd))\e\\"
+        echo -ne "\ek#$(basename $(pwd))\e\\"
     }
     add-zsh-hook preexec _preexec_screenwindow
     add-zsh-hook precmd _precmd_screenwindow
