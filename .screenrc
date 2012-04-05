@@ -15,12 +15,59 @@ encoding UTF-8 UTF-8
 bind ^U encoding utf8
 bind ^E encoding euc
 bind ^J encoding sjis
-bind w windowlist -b
+
+#通常の操作キー eval 'hoge' になっているのに意味はない
+bind x remove
+bind j eval 'focus down'
+bind k eval 'focus up'
+bind h eval 'focus left'
+bind l eval 'focus right'
+bind i eval 'resize -v +1'
+bind u eval 'resize -v -1'
+bind o eval 'resize -h +1'
+bind y eval 'resize -h -1'
+bind v eval 'split -v' focus screen
+bind s eval 'split' focus screen
+bind = eval 'resize -v ='
+bind + eval 'resize -h +'
+#^t h , ^t kとの誤爆を防ぐために^h ^kは無効にする
+bind ^h
+bind ^k
 
 #screen paste bufferをpbcopyに流しこむ
 bindkey -m ' ' eval 'stuff " "' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
 bindkey -m 'Y' eval 'stuff "Y"' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
 bindkey -m 'W' eval 'stuff "W"' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
+bind -c operate ^]  command
+#ウィンドウ操作モード(^t w でウィンドウを連続的に操作できるようになる)
+bind w eval 'echo "Operate window"' 'command -c operate'
+bind -c operate ^]  command
+bind -c operate j eval 'focus down' 'command -c operate'
+bind -c operate k eval 'focus up' 'command -c operate'
+bind -c operate h eval 'focus left' 'command -c operate'
+bind -c operate l eval 'focus right' 'command -c operate'
+bind -c operate t eval 'focus top' 'command -c operate'
+bind -c operate b eval 'focus bottom' 'command -c operate'
+bind -c operate i eval 'resize -v +1' 'command -c operate'
+bind -c operate u eval 'resize -v -1' 'command -c operate'
+bind -c operate o eval 'resize -h +1' 'command -c operate'
+bind -c operate y eval 'resize -h -1' 'command -c operate'
+bind -c operate = eval 'resize -v =' 'command -c operate'
+bind -c operate + eval 'resize -h =' 'command -c operate'
+bind -c operate s eval 'split' 'command -c operate'
+bind -c operate c eval 'screen' 'command -c operate'
+bind -c operate x eval 'remove' 'command -c operate'
+bind -c operate v eval 'split -v' 'command -c operate'
+bind -c operate 0 eval 'select 0' 'command -c operate'
+bind -c operate 1 eval 'select 1' 'command -c operate'
+bind -c operate 2 eval 'select 2' 'command -c operate'
+bind -c operate 3 eval 'select 3' 'command -c operate'
+bind -c operate 4 eval 'select 4' 'command -c operate'
+bind -c operate 5 eval 'select 5' 'command -c operate'
+bind -c operate 6 eval 'select 6' 'command -c operate'
+bind -c operate 7 eval 'select 7' 'command -c operate'
+bind -c operate 8 eval 'select 8' 'command -c operate'
+bind -c operate 9 eval 'select 9' 'command -c operate'
 
 shell -zsh
 
