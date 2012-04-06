@@ -7,7 +7,7 @@ termcapinfo xterm*|kterm*|screen* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 
 caption always "%{= Rk} %?%F%{b kr}%? %?%h%:%t (screen #%n)%? %{-}"
 hardstatus alwayslastline "%{= Gk} %-Lw%40L>%{b kg} %n %t %{-}%+Lw%-040=%{b km} %l %{.b} %Y/%m/%d %C:%s %A "
-sorendition "= Rk"hardstatus alwayslastline "[%h %H %n: %t]"
+sorendition "= Rk"
 defscrollback 10000
 
 defencoding UTF-8
