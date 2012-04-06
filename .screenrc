@@ -1,5 +1,6 @@
 escape ^t^t
 startup_message off
+vbell off
 term xterm-256color
 
 hardstatus alwayslastline
