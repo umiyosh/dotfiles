@@ -36,7 +36,7 @@ call vundle#rc()
   Bundle 'Gundo'
 
   " surround.vim : テキストを括弧で囲む／削除する
-  Bundle 'tpope/surround.vim'
+  Bundle 'tpope/vim-surround.git'
 
   " smartchr.vim : ==などの前後を整形
   Bundle 'smartchr'
