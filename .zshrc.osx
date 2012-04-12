@@ -82,9 +82,6 @@ GAEJ_SDK_INSTALLED_DIR=~/sandbox/GAEJava/sdk
 export GAEJ_HOME=$GAEJ_SDK_INSTALLED_DIR/appengine-java-sdk-$GAEJ_SDK_VERSION
 export PATH=$PATH:$GAEJ_HOME/bin
 
-# Perl
-alias perl='/opt/local/bin/perl'
-
 # Python
 # alias python='/usr/local/bin/python'
 # alias easy_install='/Library/Frameworks/Python.framework/Versions/2.5/bin/easy_install-2.5'

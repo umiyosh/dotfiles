@@ -555,3 +555,5 @@ if [ -z "$STY" ] ; then
     screen -U
 fi
 
+# perlbrew
+source ~/perl5/perlbrew/etc/bashrc
