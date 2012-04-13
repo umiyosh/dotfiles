@@ -545,6 +545,9 @@ linux*)
     ;;
 esac
 
+## local zshrc設定
+#
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 ## local固有設定
 #
