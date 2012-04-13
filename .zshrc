@@ -528,6 +528,7 @@ function __rm_single_file(){
        fi
 }
 
+
 ## alias設定
 #
 [ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
@@ -545,18 +546,14 @@ linux*)
     ;;
 esac
 
-## local zshrc設定
-#
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-## local固有設定
-#
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 #screen 起動
 if [ -z "$STY" ] ; then
     screen -U
 fi
 
-# perlbrew
+# perlbrew
 source ~/perl5/perlbrew/etc/bashrc
+## local zshrc設定
+#
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
