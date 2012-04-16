@@ -30,7 +30,6 @@ alias 'mn'='make native-code'
 alias 'mc'='make clean'
 
 # screen
-alias s='screen -U'
 alias sc='screen -S main'
 alias sn='screen'
 alias sl='screen -ls'
