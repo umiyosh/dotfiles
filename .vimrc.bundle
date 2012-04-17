@@ -126,7 +126,7 @@ call vundle#rc()
   Bundle 'grep.vim'
 
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
-  Bundle 'eregex.vim'
+  Bundle 'othree/eregex.vim'
 
   " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
   Bundle 'tyru/open-browser.vim'

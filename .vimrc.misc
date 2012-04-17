@@ -7,6 +7,6 @@ noremap ; :
 " pluginとかでnmap :call hoge..とかやってるやつがあるので、
 " :でもexコマンドに入れるようにしておく
 " noremap : ;
-
 "改行を含まず行末までヤンク
 nnoremap Y y$
+
