@@ -254,6 +254,8 @@ call vundle#rc()
   " ステータスラインをカッコよくする
   Bundle 'Lokaltog/vim-powerline'
 
+  " メモ管理
+  Bundle 'fuenor/qfixhowm'
 
 " }}}
 
