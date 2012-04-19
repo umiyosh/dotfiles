@@ -257,6 +257,9 @@ call vundle#rc()
   " メモ管理
   Bundle 'fuenor/qfixhowm'
 
+  " プレビュー＆絞り込み検索(and検索)付きのgrep
+  Bundle 'fuenor/qfixgrep.git'
+
 " }}}
 
 " ColorSchema{{{{
