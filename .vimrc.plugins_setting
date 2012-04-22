@@ -385,3 +385,21 @@ let g:toggle_pairs = { 'and':'or', 'or':'and', 'if':'unless', 'unless':'if', 'ye
 " qfixhown.vim
 "------------------------------------
 let howm_dir ='~/apdat/hown'
+let howm_fileencoding    = 'utf-8'
+let howm_fileformat      = 'unix'
+"howmファイル読込の際、howm_fileencodingに強制設定する/しない
+let QFixHowm_ForceEncoding = 0
+"タイムスタンプを更新日時に変更（カーソルがあるエントリの日時を変更）
+let QFixHowm_SaveTime   = 2
+" MRU表示数
+let QFixMRU_Entries      = 30
+" MRUの保存ファイル名
+let QFixMRU_Filename     = '~/apdat/.qfixmru'
+" MRUに登録しないファイル名(正規表現)
+let QFixMRU_IgnoreFile   = ''
+" MRUに登録するファイルの正規表現(設定すると指定ファイル以外登録されない)
+let QFixMRU_RegisterFile = ''
+" MRUに登録しないタイトル(正規表現)
+let QFixMRU_IgnoreTitle  = ':invisible'
+" MRU内部のエントリ最大保持数
+let QFixMRU_EntryMax     = 300
