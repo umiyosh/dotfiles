@@ -106,6 +106,7 @@ inoremap jj <Esc>
 " バッファ操作関連
 nnoremap <Leader>kk      :bd<CR>
 nnoremap <Leader>kK      :bd!<CR>
+nnoremap <Leader>fk      :Kwbd<CR>
 nnoremap <Leader>wk      :w<CR> :bd<CR>
 nnoremap <Leader>wK      :w<CR> :bd!<CR>
 nnoremap <Leader>cc      :new<CR>
