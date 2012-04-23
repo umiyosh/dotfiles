@@ -263,6 +263,9 @@ call vundle#rc()
   " 分割を維持してバッファ削除
    Bundle 'rgarver/Kwbd.vim'
 
+  " 現在開いている以外のバッファを全部削除
+   Bundle 'duff/vim-bufonly'
+
 " }}}
 
 " ColorSchema{{{{
