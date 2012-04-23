@@ -110,3 +110,8 @@ nnoremap <Leader>wk      :w<CR> :bd<CR>
 nnoremap <Leader>wK      :w<CR> :bd!<CR>
 nnoremap <Leader>cc      :new<CR>
 
+" インサートモード時にカーソルキー移動(ctrl+とかぶるけど）
+imap [A <Up>
+imap [B <Down>
+imap [C <Right>
+imap [D <Left>
