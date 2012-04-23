@@ -49,9 +49,14 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " ユーザー定義スニペット保存ディレクトリ
 let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
-" スニペット
-imap <C-y> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+"スニペット展開
+imap <C-l> <Plug>(neocomplcache_snippets_expand)
+smap <C-l> <Plug>(neocomplcache_snippets_expand)
+"imap <C-y> <Plug>(neocomplcache_snippets_expand)
+"smap <C-y> <Plug>(neocomplcache_snippets_expand)
+
+"スニペット編集
+nnoremap <Space>s  :NeoComplCacheEditSnippets<CR>
 
 " 補完を選択しpopupを閉じる
 " inoremap <expr><C-y> neocomplcache#close_popup()
@@ -70,6 +75,7 @@ imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>
 " C-nでneocomplcache補完
 inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 " C-pでkeyword補完
+
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 " 補完候補が出ていたら確定、なければ改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
