@@ -115,9 +115,6 @@ setopt correct
 # コマンドライン全てのスペルチェックをする
 setopt correct_all
 
-# 上書きリダイレクトの禁止
-setopt no_clobber
-
 # 補完候補リストを詰めて表示
 setopt list_packed
 
