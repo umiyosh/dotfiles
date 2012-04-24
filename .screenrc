@@ -71,5 +71,10 @@ bind -c operate 7 eval 'select 7' 'command -c operate'
 bind -c operate 8 eval 'select 8' 'command -c operate'
 bind -c operate 9 eval 'select 9' 'command -c operate'
 
+#ログの設定。ある作業時にだけコメント除去して使う。
+#logfile 'log/screen.log/screen-%n-%H-%y%m%d.log'
+#log on
+#deflog on
+
 shell -zsh
 
