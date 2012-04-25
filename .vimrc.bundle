@@ -195,9 +195,6 @@ call vundle#rc()
   " DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
   Bundle 'DumbBuf'
 
-  " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
-  Bundle 'minibufexpl.vim'
-
   " NERDTree : ツリー型エクスプローラ
   Bundle 'The-NERD-tree'
 
