@@ -7,3 +7,9 @@ do
     ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
+if [[ -d $HOME/.vim/ ]]; then
+    ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
+else
+    mkdir $HOME/.vim/
+    ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
+fi
