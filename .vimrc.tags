@@ -7,7 +7,7 @@ if has("autochdir")
   set autochdir
   set tags=tags;
 else
-  set tags=./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
+  set tags=tags;
 endif
 
 set notagbsearch

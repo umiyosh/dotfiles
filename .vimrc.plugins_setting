@@ -171,7 +171,7 @@ endif
 " taglist.Vim
 "------------------------------------
 " 関数一覧
-set tags=tags
+set tags=tags;
 "set tags+=~/.tags
 let Tlist_Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags' " ctagsのパス
 let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
