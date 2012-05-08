@@ -39,3 +39,7 @@ set helpfile=$VIMRUNTIME/doc/help.txt
 
 " ファイルタイプ判定をon
 filetype plugin on
+
+"crontab編集時はバックアップファイルを作成しない
+"http://d.hatena.ne.jp/yuyarin/20100225/1267084794
+set backupskip=/tmp/*,/private/tmp/*
