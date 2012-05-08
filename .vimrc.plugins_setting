@@ -6,7 +6,7 @@
 " YankRing.vim
 "------------------------------------
 " Yankの履歴参照
-nmap ,y ;YRShow<CR>
+nmap ,y :YRShow<CR>
 
 "------------------------------------
 " MiniBufExplorer
