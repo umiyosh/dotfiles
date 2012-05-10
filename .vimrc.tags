@@ -30,8 +30,8 @@ set notagbsearch
 
 "tags-and-searchesを使い易くする
 nnoremap t  <Nop>
-"「飛ぶ」
-nnoremap tt  <C-]>
+"「飛ぶ」 タグジャンプ候補が複数あった場合、候補を必ず表示する
+nnoremap tt  g<C-]>
 "「進む」
 nnoremap tj  :<C-u>tag<CR>
 "「戻る」
