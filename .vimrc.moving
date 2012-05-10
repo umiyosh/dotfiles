@@ -18,6 +18,8 @@ nmap 9 $
 " insert mode での移動
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
+noremap  <C-e> $
+noremap  <C-a> ^
 
 "<space>j, <space>kで画面送り
 noremap <Space>j <C-f>
