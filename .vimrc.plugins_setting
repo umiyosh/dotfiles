@@ -402,3 +402,12 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gc :<C-u>Gcommit<CR>
 nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
 nnoremap <Leader>gb :<C-u>Gblame<CR>
+
+"------------------------------------
+" vim-indent-guides
+"------------------------------------
+let g:indent_guides_enable_on_vim_startup = 1 " vim立ち上げ時に自動的にvim-indent-guidesをオンにする
+let g:indent_guides_start_level           = 1 " 1インデント目からガイドする
+let g:indent_guides_auto_colors           = 0 " 自動カラーを無効にして手動で設定する
+let g:indent_guides_guide_size            = 1 " ガイドの幅
+" let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
