@@ -17,3 +17,6 @@ function! s:open_junk_file()
     execute 'edit ' . l:filename
   endif
 endfunction"}}}
+
+"行番号つきののコピー
+vnoremap <F10> <ESC>:%!cat -n\|perl -pe 's:^ +::g'<CR>gvyugv<ESC>
