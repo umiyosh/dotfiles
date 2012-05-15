@@ -8,17 +8,11 @@ call vundle#rc()
   " NERD_commenter.vim :最強コメント処理 (<Leader>c<space>でコメントをトグル)
   Bundle 'scrooloose/nerdcommenter.git'
 
-  " 自動閉じタグ
-  " Bundle 'yuroyoro/vim-autoclose'
-
   " -- でメソッドチェーン整形
   Bundle 'c9s/cascading.vim'
 
   " visually indent guide
   Bundle 'nathanaelkane/vim-indent-guides'
-
-  " XMLとかHTMLとかの編集機能を強化する
-  Bundle 'xmledit'
 
   " Align : 高機能整形・桁揃えプラグイン
   Bundle 'Align'
@@ -78,29 +72,18 @@ call vundle#rc()
   " 「foo」 or 【bar】などをtext-objectに
   Bundle 'textobj-jabraces'
 
-  " 改造したmonday.vim(git rebase -i とかtrue/falseとか)
-  " Bundle 'yuroyoro/monday'
-
   " <C-a>でtrue/false切替。他色々
   Bundle 'taku-o/vim-toggle'
 
 " }}}
 
 " Completion {{{
-  " 補完 autocomplpop.vim : insertmodeで自動で補完をpopup
-  " Bundle 'AutoComplPop'
-
   " 補完 neocomplcache.vim : 究極のVim的補完環境
   Bundle 'Shougo/neocomplcache'
 
   " neocomplcacheのsinpet補完
   Bundle 'Shougo/neocomplcache-snippets-complete'
 
-  " rubyでrequire先を補完する
-  " Bundle 'ujihisa/neco-ruby'
-
-  " A neocomplcache plugin for English, using look command
-  " Bundle 'ujihisa/neco-look'
 " }}}
 
 " Searching/Moving{{{
@@ -155,11 +138,6 @@ call vundle#rc()
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   Bundle 'taglist.vim'
 
-  " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
-  " Bundle 'Source-Explorer-srcexpl.vim'
-
-  " NERD_tree, taglist, srcexpl の統合
-  " Bundle 'trinity.vim'
 " }}}
 "
 " Syntax {{{
@@ -226,9 +204,6 @@ call vundle#rc()
 
   " urilib.vim : vim scriptからURLを扱うライブラリ
   Bundle 'tyru/urilib.vim'
-
-  " ステータスラインに顔文字を表示
-  " Bundle 'mattn/hahhah-vim'
 
   " utillity
   Bundle 'L9'
