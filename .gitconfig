@@ -124,3 +124,18 @@
   generic = G move-last-line
   generic = ^F move-page-down
   generic = ^B move-page-up
+
+# vimdiffで差分を表示する。複数ファイルにまたがるdiff
+# のときはqするたびにvimdiffが起動する。
+# 詳細は以下参照。
+# http://technotales.wordpress.com/2009/05/17/git-diff-with-vimdiff/
+[diff]
+  external = git_diff_wrapper
+[pager]
+  diff =
+# p4fiff使いたい時はこっち使う
+; [diff]
+  ; external = p4diff
+; [pager]
+  ; diff =
+
