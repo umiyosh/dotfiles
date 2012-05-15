@@ -411,3 +411,5 @@ let g:indent_guides_start_level           = 1 " 1インデント目からガイ�
 let g:indent_guides_auto_colors           = 0 " 自動カラーを無効にして手動で設定する
 let g:indent_guides_guide_size            = 1 " ガイドの幅
 " let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=grey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkgrey
