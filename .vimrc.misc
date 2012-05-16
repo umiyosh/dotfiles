@@ -20,3 +20,6 @@ endfunction"}}}
 
 "行番号つきののコピー
 vnoremap <F10> <ESC>:%!cat -n\|perl -pe 's:^ +::g'<CR>gvyugv<ESC>
+
+"perlの野良ライブラリの読み込み
+autocmd FileType perl :setlocal path+=lib;/
