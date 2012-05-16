@@ -363,9 +363,9 @@ let g:syntastic_enable_highlighting = 1
 "------------------------------------
 " toggle.vim
 "------------------------------------
-imap <C-o> <Plug>ToggleI
-nmap <C-o> <Plug>ToggleN
-vmap <C-o> <Plug>ToggleV
+imap <Leader>o <Plug>ToggleI
+nmap <Leader>o <Plug>ToggleN
+vmap <Leader>o <Plug>ToggleV
 
 let g:toggle_pairs = { 'and':'or', 'or':'and', 'if':'unless', 'unless':'if', 'yes':'no', 'no':'yes', 'enable':'disable', 'disable':'enable', 'pick':'reword', 'reword':'fixup', 'fixup':'squash', 'squash':'edit', 'edit':'exec', 'exec':'pick' }
 
