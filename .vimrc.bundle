@@ -17,14 +17,8 @@ call vundle#rc()
   " Align : 高機能整形・桁揃えプラグイン
   Bundle 'Align'
 
-  " フィルタリングと整形
-  Bundle 'godlygeek/tabular'
-
   " マルチバイト対応の整形
   Bundle 'h1mesuke/vim-alignta'
-
-  " YankRing.vim : ヤンクの履歴を管理し、順々に参照、出力できるようにする
-  Bundle 'YankRing.vim'
 
   " undo履歴を追える (need python support)
   Bundle 'Gundo'
