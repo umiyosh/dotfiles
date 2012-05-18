@@ -549,8 +549,6 @@ if [ -z "$STY" ] ; then
     screen -U
 fi
 
-# perlbrew
-source ~/perl5/perlbrew/etc/bashrc
 ## local zshrc設定
 #
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
