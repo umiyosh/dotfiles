@@ -304,6 +304,14 @@ cnoremap UO Unite outline<Enter>
 " quickrun.vim
 "------------------------------------
 let g:quickrun_config = {}
+"rvm
+if strlen($rvm_bin_path)
+  let g:quickrun_config['ruby'] = {
+\    'command': 'ruby',
+\    'exec': '$rvm_bin_path/ruby %s',
+\    'tempfile': '{tempname()}.rb'
+\  }
+endif
 silent! nmap <unique> <F6> <Plug>(quickrun)
 
 "------------------------------------
