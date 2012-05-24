@@ -114,3 +114,6 @@ imap [A <Up>
 imap [B <Down>
 imap [C <Right>
 imap [D <Left>
+
+" %で移動するペアの追加"<":">"
+set matchpairs=(:),{:},[:],<:>
