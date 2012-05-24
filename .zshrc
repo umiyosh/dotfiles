@@ -552,3 +552,5 @@ fi
 ## local zshrc設定
 #
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts
