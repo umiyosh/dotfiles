@@ -96,9 +96,6 @@ call vundle#rc()
   " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
   Bundle 'matchit.zip'
 
-  " ruby用のmatchit拡張
-  Bundle 'ruby-matchit'
-
   " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
   Bundle 'grep.vim'
 
