@@ -145,12 +145,9 @@ let g:SrcExpl_GoBackMapKey  = "<C-b>"   " 戻る機能のMAP
 "------------------------------------
 " open-blowser.vim
 "------------------------------------
-
-" カーソル下のURLをブラウザで開く
-nmap <Leader>fu <Plug>(openbrowser-open)
-vmap <Leader>fu <Plug>(openbrowser-open)
-" カーソル下のキーワードをググる
-nnoremap <Leader>fs :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
+" カーソル下のURLをブラウザで開く URLじゃなかったらキーワードをググる
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 
 "------------------------------------
 " operator-camelize.vim
