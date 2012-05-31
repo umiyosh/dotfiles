@@ -304,6 +304,8 @@ let g:quickrun_config = {}
 "runnerをvimprocにする
 let g:quickrun_config._ = {'runner' : 'vimproc'}
 let g:quickrun_config._ = {'runner/vimproc/updatetime' : 100}
+"実行結果は右下に出す
+let g:quickrun_config._ = {'split': 'rightbelow 15sp'}
 "rvm
 if strlen($rvm_bin_path)
   let g:quickrun_config['ruby'] = {
