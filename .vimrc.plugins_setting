@@ -317,6 +317,11 @@ endif
 silent! nmap <unique> <F6> <Plug>(quickrun)
 
 "------------------------------------
+" Prove.vim
+"------------------------------------
+nmap <F7> <ESC>:Prove<CR>
+
+"------------------------------------
 " Pydiction
 "------------------------------------
 let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'

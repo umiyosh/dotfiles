@@ -229,6 +229,9 @@ call vundle#rc()
   " 現在開いている以外のバッファを全部削除
    Bundle 'duff/vim-bufonly'
 
+  " perl proveコマンド実行
+   Bundle 'hokaccha/vim-prove'
+
 " }}}
 
 " ColorSchema{{{{
