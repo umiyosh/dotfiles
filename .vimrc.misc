@@ -28,3 +28,6 @@ autocmd FileType perl :setlocal path+=lib;/
 "perl整形
 map ,pt  <ESC>:%!     $HOME/perl5/perlbrew/perls/perl-5.14.2/bin/perltidy<CR>
 map ,ptv <ESC>:'<,'>! $HOME/perl5/perlbrew/perls/perl-5.14.2/bin/perltidy<CR>
+"perlデバッガ
+map <F5> <ESC>:! perl -d %:p<CR>
+
