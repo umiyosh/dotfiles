@@ -161,9 +161,6 @@ call vundle#rc()
 " }}}
 
 " Buffer {{{
-  " DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
-  Bundle 'DumbBuf'
-
   " NERDTree : ツリー型エクスプローラ
   Bundle 'The-NERD-tree'
 
