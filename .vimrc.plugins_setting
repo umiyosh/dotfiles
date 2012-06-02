@@ -409,4 +409,11 @@ let b:match_ignorecase = 1
 " twitvimのキーアサイン
 nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
 
+"------------------------------------
+" vtreexplorer
+"------------------------------------
+"縦分割
+let g:treeExplVertical=1
+"分割したウィンドウのサイズ
+let g:treeExplWinSize=30
 
