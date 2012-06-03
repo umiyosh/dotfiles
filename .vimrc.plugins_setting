@@ -410,14 +410,6 @@ let b:match_ignorecase = 1
 nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
 
 "------------------------------------
-" vtreexplorer
-"------------------------------------
-"縦分割
-let g:treeExplVertical=1
-"分割したウィンドウのサイズ
-let g:treeExplWinSize=30
-
-"------------------------------------
 " ref.vim
 "------------------------------------
 " カーソルしたの英単語の意味を表示する
