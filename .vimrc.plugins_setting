@@ -429,3 +429,12 @@ let g:ref_source_webdict_sites = {
 \   'weblio': 'http://ejje.weblio.jp/content/%s',
 \ }
 
+"------------------------------------
+" NERDtree
+"------------------------------------
+"TODO 分割したウィンドウのサイズ
+let NERDTreeWinPos="right"
+let NERDTreeWinSize=25
+"TODO NERDTreeToggle キーマップ
+nmap <Leader>N <ESC>:NERDTreeToggle<CR>
+
