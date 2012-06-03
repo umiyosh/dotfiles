@@ -422,7 +422,7 @@ let g:treeExplWinSize=30
 "------------------------------------
 " カーソルしたの英単語の意味を表示する
 " http://d.hatena.ne.jp/thinca/20120512/1336761779
-map <Leader>rb :Ref webdict alc <C-R>=expand("<cword>")<CR><CR>
+map <Leader>gx :Ref webdict alc <C-R>=expand("<cword>")<CR><CR>
 let g:ref_source_webdict_sites = {
 \   'alc': 'http://eow.alc.co.jp/search?q=%s',
 \   'sanseido' : 'http://www.sanseido.net/User/Dic/Index.aspx?TWords=%s&st=0&DORDER=&DailyEJ=checkbox',
