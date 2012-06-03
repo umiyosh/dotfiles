@@ -434,7 +434,12 @@ let g:ref_source_webdict_sites = {
 "------------------------------------
 "TODO 分割したウィンドウのサイズ
 let NERDTreeWinPos="right"
-let NERDTreeWinSize=25
+let NERDTreeWinSize=30
 "TODO NERDTreeToggle キーマップ
 nmap <Leader>N <ESC>:NERDTreeToggle<CR>
+"見た目など
+let g:NERDTreeShowHidden=1
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=0
+let g:NERDTreeMouseMode=2
 
