@@ -153,8 +153,8 @@ vmap gx <Plug>(openbrowser-smart-search)
 " operator-camelize.vim
 "------------------------------------
 " camel-caseへの変換
-map <Leader>u <Plug>(operator-camelize)
-map <Leader>U <Plug>(operator-decamelize)
+map <Leader>u <Plug>(operator-camelize)<CR>
+map <Leader>U <Plug>(operator-decamelize)<CR>
 
 "------------------------------------
 " operator-replace.vim
