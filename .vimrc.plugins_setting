@@ -127,8 +127,6 @@ let Tlist_Auto_Open = 1                   " 自動表示
 let Tlist_Auto_Update = 1
 let Tlist_WinWidth = 30
 "map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカットキー
-nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
-nmap <Leader>tl :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
 
 "------------------------------------
 " Srcexp
