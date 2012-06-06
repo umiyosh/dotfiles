@@ -28,3 +28,7 @@ source ~/dotfiles/.vimrc.misc
 "プラグインに依存するアレ
 source ~/dotfiles/.vimrc.plugins_setting
 
+" 外に見せたくない環境変数など設定用
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
