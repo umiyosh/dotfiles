@@ -224,7 +224,7 @@ call vundle#rc()
    Bundle 'duff/vim-bufonly'
 
   " perl proveコマンド実行
-   Bundle 'hokaccha/vim-prove'
+   Bundle 'umiyosh/vim-prove'
 
 " }}}
 
