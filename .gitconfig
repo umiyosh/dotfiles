@@ -139,3 +139,5 @@
 ; [pager]
   ; diff =
 
+[credential]
+  helper = osxkeychain
