@@ -2,8 +2,7 @@
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-" colorscheme mrkn256
-colorscheme desert
+colorscheme desert256
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
