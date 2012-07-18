@@ -58,13 +58,6 @@ nnoremap <Space>gc :<C-u>Gcommit<Enter>
 nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
 
-
-"------------------------------------
-" BufExplorer
-"------------------------------------
-"<Leader>l<Space>でBufferList
-nnoremap <Leader>l<Space> :BufExplorer<CR>
-
 "------------------------------------
 " VTreeExplorer
 "------------------------------------
