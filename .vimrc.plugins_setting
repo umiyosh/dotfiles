@@ -151,7 +151,7 @@ map <Leader>U <Plug>(operator-decamelize)<CR>
 " operator-replace.vim
 "------------------------------------
 " RwなどでYankしてるもので置き換える
-map R <Plug>(operator-replace)
+map _ <Plug>(operator-replace)
 
 "------------------------------------
 " sumartword.vim
