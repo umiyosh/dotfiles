@@ -41,31 +41,6 @@ call vundle#rc()
   " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
   Bundle 'textobj-user'
 
-  " vim-textobj-syntax : syntax hilightされたものをtext-objectに
-  Bundle 'kana/vim-textobj-syntax.git'
-
-  " vim-textobj-plugins : いろんなものをtext-objectにする
-  Bundle 'thinca/vim-textobj-plugins.git'
-
-  " vim-textobj-lastpat : 最後に検索されたパターンをtext-objectに
-  Bundle 'kana/vim-textobj-lastpat.git'
-
-  " vim-textobj-indent : インデントされたものをtext-objectに
-  Bundle 'kana/vim-textobj-indent.git'
-
-  " vim-textobj-function : 関数の中身をtext-objectに
-  Bundle 'kana/vim-textobj-function.git'
-
-  " vim-textobj-fold : 折りたたまれたアレをtext-objectに
-  " Bundle 'kana/vim-textobj-fold.git'
-  Bundle 'textobj-rubyblock'
-
-  " vim-textobj-entire : buffer全体をtext-objectに
-  Bundle 'textobj-entire'
-
-  " 「foo」 or 【bar】などをtext-objectに
-  Bundle 'textobj-jabraces'
-
   " <C-a>でtrue/false切替。他色々
   Bundle 'taku-o/vim-toggle'
 
@@ -186,9 +161,6 @@ call vundle#rc()
 
   " cecutil.vim : 他のpluginのためのutillity1
   Bundle 'cecutil'
-
-  " urilib.vim : vim scriptからURLを扱うライブラリ
-  Bundle 'tyru/urilib.vim'
 
   " utillity
   Bundle 'L9'
