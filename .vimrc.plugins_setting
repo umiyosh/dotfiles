@@ -347,7 +347,7 @@ let QFixMRU_RegisterFile = ''
 " MRUに登録しないタイトル(正規表現)
 let QFixMRU_IgnoreTitle  = ':invisible'
 " MRU内部のエントリ最大保持数
-let QFixMRU_EntryMax     = 300
+let QFixMRU_EntryMax     = 3000
 
 "------------------------------------
 " fugitive.vim
