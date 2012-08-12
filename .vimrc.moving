@@ -97,9 +97,6 @@ function! s:do_git_diff_aware_gf(command)
   endif
 endfunction
 
-" insert mode でjjでesc
-inoremap jj <Esc>
-
 " バッファ操作関連
 nnoremap <Leader>kk      :bd<CR>
 nnoremap <Leader>kK      :bd!<CR>
