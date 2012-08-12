@@ -449,9 +449,6 @@ zle -N cheat-sheet
 # http://subtech.g.hatena.ne.jp/cho45/20080617/1213629154
 typeset -A abbreviations
 abbreviations=(
-  "L"    "| $PAGER"
-  "G"    "| grep"
-
   "HEAD^"     "HEAD\\^"
   "HEAD^^"    "HEAD\\^\\^"
   "HEAD^^^"   "HEAD\\^\\^\\^"
