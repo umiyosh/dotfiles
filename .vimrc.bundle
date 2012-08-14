@@ -204,6 +204,9 @@ call vundle#rc()
   " perl proveコマンド実行
    Bundle 'umiyosh/vim-prove'
 
+  " perl proveコマンド実行
+   Bundle 'Shougo/vinarise'
+
 " }}}
 
 " ColorSchema{{{{
