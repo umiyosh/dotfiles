@@ -485,6 +485,10 @@ bindkey " "   magic-abbrev-expand-and-insert
 bindkey "."   magic-abbrev-expand-and-insert
 bindkey "^x " no-magic-abbrev-expand
 
+# 3秒以上かかった処理は詳細表示
+# http://d.hatena.ne.jp/Yoshiori/20120814/1344913023
+REPORTTIME=3
+
 function rmf(){
    for file in $*
    do
