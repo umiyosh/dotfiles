@@ -319,6 +319,9 @@ compinit -u
 #
 autoload zed
 
+## zshargs
+# http://d.hatena.ne.jp/lurker/20070115/1168831103
+autoload zargs
 
 ## Prediction configuration
 #
