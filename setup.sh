@@ -4,11 +4,15 @@ DOT_FILES=( .zsh .zshrc .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .ema
 
 for file in ${DOT_FILES[@]}
 do
-    ln -s $HOME/dotfiles/$file $HOME/$file
+    if [[ ! -d $HOME/$file ]]; then
+        ln -s $HOME/dotfiles/$file $HOME/$file
+    fi
 done
 
 if [[ -d $HOME/.vim/ ]]; then
-    ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
+    if [[ ! -d $HOME/.vim/dict ]]; then
+        ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
+    fi
 else
     mkdir $HOME/.vim/
     ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
