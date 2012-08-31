@@ -434,9 +434,11 @@ function preexec() {
 function precmd() {
     if (( CALCTIME )) ; then
         typeset -gi ETIME=SECONDS-CMDSTARTTIME
-        if [[ $ETIME -ge 3 ]]; then
-            #notif is Growl::Any command in my own way.
-            notif "$PRE_CMD cmd end elapse:$ETIME [sec]"
+        if [ $ETIME -ge 3 ]; then
+            if [[ ! $PRE_CMD == vi* ]]; then
+                #notif is Growl::Any command in my own way.
+                notif "$PRE_CMD cmd end elapse:$ETIME [sec]"
+            fi
         fi
     fi
     typeset -gi CALCTIME=0
