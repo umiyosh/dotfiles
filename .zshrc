@@ -435,7 +435,7 @@ function precmd() {
     if (( CALCTIME )) ; then
         typeset -gi ETIME=SECONDS-CMDSTARTTIME
         if [ $ETIME -ge 3 ]; then
-            if [[ ! $PRE_CMD == vi* ]]; then
+            if [[ ! $PRE_CMD == vi* -o ! $PRE_CMD = "tig" ]]; then
                 #notif is Growl::Any command in my own way.
                 notif "$PRE_CMD cmd end elapse:$ETIME [sec]"
             fi
