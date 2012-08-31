@@ -426,6 +426,21 @@ dumb)
     ;;
 esac
 
+function preexec() {
+    typeset -gi CALCTIME=1
+    typeset -gi CMDSTARTTIME=SECONDS
+    PRE_CMD=${1%% *}
+}
+function precmd() {
+    if (( CALCTIME )) ; then
+        typeset -gi ETIME=SECONDS-CMDSTARTTIME
+        if [[ $ETIME -ge 3 ]]; then
+            #notif is Growl::Any command in my own way.
+            notif "$PRE_CMD cmd end elapse:$ETIME[sec]"
+        fi
+    fi
+    typeset -gi CALCTIME=0
+}
 
 
 export EDITOR=vim
