@@ -153,6 +153,7 @@ function precmd() {
     typeset -gi CALCTIME=0
 }
 
+export CC=/usr/bin/gcc-4.2
 
 # tmux
 alias tmux='tmuxx'
