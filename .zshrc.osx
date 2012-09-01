@@ -132,15 +132,21 @@ export PATH=$PATH:$MIRAH_HOME/bin
 function preexec() {
     typeset -gi CALCTIME=1
     typeset -gi CMDSTARTTIME=SECONDS
-    PRE_CMD=${1%% *}
+    PRE_CMD=$( basename ${1%% *} )
 }
 function precmd() {
+    PRE_RESULT=$?
     if (( CALCTIME )) ; then
         typeset -gi ETIME=SECONDS-CMDSTARTTIME
         if [ $ETIME -ge 3 ]; then
             if [[ ! $PRE_CMD == vi* && ! $PRE_CMD == tig && ! $PRE_CMD == [ts]  && ! $PRE_CMD == ss ]]; then
-                #notif is Growl::Any command in my own way.
-                notif "$PRE_CMD cmd end elapse:$ETIME [sec]"
+                if [[ $PRE_RESULT -eq 0 ]]; then
+                    #notif is Growl::Any command in my own way.
+                    notif "[INFO] $PRE_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
+                else
+                    #notif is Growl::Any command in my own way.
+                    notif "[ERROR] $PRE_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
+                fi
             fi
         fi
     fi
