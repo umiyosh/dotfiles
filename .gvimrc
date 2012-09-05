@@ -17,3 +17,7 @@ au GUIEnter * set columns=210
 if filereadable(expand('~/.gvimrc.local'))
   source ~/.gvimrc.local
 endi
+
+" cabalのpath
+let $PATH = $HOME.'/.cabal/bin:'.$PATH
+
