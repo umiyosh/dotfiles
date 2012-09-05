@@ -354,6 +354,7 @@ esac
 case "${OSTYPE}" in
 # MacOSX
 darwin*)
+    PATH=$HOME/.cabal/bin:$PATH
     export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
     export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/
     ;;
