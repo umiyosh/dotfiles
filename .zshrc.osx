@@ -153,7 +153,9 @@ function precmd() {
     typeset -gi CALCTIME=0
 }
 
-export CC=/usr/bin/gcc-4.2
+## local zshrc.osx設定
+#
+[ -f ~/.zshrc.osx.local ] && source ~/.zshrc.osx.local
 
 # tmux
 alias tmux='tmuxx'
