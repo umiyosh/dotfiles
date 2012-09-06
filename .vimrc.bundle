@@ -126,7 +126,7 @@ call vundle#rc()
   Bundle 'nginx.vim'
 
   " markdown
-  Bundle 'tpope/vim-markdown'
+  Bundle 'umiyosh/vim-markdown'
 
   " coffee script
   Bundle 'kchmck/vim-coffee-script'
