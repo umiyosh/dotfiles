@@ -549,7 +549,7 @@ esac
 
 
 #screen 起動
-if [ -z "$STY" ] ; then
+if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
     screen -U
 fi
 
