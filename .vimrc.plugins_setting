@@ -437,3 +437,10 @@ let g:Powerline_mode_s = '選択'
 let g:Powerline_mode_S = '行選択'
 let g:Powerline_mode_cs = '矩形選択'
 
+"------------------------------------
+" VoOM (markdown outliner)
+"------------------------------------
+let g:voom_tree_width=60
+let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
+map <Leader>vm <ESC>:<C-u>VoomToggle<CR>
+
