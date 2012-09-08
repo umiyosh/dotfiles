@@ -139,7 +139,7 @@ function precmd() {
     if (( CALCTIME )) ; then
         typeset -gi ETIME=SECONDS-CMDSTARTTIME
         if [ $ETIME -ge 7 ]; then
-            if [[ ! $PRE_CMD == vi* && ! $PRE_CMD == tig && ! $PRE_CMD == [ts]  && ! $PRE_CMD == ss && ! $PRE_CMD == git ]]; then
+            if [[ ! $PRE_CMD == vi* && ! $PRE_CMD == tig && ! $PRE_CMD == [ts]  && ! $PRE_CMD == ss && ! $PRE_CMD == git && ! $PRE_CMD == man ]]; then
                 if [[ $PRE_RESULT -eq 0 ]]; then
                     #notif is Growl::Any command in my own way.
                     notif "[INFO] $PRE_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
