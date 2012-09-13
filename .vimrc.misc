@@ -31,3 +31,18 @@ map ,ptv <ESC>:'<,'>! $HOME/perl5/perlbrew/perls/perl-5.14.2/bin/perltidy<CR>
 "perlデバッガ
 map <F5> <ESC>:! perl -d %:p<CR>
 
+"Textile2markdown for OSX
+"needs pandoc command
+command! -nargs=0 Textile2markdown call <SID>Textile2markdown()
+noremap <Leader>tm :Textile2markdown<CR>
+function! s:Textile2markdown()
+  let result = system('pandoc -t markdown ' . shellescape(expand('%')) . '|pbcopy' )
+endfunction
+
+"Markdown2textile fo OSX
+"needs pandoc command
+command! -nargs=0 Markdown2textile call <SID>Markdown2textile()
+noremap <Leader>mt :Markdown2textile<CR>
+function! s:Markdown2textile()
+  let result = system('pandoc -t textile ' . shellescape(expand('%')) . '|pbcopy'  )
+endfunction
