@@ -46,3 +46,30 @@ noremap <Leader>mt :Markdown2textile<CR>
 function! s:Markdown2textile()
   let result = system('pandoc -t textile ' . shellescape(expand('%')) . '|pbcopy'  )
 endfunction
+
+" 文字数カウント
+vnoremap <leader>ii :call Count_Char()<cr>
+function! Count_Char() range
+    silent normal gvy
+    let str = @@
+    normal `<
+    let start_line_num = line('.')
+    normal `>
+    let end_line_num = line('.')
+    let linenum = end_line_num - start_line_num + 1
+
+perl << EOF
+use strict;
+use warnings;
+use utf8;
+use Encode qw/decode/;
+
+my $str = decode('utf-8', VIM::Eval('str'));
+my $line_num = VIM::Eval('linenum');
+my $gross_words = length $str;
+
+VIM::Msg("選択範囲の行数は $line_num です");
+VIM::Msg("選択範囲の総文字数は $gross_words です");
+EOF
+endfunction
+
