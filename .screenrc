@@ -33,9 +33,9 @@ bind ^h
 bind ^k
 
 #screen paste bufferをpbcopyに流しこむ
-bindkey -m ' ' eval 'stuff " "' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
-bindkey -m 'Y' eval 'stuff "Y"' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
-bindkey -m 'W' eval 'stuff "W"' writebuf 'exec sh -c "pbcopy < /tmp/screen-exchange"'
+bindkey -m ' ' eval 'stuff " "' writebuf 'exec sh -c "nkf -w /tmp/screen-exchange | pbcopy "'
+bindkey -m 'Y' eval 'stuff "Y"' writebuf 'exec sh -c "nkf -w /tmp/screen-exchange | pbcopy "'
+bindkey -m 'W' eval 'stuff "W"' writebuf 'exec sh -c "nkf -w /tmp/screen-exchange | pbcopy "'
 bind -c operate ^]  command
 #ウィンドウ操作モード(^t w でウィンドウを連続的に操作できるようになる)
 # 4.1用の設定なのでいまんとこコメントアウト。4.1の安定したのがでたらこれを使う
