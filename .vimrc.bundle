@@ -214,6 +214,10 @@ call vundle#rc()
   " markdownのアウトライン表示
    Bundle 'vim-scripts/VOoM'
 
+  " foldtextの見た目をよくする
+   Bundle 'LeafCage/foldCC'
+
+   "
 " }}}
 
 " ColorSchema{{{{
