@@ -456,3 +456,38 @@ set fillchars=vert:\|
 hi Folded gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey30 guifg=Grey80
 hi FoldColumn gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey guifg=DarkBlue
 
+"------------------------------------
+" taskpaper.vim
+"------------------------------------
+" 色調整
+syn match taskpaperDone		/^.*\s@done\(\(\s\|([^)]*)\).*\)\?$/
+syn match taskpaperCancelled	/^.*\s@cancelled\(\(\s\|([^)]*)\).*\)\?$/
+hi def link  taskpaperDone          Ignore
+hi def link  taskpaperCancelled     Ignore
+" キーマップとか追加した機能など
+function! s:taskpaper_setup()
+  " My Funtion : 一括toggle
+  function! Toggle_tag_eachline(tag) range
+      let l:startpos  = getpos(".")
+      call taskpaper#toggle_tag(a:tag,  '')
+      for line_cnt in range( a:firstline,  a:lastline )
+        call taskpaper#toggle_tag(a:tag,  '')
+        call cursor(line_cnt, 0)
+      endfor
+      call taskpaper#toggle_tag(a:tag,  '')
+      call cursor(l:startpos)
+  endfunction
+  command! -range -nargs=1 MyToggletageachline <line1>,<line2>call Toggle_tag_eachline(<args>)
+  " My settings : キーマップ
+  nmap <buffer> <Leader>tD :<C-u>call taskpaper#archive_done()<CR> <C-o> <C-o>
+  nmap <buffer> <Leader>tT <Plug>TaskPaperShowToday :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
+  nmap <buffer> <Leader>tX <Plug>TaskPaperShowCancelled :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
+  nnoremap <buffer> <silent> <Leader>tn :<C-u>call taskpaper#toggle_tag('now', '')<CR>
+  vmap <buffer> <silent> <Leader>tn :MyToggletageachline "now"   <CR>
+  vmap <buffer> <silent> <Leader>td :MyToggletageachline "done"  <CR>
+  vmap <buffer> <silent> <Leader>tt :MyToggletageachline "today" <CR>
+endfunction
+augroup vimrc-taskpaper
+autocmd!
+autocmd FileType taskpaper call s:taskpaper_setup()
+augroup END

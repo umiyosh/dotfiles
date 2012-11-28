@@ -217,6 +217,10 @@ call vundle#rc()
   " foldtextの見た目をよくする
    Bundle 'LeafCage/foldCC'
 
+  " taskpaper.vim
+   Bundle 'davidoc/taskpaper.vim'
+
+
    "
 " }}}
 
