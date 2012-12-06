@@ -486,8 +486,10 @@ function! s:taskpaper_setup()
   vmap <buffer> <silent> <Leader>tn :MyToggletageachline "now"   <CR>
   vmap <buffer> <silent> <Leader>td :MyToggletageachline "done"  <CR>
   vmap <buffer> <silent> <Leader>tt :MyToggletageachline "today" <CR>
+  nmap <buffer> <silent> <Leader>tc :!echo task count: $( egrep '@today' % \|egrep -v '@done'\|wc -l  )<CR>
 endfunction
 augroup vimrc-taskpaper
 autocmd!
 autocmd FileType taskpaper call s:taskpaper_setup()
 augroup END
+
