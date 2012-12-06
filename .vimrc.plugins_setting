@@ -477,9 +477,16 @@ function! s:taskpaper_setup()
       call taskpaper#toggle_tag(a:tag,  '')
       call cursor(l:startpos)
   endfunction
+  " アーカイブ時にカーソルをその場の位置に固定
+  function! Archive_done_and_backpos()
+      let l:startpos  = getpos(".")
+      echo l:startpos
+      call taskpaper#archive_done()
+      call setpos('.', l:startpos)
+  endfunction
   command! -range -nargs=1 MyToggletageachline <line1>,<line2>call Toggle_tag_eachline(<args>)
   " My settings : キーマップ
-  nmap <buffer> <Leader>tD :<C-u>call taskpaper#archive_done()<CR> <C-o> <C-o>
+  nmap <buffer> <Leader>tD :<C-u>call Archive_done_and_backpos()<CR>
   nmap <buffer> <Leader>tT <Plug>TaskPaperShowToday :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
   nmap <buffer> <Leader>tX <Plug>TaskPaperShowCancelled :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
   nnoremap <buffer> <silent> <Leader>tn :<C-u>call taskpaper#toggle_tag('now', '')<CR>
