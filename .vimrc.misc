@@ -92,3 +92,9 @@ endfunction
 " http://d.hatena.ne.jp/vimtaku/20121117/1353138802
 nnoremap : q:a
 nnoremap / q/a
+
+" Qですぐおわる(保存せず終了。保存して終了はZZ。)
+nnoremap Q :<C-u>q!<CR>
+
+" ZSで上書き保存
+nnoremap ZS :<C-u>w<CR>
