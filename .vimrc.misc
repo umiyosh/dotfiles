@@ -87,3 +87,8 @@ function! s:force_blockwise_visual(next_key)
     return a:next_key
   endif
 endfunction
+
+" : / はデフォルトでcommand line windowを開くに変更
+" http://d.hatena.ne.jp/vimtaku/20121117/1353138802
+nnoremap : q:a
+nnoremap / q/a
