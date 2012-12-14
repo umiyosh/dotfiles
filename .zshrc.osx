@@ -162,3 +162,7 @@ alias tmux='tmuxx'
 alias tm='tmuxx'
 alias tma='tmux attach'
 alias tml='tmux list-window'
+
+# gcc
+export CC=/usr/bin/gcc-4.2
+
