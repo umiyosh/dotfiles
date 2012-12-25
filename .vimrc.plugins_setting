@@ -476,6 +476,7 @@ function! s:taskpaper_setup()
   vmap <buffer> <silent> <Leader>tn :MyToggletageachline "now"   <CR>
   vmap <buffer> <silent> <Leader>td :MyToggletageachline "done"  <CR>
   vmap <buffer> <silent> <Leader>tt :MyToggletageachline "today" <CR>
+  vmap <buffer> <silent> <Leader>te :MyToggletageachline "evernote" <CR>
   nmap <buffer> <silent> <Leader>tc :!echo task count: $( egrep '@today' % \|egrep -v '@done'\|wc -l  )<CR>
   nmap <buffer> <silent> <Leader>tr :e %<CR>
 endfunction
