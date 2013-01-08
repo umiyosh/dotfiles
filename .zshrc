@@ -102,7 +102,7 @@ esac
 setopt auto_cd
 
 # cd でTabを押すとdir list を表示
-setopt auto_pushd
+# setopt auto_pushd
 
 # ディレクトリスタックに同じディレクトリを追加しないようになる
 setopt pushd_ignore_dups
@@ -308,9 +308,27 @@ function cwaf() {
 
 ## Completion configuration
 #
+# completion
+# fpath=($fpath $HOME/local/functions(N))
 fpath=(~/.zsh/functions/Completion ${fpath})
-autoload -U compinit
+if [ -x /usr/local/bin/brew ]; then
+    BREW_PREFIX=`brew --prefix`
+    fpath=($BREW_PREFIX/share/zsh/functions(N) $BREW_PREFIX/share/zsh/site-functions(N) $fpath)
+fi
+autoload -Uz compinit
 compinit -u
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%B--- %d ---%b'
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*:default' list-colors ln=35 di=36
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':completion:*:kill:*:processes' command 'ps x'
+zstyle ':completion:*:-command-:*' \
+    fake-parameters PERL5LIB # for perl
 
 
 ## zsh editor
