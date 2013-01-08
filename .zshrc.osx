@@ -157,6 +157,7 @@ function precmd() {
 #
 [ -f ~/.zshrc.osx.local ] && source ~/.zshrc.osx.local
 
+
 # tmux
 alias tmux='tmuxx'
 alias tm='tmuxx'
@@ -165,4 +166,10 @@ alias tml='tmux list-window'
 
 # gcc
 export CC=/usr/bin/gcc-4.2
+
+# j
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
+alias jj='jumpstat'
 
