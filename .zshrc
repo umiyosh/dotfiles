@@ -102,7 +102,7 @@ esac
 setopt auto_cd
 
 # cd でTabを押すとdir list を表示
-# setopt auto_pushd
+setopt auto_pushd
 
 # ディレクトリスタックに同じディレクトリを追加しないようになる
 setopt pushd_ignore_dups
