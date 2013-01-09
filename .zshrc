@@ -306,31 +306,6 @@ function cwaf() {
     LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 
-## Completion configuration
-#
-# completion
-# fpath=($fpath $HOME/local/functions(N))
-fpath=(~/.zsh/functions/Completion ${fpath})
-if [ -x /usr/local/bin/brew ]; then
-    BREW_PREFIX=`brew --prefix`
-    fpath=($BREW_PREFIX/share/zsh/functions(N) $BREW_PREFIX/share/zsh/site-functions(N) $fpath)
-fi
-autoload -Uz compinit
-compinit -u
-
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format '%B--- %d ---%b'
-
-zstyle ':completion:*' menu select
-zstyle ':completion:*:default' list-colors ln=35 di=36
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-zstyle ':completion:*:kill:*:processes' command 'ps x'
-zstyle ':completion:*:-command-:*' \
-    fake-parameters PERL5LIB # for perl
-
-
 ## zsh editor
 #
 autoload zed
@@ -563,6 +538,25 @@ linux*)
     ;;
 esac
 
+## Completion configuration
+#
+# completion
+# fpath=($fpath $HOME/local/functions(N))
+fpath=(~/.zsh/functions/Completion ${fpath})
+autoload -Uz compinit
+compinit -u
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%B--- %d ---%b'
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*:default' list-colors ln=35 di=36
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':completion:*:kill:*:processes' command 'ps x'
+zstyle ':completion:*:-command-:*' \
+    fake-parameters PERL5LIB # for perl
 
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
