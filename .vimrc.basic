@@ -19,6 +19,7 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set notitle                      " 「VIMを使ってくれてありがとう」無し
 set autoread                     " 外部から変更あった場合は自動読み込みする
+set nowrapscan                   " 検索マッチ終端までいったらそこで止める。
 
 " autoreadの頻度を上げる
 augroup vimrc-checktime
