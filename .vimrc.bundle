@@ -110,6 +110,9 @@ call vundle#rc()
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   Bundle 'taglist.vim'
 
+  " Source code Explorer
+  Bundle 'wesleyche/SrcExpl'
+
 " }}}
 "
 " Syntax {{{
