@@ -10,20 +10,11 @@ nnoremap l <Right>
 nnoremap <Down> gj
 nnoremap <Up>   gk
 
-" 0, 9で行頭、行末へ
-nmap 1 0
-nmap 0 ^
-nmap 9 $
-
 " insert mode での移動
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
 noremap  <C-e> $
 noremap  <C-a> ^
-
-"<space>j, <space>kで画面送り
-noremap <Space>j <C-f>
-noremap <Space>k <C-b>
 
 " F2で前のバッファ
 map <F2> <ESC>:bp<CR>

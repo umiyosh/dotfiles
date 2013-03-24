@@ -53,31 +53,6 @@ nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
 
 "------------------------------------
-" VTreeExplorer
-"------------------------------------
-" 縦に表示する
-let g:treeExplVertical=1
-"<Leader>t<Space>でディレクトリツリー表示
-noremap <Leader>t<Space> :VSTreeExplore<CR>
-"分割したウィンドウのサイズ
-let g:treeExplWinSize=30
-
-"------------------------------------
-" DumbBuf.vim
-"------------------------------------
-"<Leader>b<Space>でBufferList
-let dumbbuf_hotkey = '<Leader>b<Space>'
-let dumbbuf_mappings = {
-    \ 'n': {
-        \'<Esc>': { 'opt': '<silent>', 'mapto': ':<C-u>close<CR>' }
-    \}
-\}
-let dumbbuf_single_key  = 1
-let dumbbuf_updatetime  = 1    " &updatetimeの最小値
-let dumbbuf_wrap_cursor = 0
-let dumbbuf_remove_marked_when_close = 1
-
-"------------------------------------
 " vim-indent-guides
 "------------------------------------
 nnoremap <silent> <Space>id :<C-u>IndentGuidesToggle<Enter>
@@ -150,11 +125,6 @@ map _ <Plug>(operator-replace)
 "------------------------------------
 " sumartword.vim
 "------------------------------------
-noremap ,w  w
-noremap ,b  b
-noremap ,e  e
-noremap ,ge  ge
-
 map W  <Plug>(smartword-w)
 map B  <Plug>(smartword-b)
 map E  <Plug>(smartword-e)
