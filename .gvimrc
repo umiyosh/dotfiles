@@ -21,3 +21,5 @@ endi
 " cabalのpath
 let $PATH = $HOME.'/.cabal/bin:'.$PATH
 
+set nowrapscan                   " 検索マッチ終端までいったらそこで止める。
+
