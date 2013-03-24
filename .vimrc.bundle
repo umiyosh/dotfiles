@@ -245,7 +245,7 @@ call vundle#rc()
   Bundle 'thinca/vim-unite-history'
   Bundle 'tsukkee/unite-tag'
   Bundle 'choplin/unite-vim_hacks'
-
+  Bundle 'tacroe/unite-mark'
 " }}}
 "
 Bundle 'gmarik/vundle'
