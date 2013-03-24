@@ -201,7 +201,7 @@ command! Vs :VimShell
 "------------------------------------
 " The prefix key.
 nnoremap    [unite]   <Nop>
-nmap    <space>  [unite]
+nmap    <space><space>  [unite]
 
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
