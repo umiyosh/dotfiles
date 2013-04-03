@@ -17,3 +17,9 @@ else
     mkdir $HOME/.vim/
     ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
 fi
+
+# zsh extention
+## auto-fu.zsh.git : 自動補完強化
+git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/
+## このブランチが今現在うまく動くようなので
+cd ~/.zsh/extention/auto-fu.zsh ;git checkout -b pu origin/pu ;cd ~/dotfiles/

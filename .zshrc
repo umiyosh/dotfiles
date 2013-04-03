@@ -513,6 +513,17 @@ function __rm_single_file(){
        fi
 }
 
+#=============================
+# source auto-fu.zsh
+#=============================
+if [ -f ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh ]; then
+    source ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh
+    function zle-line-init () {
+        auto-fu-init
+    }
+    zle -N zle-line-init
+    zstyle ':completion:*' completer _oldlist _complete
+fi
 
 ## alias設定
 #
