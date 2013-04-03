@@ -525,6 +525,12 @@ if [ -f ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh ]; then
     zstyle ':completion:*' completer _oldlist _complete
 fi
 
+#=============================
+# source zaw: zshのunite
+#=============================
+[ -f ~/.zsh/extention/zaw/zaw.zsh ] && source ~/.zsh/extention/zaw/zaw.zsh && bindkey '^G' zaw
+
+
 ## alias設定
 #
 [ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias

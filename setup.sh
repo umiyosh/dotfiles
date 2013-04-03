@@ -23,3 +23,7 @@ fi
 git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/
 ## このブランチが今現在うまく動くようなので
 cd ~/.zsh/extention/auto-fu.zsh ;git checkout -b pu origin/pu ;cd ~/dotfiles/
+
+## zaw :zshのunite
+git clone git://github.com/zsh-users/zaw.git ~/.zsh/extention/
+
