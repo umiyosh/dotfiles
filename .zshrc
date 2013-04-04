@@ -530,8 +530,10 @@ fi
 #=============================
 if [ -f ~/.zsh/extention/zaw/zaw.zsh ]; then
     source ~/.zsh/extention/zaw/zaw.zsh
+    source ~/dotfiles/.zshrc.zaw.j
     bindkey '^G' zaw
     bindkey '^R' zaw-history
+    bindkey '^j' zaw-j
 fi
 
 ## alias設定
