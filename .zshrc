@@ -536,6 +536,18 @@ if [ -f ~/.zsh/extention/zaw/zaw.zsh ]; then
     bindkey '^j' zaw-j
 fi
 
+#=============================
+# コマンドラインスタック
+#=============================
+show_buffer_stack() {
+  POSTDISPLAY="
+stack: $LBUFFER"
+  zle push-line-or-edit
+}
+zle -N show_buffer_stack
+setopt noflowcontrol
+bindkey '^S' show_buffer_stack
+
 ## alias設定
 #
 [ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
