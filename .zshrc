@@ -528,8 +528,11 @@ fi
 #=============================
 # source zaw: zshのunite
 #=============================
-[ -f ~/.zsh/extention/zaw/zaw.zsh ] && source ~/.zsh/extention/zaw/zaw.zsh && bindkey '^G' zaw
-
+if [ -f ~/.zsh/extention/zaw/zaw.zsh ]; then
+    source ~/.zsh/extention/zaw/zaw.zsh
+    bindkey '^G' zaw
+    bindkey '^R' zaw-history
+fi
 
 ## alias設定
 #
