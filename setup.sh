@@ -20,13 +20,13 @@ fi
 
 # zsh extention
 ## auto-fu.zsh.git : 自動補完強化
-git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/
+git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/auto-fu.zsh
 ## このブランチが今現在うまく動くようなので
 cd ~/.zsh/extention/auto-fu.zsh ;git checkout -b pu origin/pu ;cd ~/dotfiles/
 
 ## zaw :zshのunite
-git clone git://github.com/zsh-users/zaw.git ~/.zsh/extention/
+git clone git://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
 
 ## zsh-completions.git : 補完対象追加
-git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/
+git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/zsh-completions
 
