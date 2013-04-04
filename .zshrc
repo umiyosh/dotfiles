@@ -8,7 +8,6 @@
 export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
 
-
 ## Backspace key
 #
 bindkey "^?" backward-delete-char
@@ -548,6 +547,9 @@ zle -N show_buffer_stack
 setopt noflowcontrol
 bindkey '^S' show_buffer_stack
 
+# zsh-completionsを利用する Github => zsh-completions
+[ -d ~/.zsh/extention/zsh-completions/src ] && fpath=(~/.zsh/extention/zsh-completions/src $fpath)
+
 ## alias設定
 #
 [ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
@@ -570,6 +572,7 @@ esac
 # completion
 # fpath=($fpath $HOME/local/functions(N))
 fpath=(~/.zsh/functions/Completion ${fpath})
+
 autoload -Uz compinit
 compinit -u
 
