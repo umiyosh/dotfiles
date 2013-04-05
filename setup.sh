@@ -25,7 +25,7 @@ git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/auto-fu.zsh
 cd ~/.zsh/extention/auto-fu.zsh ;git checkout -b pu origin/pu ;cd ~/dotfiles/
 
 ## zaw :zshのunite
-git clone git://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
+git clone https://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
 
 ## zsh-completions.git : 補完対象追加
 git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/zsh-completions
