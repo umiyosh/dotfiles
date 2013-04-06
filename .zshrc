@@ -588,6 +588,18 @@ zstyle ':completion:*:kill:*:processes' command 'ps x'
 zstyle ':completion:*:-command-:*' \
     fake-parameters PERL5LIB # for perl
 
+# menuselect中のキーバインド
+zmodload zsh/complist
+bindkey -M menuselect '^p' up-history
+bindkey -M menuselect '^n' down-history
+bindkey -M menuselect '^f' forward-char
+bindkey -M menuselect '^b' backward-char
+
+bindkey -M menuselect '^k' up-history
+bindkey -M menuselect '^j' down-history
+bindkey -M menuselect '^l' forward-char
+bindkey -M menuselect '^h' backward-char
+
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
     screen -U
