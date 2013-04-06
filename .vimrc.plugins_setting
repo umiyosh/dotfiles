@@ -301,7 +301,6 @@ let g:syntastic_enable_highlighting = 1
 "------------------------------------
 " toggle.vim
 "------------------------------------
-imap <Leader>o <Plug>ToggleI
 nmap <Leader>o <Plug>ToggleN
 vmap <Leader>o <Plug>ToggleV
 

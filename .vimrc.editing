@@ -61,11 +61,6 @@ function! BanTabIndentWrite()
 endfunction
 command! Sw :call BanTabIndentWrite()
 
-" 日時の自動入力
-inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')
-inoremap <expr> ,dd strftime('%Y/%m/%d')
-inoremap <expr> ,dt strftime('%H:%M:%S')
-
 " foldは各FiltTypeにお任せる
 " set foldmethod=syntax
 " 折りたたみは全て展開した状態で開始する
