@@ -30,3 +30,9 @@ git clone https://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
 ## zsh-completions.git : 補完対象追加
 git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/zsh-completions
 
+# vim
+## vunndle
+if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
+    mkdir -p ~/.vim/bundle/
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
+fi
