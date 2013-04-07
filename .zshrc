@@ -530,6 +530,7 @@ fi
 if [ -f ~/.zsh/extention/zaw/zaw.zsh ]; then
     source ~/.zsh/extention/zaw/zaw.zsh
     source ~/dotfiles/.zshrc.zaw.j
+    zstyle ':filter-select' case-insensitive yes
     bindkey '^G' zaw
     bindkey '^R' zaw-history
     bindkey '^j' zaw-j
