@@ -107,10 +107,6 @@
   gn = grep -n
   sm = submodule
   smupdate = submodule foreach "git checkout master; git pull origin master"
-  # stash関連(stashもう使わないのでコメントあうと)
-  # sl = stash list
-  # sp = stash pop
-  # ss = stash save
 
   chpk = cherry-pick # チンピク
   iss = issue # my extended command
