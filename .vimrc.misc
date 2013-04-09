@@ -91,7 +91,7 @@ endfunction
 " : / はデフォルトでcommand line windowを開くに変更
 " http://d.hatena.ne.jp/vimtaku/20121117/1353138802
 nnoremap q: q:a
-nnoremap / q/a
+nnoremap q/ q/a
 
 " Qですぐおわる(保存せず終了。保存して終了はZZ。)
 nnoremap Q :<C-u>q!<CR>
