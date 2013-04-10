@@ -23,6 +23,10 @@ if [[ ! -d $HOME/local/bin ]]; then
     ln -s $HOME/dotfiles/bin/git_diff_wrapper $HOME/bin/git_diff_wrapper
 fi
 
+if [[ ! -d $HOME/.vim/snippets ]]; then
+    git clone https://github.com/umiyosh/snippets.git $HOME/.vim/snippets/
+fi
+
 # zsh extention
 ## auto-fu.zsh.git : 自動補完強化
 git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/auto-fu.zsh
