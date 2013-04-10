@@ -50,8 +50,8 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
 "スニペット展開
-imap <C-f> <Plug>(neocomplcache_snippets_expand)
-smap <C-f> <Plug>(neocomplcache_snippets_expand)
+imap <C-f> <Plug>(neosnippet_expand_or_jump)
+smap <C-f> <Plug>(neosnippet_expand_or_jump)
 
 "スニペット編集
 nnoremap <Space>s  :NeoComplCacheEditSnippets<CR>
