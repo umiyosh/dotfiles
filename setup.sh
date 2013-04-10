@@ -18,6 +18,11 @@ else
     ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
 fi
 
+if [[ ! -d $HOME/local/bin ]]; then
+    mkdir -p $HOME/local/bin/
+    ln -s $HOME/dotfiles/bin/git_diff_wrapper $HOME/bin/git_diff_wrapper
+fi
+
 # zsh extention
 ## auto-fu.zsh.git : 自動補完強化
 git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/auto-fu.zsh
