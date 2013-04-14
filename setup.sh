@@ -39,6 +39,19 @@ git clone https://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
 ## zsh-completions.git : 補完対象追加
 git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/zsh-completions
 
+## zsh-autojump
+case "${OSTYPE}" in
+darwin*)
+    brew install autojump
+    ;;
+linux*)
+    git clone git://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
+    cd ~/.zsh/extention/autojump/
+    sudo ./install.sh --zsh
+    cd ~/dotfiles/
+    ;;
+esac
+
 # vim
 ## vunndle
 if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
