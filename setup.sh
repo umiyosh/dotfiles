@@ -29,28 +29,36 @@ fi
 
 # zsh extention
 ## auto-fu.zsh.git : 自動補完強化
-git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/auto-fu.zsh
-## このブランチが今現在うまく動くようなので
-cd ~/.zsh/extention/auto-fu.zsh ;git checkout -b pu origin/pu ;cd ~/dotfiles/
+if [[ ! -d ~/.zsh/extention/auto-fu.zsh ]]; then
+    git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/auto-fu.zsh
+    ## このブランチが今現在うまく動くようなので
+    cd ~/.zsh/extention/auto-fu.zsh ;git checkout -b pu origin/pu ;cd ~/dotfiles/
+fi
 
 ## zaw :zshのunite
-git clone https://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
+if [[ ! -d ~/.zsh/extention/zaw ]]; then
+    git clone https://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
+fi
 
 ## zsh-completions.git : 補完対象追加
-git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/zsh-completions
+if [[ ! -d ~/.zsh/extention/zsh-completions ]]; then
+    git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/zsh-completions
+fi
 
 ## zsh-autojump
-case "${OSTYPE}" in
-darwin*)
-    brew install autojump
-    ;;
-linux*)
-    git clone git://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
-    cd ~/.zsh/extention/autojump/
-    sudo ./install.sh --zsh
-    cd ~/dotfiles/
-    ;;
-esac
+if ! jumpstat >/dev/null ; then
+    case "${OSTYPE}" in
+    darwin*)
+        brew install autojump
+        ;;
+    linux*)
+        git clone git://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
+        cd ~/.zsh/extention/autojump/
+        sudo ./install.sh --zsh
+        cd ~/dotfiles/
+        ;;
+    esac
+fi
 
 # vim
 ## vunndle
