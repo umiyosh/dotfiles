@@ -521,7 +521,7 @@ if [ -f ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh ]; then
         auto-fu-init
     }
     zle -N zle-line-init
-    zstyle ':completion:*' completer _oldlist _complete _expand _match _prefix _approximate _list _history
+    zstyle ':completion:*' completer _oldlist _complete _expand _match _prefix _list _history
 fi
 
 #=============================
@@ -588,7 +588,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:kill:*:processes' command 'ps x'
 zstyle ':completion:*:-command-:*' \
     fake-parameters PERL5LIB # for perl
-zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*' completer _expand _complete _match _prefix _list _history
 
 # menuselect中のキーバインド
 zmodload zsh/complist
