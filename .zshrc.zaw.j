@@ -3,7 +3,7 @@ zmodload zsh/parameter
 
 function zaw-src-j() {
     : ${(A)candidates::=${(@f)"$(
-        jumpstat | \
+        autojump -s | \
             perl -e '
                 while(<>){push @line, $_}
                 for $jumplist (reverse @line){
