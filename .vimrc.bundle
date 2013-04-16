@@ -189,6 +189,9 @@ call vundle#rc()
   " vimからGit操作する
   Bundle 'tpope/vim-fugitive'
 
+  " gitgutter
+  Bundle 'airblade/vim-gitgutter'
+
   " ステータスラインをカッコよくする
   Bundle 'Lokaltog/vim-powerline'
 
