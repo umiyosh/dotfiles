@@ -184,6 +184,11 @@ zle -N show_buffer_stack
 setopt noflowcontrol
 bindkey '^Q' show_buffer_stack
 
+# ctrl-w, ctrl-bキーで単語移動
+bindkey "^W" forward-word
+bindkey "^B" backward-word
+bindkey "∑" backward-kill-word
+
 ## antigen :pluginとか拡張的なものとか
 source ~/dotfiles/.zshrc.antigen
 
@@ -279,11 +284,6 @@ cd ..
 zle reset-prompt
 }
 zle -N cdup
-
-# ctrl-w, ctrl-bキーで単語移動
-bindkey "^W" forward-word
-bindkey "^B" backward-word
-bindkey "∑" backward-kill-word
 
 # back-wordでの単語境界の設定
 autoload -Uz select-word-style
