@@ -28,21 +28,9 @@ if [[ ! -d $HOME/.vim/snippets ]]; then
 fi
 
 # zsh extention
-## auto-fu.zsh.git : 自動補完強化
-if [[ ! -d ~/.zsh/extention/auto-fu.zsh ]]; then
-    git clone https://github.com/hchbaw/auto-fu.zsh.git ~/.zsh/extention/auto-fu.zsh
-    ## このブランチが今現在うまく動くようなので
-    cd ~/.zsh/extention/auto-fu.zsh ;git checkout -b pu origin/pu ;cd ~/dotfiles/
-fi
-
-## zaw :zshのunite
-if [[ ! -d ~/.zsh/extention/zaw ]]; then
-    git clone https://github.com/zsh-users/zaw.git ~/.zsh/extention/zaw
-fi
-
-## zsh-completions.git : 補完対象追加
-if [[ ! -d ~/.zsh/extention/zsh-completions ]]; then
-    git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/extention/zsh-completions
+## antigen
+if [[ ! -d ~/.zsh/extention/antigen/ ]]; then
+   git clone https://github.com/zsh-users/antigen.git ~/.zsh/extention/antigen/
 fi
 
 ## zsh-autojump

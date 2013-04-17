@@ -174,6 +174,9 @@ bindkey "\\en" history-beginning-search-forward-end
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
+## antigen :pluginとか拡張的なものとか
+source ~/dotfiles/.zshrc.antigen
+
 ## Command history configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -515,26 +518,20 @@ function __rm_single_file(){
 #=============================
 # source auto-fu.zsh
 #=============================
-if [ -f ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh ]; then
-    source ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh
-    function zle-line-init () {
-        auto-fu-init
-    }
-    zle -N zle-line-init
-    zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
-fi
+function zle-line-init () {
+    auto-fu-init
+}
+zle -N zle-line-init
+zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
 
 #=============================
 # source zaw: zshのunite
 #=============================
-if [ -f ~/.zsh/extention/zaw/zaw.zsh ]; then
-    source ~/.zsh/extention/zaw/zaw.zsh
-    source ~/dotfiles/.zshrc.zaw.j
-    zstyle ':filter-select' case-insensitive yes
-    bindkey '^G' zaw
-    bindkey '^R' zaw-history
-    bindkey '^j' zaw-j
-fi
+source ~/dotfiles/.zshrc.zaw.j
+zstyle ':filter-select' case-insensitive yes
+bindkey '^G' zaw
+bindkey '^R' zaw-history
+bindkey '^j' zaw-j
 
 #=============================
 # コマンドラインスタック
