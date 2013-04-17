@@ -171,7 +171,7 @@ export CC=/usr/bin/gcc-4.2
 if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
 fi
-alias jj='autojump -s'
+alias jj='autojump --stat'
 # jの補完周り
 if [ -x /usr/local/bin/brew ]; then
     BREW_PREFIX=`brew --prefix`
