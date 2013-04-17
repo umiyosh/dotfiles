@@ -174,6 +174,16 @@ bindkey "\\en" history-beginning-search-forward-end
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
+## Command Line Stack
+show_buffer_stack() {
+  POSTDISPLAY="
+stack: $LBUFFER"
+  zle push-line-or-edit
+}
+zle -N show_buffer_stack
+setopt noflowcontrol
+bindkey '^Q' show_buffer_stack
+
 ## antigen :pluginとか拡張的なものとか
 source ~/dotfiles/.zshrc.antigen
 
@@ -269,7 +279,6 @@ cd ..
 zle reset-prompt
 }
 zle -N cdup
-# bindkey '\^' cdup
 
 # ctrl-w, ctrl-bキーで単語移動
 bindkey "^W" forward-word
@@ -313,10 +322,6 @@ autoload zargs
 #
 autoload predict-on
 #predict-off
-
-## Command Line Stack [Esc]-[q]
-bindkey -a 'q' push-line
-
 
 ## Alias configuration
 #
@@ -470,7 +475,6 @@ zle -N magic-abbrev-expand-and-insert
 zle -N magic-abbrev-expand-and-accept
 zle -N no-magic-abbrev-expand
 bindkey "\r"  magic-abbrev-expand-and-accept # M-x RET はできなくなる
-# bindkey "^J"  accept-line # no magic
 bindkey " "   magic-abbrev-expand-and-insert
 bindkey "."   magic-abbrev-expand-and-insert
 bindkey "^x " no-magic-abbrev-expand
@@ -532,18 +536,6 @@ zstyle ':filter-select' case-insensitive yes
 bindkey '^G' zaw
 bindkey '^R' zaw-history
 bindkey '^j' zaw-j
-
-#=============================
-# コマンドラインスタック
-#=============================
-show_buffer_stack() {
-  POSTDISPLAY="
-stack: $LBUFFER"
-  zle push-line-or-edit
-}
-zle -N show_buffer_stack
-setopt noflowcontrol
-bindkey '^S' show_buffer_stack
 
 # zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
