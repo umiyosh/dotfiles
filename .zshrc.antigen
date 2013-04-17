@@ -5,4 +5,5 @@ antigen-bundle git
 antigen-bundle hchbaw/auto-fu.zsh.git --branch=pu
 antigen-bundle zsh-users/zaw.git
 antigen-bundle zsh-users/zsh-completions.git
+antigen-bundle zsh-users/zsh-syntax-highlighting
 
