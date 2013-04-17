@@ -546,7 +546,8 @@ setopt noflowcontrol
 bindkey '^S' show_buffer_stack
 
 # zsh-completionsを利用する Github => zsh-completions
-[ -d ~/.zsh/extention/zsh-completions/src ] && fpath=(~/.zsh/extention/zsh-completions/src $fpath)
+[ -d ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src ] && \
+    fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
 ## alias設定
 #
