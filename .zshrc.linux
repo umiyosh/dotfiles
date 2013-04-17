@@ -30,5 +30,5 @@ export PATH=$PATH:$HOME/.gem/ruby/1.8/bin
 export PATH=/opt/firefox:$PATH
 
 
-[[ -s /etc/profile.d/autojump.sh ]] && . /etc/profile.d/autojump.sh && alias jj='autojump -s'
+[[ -s /etc/profile.d/autojump.sh ]] && . /etc/profile.d/autojump.sh && alias jj='autojump --stat'
 
