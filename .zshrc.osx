@@ -11,16 +11,11 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # vim
 export EDITOR=vim
 
-# SVN
-# UTF-8.MAC用のパッチ当てた
-#alias svn='/usr/local/bin/svn'
-
 # Java
 export JAVA_HOME=/Library/Java/Home
 export PATH=$JAVA_HOME/bin:$PATH
 # デフォルトエンコーディングSJISをUTF-8へ
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
-
 
 # scala
 export SCALA_HOME=/Users/ozaki/.svm/current/rt
@@ -28,7 +23,6 @@ PATH=$SCALA_HOME/bin:$PATH
 export SCALA_DOC_HOME=$SCALA_HOME/../devel-docs/api/
 
 export SCALA_CLASSPATH=~/sandbox/scala/yuroyoro/yuroyoro-util/target/yuroyoro-util-1.0.jar
-
 
 # Ant
 export ANT_VERSION=1.8.0
@@ -41,7 +35,6 @@ export MAVEN_VERSION=2.2.1
 export MAVEN_HOME=~/dev/Tools/apache-maven-${MAVEN_VERSION}
 export PATH=$MAVEN_HOME/bin:$PATH
 export MAVEN_OPTS=-Xmx1024M
-
 
 # man path
 MANPATH=/usr/local/man:$MANPATH
@@ -80,17 +73,6 @@ GAEJ_SDK_INSTALLED_DIR=~/sandbox/GAEJava/sdk
 export GAEJ_HOME=$GAEJ_SDK_INSTALLED_DIR/appengine-java-sdk-$GAEJ_SDK_VERSION
 export PATH=$PATH:$GAEJ_HOME/bin
 
-# Python
-# alias python='/usr/local/bin/python'
-# alias easy_install='/Library/Frameworks/Python.framework/Versions/2.5/bin/easy_install-2.5'
-# export DEFALUT_PYTHON_HOME=~/dev/python/python2.6.6
-# export WORKON_HOME=$HOME/.virtualenvs
-# source $DEFALUT_PYTHON_HOME/bin/activate
-# source /usr/local/Cellar/python/2.7/bin/virtualenvwrapper.sh
-# export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:$PATH
-# export PYTHONSTARTUP=~/.pythonstartup
-
-
 # Ruby
 if [[ -s /Users/ozaki/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
 
@@ -113,21 +95,6 @@ export PATH=$PATH:$JRUBY_HOME/bin
 # Mirah
 export MIRAH_HOME=$HOME/sandbox/mirah/mirah
 export PATH=$PATH:$MIRAH_HOME/bin
-
-# For Oracle
-# export DISPLAY=:0.0
-# ulimit -Hn 65536
-# ulimit -Sn 65536
-# export ORACLE_BASE=/Users/oracle
-# export ORACLE_HOSTNAME=localhost
-# export ORACLE_HOME=/Users/oracle/oracle/product/10.2.0/db_1
-# export DYLD_LIBRARY_PATH=$ORACLE_HOME/lib
-# export LD_LIBRARY_PATH=$ORACLE_HOME/lib
-# export ORACLE_SID=orcl
-# export NLS_LANG=Japanese_Japan.UTF8
-# export ORA_SDTZ=Japan
-
-# export PATH=$PATH:/$ORACLE_HOME/bin
 
 function preexec() {
     typeset -gi CALCTIME=1
@@ -156,7 +123,6 @@ function precmd() {
 ## local zshrc.osx設定
 #
 [ -f ~/.zshrc.osx.local ] && source ~/.zshrc.osx.local
-
 
 # tmux
 alias tmux='tmuxx'

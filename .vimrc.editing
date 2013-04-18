@@ -39,19 +39,6 @@ nmap y9 y$
 " y0で行頭までヤンク
 nmap y0 y^
 
-"
-" 括弧を自動補完
-"inoremap { {}<LEFT>
-"inoremap [ []<LEFT>
-"inoremap ( ()<LEFT>
-"inoremap " ""<LEFT>
-"inoremap ' ''<LEFT>
-"vnoremap { "zdi^V{<C-R>z}<ESC>
-"vnoremap [ "zdi^V[<C-R>z]<ESC>
-"vnoremap ( "zdi^V(<C-R>z)<ESC>
-"vnoremap " "zdi^V"<C-R>z^V"<ESC>
-"vnoremap ' "zdi'<C-R>z'<ESC>
-
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " tabをスペースに変換する
@@ -60,13 +47,6 @@ function! BanTabIndentWrite()
   :w
 endfunction
 command! Sw :call BanTabIndentWrite()
-
-" foldは各FiltTypeにお任せる
-" set foldmethod=syntax
-" 折りたたみは全て展開した状態で開始する
-" set foldlevelstart=99
-" .vimはmarker
-" autocmd FileType vim :set foldmethod=marker
 
 " <leader>j でJSONをformat
 " http://wozozo.hatenablog.com/entry/2012/02/08/121504

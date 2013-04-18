@@ -132,7 +132,6 @@ map ge  <Plug>(smartword-ge)
 "------------------------------------
 " camelcasemotion.vim
 "------------------------------------
-
 " <Shift-wbe>でCameCaseやsnake_case単位での単語移動
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
@@ -223,8 +222,6 @@ nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir  file<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 " mark一覧
 nnoremap <silent> [unite]M :<C-u>Unite mark<CR>
-
-" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
