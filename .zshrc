@@ -12,6 +12,10 @@ export LESSCHARSET=utf-8
 #
 bindkey "^?" backward-delete-char
 
+## local zshrc設定
+#
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
 ## Default shell configuration
 #
 # set prompt
@@ -188,6 +192,7 @@ bindkey '^Q' show_buffer_stack
 bindkey "^W" forward-word
 bindkey "^B" backward-word
 bindkey "∑" backward-kill-word
+
 
 ## antigen :pluginとか拡張的なものとか
 source ~/dotfiles/.zshrc.antigen
@@ -608,8 +613,4 @@ bindkey -M menuselect '^h' backward-char
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
     screen -U
 fi
-
-## local zshrc設定
-#
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
