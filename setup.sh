@@ -34,7 +34,7 @@ if [[ ! -d ~/.zsh/extention/antigen/ ]]; then
 fi
 
 ## zsh-autojump
-if ! jumpstat >/dev/null ; then
+if ! autojump --stat >/dev/null ; then
     case "${OSTYPE}" in
     darwin*)
         brew install autojump
