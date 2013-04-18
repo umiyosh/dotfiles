@@ -174,6 +174,24 @@ bindkey "\\en" history-beginning-search-forward-end
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
+## Command Line Stack
+show_buffer_stack() {
+  POSTDISPLAY="
+stack: $LBUFFER"
+  zle push-line-or-edit
+}
+zle -N show_buffer_stack
+setopt noflowcontrol
+bindkey '^Q' show_buffer_stack
+
+# ctrl-w, ctrl-bキーで単語移動
+bindkey "^W" forward-word
+bindkey "^B" backward-word
+bindkey "∑" backward-kill-word
+
+## antigen :pluginとか拡張的なものとか
+source ~/dotfiles/.zshrc.antigen
+
 ## Command history configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -266,12 +284,6 @@ cd ..
 zle reset-prompt
 }
 zle -N cdup
-# bindkey '\^' cdup
-
-# ctrl-w, ctrl-bキーで単語移動
-bindkey "^W" forward-word
-bindkey "^B" backward-word
-bindkey "∑" backward-kill-word
 
 # back-wordでの単語境界の設定
 autoload -Uz select-word-style
@@ -310,10 +322,6 @@ autoload zargs
 #
 autoload predict-on
 #predict-off
-
-## Command Line Stack [Esc]-[q]
-bindkey -a 'q' push-line
-
 
 ## Alias configuration
 #
@@ -467,7 +475,6 @@ zle -N magic-abbrev-expand-and-insert
 zle -N magic-abbrev-expand-and-accept
 zle -N no-magic-abbrev-expand
 bindkey "\r"  magic-abbrev-expand-and-accept # M-x RET はできなくなる
-bindkey "^J"  accept-line # no magic
 bindkey " "   magic-abbrev-expand-and-insert
 bindkey "."   magic-abbrev-expand-and-insert
 bindkey "^x " no-magic-abbrev-expand
@@ -515,41 +522,36 @@ function __rm_single_file(){
 #=============================
 # source auto-fu.zsh
 #=============================
-if [ -f ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh ]; then
-    source ~/.zsh/extention/auto-fu.zsh/auto-fu.zsh
-    function zle-line-init () {
-        auto-fu-init
-    }
-    zle -N zle-line-init
-    zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
-fi
+function zle-line-init () {
+    auto-fu-init
+}
+zle -N zle-line-init
+zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
 
 #=============================
 # source zaw: zshのunite
 #=============================
-if [ -f ~/.zsh/extention/zaw/zaw.zsh ]; then
-    source ~/.zsh/extention/zaw/zaw.zsh
-    source ~/dotfiles/.zshrc.zaw.j
-    zstyle ':filter-select' case-insensitive yes
-    bindkey '^G' zaw
-    bindkey '^R' zaw-history
-    bindkey '^j' zaw-j
-fi
+source ~/dotfiles/.zshrc.zaw.j
+zstyle ':filter-select' case-insensitive yes
+bindkey '^G' zaw
+bindkey '^R' zaw-history
+bindkey '^j' zaw-j
 
-#=============================
-# コマンドラインスタック
-#=============================
-show_buffer_stack() {
-  POSTDISPLAY="
-stack: $LBUFFER"
-  zle push-line-or-edit
-}
-zle -N show_buffer_stack
-setopt noflowcontrol
-bindkey '^S' show_buffer_stack
+# zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
+ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=red,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=yellow,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
+# To have paths colored instead of underlined
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+# To have commands starting with `rm -rf` in red:
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
 # zsh-completionsを利用する Github => zsh-completions
-[ -d ~/.zsh/extention/zsh-completions/src ] && fpath=(~/.zsh/extention/zsh-completions/src $fpath)
+[ -d ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src ] && \
+    fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
 ## alias設定
 #
