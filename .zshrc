@@ -183,7 +183,11 @@ bindkey '^Q' show_buffer_stack
 bindkey "^W" forward-word
 bindkey "^B" backward-word
 bindkey "∑" backward-kill-word
-
+# back-wordでの単語境界の設定
+autoload -Uz select-word-style
+select-word-style default
+zstyle ':zle:*' word-chars " _-./;@"
+zstyle ':zle:*' word-style unspecified
 
 ## antigen :pluginとか拡張的なものとか
 source ~/dotfiles/.zshrc.antigen
@@ -224,12 +228,6 @@ cd ..
 zle reset-prompt
 }
 zle -N cdup
-
-# back-wordでの単語境界の設定
-autoload -Uz select-word-style
-select-word-style default
-zstyle ':zle:*' word-chars " _-./;@"
-zstyle ':zle:*' word-style unspecified
 
 # URLをコピペしたときに自動でエスケープ
 autoload -Uz url-quote-magic
