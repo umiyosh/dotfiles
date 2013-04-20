@@ -49,8 +49,18 @@ if ! autojump --stat >/dev/null ; then
 fi
 
 # vim
-## vunndle
+## vunndle and BundleInstall and make vimproc
 if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
     mkdir -p ~/.vim/bundle/
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
+    vim -Nu ~/dotfiles/.vimrc.bundle +BundleInstall! +qall
+    cd
+    case "${OSTYPE}" in
+    darwin*)
+        make -f ~/.vim/bundle/vimproc/make_mac.mak
+        ;;
+    linux*)
+        make -f ~/.vim/bundle/vimproc/make_unix.mak
+        ;;
+    esac
 fi
