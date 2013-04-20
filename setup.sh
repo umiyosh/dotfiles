@@ -55,12 +55,13 @@ if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
     vim -Nu ~/dotfiles/.vimrc.bundle +BundleInstall! +qall
     cd
+    cd ~/.vim/bundle/vimproc/
     case "${OSTYPE}" in
     darwin*)
-        make -f ~/.vim/bundle/vimproc/make_mac.mak
+        make -f make_mac.mak
         ;;
     linux*)
-        make -f ~/.vim/bundle/vimproc/make_unix.mak
+        make -f make_unix.mak
         ;;
     esac
 fi
