@@ -37,7 +37,7 @@ if [[ ! -d ~/.zsh/extention/antigen/ ]]; then
 fi
 
 ## zsh-autojump
-if ! autojump --stat >/dev/null ; then
+if ! autojump --stat 1>/dev/null 2>&1; then
     case "${OSTYPE}" in
     darwin*)
         brew install autojump
@@ -45,7 +45,7 @@ if ! autojump --stat >/dev/null ; then
     linux*)
         git clone git://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
         cd ~/.zsh/extention/autojump/
-        sudo ./install.sh --local
+        ./install.sh --local
         cd ~/dotfiles/
         ;;
     esac
