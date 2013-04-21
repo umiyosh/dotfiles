@@ -10,17 +10,12 @@ do
     fi
 done
 
-if [[ -d $HOME/.zsh/ ]]; then
+if [[ ! -d $HOME/.zsh/ ]]; then
    ln -s $HOME/dotfiles/.zsh $HOME/.zsh
 fi
 
-if [[ -d $HOME/.vim/ ]]; then
-    if [[ ! -d $HOME/.vim/dict ]]; then
-        ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
-    fi
-else
-    mkdir $HOME/.vim/
-    ln -s $HOME/dotfiles/.vim/dict $HOME/.vim/dict
+if [[ ! -d $HOME/.vim/ ]]; then
+    ln -s $HOME/dotfiles/.vim/ $HOME/.vim/
 fi
 
 if [[ ! -d $HOME/local/bin ]]; then
@@ -60,12 +55,13 @@ if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
     vim -Nu ~/dotfiles/.vimrc.bundle +BundleInstall! +qall
     cd
+    cd ~/.vim/bundle/vimproc/
     case "${OSTYPE}" in
     darwin*)
-        make -f ~/.vim/bundle/vimproc/make_mac.mak
+        make -f make_mac.mak
         ;;
     linux*)
-        make -f ~/.vim/bundle/vimproc/make_unix.mak
+        make -f make_unix.mak
         ;;
     esac
 fi
