@@ -2,9 +2,10 @@
 
 DOT_FILES=( .zshrc .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .emacs.el .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc )
 
+# dotfiles
 for file in ${DOT_FILES[@]}
 do
-    if [[ ! -d $HOME/$file ]]; then
+    if [[ ! -f $HOME/$file ]]; then
         ln -s $HOME/dotfiles/$file $HOME/$file
     fi
 done
@@ -24,7 +25,7 @@ fi
 
 if [[ ! -d $HOME/local/bin ]]; then
     mkdir -p $HOME/local/bin/
-    ln -s $HOME/dotfiles/bin/git_diff_wrapper $HOME/bin/git_diff_wrapper
+    ln -s $HOME/dotfiles/bin/git_diff_wrapper $HOME/local/bin/git_diff_wrapper
 fi
 
 if [[ ! -d $HOME/.vim/snippets ]]; then
