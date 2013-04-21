@@ -5,6 +5,9 @@ DOT_FILES=( .zshrc .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .emacs.el
 # dotfiles
 for file in ${DOT_FILES[@]}
 do
+    if [[ ! -L $HOME/$file ]]; then
+        mv $HOME/$file $HOME/${file}.orig.$(date +"%Y%m%d%H%M%S")
+    fi
     if [[ ! -f $HOME/$file ]]; then
         ln -s $HOME/dotfiles/$file $HOME/$file
     fi
