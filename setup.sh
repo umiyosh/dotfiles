@@ -45,7 +45,7 @@ if ! autojump --stat >/dev/null ; then
     linux*)
         git clone git://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
         cd ~/.zsh/extention/autojump/
-        sudo ./install.sh
+        sudo ./install.sh --local
         cd ~/dotfiles/
         ;;
     esac
