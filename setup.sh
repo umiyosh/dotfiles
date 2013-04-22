@@ -32,8 +32,8 @@ fi
 
 # zsh extention
 ## antigen
-if [[ ! -d ~/.zsh/extention/antigen/ ]]; then
-   git clone https://github.com/zsh-users/antigen.git ~/.zsh/extention/antigen/
+if [[ ! -d $HOME/.zsh/extention/antigen/ ]]; then
+   git clone https://github.com/zsh-users/antigen.git $HOME/.zsh/extention/antigen/
 fi
 
 ## zsh-autojump
@@ -43,21 +43,21 @@ if ! autojump --stat 1>/dev/null 2>&1; then
         brew install autojump
         ;;
     linux*)
-        git clone https://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
-        cd ~/.zsh/extention/autojump/
+        git clone https://github.com/joelthelion/autojump.git $HOME/.zsh/extention/autojump
+        cd $HOME/.zsh/extention/autojump/
         ./install.sh --local
-        cd ~/dotfiles/
+        cd $HOME/dotfiles/
         ;;
     esac
 fi
 
 # vim
 ## vunndle and BundleInstall and make vimproc
-if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
-    mkdir -p ~/.vim/bundle/
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
-    vim -Nu ~/dotfiles/.vimrc.bundle +BundleInstall! +qall
-    cd ~/.vim/bundle/vimproc/
+if [[ ! -d $HOME/.vim/bundle/vundle/ ]]; then
+    mkdir -p $HOME/.vim/bundle/
+    git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle/
+    vim -Nu $HOME/dotfiles/.vimrc.bundle +BundleInstall! +qall
+    cd $HOME/.vim/bundle/vimproc/
     case "${OSTYPE}" in
     darwin*)
         make -f make_mac.mak
@@ -66,5 +66,5 @@ if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
         make -f make_unix.mak
         ;;
     esac
-    cd ~/dotfiles/
+    cd $HOME/dotfiles/
 fi
