@@ -43,7 +43,7 @@ if ! autojump --stat 1>/dev/null 2>&1; then
         brew install autojump
         ;;
     linux*)
-        git clone git://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
+        git clone https://github.com/joelthelion/autojump.git ~/.zsh/extention/autojump
         cd ~/.zsh/extention/autojump/
         ./install.sh --local
         cd ~/dotfiles/
@@ -57,7 +57,6 @@ if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
     mkdir -p ~/.vim/bundle/
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/
     vim -Nu ~/dotfiles/.vimrc.bundle +BundleInstall! +qall
-    cd
     cd ~/.vim/bundle/vimproc/
     case "${OSTYPE}" in
     darwin*)
@@ -67,4 +66,5 @@ if [[ ! -d ~/.vim/bundle/vundle/ ]]; then
         make -f make_unix.mak
         ;;
     esac
+    cd ~/dotfiles/
 fi
