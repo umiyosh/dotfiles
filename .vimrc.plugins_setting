@@ -353,7 +353,8 @@ nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
 "------------------------------------
 " カーソルしたの英単語の意味を表示する
 " http://d.hatena.ne.jp/thinca/20120512/1336761779
-let g:ref_phpmanual_path = $HOME . '/Dropbox/doc/other/php-chunked-xhtml'
+
+let g:ref_phpmanual_path = $HOME . '/.vim/refdoc/php-chunked-xhtml'
 map <Leader>gx :Ref webdict alc <C-R>=expand("<cword>")<CR><CR>
 let g:ref_source_webdict_sites = {
 \   'alc': 'http://eow.alc.co.jp/search?q=%s',

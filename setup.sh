@@ -68,3 +68,14 @@ if [[ ! -d $HOME/.vim/bundle/vundle/ ]]; then
     esac
     cd $HOME/dotfiles/
 fi
+## ref.vim doc
+### php
+if [[ ! -d $HOME/.vim/refdoc/php-chunked-xhtml/ ]]; then
+    echo
+    wget -O $HOME/.vim/refdoc/php_manual_ja.tar.gz http://jp2.php.net/get/php_manual_ja.tar.gz/from/jp1.php.net/mirror
+    cd $HOME/.vim/refdoc/
+    tar xvfz php_manual_ja.tar.gz
+    rm -f php_manual_ja.tar.gz
+    cd $HOME/dotfiles/
+fi
+
