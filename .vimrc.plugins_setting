@@ -296,6 +296,7 @@ let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
 let g:syntastic_enable_signs = 1
 " 可能ならhighligt表示する
 let g:syntastic_enable_highlighting = 1
+let g:syntastic_auto_jump=1
 
 "------------------------------------
 " toggle.vim
