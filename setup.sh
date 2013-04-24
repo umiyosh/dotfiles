@@ -17,7 +17,7 @@ if [[ ! -d $HOME/.zsh/ ]]; then
    ln -s $HOME/dotfiles/.zsh $HOME/.zsh
 fi
 
-if [[ ! -e $HOME/.vim/ && -L $HOME/.vim/ ]]; then
+if [[ ! (-e $HOME/.vim && -L $HOME/.vim) ]]; then
     ln -s $HOME/dotfiles/.vim/ $HOME/.vim
 fi
 
