@@ -116,6 +116,9 @@ call vundle#rc()
   " Source code Explorer
   Bundle 'wesleyche/SrcExpl'
 
+  " pythonのomni補完 jedi.vim
+  Bundle 'davidhalter/jedi-vim'
+
 " }}}
 "
 " Syntax {{{
