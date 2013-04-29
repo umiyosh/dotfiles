@@ -73,6 +73,7 @@ inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplcach
 autocmd BufReadPost,BufEnter,BufWritePost :NeoComplCacheCachingBuffer <buffer>
 
 " FileType毎のOmni補完を設定
+setlocal completeopt-=preview
 autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
