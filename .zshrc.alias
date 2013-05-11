@@ -102,5 +102,11 @@ alias ev='vi ~/dotfiles/.vimrc*'
 
 alias q='exit'
 
+alias o='o'
+
+alias pc='pbcopy'
+
+alias pp='pbpaste'
+
 # sourceTreeコマンドライン起動
 alias st='open -a SourceTree `git rev-parse --show-toplevel`'
