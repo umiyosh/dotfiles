@@ -67,7 +67,10 @@ if [[ ! -d $HOME/.vim/bundle/vundle/ ]]; then
         ;;
     esac
     cd $HOME/dotfiles/
+else
+    vim -Nu $HOME/dotfiles/.vimrc.bundle +BundleInstall +qall
 fi
+
 ## ref.vim doc
 ### php
 if [[ ! -d $HOME/.vim/refdoc/php-chunked-xhtml/ ]]; then
