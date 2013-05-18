@@ -102,7 +102,7 @@ alias ev='vi ~/dotfiles/.vimrc*'
 
 alias q='exit'
 
-alias o='o'
+alias o='open'
 
 alias pc='pbcopy'
 
