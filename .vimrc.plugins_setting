@@ -201,7 +201,7 @@ command! Vs :VimShell
 "------------------------------------
 " The prefix key.
 nnoremap    [unite]   <Nop>
-nmap    <space><space>  [unite]
+nmap    <c-g><c-g> [unite]
 
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
@@ -331,7 +331,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkg
 "------------------------------------
 " EasyMotion.vim
 "------------------------------------
-let g:EasyMotion_leader_key = '<space>'
+let g:EasyMotion_leader_key = '<c-g>'
 let g:EasyMotion_mapping_f = 'f'
 let g:EasyMotion_mapping_t = 't'
 let g:EasyMotion_mapping_F = 'F'
