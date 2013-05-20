@@ -108,5 +108,7 @@ alias pc='pbcopy'
 
 alias pp='pbpaste'
 
+alias vif='vi +VimFilerBufferDir'
+
 # sourceTreeコマンドライン起動
 alias st='open -a SourceTree `git rev-parse --show-toplevel`'
