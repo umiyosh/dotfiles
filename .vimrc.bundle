@@ -125,6 +125,8 @@ call vundle#rc()
   Bundle 'Shougo/vimshell.git'
   " vimproc : vimから非同期実行。vimshelleで必要
   Bundle 'Shougo/vimproc.git'
+  " vimfiler : vimのfiler
+  Bundle 'Shougo/vimfiler.git'
   " vim-altercmd : Ex command拡張
   Bundle 'tyru/vim-altercmd'
   " vim Interface to Web API

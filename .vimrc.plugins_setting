@@ -195,6 +195,21 @@ autocmd FileType vimshell
 
 command! Vs :VimShell
 
+"------------------------------------
+" vimfiler.vim
+"------------------------------------
+" Edit file by tabedit.
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_edit_action = 'tabopen'
+"デフォルトのキーマッピングを変更
+augroup vimrc
+  autocmd FileType vimfiler call s:vimfiler_my_settings()
+augroup END
+function! s:vimfiler_my_settings()
+  nmap <buffer> <c-l> <C-W>l
+  nmap <buffer> <c-r> <Plug>(vimfiler_redraw_screen)
+  nmap <buffer> <c-d> <Plug>(vimfiler_cd_input_directory)
+endfunction
 
 "------------------------------------
 " unite.vim
