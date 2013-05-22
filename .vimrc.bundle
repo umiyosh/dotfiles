@@ -39,6 +39,8 @@ call vundle#rc()
   Bundle 'taku-o/vim-toggle'
   " マルチカーソル
   Bundle 'terryma/vim-multiple-cursors'
+  " 括弧の入力
+  Bundle 'kana/vim-smartinput'
 " }}}
 
 " Completion {{{
