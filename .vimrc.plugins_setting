@@ -243,6 +243,8 @@ nnoremap <silent> [unite]h :<C-u>Unite history/command<CR>
 vnoremap <silent> [unite]h :<C-u>Unite history/command<CR>
 " search history一覧
 nnoremap <silent> [unite]s :<C-u>Unite history/search<CR>
+" jump 一覧
+nnoremap <silent> [unite]j :<C-u>Unite jump<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
