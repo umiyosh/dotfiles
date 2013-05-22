@@ -218,6 +218,7 @@ endfunction
 " The prefix key.
 nnoremap    [unite]   <Nop>
 nmap    <c-g><c-g> [unite]
+vmap    <c-g><c-g> [unite]
 
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
@@ -237,6 +238,9 @@ nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir  file<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 " mark一覧
 nnoremap <silent> [unite]M :<C-u>Unite mark<CR>
+" command history一覧
+nnoremap <silent> [unite]h :<C-u>Unite history/command<CR>
+vnoremap <silent> [unite]h :<C-u>Unite history/command<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
