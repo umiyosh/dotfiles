@@ -453,6 +453,16 @@ let g:eregex_forward_delim  = 'M/'
 let g:eregex_backward_delim = 'M?'
 
 "------------------------------------
+" yonchu/accelerated-smooth-scroll
+"------------------------------------
+" <C-d>/<C-u> 時のスリープ時間 (msec) : 小さくするとスクロールが早くなります。
+" Default : 10
+let g:ac_smooth_scroll_du_sleep_time_msec = 0
+" <C-f>/<C-b> 時のスリープ時間 (msec) : 小さくするとスクロールが早くなります。
+" Default : 10
+let g:ac_smooth_scroll_fb_sleep_time_msec = 0
+
+"------------------------------------
 " taskpaper.vim
 "------------------------------------
 " 色調整

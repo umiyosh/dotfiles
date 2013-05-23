@@ -51,8 +51,8 @@ call vundle#rc()
 " }}}
 
 " Searching/Moving{{{
-  " smooth_scroll.vim : スクロールを賢く
-  Bundle 'Smooth-Scroll'
+  " accelerated-smooth-scroll : スクロールを賢く早く
+  Bundle 'yonchu/accelerated-smooth-scroll'
   " vim-smartword : 単語移動がスマートな感じで
   Bundle 'smartword'
   " camelcasemotion : CamelCaseやsnake_case単位でのワード移動
