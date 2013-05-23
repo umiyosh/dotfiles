@@ -99,7 +99,7 @@ export PATH=$PATH:$MIRAH_HOME/bin
 function preexec() {
     typeset -gi CALCTIME=1
     typeset -gi CMDSTARTTIME=SECONDS
-    PRE_CMD=$( basename ${1%% *} )
+    PRE_CMD=${1}
 }
 function precmd() {
     PRE_RESULT=$?
