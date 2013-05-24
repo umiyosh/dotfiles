@@ -222,7 +222,7 @@ augroup vimrc
 augroup END
 function! s:vimfiler_my_settings()
   nmap <buffer> <c-l> <C-W>l
-  nmap <buffer> <c-g>d gc:!pwd \| pbcopy <CR>
+  nmap <buffer> sd gc:!pwd \| pbcopy <CR>
   nmap <buffer> <c-r> <Plug>(vimfiler_redraw_screen)
   nmap <buffer> <c-d> <Plug>(vimfiler_cd_input_directory)
 endfunction
@@ -232,8 +232,8 @@ endfunction
 "------------------------------------
 " The prefix key.
 nnoremap    [unite]   <Nop>
-nmap    <c-g><c-g> [unite]
-vmap    <c-g><c-g> [unite]
+nmap    ss [unite]
+vmap    ss [unite]
 
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
@@ -370,7 +370,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkg
 "------------------------------------
 " EasyMotion.vim
 "------------------------------------
-let g:EasyMotion_leader_key = '<c-g>'
+let g:EasyMotion_leader_key = 's'
 let g:EasyMotion_mapping_f = 'f'
 let g:EasyMotion_mapping_t = 't'
 let g:EasyMotion_mapping_F = 'F'
