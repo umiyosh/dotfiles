@@ -54,7 +54,7 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 "スニペット編集
-nnoremap ss  :NeoComplCacheEditSnippets<CR>
+nnoremap sS  :NeoComplCacheEditSnippets<CR>
 
 " undo
 inoremap <expr>su     neocomplcache#undo_completion()
