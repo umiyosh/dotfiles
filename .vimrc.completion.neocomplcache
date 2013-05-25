@@ -117,3 +117,21 @@ let g:neocomplcache_include_suffixes = {
   \ 'ruby' : '.rb',
   \ 'haskell' : '.hs'
   \ }
+
+" inertモード時に辞書とバッファを強制キャッシュ
+" http://d.hatena.ne.jp/basyura/20120318/p1
+autocmd InsertEnter * call s:neco_pre_cache()
+function! s:neco_pre_cache()
+  if exists('b:neco_pre_cache')
+    return
+  endif
+  " let b:neco_pre_cache = 1
+  if bufname('%') =~ g:neocomplcache_lock_buffer_name_pattern
+    return
+  endif
+  if exists('g:neocomplcache_same_filetype_lists') && exists('g:neocomplcache_dictionary_patterns')
+    :NeoComplCacheCachingBuffer
+    :NeoComplCacheCachingDictionary
+  endif
+endfunction
+
