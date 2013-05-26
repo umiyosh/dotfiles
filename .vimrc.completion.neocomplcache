@@ -56,8 +56,6 @@ smap <C-k> <Plug>(neosnippet_expand_or_jump)
 "スニペット編集
 nnoremap sS  :NeoComplCacheEditSnippets<CR>
 
-" undo
-inoremap <expr>su     neocomplcache#undo_completion()
 " C-nでneocomplcache補完
 inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 " C-pでkeyword補完
