@@ -51,7 +51,7 @@ let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 
 "スニペット展開
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <space><bs>
 
 "スニペット編集
 nnoremap sS  :NeoComplCacheEditSnippets<CR>
