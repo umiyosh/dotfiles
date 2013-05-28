@@ -88,6 +88,8 @@ call vundle#rc()
   Bundle 'wesleyche/SrcExpl'
   " pythonのomni補完 jedi.vim
   Bundle 'davidhalter/jedi-vim'
+  " phpのデバッガ:xdebugをvimから使う
+  Bundle 'joonty/vdebug'
 " }}}
 
 " Syntax {{{
