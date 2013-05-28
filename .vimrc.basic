@@ -55,3 +55,9 @@ set backupskip=/tmp/*,/private/tmp/*
 "最後にヤンクしたテキストのペースト
 nnoremap <C-p> "0p
 nnoremap <C-P> "0P
+
+"折りたたみ関連
+set foldmethod=marker
+set foldcolumn=3
+set foldlevel=0
+
