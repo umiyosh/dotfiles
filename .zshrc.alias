@@ -112,3 +112,20 @@ alias vif='vi +VimFilerBufferDir'
 
 # sourceTreeコマンドライン起動
 alias st='open -a SourceTree `git rev-parse --show-toplevel`'
+
+function mkd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+function cdls() { \cd $1; ls; }
+alias cd=cdls
+function chpwd() { ls }
+
+alias u='cd ..'
+alias uu='cd ../..'
+alias uuu='cd ../../..'
+alias uuuu='cd ../../../..'
+
+alias dates='date "+%Y-%m-%d %T.%N"'
+alias today="date '+%Y%m%d'"
+alias today-="date '+%Y-%m-%d'"
+alias now="date '+%Y%m%d_%H%M%S'"
+alias now-="date '+%Y-%m-%d_%H%M%S'"
+
