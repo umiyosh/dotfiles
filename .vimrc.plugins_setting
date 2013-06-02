@@ -463,6 +463,14 @@ let g:ac_smooth_scroll_du_sleep_time_msec = 0
 let g:ac_smooth_scroll_fb_sleep_time_msec = 0
 
 "------------------------------------
+" joonty/vdebug
+"------------------------------------
+let g:vdebug_keymap = {
+\    "get_context" : "sc",
+\    "eval_under_cursor" : "sv",
+\}
+
+"------------------------------------
 " taskpaper.vim
 "------------------------------------
 " 色調整
