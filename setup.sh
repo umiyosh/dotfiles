@@ -24,6 +24,7 @@ fi
 if [[ ! -d $HOME/local/bin ]]; then
     mkdir -p $HOME/local/bin/
     ln -s $HOME/dotfiles/bin/git_diff_wrapper $HOME/local/bin/git_diff_wrapper
+    ln -s $HOME/dotfiles/bin/php-xdebug $HOME/local/bin/php-xdebug
 fi
 
 if [[ ! -d $HOME/.vim/snippets ]]; then
