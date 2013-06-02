@@ -114,9 +114,9 @@ alias vif='vi +VimFilerBufferDir'
 alias st='open -a SourceTree `git rev-parse --show-toplevel`'
 
 function mkd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-function cdls() { \cd $1; ls; }
+function cdls() { \cd $1; ls -la; }
 alias cd=cdls
-function chpwd() { ls }
+function chpwd() { ls -la }
 
 alias u='cd ..'
 alias uu='cd ../..'
