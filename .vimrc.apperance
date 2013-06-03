@@ -39,3 +39,14 @@ highlight CursorLine ctermbg=black guibg=black
 set lazyredraw
 " 高速ターミナル接続を行う
 set ttyfast
+
+"折りたたみ関連
+set foldmethod=marker
+set foldcolumn=3
+set foldlevel=0
+"" php 関数の折りたたみ
+let php_folding=1
+au Syntax php set fdm=syntax
+
+
+
