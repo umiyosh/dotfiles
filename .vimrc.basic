@@ -60,4 +60,7 @@ nnoremap <C-P> "0P
 set foldmethod=marker
 set foldcolumn=3
 set foldlevel=0
+" php 関数の折りたたみ
+let php_folding=1
+au Syntax php set fdm=syntax
 
