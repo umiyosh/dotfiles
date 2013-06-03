@@ -48,5 +48,10 @@ set foldlevel=0
 let php_folding=1
 au Syntax php set fdm=syntax
 
-
+" php 文字列中のSQLをハイライトする
+let php_sql_query=1
+" php 文字列中のHTMLをハイライトする
+let php_htmlInStrings=1
+" php ショートタグ (<?を無効にする→ハイライト除外にする)
+let php_noShortTags = 1
 
