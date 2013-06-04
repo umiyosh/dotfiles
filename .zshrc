@@ -542,6 +542,9 @@ bindkey -M menuselect '^j' down-history
 bindkey -M menuselect '^l' forward-char
 bindkey -M menuselect '^h' backward-char
 
+# ペーストが補完効いて遅いのでこうした
+bindkey "^V" '^G^V'
+
 
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
