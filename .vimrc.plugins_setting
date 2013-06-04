@@ -471,6 +471,12 @@ let g:vdebug_keymap = {
 \}
 
 "------------------------------------
+" /PDV--phpDocumentor-for-Vim
+"------------------------------------
+nnoremap  sc :call PhpDocSingle()<CR>
+vnoremap  sc :call PhpDocRange()<CR>-
+
+"------------------------------------
 " taskpaper.vim
 "------------------------------------
 " 色調整

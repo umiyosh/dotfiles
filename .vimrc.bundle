@@ -41,6 +41,8 @@ call vundle#rc()
   Bundle 'terryma/vim-multiple-cursors'
   " 括弧の入力
   Bundle 'kana/vim-smartinput'
+  " 括弧の入力
+  Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 " }}}
 
 " Completion {{{
