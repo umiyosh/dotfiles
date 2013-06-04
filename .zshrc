@@ -481,9 +481,9 @@ ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=red,bold'
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=yellow,bold'
 ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=magenta,bold'
-ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
+# ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
 # To have paths colored instead of underlined
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+# ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # To have commands starting with `rm -rf` in red:
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
@@ -541,6 +541,7 @@ bindkey -M menuselect '^k' up-history
 bindkey -M menuselect '^j' down-history
 bindkey -M menuselect '^l' forward-char
 bindkey -M menuselect '^h' backward-char
+
 
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
