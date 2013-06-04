@@ -118,10 +118,10 @@ function cdls() { \cd $1; ls -la; }
 alias cd=cdls
 function chpwd() { ls -la }
 
-alias u='cd ..'
-alias uu='cd ../..'
-alias uuu='cd ../../..'
-alias uuuu='cd ../../../..'
+alias u='..'
+alias uu='../..'
+alias uuu='../../..'
+alias uuuu='../../../..'
 
 alias dates='date "+%Y-%m-%d %T.%N"'
 alias today="date '+%Y%m%d'"
