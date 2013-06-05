@@ -542,13 +542,10 @@ bindkey -M menuselect '^j' down-history
 bindkey -M menuselect '^l' forward-char
 bindkey -M menuselect '^h' backward-char
 
-<<<<<<< HEAD
 # ペーストが補完効いて遅いのでこうした
 bindkey "^V" '^G^V'
 
 
-=======
->>>>>>> parent of f332053... 使えないようなので
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
     screen -U
