@@ -176,7 +176,9 @@ call vundle#rc()
    Bundle 'davidoc/taskpaper.vim'
   " repeat.vim
    Bundle 'tpope/vim-repeat'
-   "
+  " vim-scripts / DirDiff.vim
+   Bundle 'vim-scripts/DirDiff.vim'
+    "
 " }}}
 
 " ColorSchema{{{{
