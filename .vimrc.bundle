@@ -95,7 +95,7 @@ call vundle#rc()
 " }}}
 
 " Syntax {{{
-  " haml
+  " haml"
   Bundle 'haml.zip'
   " JavaScript
   Bundle 'JavaScript-syntax'
@@ -113,6 +113,10 @@ call vundle#rc()
   Bundle 'yuroyoro/vim-scala'
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
   Bundle 'scrooloose/syntastic'
+  " html5.vim
+  Bundle 'othree/html5.vim'
+  " css3 syntax
+  Bundle 'hail2u/vim-css3-syntax'
 " }}}
 
 " Buffer {{{
