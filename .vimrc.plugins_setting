@@ -261,6 +261,9 @@ nnoremap <silent> [unite]s :<C-u>Unite history/search<CR>
 " jump 一覧
 nnoremap <silent> [unite]j :<C-u>Unite jump<CR>
 
+" Unite keymap
+nnoremap <silent> [unite]k :<C-u>Unite output:map\|map!\|lmap<CR>
+
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
   " Overwrite settings.
