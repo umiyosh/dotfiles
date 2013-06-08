@@ -162,27 +162,27 @@ call vundle#rc()
   " プレビュー＆絞り込み検索(and検索)付きのgrep
   Bundle 'fuenor/qfixgrep.git'
   " 分割を維持してバッファ削除
-   Bundle 'rgarver/Kwbd.vim'
+  Bundle 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除
-   Bundle 'duff/vim-bufonly'
+  Bundle 'duff/vim-bufonly'
   " perl proveコマンド実行
-   Bundle 'umiyosh/vim-prove'
+  Bundle 'umiyosh/vim-prove'
   " perl proveコマンド実行
-   Bundle 'Shougo/vinarise'
+  Bundle 'Shougo/vinarise'
   " トップっぽいところをカレントディレクトリに
   " http://blog.remora.cx/2012/08/syntax-check-with-syntastic-and-rooter.html
-   Bundle 'airblade/vim-rooter'
+  Bundle 'airblade/vim-rooter'
   " markdownのアウトライン表示
-   Bundle 'vim-scripts/VOoM'
+  Bundle 'vim-scripts/VOoM'
   " foldtextの見た目をよくする
-   Bundle 'LeafCage/foldCC'
+  Bundle 'LeafCage/foldCC'
   " taskpaper.vim
-   Bundle 'davidoc/taskpaper.vim'
+  Bundle 'davidoc/taskpaper.vim'
   " repeat.vim
-   Bundle 'tpope/vim-repeat'
+  Bundle 'tpope/vim-repeat'
   " vim-scripts / DirDiff.vim
-   Bundle 'vim-scripts/DirDiff.vim'
-    "
+  Bundle 'vim-scripts/DirDiff.vim'
+  "
 " }}}
 
 " ColorSchema{{{{
