@@ -142,6 +142,7 @@ setopt noautoremoveslash
 
 # beepを鳴らさないようにする
 setopt nolistbeep
+setopt no_beep
 
 # Match without pattern
 # ex. > rm *~398
