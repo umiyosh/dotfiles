@@ -237,6 +237,10 @@ vmap    ss [unite]
 
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
+"history/yankの有効化
+let g:unite_source_history_yank_enable =1
+nnoremap <silent> ,gy :<C-u>Unite history/yank<CR>
+
 " 全部乗せ
 nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir  -buffer-name=files buffer file_mru bookmark file<CR>
 " ファイル一覧
@@ -263,6 +267,9 @@ nnoremap <silent> [unite]j :<C-u>Unite jump<CR>
 
 " Unite keymap
 nnoremap <silent> [unite]k :<C-u>Unite output:map\|map!\|lmap<CR>
+
+" Unite history/yank
+nnoremap <silent> [unite]/ :<C-u>Unite history/yank<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
