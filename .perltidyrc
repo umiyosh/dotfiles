@@ -1,0 +1,2 @@
+-i=2  # Indent level is 4 cols
+-ci=3 # Continuation indent is 4 cols

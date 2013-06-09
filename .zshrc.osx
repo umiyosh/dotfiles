@@ -103,22 +103,22 @@ function preexec() {
     PRE_CMD=$( basename ${1%% *}  )
 }
 function precmd() {
-    PRE_RESULT=$?
-    if (( CALCTIME )) ; then
-        typeset -gi ETIME=SECONDS-CMDSTARTTIME
-        if [ $ETIME -ge 7 ]; then
-            if [[ ! $PRE_CMD == vi* && ! $PRE_CMD == tig && ! $PRE_CMD == [ts]  && ! $PRE_CMD == ss && ! $PRE_CMD == git && ! $PRE_CMD == man ]]; then
-                if [[ $PRE_RESULT -eq 0 ]]; then
-                    echo $fg[green] "[INFO] $PRE_FULL_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
-                else
-                    echo $fg[red] "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
-                    #notif is Growl::Any command in my own way.
-                    notif "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
-                fi
-            fi
+  PRE_RESULT=$?
+  if (( CALCTIME )) ; then
+    typeset -gi ETIME=SECONDS-CMDSTARTTIME
+    if [ $ETIME -ge 7 ]; then
+      if [[ ! $PRE_CMD == vi* && ! $PRE_CMD == tig && ! $PRE_CMD == [ts]  && ! $PRE_CMD == ss && ! $PRE_CMD == git && ! $PRE_CMD == man ]]; then
+        if [[ $PRE_RESULT -eq 0 ]]; then
+          echo $fg[green] "[INFO] $PRE_FULL_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
+        else
+          echo $fg[red] "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
+          #notif is Growl::Any command in my own way.
+          notif "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
         fi
+      fi
     fi
-    typeset -gi CALCTIME=0
+  fi
+  typeset -gi CALCTIME=0
 }
 
 ## local zshrc.osx設定
@@ -141,7 +141,7 @@ fi
 alias jj='autojump --stat'
 # jの補完周り
 if [ -x /usr/local/bin/brew ]; then
-    BREW_PREFIX=`brew --prefix`
-    fpath=($BREW_PREFIX/share/zsh/functions(N) $BREW_PREFIX/share/zsh/site-functions(N) $fpath)
+  BREW_PREFIX=`brew --prefix`
+  fpath=($BREW_PREFIX/share/zsh/functions(N) $BREW_PREFIX/share/zsh/site-functions(N) $fpath)
 fi
 

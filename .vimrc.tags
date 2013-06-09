@@ -6,8 +6,8 @@ if has("autochdir")
   " 編集しているファイルのディレクトリに自動で移動(ターミナル)
   set autochdir
   augroup BufferAu
-      autocmd!
-      autocmd BufNewFile,BufRead,BufEnter * set autochdir
+    autocmd!
+    autocmd BufNewFile,BufRead,BufEnter * set autochdir
   augroup END
   set tags=tags;
 else
@@ -20,8 +20,8 @@ else
     endif
   endfunction
   augroup BufferAu
-      autocmd!
-      autocmd BufNewFile,BufRead,BufEnter * call Pathchange()
+    autocmd!
+    autocmd BufNewFile,BufRead,BufEnter * call Pathchange()
   augroup END
   set tags=tags;
 endif

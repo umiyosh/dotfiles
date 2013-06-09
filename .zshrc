@@ -23,75 +23,75 @@ bindkey "^?" backward-delete-char
 autoload colors
 colors
 case ${UID} in
-    0)
-        setopt prompt_subst
-        source ~/dotfiles/.zshrc.prompt
-        ;;
-    *)
-        #
-        # Color
-        #
-        DEFAULT=$'%{\e[1;0m%}'
-        RESET="%{${reset_color}%}"
-        #GREEN=$'%{\e[1;32m%}'
-        GREEN="%{${fg[green]}%}"
-        #BLUE=$'%{\e[1;35m%}'
-        BLUE="%{${fg[blue]}%}"
-        RED="%{${fg[red]}%}"
-        CYAN="%{${fg[cyan]}%}"
-        WHITE="%{${fg[white]}%}"
-        #
-        # Prompt
-        #
-        setopt prompt_subst
-        source ~/dotfiles/.zshrc.prompt
-
-        # Show git branch when you are in git repository
-        # http://d.hatena.ne.jp/mollifier/20100906/p1
-
-        autoload -Uz add-zsh-hook
-        autoload -Uz vcs_info
-
-        zstyle ':vcs_info:*' enable git svn hg bzr
-        zstyle ':vcs_info:*' formats '(%s)-[%b]'
-        zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-        zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
-        zstyle ':vcs_info:bzr:*' use-simple true
-
-        autoload -Uz is-at-least
-        if is-at-least 4.3.10; then
-          # この check-for-changes が今回の設定するところ
-          zstyle ':vcs_info:git:*' check-for-changes true
-          zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
-          zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
-          zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
-          zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
-        fi
-
-        function _update_vcs_info_msg() {
-            psvar=()
-            LANG=en_US.UTF-8 vcs_info
-            psvar[2]=$(_git_not_pushed)
-            [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-        }
-        add-zsh-hook precmd _update_vcs_info_msg
-
-        function _git_not_pushed()
-        {
-          if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
-            head="$(git rev-parse HEAD)"
-            for x in $(git rev-parse --remotes)
-            do
-              if [ "$head" = "$x" ]; then
-                return 0
-              fi
-            done
-            echo "{?}"
-          fi
-          return 0
-        }
-
+  0)
+    setopt prompt_subst
+    source ~/dotfiles/.zshrc.prompt
     ;;
+  *)
+    #
+    # Color
+    #
+    DEFAULT=$'%{\e[1;0m%}'
+    RESET="%{${reset_color}%}"
+    #GREEN=$'%{\e[1;32m%}'
+    GREEN="%{${fg[green]}%}"
+    #BLUE=$'%{\e[1;35m%}'
+    BLUE="%{${fg[blue]}%}"
+    RED="%{${fg[red]}%}"
+    CYAN="%{${fg[cyan]}%}"
+    WHITE="%{${fg[white]}%}"
+    #
+    # Prompt
+    #
+    setopt prompt_subst
+    source ~/dotfiles/.zshrc.prompt
+
+    # Show git branch when you are in git repository
+    # http://d.hatena.ne.jp/mollifier/20100906/p1
+
+    autoload -Uz add-zsh-hook
+    autoload -Uz vcs_info
+
+    zstyle ':vcs_info:*' enable git svn hg bzr
+    zstyle ':vcs_info:*' formats '(%s)-[%b]'
+    zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+    zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
+    zstyle ':vcs_info:bzr:*' use-simple true
+
+    autoload -Uz is-at-least
+    if is-at-least 4.3.10; then
+      # この check-for-changes が今回の設定するところ
+      zstyle ':vcs_info:git:*' check-for-changes true
+      zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
+      zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
+      zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
+      zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
+    fi
+
+    function _update_vcs_info_msg() {
+      psvar=()
+      LANG=en_US.UTF-8 vcs_info
+      psvar[2]=$(_git_not_pushed)
+      [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+    }
+    add-zsh-hook precmd _update_vcs_info_msg
+
+    function _git_not_pushed()
+    {
+      if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
+        head="$(git rev-parse HEAD)"
+        for x in $(git rev-parse --remotes)
+        do
+          if [ "$head" = "$x" ]; then
+            return 0
+          fi
+        done
+        echo "{?}"
+      fi
+      return 0
+    }
+
+  ;;
 esac
 
 # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
@@ -243,10 +243,10 @@ e_RED=`echo -e "¥033[1;31m"`
 e_BLUE=`echo -e "¥033[1;36m"`
 
 function make() {
-    LANG=C command make "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
+  LANG=C command make "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 function cwaf() {
-    LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
+  LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 
 ## zsh editor
@@ -272,41 +272,40 @@ alias where="command -v"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
-    alias ls="ls -alG"
-    zle -N expand-to-home-or-insert
-    ;;
+  alias ls="ls -alG"
+  zle -N expand-to-home-or-insert
+  ;;
 linux*)
-    alias la="ls -al"
-    ;;
+  alias la="ls -al"
+  ;;
 esac
 
 
 case "${OSTYPE}" in
 # MacOSX
 darwin*)
-    PATH=$HOME/.cabal/bin:$PATH
-    export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
-    export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/
-    ;;
+  PATH=$HOME/.cabal/bin:$PATH
+  export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
+  export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/
+  ;;
 freebsd*)
-    case ${UID} in
-    0)
-        updateports()
-        {
-            if [ -f /usr/ports/.portsnap.INDEX ]
-            then
-                portsnap fetch update
-            else
-                portsnap fetch extract update
-            fi
-            (cd /usr/ports/; make index)
-
-            portversion -v -l \<
-        }
-        alias appsupgrade='pkgdb -F && BATCH=YES NO_CHECKSUM=YES portupgrade -a'
-        ;;
-    esac
+  case ${UID} in
+  0)
+    updateports()
+    {
+      if [ -f /usr/ports/.portsnap.INDEX ]
+      then
+        portsnap fetch update
+      else
+        portsnap fetch extract update
+      fi
+      (cd /usr/ports/; make index)
+      portversion -v -l \<
+    }
+    alias appsupgrade='pkgdb -F && BATCH=YES NO_CHECKSUM=YES portupgrade -a'
     ;;
+  esac
+  ;;
 esac
 
 
@@ -316,45 +315,37 @@ unset LSCOLORS
 
 case "${TERM}" in
 xterm)
-    export TERM=xterm-color
-
-    ;;
+  export TERM=xterm-color
+  ;;
 kterm)
-    export TERM=kterm-color
-    # set BackSpace control character
-
-    stty erase
-    ;;
-
+  export TERM=kterm-color
+  # set BackSpace control character
+  stty erase
+  ;;
 cons25)
-    unset LANG
+  unset LANG
   export LSCOLORS=ExFxCxdxBxegedabagacad
-
-    export LS_COLORS='di=01;32:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30'
-    zstyle ':completion:*' list-colors \
-        'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-    ;;
-
+  export LS_COLORS='di=01;32:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30'
+  zstyle ':completion:*' list-colors \
+    'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+  ;;
 kterm*|xterm*)
-    export CLICOLOR=1
-    export LSCOLORS=ExFxCxDxBxegedabagacad
-
-    zstyle ':completion:*' list-colors \
-        'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    _preexec_screenwindow() {
-        echo -ne "\ek#${1%% *}\e\\"
-    }
-    _precmd_screenwindow() {
-        echo -ne "\ek#$(basename $(pwd))\e\\"
-    }
-    add-zsh-hook preexec _preexec_screenwindow
-    add-zsh-hook precmd _precmd_screenwindow
-
-    ;;
-
+  export CLICOLOR=1
+  export LSCOLORS=ExFxCxDxBxegedabagacad
+  zstyle ':completion:*' list-colors \
+    'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+  _preexec_screenwindow() {
+    echo -ne "\ek#${1%% *}\e\\"
+  }
+  _precmd_screenwindow() {
+    echo -ne "\ek#$(basename $(pwd))\e\\"
+  }
+  add-zsh-hook preexec _preexec_screenwindow
+  add-zsh-hook precmd _precmd_screenwindow
+  ;;
 dumb)
-    echo "Welcome Emacs Shell"
-    ;;
+  echo "Welcome Emacs Shell"
+  ;;
 esac
 
 
@@ -366,11 +357,11 @@ export PATH=$PATH:/sbin:/usr/local/bin
 export MANPATH=$MANPATH:/opt/local/man:/usr/local/share/man
 
 expand-to-home-or-insert () {
-        if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
-                LBUFFER+="~/"
-        else
-                zle self-insert
-        fi
+  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
+    LBUFFER+="~/"
+  else
+    zle self-insert
+  fi
 }
 
 # C-M-h でチートシートを表示する
@@ -423,46 +414,43 @@ bindkey "^x " no-magic-abbrev-expand
 REPORTTIME=3
 
 function rmf(){
-   for file in $*
-   do
-      __rm_single_file $file
-   done
+ for file in $*
+ do
+  __rm_single_file $file
+ done
 }
 
 function __rm_single_file(){
-       if ! [ -d ~/.Trash/ ]
-       then
-               command /bin/mkdir ~/.Trash
-       fi
-
-       if ! [ $# -eq 1 ]
-       then
-               echo "__rm_single_file: 1 argument required but $# passed."
-               exit
-       fi
-
-       if [ -e $1 ]
-       then
-               BASENAME=`basename $1`
-               NAME=$BASENAME
-               COUNT=0
-               while [ -e ~/.Trash/$NAME ]
-               do
-                       COUNT=$(($COUNT+1))
-                       NAME="$BASENAME.$COUNT"
-               done
-
-               command /bin/mv $1 ~/.Trash/$NAME
-       else
-               echo "No such file or directory: $file"
-       fi
+  if ! [ -d ~/.Trash/ ]
+  then
+    command /bin/mkdir ~/.Trash
+  fi
+  if ! [ $# -eq 1 ]
+  then
+    echo "__rm_single_file: 1 argument required but $# passed."
+    exit
+  fi
+  if [ -e $1 ]
+  then
+    BASENAME=`basename $1`
+    NAME=$BASENAME
+    COUNT=0
+    while [ -e ~/.Trash/$NAME ]
+    do
+      COUNT=$(($COUNT+1))
+      NAME="$BASENAME.$COUNT"
+    done
+    command /bin/mv $1 ~/.Trash/$NAME
+  else
+    echo "No such file or directory: $file"
+  fi
 }
 
 #=============================
 # source auto-fu.zsh
 #=============================
 function zle-line-init () {
-    auto-fu-init
+  auto-fu-init
 }
 zle -N zle-line-init
 zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
@@ -490,7 +478,7 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
 # zsh-completionsを利用する Github => zsh-completions
 [ -d ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src ] && \
-    fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
+  fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
 ## alias設定
 #
@@ -499,14 +487,12 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 case "${OSTYPE}" in
 # Mac(Unix)
 darwin*)
-    # ここに設定
-    [ -f ~/dotfiles/.zshrc.osx ] && source ~/dotfiles/.zshrc.osx
-    ;;
+  [ -f ~/dotfiles/.zshrc.osx ] && source ~/dotfiles/.zshrc.osx
+  ;;
 # Linux
 linux*)
-    # ここに設定
-    [ -f ~/dotfiles/.zshrc.linux ] && source ~/dotfiles/.zshrc.linux
-    ;;
+  [ -f ~/dotfiles/.zshrc.linux ] && source ~/dotfiles/.zshrc.linux
+  ;;
 esac
 
 ## Completion configuration
@@ -549,6 +535,6 @@ bindkey "^V" '^G^V'
 
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
-    screen -U
+  screen -U
 fi
 

@@ -50,13 +50,13 @@ endfunction
 " 文字数カウント
 vnoremap <leader>ii :call Count_Char()<cr>
 function! Count_Char() range
-    silent normal gvy
-    let str = @@
-    normal `<
-    let start_line_num = line('.')
-    normal `>
-    let end_line_num = line('.')
-    let linenum = end_line_num - start_line_num + 1
+  silent normal gvy
+  let str = @@
+  normal `<
+  let start_line_num = line('.')
+  normal `>
+  let end_line_num = line('.')
+  let linenum = end_line_num - start_line_num + 1
 
 perl << EOF
 use strict;
