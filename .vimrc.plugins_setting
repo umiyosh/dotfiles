@@ -403,6 +403,7 @@ nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
 "------------------------------------
 " カーソルしたの英単語の意味を表示する
 let g:ref_phpmanual_path = $HOME . '/.vim/refdoc/php-chunked-xhtml'
+let g:ref_source_webdict_cmd = 'w3m -dump %s'
 let g:ref_source_webdict_sites = {
 \   'infoseek': {
 \     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
