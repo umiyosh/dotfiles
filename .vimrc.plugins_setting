@@ -415,7 +415,8 @@ let g:ref_source_webdict_sites = {
 \   },
 \ }
 
-map <c-k> :<C-u>Ref webdict infoseek <C-R>=expand("<cword>")<CR><CR>
+nmap <c-k> :<C-u>Ref webdict infoseek <C-R>=expand("<cword>")<CR><CR>
+vmap <c-k> y:<C-u>Ref webdict infoseek <C-R>=expand(@")<CR><CR>
 
 "------------------------------------
 " NERDtree
