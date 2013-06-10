@@ -402,15 +402,19 @@ nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
 " ref.vim
 "------------------------------------
 " カーソルしたの英単語の意味を表示する
-" http://d.hatena.ne.jp/thinca/20120512/1336761779
-
 let g:ref_phpmanual_path = $HOME . '/.vim/refdoc/php-chunked-xhtml'
-map <Leader>gx :Ref webdict alc <C-R>=expand("<cword>")<CR><CR>
 let g:ref_source_webdict_sites = {
-\   'alc': 'http://eow.alc.co.jp/search?q=%s',
-\   'sanseido' : 'http://www.sanseido.net/User/Dic/Index.aspx?TWords=%s&st=0&DORDER=&DailyEJ=checkbox',
-\   'weblio': 'http://ejje.weblio.jp/content/%s',
+\   'infoseek': {
+\     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
+\     'line': 15 ,
+\   },
+\   'alc': {
+\     'url': 'http://eow.alc.co.jp/search?q=%s',
+\     'line': 42 ,
+\   },
 \ }
+
+map <c-k> :<C-u>Ref webdict alc <C-R>=expand("<cword>")<CR><CR>
 
 "------------------------------------
 " NERDtree
