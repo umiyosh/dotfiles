@@ -409,14 +409,22 @@ let g:ref_source_webdict_sites = {
 \     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
 \     'line': 15 ,
 \   },
+\   'never': {
+\     'url': 'http://endic.naver.jp/srch/all/N/%s',
+\     'line': 37 ,
+\   },
+\   'weblio': {
+\     'url': 'http://ejje.weblio.jp/content/%s',
+\     'line': 49 ,
+\   },
 \   'alc': {
 \     'url': 'http://eow.alc.co.jp/search?q=%s',
 \     'line': 42 ,
 \   },
 \ }
 
-nmap <Leader>k :<C-u>Ref webdict infoseek <C-R>=expand("<cword>")<CR><CR>
-vmap <Leader>k y:<C-u>Ref webdict infoseek <C-R>=expand(@")<CR><CR>
+nmap <Leader>k :<C-u>Ref  webdict never <C-R>=expand("<cword>")<CR><CR>
+vmap <Leader>k y:<C-u>Ref webdict never <C-R>=expand(@")<CR><CR>
 
 "------------------------------------
 " NERDtree
