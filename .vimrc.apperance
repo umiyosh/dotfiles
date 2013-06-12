@@ -45,7 +45,8 @@ set foldmethod=marker
 set foldcolumn=3
 set foldlevel=0
 "" php 関数の折りたたみ
-let php_folding=1
+" TODO: phpfolding.vimの導入
+" let php_folding=1
 au Syntax php set fdm=syntax
 
 " php 文字列中のSQLをハイライトする
