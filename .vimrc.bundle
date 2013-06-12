@@ -50,6 +50,7 @@ call vundle#rc()
   Bundle 'Shougo/neocomplcache'
   " neocomplcacheのsinpet補完
   Bundle 'Shougo/neosnippet'
+  " phpcomplete: phpのomni補完最新版
   Bundle 'shawncplus/phpcomplete.vim'
 " }}}
 
