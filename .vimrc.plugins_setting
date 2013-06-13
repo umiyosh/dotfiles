@@ -93,11 +93,14 @@ map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカッ�
 " Srcexp
 "------------------------------------
 " [Srcexpl] tagsを利用したソースコード閲覧・移動補助機能
-let g:SrcExpl_updateTagsCmd = ";" " 自動更新しないようにしたいけどやりかたがわからないので。。
-let g:SrcExpl_RefreshTime   = 0   " 自動表示するまでの時間(0:off)
+if has('mac')
+  let g:SrcExpl_updateTagsCmd = "/Applications/MacVim.app/Contents/MacOS/ctags -R --sort=foldcase -a"
+endif
+let g:SrcExpl_RefreshTime   = 10
 let g:SrcExpl_WinHeight     = 9   " プレビューウインドウの高さ
+let g:SrcExpl_UpdateTags    = 1
 " Source Explorerの機能ON/OFF
-nmap <F8> :SrcExplToggle<CR>
+nmap src :SrcExplToggle<CR>
 
 "------------------------------------
 " open-blowser.vim
