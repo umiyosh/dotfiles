@@ -504,6 +504,14 @@ nnoremap  sc :call PhpDocSingle()<CR>
 vnoremap  sc :call PhpDocRange()<CR>-
 
 "------------------------------------
+" vim-tags
+"------------------------------------
+let g:vim_tags_auto_generate        = 1
+let g:vim_tags_directories          = [ '.' ]
+let g:vim_tags_gems_tags_command    = '/Applications/MacVim.app/Contents/MacOS/ctags  -R --sort=foldcase -a {DIRECTORY} '
+let g:vim_tags_project_tags_command = '/Applications/MacVim.app/Contents/MacOS/ctags  -R --sort=foldcase -a {DIRECTORY} '
+
+"------------------------------------
 " taskpaper.vim
 "------------------------------------
 " 色調整
