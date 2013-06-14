@@ -1,11 +1,15 @@
 --exclude=.git
 --tag-relative=yes
 --PHP-kinds=+cf-v
+--php-types=c+f+d+v+i
+--perl-types=c+f+l+p+s
 --regex-PHP=/abstract\s+class\s+([^ ]+)/\1/c/
 --regex-PHP=/interface\s+([^ ]+)/\1/c/
 --regex-PHP=/(public\s+|static\s+|abstract\s+|protected\s+|private\s+)function\s+\&?\s*([^ (]+)/\2/f/
 --langdef=scala
 --langmap=scala:.scala
+--langmap=PHP:.php.inc
+--langmap=Perl:.PM.PL.PLC.pl.pm.plc.t.
 --regex-scala=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private|protected)?[ \t]*class[ \t]+([a-zA-Z0-9_]+)/\4/c,classes/
 --regex-scala=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private|protected)?[ \t]*object[ \t]+([a-zA-Z0-9_]+)/\4/c,objects/
 --regex-scala=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private|protected)?[ \t]*case class[ \t]+([a-zA-Z0-9_]+)/\4/c,case classes/
