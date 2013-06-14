@@ -56,3 +56,10 @@ let php_htmlInStrings=1
 " php ショートタグ (<?を無効にする→ハイライト除外にする)
 let php_noShortTags = 1
 
+" <? を無効にする→ハイライト除外にする
+let php_noShortTags = 1
+
+" ] や ) の対応エラーをハイライト
+let php_parent_error_close = 1
+let php_parent_error_open = 1
+
