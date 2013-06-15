@@ -509,8 +509,8 @@ vnoremap  sc :call PhpDocRange()<CR>-
 "------------------------------------
 let g:vim_tags_auto_generate        = 0
 let g:vim_tags_directories          = [ '.' ]
-let g:vim_tags_gems_tags_command    = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY} '
-let g:vim_tags_project_tags_command = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY} '
+let g:vim_tags_gems_tags_command    = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY}  2>/dev/null'
+let g:vim_tags_project_tags_command = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY}  2>/dev/null'
 nmap  <Leader>t :TagsGenerate<CR>
 
 "------------------------------------
