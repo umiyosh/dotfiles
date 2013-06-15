@@ -124,8 +124,6 @@ call vundle#rc()
 " }}}
 
 " Buffer {{{
-  " NERDTree : ツリー型エクスプローラ
-  Bundle 'The-NERD-tree'
 " }}}
 
 
