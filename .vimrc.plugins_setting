@@ -77,8 +77,11 @@ nmap U :<C-u>GundoToggle<CR>
 set tags=tags;
 "set tags+=~/.tags
 if has('mac')
-  let Tlist_Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags' " ctagsのパス
+  let g:Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags'
+else
+  let g:Ctags_Cmd = 'ctags'
 endif
+let Tlist_Ctags_Cmd = g:Ctags_Cmd
 let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
 let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばVimを閉じる
 " let Tlist_Use_Right_Window = 1            " 右側でtaglistのウィンドーを表示
@@ -93,9 +96,7 @@ map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカッ�
 " Srcexp
 "------------------------------------
 " [Srcexpl] tagsを利用したソースコード閲覧・移動補助機能
-if has('mac')
-  let g:SrcExpl_updateTagsCmd = "/Applications/MacVim.app/Contents/MacOS/ctags -R --sort=foldcase -a"
-endif
+let g:SrcExpl_updateTagsCmd =  g:Ctags_Cmd . " -R --sort=foldcase -a"
 let g:SrcExpl_RefreshTime   = 10
 let g:SrcExpl_WinHeight     = 9   " プレビューウインドウの高さ
 let g:SrcExpl_UpdateTags    = 1
@@ -508,8 +509,8 @@ vnoremap  sc :call PhpDocRange()<CR>-
 "------------------------------------
 let g:vim_tags_auto_generate        = 1
 let g:vim_tags_directories          = [ '.' ]
-let g:vim_tags_gems_tags_command    = '/Applications/MacVim.app/Contents/MacOS/ctags  -R --sort=foldcase -a {DIRECTORY} '
-let g:vim_tags_project_tags_command = '/Applications/MacVim.app/Contents/MacOS/ctags  -R --sort=foldcase -a {DIRECTORY} '
+let g:vim_tags_gems_tags_command    = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY} '
+let g:vim_tags_project_tags_command = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY} '
 
 "------------------------------------
 " taskpaper.vim
