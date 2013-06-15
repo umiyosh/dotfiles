@@ -96,7 +96,7 @@ map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカッ�
 " Srcexp
 "------------------------------------
 " [Srcexpl] tagsを利用したソースコード閲覧・移動補助機能
-let g:SrcExpl_updateTagsCmd =  g:Ctags_Cmd . " -R --sort=foldcase -a"
+let g:SrcExpl_updateTagsCmd =  g:Ctags_Cmd . " -R --sort=foldcase -a ."
 let g:SrcExpl_RefreshTime   = 10
 let g:SrcExpl_WinHeight     = 9   " プレビューウインドウの高さ
 let g:SrcExpl_UpdateTags    = 1
