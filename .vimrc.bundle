@@ -41,7 +41,7 @@ call vundle#rc()
   Bundle 'terryma/vim-multiple-cursors'
   " 括弧の入力
   Bundle 'kana/vim-smartinput'
-  " 括弧の入力
+  " phpDocumento
   Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 " }}}
 
@@ -124,6 +124,8 @@ call vundle#rc()
 " }}}
 
 " Buffer {{{
+  " buftabs:バッファ管理
+  Bundle 'fholgado/minibufexpl.vim'
 " }}}
 
 
