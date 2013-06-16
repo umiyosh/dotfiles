@@ -97,6 +97,8 @@ nnoremap q/ q/a
 nnoremap QQ :<C-u>Bufonly<CR>:<C-u>q!<CR>
 " <leader>fkのエイリアス。vimfilerで使う用。
 nnoremap QF :<C-u>Kwbd<CR>
+" かな(alt)＋Qで:q!
+nnoremap œ :q!<CR>
 
 " かな(alt)＋Sで上書き保存
 nnoremap ß :<C-u>w<CR>
