@@ -219,6 +219,7 @@ command! Vs :VimShell
 "------------------------------------
 " Edit file by tabedit.
 let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_enable_auto_cd = 1
 let Tlist_Use_Right_Window = 1
 nmap <leader>e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 nmap <leader>rr <leader>e<Leader>e<c-l>
