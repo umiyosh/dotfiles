@@ -93,8 +93,10 @@ endfunction
 nnoremap q: q:a
 nnoremap q/ q/a
 
-" Qですぐおわる(保存せず終了。保存して終了はZZ。)
-nnoremap Q :<C-u>q!<CR>
+" QQですぐおわる(保存せず終了。保存して終了はZZ。)
+nnoremap QQ :<C-u>Bufonly<CR>:<C-u>q!<CR>
+" <leader>fkのエイリアス。vimfilerで使う用。
+nnoremap QF :<C-u>Kwbd<CR>
 
 " かな(alt)＋Sで上書き保存
 nnoremap ß :<C-u>w<CR>
