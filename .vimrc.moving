@@ -16,12 +16,12 @@ inoremap  <C-a> <HOME>
 noremap  <C-e> $
 noremap  <C-a> ^
 
-" F2で前のバッファ
-map <F2> <ESC>:bp<CR>
-" F3で次のバッファ
-map <F3> <ESC>:bn<CR>
-" F4でバッファを削除する
-map <F4> <ESC>:bnext \| bdelete #<CR>
+" spで前のバッファ
+nmap sp <ESC>:bp<CR>
+" snで次のバッファ
+nmap sn <ESC>:bn<CR>
+" sdでバッファを削除する
+map sd <ESC>:bnext \| bdelete #<CR>
 command! Bw :bnext \| bdelete #
 
 "フレームサイズを怠惰に変更する
