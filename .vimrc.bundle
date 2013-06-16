@@ -89,7 +89,7 @@ call vundle#rc()
   " Pydiction : Python用の入力補完
   Bundle 'Pydiction'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
-  Bundle 'taglist.vim'
+  Bundle 'majutsushi/tagbar'
   " Source code Explorer
   Bundle 'wesleyche/SrcExpl'
   " pythonのomni補完 jedi.vim

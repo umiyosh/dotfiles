@@ -75,16 +75,8 @@ if has('mac')
 else
   let g:Ctags_Cmd = 'ctags'
 endif
-let Tlist_Ctags_Cmd = g:Ctags_Cmd
-let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
-let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばVimを閉じる
-" let Tlist_Use_Right_Window = 1            " 右側でtaglistのウィンドーを表示
-let Tlist_Enable_Fold_Column = 1          " 折りたたみ
-let Tlist_Auto_Open = 1                   " 自動表示
-let Tlist_Auto_Update = 1
-let Tlist_WinWidth = 30
-let tlist_php_settings = 'php;c:class;d:constant;f:function'
-map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカットキー
+let g:tagbar_ctags_bin = g:Ctags_Cmd
+map <silent> <leader>tl :TagbarToggle<CR>
 
 "------------------------------------
 " Srcexp
@@ -230,6 +222,7 @@ endfunction
 function! s:vimfiler_my_exploler()
   if ( argc() == 1 && bufname('%') != 'COMMIT_EDITMSG' )
     :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
+    :TagbarOpen
   endif
 endfunction
 autocmd VimEnter * call s:vimfiler_my_exploler()
