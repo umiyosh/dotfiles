@@ -10,8 +10,8 @@ set ruler
 let g:Powerline_symbols = 'fancy'
 
 "自動的に QuickFix リストを表示する
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
-autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd botright cwin
+autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd botright lwin
 
 function! GetB()
   let c = matchstr(getline('.'), '.', col('.') - 1)

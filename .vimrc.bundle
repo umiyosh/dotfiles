@@ -161,8 +161,6 @@ call vundle#rc()
   Bundle 'airblade/vim-gitgutter'
   " ステータスラインをカッコよくする
   Bundle 'Lokaltog/vim-powerline'
-  " プレビュー＆絞り込み検索(and検索)付きのgrep
-  Bundle 'fuenor/qfixgrep.git'
   " 分割を維持してバッファ削除
   Bundle 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除
