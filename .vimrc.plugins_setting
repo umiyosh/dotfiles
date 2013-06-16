@@ -221,8 +221,10 @@ function! s:vimfiler_my_settings()
 endfunction
 function! s:vimfiler_my_exploler()
   if ( argc() == 1 && bufname('%') != 'COMMIT_EDITMSG' )
+    if ( &filetype != 'markdown' )
+      :TagbarOpen
+    endif
     :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
-    :TagbarOpen
   endif
 endfunction
 autocmd VimEnter * call s:vimfiler_my_exploler()
