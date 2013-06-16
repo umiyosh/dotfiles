@@ -234,7 +234,7 @@ function! s:vimfiler_my_settings()
   nmap <buffer> <c-d> <Plug>(vimfiler_cd_input_directory)
 endfunction
 function! s:vimfiler_my_exploler()
-  if argc() == 1
+  if ( argc() == 1 && bufname('%') != 'COMMIT_EDITMSG' )
     :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   endif
 endfunction
