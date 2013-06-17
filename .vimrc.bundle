@@ -96,6 +96,8 @@ call vundle#rc()
   Bundle 'davidhalter/jedi-vim'
   " phpのデバッガ:xdebugをvimから使う
   Bundle 'joonty/vdebug'
+  " vital.vim
+  Bundle 'vim-jp/vital.vim'
 " }}}
 
 " Syntax {{{
