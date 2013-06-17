@@ -224,6 +224,8 @@ function! s:vimfiler_my_exploler()
   if ( argc() == 1 && bufname('%') != 'COMMIT_EDITMSG' )
     if ( &filetype != 'markdown' )
       :TagbarOpen
+    else
+      :Voom
     endif
     :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   endif
@@ -448,7 +450,6 @@ let g:voom_tree_width=60
 let g:voom_tree_placement='right'
 let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
 map <Leader>vm <ESC>:<C-u>VoomToggle<CR>
-autocmd FileType markdown :Voom
 
 "------------------------------------
 " LeafCage/foldCC foldを見やすく
