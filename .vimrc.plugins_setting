@@ -221,7 +221,7 @@ function! s:vimfiler_my_settings()
   nmap <buffer> <c-d> <Plug>(vimfiler_cd_input_directory)
 endfunction
 function! s:vimfiler_my_exploler()
-  if ( argc() == 1 && bufname('%') != 'COMMIT_EDITMSG' )
+  if ( argc() == 1 && bufname('%') != 'COMMIT_EDITMSG' && bufname('%') !~ '\vchrome_.+\.md' )
     if ( &filetype != 'markdown' )
       :TagbarOpen
     else
