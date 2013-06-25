@@ -95,3 +95,9 @@ nnoremap <Leader>cc      :new<CR>
 
 " %で移動するペアの追加"<":">"
 set matchpairs=(:),{:},[:],<:>
+" インサートモード時移動(keyremapと組み合わせかな＋hjklで移動)
+nnoremap OA gi<Up>
+nnoremap OB gi<Down>
+nnoremap OC gi<Right>
+nnoremap OD gi<Left>
+nnoremap OO O
