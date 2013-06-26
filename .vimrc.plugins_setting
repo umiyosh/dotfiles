@@ -134,7 +134,7 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 "------------------------------------
-" camelcasemotion.vim
+" vim smartinput
 "------------------------------------
 call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
 call smartinput#define_rule({
