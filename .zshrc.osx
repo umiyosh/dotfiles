@@ -131,9 +131,6 @@ alias tm='tmuxx'
 alias tma='tmux attach'
 alias tml='tmux list-window'
 
-# gcc
-export CC=/usr/bin/gcc-4.2
-
 # j
 if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
