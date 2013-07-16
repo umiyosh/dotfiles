@@ -70,5 +70,5 @@ endfunction
 nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
 
 " 行末にセミコロンをつける
-inoremap ;; <C-O>$;<CR>
+inoremap ;; <C-O>$;
 
