@@ -41,6 +41,9 @@ nmap ss <Plug>Yssurround
 let g:surround_{char2nr('e')} = "begin \r end"
 let g:surround_{char2nr('m')} = "~~~ \r ~~~"
 let g:surround_{char2nr("-")} = ":\r"
+let g:surround_{char2nr('(')} = "(\r)"
+let g:surround_{char2nr('{')} = "{\r}"
+let g:surround_{char2nr('[')} = "[\r]"
 
 "------------------------------------
 " vim-indent-guides
