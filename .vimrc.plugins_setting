@@ -506,6 +506,14 @@ let g:vim_tags_project_tags_command = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIR
 nmap  <Leader>t :TagsGenerate<CR>
 
 "------------------------------------
+" Vim-php-cs-fixer
+"------------------------------------
+let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+let g:php_cs_fixer_fixers_list = "linefeed,trailing_spaces,unused_use,php_closing_tag,short_tag,return,visibility,phpdoc_params,eof_ending,extra_empty_lines,include,PSR0,controls_spaces,elseif"
+nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+
+"------------------------------------
 " taskpaper.vim
 "------------------------------------
 " 色調整
