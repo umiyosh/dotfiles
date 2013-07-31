@@ -96,6 +96,8 @@ call vundle#rc()
   Bundle 'wesleyche/SrcExpl'
   " pythonのomni補完 jedi.vim
   Bundle 'davidhalter/jedi-vim'
+  " python-mode
+  Bundle 'klen/python-mode'
   " phpのデバッガ:xdebugをvimから使う
   Bundle 'joonty/vdebug'
   " phpを整える
