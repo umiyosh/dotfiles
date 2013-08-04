@@ -325,6 +325,7 @@ let g:quickrun_config['markdown'] = {
   \ 'outputter': 'browser',
   \ 'cmdopt': '-s -S -i --self-contained --toc -c ~/apdat/other/pandoc.css'
   \ }
+let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputter': 'browser' }
 
 "rvm
 if strlen($rvm_bin_path)
