@@ -130,5 +130,10 @@ alias today-="date '+%Y-%m-%d'"
 alias now="date '+%Y%m%d_%H%M%S'"
 alias now-="date '+%Y-%m-%d_%H%M%S'"
 
+<<<<<<< Updated upstream
 # python
 alias pdb="python -m pdb"
+=======
+
+alias geeknote="python ~/local/bin/geeknote/geeknote.py"
+>>>>>>> Stashed changes
