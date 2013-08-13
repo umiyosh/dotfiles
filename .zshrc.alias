@@ -130,3 +130,5 @@ alias today-="date '+%Y-%m-%d'"
 alias now="date '+%Y%m%d_%H%M%S'"
 alias now-="date '+%Y-%m-%d_%H%M%S'"
 
+# python
+alias pdb="python -m pdb"
