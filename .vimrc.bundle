@@ -43,8 +43,8 @@ call vundle#rc()
   Bundle 'kana/vim-smartinput'
   " phpDocumento
   Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
-  " zencoding
-  Bundle 'mattn/zencoding-vim'
+  " Emmet-vim
+  Bundle 'mattn/emmet-vim'
 " }}}
 
 " Completion {{{

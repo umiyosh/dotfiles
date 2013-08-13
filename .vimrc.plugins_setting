@@ -325,6 +325,7 @@ let g:quickrun_config['markdown'] = {
   \ 'outputter': 'browser',
   \ 'cmdopt': '-s -S -i --self-contained --toc -c ~/apdat/other/pandoc.css'
   \ }
+let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputter': 'browser' }
 
 "rvm
 if strlen($rvm_bin_path)
@@ -539,6 +540,11 @@ let g:pymode_syntax_space_errors  = g:pymode_syntax_all
 let g:pymode_folding              = 1
 " pdb起動
 command! Pdb :!python -m pdb %
+
+"------------------------------------
+" Emmet-vim
+"------------------------------------
+let g:use_emmet_complete_tag = 1
 
 "------------------------------------
 " taskpaper.vim
