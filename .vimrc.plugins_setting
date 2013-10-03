@@ -406,7 +406,7 @@ let b:match_ignorecase = 1
 " TwitVim.vim
 "------------------------------------
 " twitvimのキーアサイン
-nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
+" nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
 
 "------------------------------------
 " ref.vim
