@@ -132,3 +132,5 @@ alias now-="date '+%Y-%m-%d_%H%M%S'"
 
 # python
 alias pdb="python -m pdb"
+
+alias geeknote="python ~/local/bin/geeknote/geeknote.py"
