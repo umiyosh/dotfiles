@@ -533,8 +533,11 @@ bindkey -M menuselect '^h' backward-char
 bindkey "^V" '^G^V'
 
 
+
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
   screen -U
 fi
+
+[ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
 

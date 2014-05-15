@@ -74,8 +74,6 @@ export GAEJ_HOME=$GAEJ_SDK_INSTALLED_DIR/appengine-java-sdk-$GAEJ_SDK_VERSION
 export PATH=$PATH:$GAEJ_HOME/bin
 
 # Ruby
-if [[ -s /Users/ozaki/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
-
 export REFE_DATA_DIR=/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/share/refe
 
 # Go Lang
