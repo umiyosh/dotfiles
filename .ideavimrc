@@ -23,4 +23,5 @@ vnoremap v ^$h
 "yankとclipboardの同期
 nnoremap y "*y
 vnoremap y "*y
+nnoremap p "+P
 
