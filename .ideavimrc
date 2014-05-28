@@ -13,15 +13,13 @@ set hlsearch
 "esc連打でhighlight解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-"x キー削除でデフォルトレジスタに入れない
-nnoremap x "*x
-vnoremap x "*x
-
 "vv で行末まで選択
 vnoremap v ^$h
 
-"yankとclipboardの同期
+"レジスタとclipboardの同期
 nnoremap y "*y
 vnoremap y "*y
 nnoremap p "+P
+nnoremap x "*x
+vnoremap x "*x
 
