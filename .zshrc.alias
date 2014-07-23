@@ -134,3 +134,16 @@ alias now-="date '+%Y-%m-%d_%H%M%S'"
 alias pdb="python -m pdb"
 
 alias geeknote="python ~/local/bin/geeknote/geeknote.py"
+
+# Finderで開いているディレクトリに移動
+# http://www.rickynews.com/blog/2014/07/19/useful-bash-aliases/
+cdf () {
+        target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+        if [ "$target" != "" ]
+        then
+                cd "$target"
+                pwd
+        else
+                echo 'No Finder window found' >&2
+        fi
+}
