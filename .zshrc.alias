@@ -21,6 +21,9 @@ alias su="su -l"
 alias 'src'='exec zsh'
 alias -g V="| vim -"
 
+# kobito
+alias 'kob'='open -a Kobito '
+
 # grep
 alias 'gr'='grep --color=auto -RUIn'
 
