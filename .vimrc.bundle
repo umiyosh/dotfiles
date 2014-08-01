@@ -140,7 +140,7 @@ call vundle#rc()
 " }}}
 
 " Utility {{{
-
+  Bundle 'tpope/vim-pathogen'
   " vimproc : vimから非同期実行。vimshelleで必要
   Bundle 'Shougo/vimproc.git'
   " vimfiler : vimのfiler
@@ -186,8 +186,6 @@ call vundle#rc()
   Bundle 'davidoc/taskpaper.vim'
   " repeat.vim
   Bundle 'tpope/vim-repeat'
-  " vim-scripts / DirDiff.vim
-  Bundle 'vim-scripts/DirDiff.vim'
   "
 " }}}
 
