@@ -209,6 +209,7 @@ call vundle#rc()
   Bundle 'tsukkee/unite-tag'
   Bundle 'choplin/unite-vim_hacks'
   Bundle 'tacroe/unite-mark'
+  Bundle 'Shougo/neomru.vim'
 " }}}
 
 Bundle 'gmarik/vundle'
