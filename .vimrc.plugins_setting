@@ -197,36 +197,35 @@ let g:unite_source_history_yank_enable =1
 nnoremap <silent> ,gy :<C-u>Unite history/yank<CR>
 
 " 全部乗せ
-nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir  -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -start-insert  -buffer-name=files buffer file_mru bookmark file<CR>
 " ファイル一覧
-nnoremap <silent> [unite]f  :<C-u>Unite  -buffer-name=files file<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -start-insert  -buffer-name=files file<CR>
 " バッファ一覧
-nnoremap <silent> [unite]b  :<C-u>Unite  buffer<CR>
+nnoremap <silent> [unite]b  :<C-u>Unite -start-insert  buffer<CR>
 " 常用セット
-nnoremap <silent> [unite]u  :<C-u>Unite  buffer file_mru<CR>
+nnoremap <silent> [unite]u  :<C-u>Unite -start-insert  buffer file_mru<CR>
 " 最近使用したファイル一覧
-nnoremap <silent> [unite]m  :<C-u>Unite  file_mru<CR>
+nnoremap <silent> [unite]m  :<C-u>Unite -start-insert  file_mru<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧
-nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir  file<CR>
+nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir -start-insert  file<CR>
 " レジスタ一覧
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]r :<C-u>Unite -start-insert -buffer-name=register register<CR>
 " yank history
-nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+nnoremap <silent> [unite]y :<C-u>Unite -start-insert history/yank<CR>
 " mark一覧
-nnoremap <silent> [unite]M :<C-u>Unite mark<CR>
+nnoremap <silent> [unite]M :<C-u>Unite -start-insert mark<CR>
 " command history一覧
-nnoremap <silent> [unite]h :<C-u>Unite history/command<CR>
-vnoremap <silent> [unite]h :<C-u>Unite history/command<CR>
+nnoremap <silent> [unite]h :<C-u>Unite -start-insert history/command<CR>
 " search history一覧
-nnoremap <silent> [unite]s :<C-u>Unite history/search<CR>
+nnoremap <silent> [unite]s :<C-u>Unite -start-insert history/search<CR>
 " jump 一覧
-nnoremap <silent> [unite]j :<C-u>Unite jump<CR>
+nnoremap <silent> [unite]j :<C-u>Unite -start-insert jump<CR>
 
 " Unite keymap
-nnoremap <silent> [unite]k :<C-u>Unite output:map\|map!\|lmap<CR>
+nnoremap <silent> [unite]k :<C-u>Unite -start-insert output:map\|map!\|lmap<CR>
 
 " Unite history/yank
-nnoremap <silent> [unite]/ :<C-u>Unite history/yank<CR>
+nnoremap <silent> [unite]/ :<C-u>Unite -start-insert history/yank<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
