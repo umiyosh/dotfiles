@@ -102,3 +102,7 @@ nnoremap œ :q!<CR>
 
 " かな(alt)＋Sで上書き保存
 nnoremap ß :<C-u>w<CR>
+
+"libperl直接指定
+let $PERL_DLL = "/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib"
+
