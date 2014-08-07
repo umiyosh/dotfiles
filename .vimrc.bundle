@@ -31,8 +31,6 @@ call vundle#rc()
   Bundle 'textobj-user'
   " vim-textobj-fold : 折りたたまれたアレをtext-objectに
   Bundle 'kana/vim-textobj-fold.git'
-  " vim-textobj-plugins : いろんなものをtext-objectにする
-  Bundle 'thinca/vim-textobj-plugins.git'
   " vim-textobj-indent : インデントされたものをtext-objectに
   Bundle 'kana/vim-textobj-indent.git'
   " <C-a>でtrue/false切替。他色々
