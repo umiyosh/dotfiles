@@ -56,6 +56,7 @@ fi
 if ! which peco; then
   case "${OSTYPE}" in
   darwin*)
+    brew tap peco/peco
     brew install peco
     brew install migemogrep
     ;;
