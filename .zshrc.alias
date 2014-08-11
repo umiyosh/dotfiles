@@ -133,6 +133,16 @@ alias today-="date '+%Y-%m-%d'"
 alias now="date '+%Y%m%d_%H%M%S'"
 alias now-="date '+%Y-%m-%d_%H%M%S'"
 
+# peco
+alias -g P='| peco'
+function cdr()
+{
+  targetDir=$(dirs -l|perl -pe 's/ /\n/g'| peco)
+  echo $targetDir
+  cd $targetDir
+}
+# alias dpeco="cd "
+
 # python
 alias pdb="python -m pdb"
 
