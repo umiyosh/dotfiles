@@ -532,7 +532,7 @@ bindkey -M menuselect '^h' backward-char
 # ペーストが補完効いて遅いのでこうした
 bindkey "^V" '^G^V'
 
-
+[[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
 
 #screen 起動
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
