@@ -57,9 +57,11 @@ if ! which peco; then
   case "${OSTYPE}" in
   darwin*)
     brew install peco
+    brew install migemogrep
     ;;
   linux*)
     ## TODO:go get github.com/peco/peco/cmd/peco するのでgolang環境を整える
+    ## TODO:go get github.com/peco/migemogrep するのでgolang環境を整える
     ;;
   esac
 fi
