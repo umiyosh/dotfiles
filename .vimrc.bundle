@@ -206,6 +206,7 @@ call vundle#rc()
   Bundle 'choplin/unite-vim_hacks'
   Bundle 'tacroe/unite-mark'
   Bundle 'Shougo/neomru.vim'
+  Bundle 'zoncoen/unite-autojump'
 " }}}
 
 Bundle 'gmarik/vundle'

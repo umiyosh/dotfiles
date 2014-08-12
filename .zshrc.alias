@@ -7,7 +7,6 @@ alias ll="ls -l"
 # process
 # alias j="jobs -l"
 alias 'ps?'='pgrep -l -f'
-alias pk='pkill -f'
 
 # du/df
 alias du="du -h"
@@ -141,6 +140,14 @@ function cdr()
   echo $targetDir
   cd $targetDir
 }
+function peco-pkill() {
+    for pid in `ps aux | peco | awk '{ print $2 }'`
+    do
+        kill $pid
+        echo "Killed ${pid}"
+    done
+}
+alias pk="peco-pkill"
 # alias dpeco="cd "
 
 # python

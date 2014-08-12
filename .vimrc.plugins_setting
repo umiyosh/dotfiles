@@ -226,7 +226,8 @@ nnoremap <silent> [unite]k :<C-u>Unite -start-insert output:map\|map!\|lmap<CR>
 
 " Unite history/yank
 nnoremap <silent> [unite]/ :<C-u>Unite -start-insert history/yank<CR>
-
+nnoremap <silent> [unite]/ :<C-u>Unite -start-insert history/yank<CR>
+nnoremap <silent> [unite]J  :<C-u>Unite autojump -start-insert -default-action=lcd<CR>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
   " Overwrite settings.
