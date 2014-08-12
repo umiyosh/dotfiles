@@ -538,6 +538,7 @@ bindkey "^V" '^G^V'
 if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
   screen -U
 fi
+# [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 [ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
 
