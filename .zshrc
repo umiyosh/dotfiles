@@ -535,10 +535,10 @@ bindkey "^V" '^G^V'
 [[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
 
 #screen 起動
-if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
-  screen -U
-fi
-# [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+# if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
+  # screen -U
+# fi
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 [ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
 
