@@ -148,6 +148,11 @@ function peco-pkill() {
     done
 }
 alias pk="peco-pkill"
+
+function lvi(){
+  vim $(ls | peco |awk '{print $NF}' )
+}
+
 # alias dpeco="cd "
 
 # python
