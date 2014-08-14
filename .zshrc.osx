@@ -124,10 +124,10 @@ function precmd() {
 [ -f ~/.zshrc.osx.local ] && source ~/.zshrc.osx.local
 
 # tmux
-alias tmux='tmuxx'
-alias tm='tmuxx'
-alias tma='tmux attach'
-alias tml='tmux list-window'
+# alias tmux='tmuxx'
+# alias tm='tmuxx'
+# alias tma='tmux attach'
+# alias tml='tmux list-window'
 
 # j
 if [ -f `brew --prefix`/etc/autojump ]; then
