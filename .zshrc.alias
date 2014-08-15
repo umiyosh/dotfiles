@@ -136,7 +136,7 @@ alias now-="date '+%Y-%m-%d_%H%M%S'"
 function ssh(){
   TERM=xterm
   if [ -n "$TMUX" ]; then
-      local_command='tmux rename-window $(echo "%r@%n(%h:%p)")'
+      local_command='tmux rename-window $(echo "%r@%n:%p")'
   fi
   command -p ssh -o PermitLocalCommand=yes -o LocalCommand="${local_command}" "$@"
   if [ -n "$TMUX" ]; then
