@@ -132,6 +132,10 @@ alias today-="date '+%Y-%m-%d'"
 alias now="date '+%Y%m%d_%H%M%S'"
 alias now-="date '+%Y-%m-%d_%H%M%S'"
 
+
+# ssh
+alias ssh='TERM=xterm ssh'
+
 # peco
 alias -g P='| peco'
 function cdr()
@@ -140,6 +144,7 @@ function cdr()
   echo $targetDir
   cd $targetDir
 }
+
 function peco-pkill() {
     for pid in `ps aux | peco | awk '{ print $2 }'`
     do
