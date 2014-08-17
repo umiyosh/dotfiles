@@ -334,14 +334,6 @@ kterm*|xterm*)
   export LSCOLORS=ExFxCxDxBxegedabagacad
   zstyle ':completion:*' list-colors \
     'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-  _preexec_screenwindow() {
-    echo -ne "\ek#${1%% *}\e\\"
-  }
-  _precmd_screenwindow() {
-    echo -ne "\ek#$(basename $(pwd))\e\\"
-  }
-  add-zsh-hook preexec _preexec_screenwindow
-  add-zsh-hook precmd _precmd_screenwindow
   ;;
 dumb)
   echo "Welcome Emacs Shell"
@@ -534,10 +526,6 @@ bindkey "^V" '^G^V'
 
 [[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
 
-#screen 起動
-# if [[ -z "$STY" && $TERM_PROGRAM = iTerm.app ]] ; then
-  # screen -U
-# fi
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 [ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
