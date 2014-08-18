@@ -159,6 +159,13 @@ function vil(){
   vim $(ls | peco |awk '{print $NF}' )
 }
 
+function agv () {
+  vim $(ag $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+}
+function ackv () {
+  vim $(ack $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+}
+
 # alias dpeco="cd "
 
 # python
