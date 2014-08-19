@@ -1,0 +1,29 @@
+# peco
+alias -g P='| peco'
+function cdr()
+{
+  targetDir=$(dirs -l|perl -pe 's/ /\n/g'| peco)
+  echo $targetDir
+  cd $targetDir
+}
+
+function peco-pkill() {
+    for pid in `ps aux | peco | awk '{ print $2 }'`
+    do
+        kill $pid
+        echo "Killed ${pid}"
+    done
+}
+alias pk="peco-pkill"
+
+function vil(){
+  vim $(ls | peco |awk '{print $NF}' )
+}
+
+function agv () {
+  vim $(ag $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+}
+function ackv () {
+  vim $(ack $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+}
+
