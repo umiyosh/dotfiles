@@ -32,10 +32,12 @@ function findp() {
   find $@ | peco | PecoAction vi
 }
 alias fpe=findp
+
 function locatep() {
   locate $@ | peco | PecoAction vi
 }
 alias lpe=locatep
+
 function mdfindp() {
   mdfind $@ | peco | PecoAction vi
 }
