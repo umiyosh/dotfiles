@@ -41,7 +41,7 @@ alias lpe=locatep
 function mdfindp() {
   mdfind $@ | peco | PecoAction vi
 }
-alias mpe=mdfind
+alias mpe=mdfindp
 
 function PecoAction() {
   Action=$@
