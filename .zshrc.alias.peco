@@ -2,7 +2,7 @@
 alias -g P='| peco'
 
 function cdr() {
-  dirs -l|perl -pe 's/ /\n/g'| peco | PecoAction cd
+  dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction cd
 }
 
 function peco-pkill() {
@@ -15,32 +15,32 @@ function peco-pkill() {
 alias pk="peco-pkill"
 
 function agv () {
-  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | PecoAction vi
+  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction vi
 }
 
 function ackv () {
-  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | PecoAction vi
+  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction vi
 }
 
 function vil(){
-  ls | peco | awk '{print $NF}' | PecoAction vi
+  ls | peco | awk '{print $NF}' | pecoAfterAction vi
 }
 function findp() {
-  find $@ | peco | PecoAction vi
+  find $@ | peco | pecoAfterAction vi
 }
 alias fpe=findp
 
 function locatep() {
-  locate $@ | peco | PecoAction vi
+  locate $@ | peco | pecoAfterAction vi
 }
 alias lpe=locatep
 
 function mdfindp() {
-  mdfind $@ | peco | PecoAction vi
+  mdfind $@ | peco | pecoAfterAction vi
 }
 alias mpe=mdfindp
 
-function PecoAction() {
+function pecoAfterAction() {
   Action=$@
   Source=($( < /dev/stdin  ))
   if [[ -z $Source ]]; then
