@@ -35,8 +35,6 @@ call vundle#rc()
   Bundle 'kana/vim-textobj-indent.git'
   " <C-a>でtrue/false切替。他色々
   Bundle 'taku-o/vim-toggle'
-  " マルチカーソル
-  Bundle 'terryma/vim-multiple-cursors'
   " 括弧の入力
   Bundle 'kana/vim-smartinput'
   " phpDocumento
