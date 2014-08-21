@@ -23,7 +23,18 @@ function vil(){
 function agv () {
   vim $(ag $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
 }
+
 function ackv () {
   vim $(ack $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
 }
 
+function findp () {
+  files=($(find $@  | peco  ))
+  if [[ -z $files ]]; then
+    echo
+    echo nothing selected
+    return
+  fi
+  vi $files
+}
+alias fp=findp
