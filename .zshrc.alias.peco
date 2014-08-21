@@ -31,7 +31,15 @@ function ackv () {
 function findp() {
   find $@ | peco | PecoAction vi
 }
-alias fp=findp
+alias fpe=findp
+function locatep() {
+  locate $@ | peco | PecoAction vi
+}
+alias lpe=locatep
+function mdfindp() {
+  mdfind $@ | peco | PecoAction vi
+}
+alias mpe=mdfind
 
 function PecoAction() {
   Action=$@
