@@ -28,13 +28,18 @@ function ackv () {
   vim $(ack $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
 }
 
-function findp () {
-  files=($(find $@  | peco  ))
-  if [[ -z $files ]]; then
+function findp() {
+  find $@ | peco | PecoAction vi
+}
+alias fp=findp
+
+function PecoAction() {
+  Action=$@
+  Source=($( < /dev/stdin  ))
+  if [[ -z $Source ]]; then
     echo
     echo nothing selected
     return
   fi
-  vi $files
+  $Action $Source < /dev/tty
 }
-alias fp=findp
