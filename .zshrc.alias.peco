@@ -1,10 +1,8 @@
 # peco
 alias -g P='| peco'
-function cdr()
-{
-  targetDir=$(dirs -l|perl -pe 's/ /\n/g'| peco)
-  echo $targetDir
-  cd $targetDir
+
+function cdr() {
+  dirs -l|perl -pe 's/ /\n/g'| peco | PecoAction cd
 }
 
 function peco-pkill() {
@@ -16,18 +14,17 @@ function peco-pkill() {
 }
 alias pk="peco-pkill"
 
-function vil(){
-  vim $(ls | peco |awk '{print $NF}' )
-}
-
 function agv () {
-  vim $(ag $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | PecoAction vi
 }
 
 function ackv () {
-  vim $(ack $@  | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | PecoAction vi
 }
 
+function vil(){
+  ls | peco | awk '{print $NF}' | PecoAction vi
+}
 function findp() {
   find $@ | peco | PecoAction vi
 }
