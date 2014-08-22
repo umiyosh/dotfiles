@@ -59,7 +59,7 @@ function pecoLocate() {
 }
 alias lpe=pecoLocate
 
-function pecoMfind() {
+function pecoMdfind() {
   mdfind $@ | peco | pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
@@ -68,7 +68,7 @@ function pecoMfind() {
     "inputCommandAny" \
     "copyStrings"
 }
-alias mpe=pecoMfind
+alias mpe=pecoMdfind
 
 function pecoGit() {
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
