@@ -23,7 +23,8 @@ function ackv () {
 }
 
 function lsp(){
-  ls $@| peco | awk '{print $NF}' | pecoAfterAction vi
+  # TODO:full path表示
+  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri"
 }
 function findp() {
   find $@ | peco | pecoAfterAction vi
@@ -41,14 +42,20 @@ function mdfindp() {
 alias mpe=mdfindp
 
 function pecoAfterAction() {
-  Action=$@
+  Actions=($@)
   Source=($( < /dev/stdin  ))
+  if [[ $#Actions -gt 1 ]]; then
+    Action=($(for Action in $Actions ;do echo $Action;done|peco))
+    Action=$Action[1]
+  else
+    Action=$Actions
+  fi
   if [[ -z $Source ]]; then
     echo
     echo nothing selected
     return
   fi
-  $Action $Source < /dev/tty
+  eval $Action $Source < /dev/tty
 }
 
 # Widgets
