@@ -15,10 +15,12 @@ function peco-pkill() {
 alias pk="peco-pkill"
 
 function agv () {
+  # TODO:AfterActionの整理
   ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction vi
 }
 
 function ackv () {
+  # TODO:AfterActionの整理
   ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction vi
 }
 
@@ -27,26 +29,30 @@ function lsp(){
   ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri"
 }
 function findp() {
+  # TODO:AfterActionの整理
   find $@ | peco | pecoAfterAction vi
 }
 alias fpe=findp
 
 function locatep() {
+  # TODO:AfterActionの整理
   locate $@ | peco | pecoAfterAction vi
 }
 alias lpe=locatep
 
 function mdfindp() {
+  # TODO:AfterActionの整理
   mdfind $@ | peco | pecoAfterAction vi
 }
 alias mpe=mdfindp
 
 function pecoAfterAction() {
+  # TODO:任意コマンドの受付
   Actions=($@)
   Source=($( < /dev/stdin  ))
   if [[ $#Actions -gt 1 ]]; then
-    Action=($(for Action in $Actions ;do echo $Action;done|peco))
-    Action=$Action[1]
+  # TODO:promptをACTIONにする
+    Action=$(for Action in $Actions ;do echo $Action;done|peco|head -1)
   else
     Action=$Actions
   fi
