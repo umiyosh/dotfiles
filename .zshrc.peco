@@ -1,6 +1,7 @@
 # peco
 # TODO autoload化 http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 alias -g P='| peco'
+alias pcp='peco | tr -d " \n" | pbcopy'
 
 function pecoCdr() {
   dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
