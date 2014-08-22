@@ -2,28 +2,31 @@
 # TODO autoload化 http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 alias -g P='| peco'
 
-function cdr() {
+function pecoCdr() {
   dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
 }
+alias cdr=pecoCdr
 
-function peco-pkill() {
+function pecoKill() {
     for pid in `ps aux | peco | awk '{ print $2 }'`
     do
         kill $pid
         echo "Killed ${pid}"
     done
 }
-alias pk="peco-pkill"
+alias pk="pecoKill"
 
-function agv () {
+function pecoAg () {
   ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
 }
+alias agv=pecoAg
 
-function ackv () {
+function pecoAck () {
   ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
 }
+alias ackv=pecoAck
 
-function lsp(){
+function pecoLs(){
   ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
@@ -32,9 +35,9 @@ function lsp(){
     "inputCommandAny" \
     "copyStrings"
 }
-alias l=lsp
+alias l=pecoLs
 
-function findp() {
+function pecoFind() {
   find $@ | peco | pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
@@ -43,9 +46,9 @@ function findp() {
     "inputCommandAny" \
     "copyStrings"
 }
-alias fpe=findp
+alias fpe=pecoFind
 
-function locatep() {
+function pecoLocate() {
   locate $@ | peco | pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
@@ -54,9 +57,9 @@ function locatep() {
     "inputCommandAny" \
     "copyStrings"
 }
-alias lpe=locatep
+alias lpe=pecoLocate
 
-function mdfindp() {
+function pecoMfind() {
   mdfind $@ | peco | pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
@@ -65,13 +68,13 @@ function mdfindp() {
     "inputCommandAny" \
     "copyStrings"
 }
-alias mpe=mdfindp
+alias mpe=pecoMfind
 
-function gitpeco() {
+function pecoGit() {
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
     pecoAfterAction "git add" "git checkout" "git reset HEAD" "git diff" "git diff --cached" "copyStrings" "vi" "inputCommandAny"
 }
-alias gpe=gitpeco
+alias gpe=pecoGit
 
 function pecoAfterAction() {
   Actions=($@)
