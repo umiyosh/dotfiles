@@ -475,7 +475,7 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 ## alias設定
 #
 [ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
-[ -f ~/dotfiles/.zshrc.alias.peco ] && source ~/dotfiles/.zshrc.alias.peco
+[ -f ~/dotfiles/.zshrc.peco ] && source ~/dotfiles/.zshrc.peco
 
 case "${OSTYPE}" in
 # Mac(Unix)

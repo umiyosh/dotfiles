@@ -2,7 +2,7 @@
 alias -g P='| peco'
 
 function cdr() {
-  dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction cd
+  dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd" "gzip"
 }
 
 function peco-pkill() {
@@ -15,42 +15,36 @@ function peco-pkill() {
 alias pk="peco-pkill"
 
 function agv () {
-  # TODO:AfterActionの整理
-  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction vi
+  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi" "gzip" "rm -ri" "input-command-any"
 }
 
 function ackv () {
-  # TODO:AfterActionの整理
-  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction vi
+  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi" "gzip" "rm -ri" "input-command-any"
 }
 
 function lsp(){
-  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri"
+  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
 }
 function findp() {
-  # TODO:AfterActionの整理
-  find $@ | peco | pecoAfterAction vi
+  find $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
 }
 alias fpe=findp
 
 function locatep() {
-  # TODO:AfterActionの整理
-  locate $@ | peco | pecoAfterAction vi
+  locate $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
 }
 alias lpe=locatep
 
 function mdfindp() {
-  # TODO:AfterActionの整理
-  mdfind $@ | peco | pecoAfterAction vi
+  mdfind $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
 }
 alias mpe=mdfindp
 
 function pecoAfterAction() {
-  # TODO:任意コマンドの受付
+  # TODO: argvで受けるアクションとstdinで受けるアクションの出し分け
   Actions=($@)
   Source=($( < /dev/stdin  ))
   if [[ $#Actions -gt 1 ]]; then
-  # TODO:promptをACTIONにする
     Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
   else
     Action=$Actions
@@ -61,6 +55,13 @@ function pecoAfterAction() {
     return
   fi
   eval $Action $Source < /dev/tty
+}
+
+# action define
+function input-command-any() {
+  echo -n "command?:"
+  read command
+  eval $command $@
 }
 
 # Widgets
