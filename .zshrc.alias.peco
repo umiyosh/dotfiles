@@ -22,7 +22,7 @@ function ackv () {
   ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction vi
 }
 
-function vil(){
+function lsp(){
   ls $@| peco | awk '{print $NF}' | pecoAfterAction vi
 }
 function findp() {
