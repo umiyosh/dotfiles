@@ -42,7 +42,6 @@ function mdfindp() {
 alias mpe=mdfindp
 
 function pecoAfterAction() {
-  # TODO: argvで受けるアクションとstdinで受けるアクション, stdinで受け取りxargsするアクションの出し分け
   Actions=($@)
   Source=($( < /dev/stdin  ))
   if [[ $#Actions -gt 1 ]]; then
