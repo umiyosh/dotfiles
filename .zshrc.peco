@@ -16,11 +16,11 @@ function peco-pkill() {
 alias pk="peco-pkill"
 
 function agv () {
-  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi" "gzip" "rm -ri" "input-command-any"
+  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
 }
 
 function ackv () {
-  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi" "gzip" "rm -ri" "input-command-any"
+  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
 }
 
 function lsp(){
