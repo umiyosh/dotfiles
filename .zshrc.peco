@@ -25,7 +25,6 @@ function ackv () {
 }
 
 function lsp(){
-  # TODO:full path表示
   ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri"
 }
 function findp() {
