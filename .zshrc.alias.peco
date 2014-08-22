@@ -23,7 +23,7 @@ function ackv () {
 }
 
 function vil(){
-  ls | peco | awk '{print $NF}' | pecoAfterAction vi
+  ls $@| peco | awk '{print $NF}' | pecoAfterAction vi
 }
 function findp() {
   find $@ | peco | pecoAfterAction vi
