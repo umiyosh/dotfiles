@@ -3,7 +3,7 @@
 alias -g P='| peco'
 
 function cdr() {
-  dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd" "gzip"
+  dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
 }
 
 function peco-pkill() {
