@@ -52,7 +52,7 @@ function pecoAfterAction() {
   Source=($( < /dev/stdin  ))
   if [[ $#Actions -gt 1 ]]; then
   # TODO:promptをACTIONにする
-    Action=$(for Action in $Actions ;do echo $Action;done|peco|head -1)
+    Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
   else
     Action=$Actions
   fi
