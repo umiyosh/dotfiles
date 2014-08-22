@@ -24,20 +24,20 @@ function ackv () {
 }
 
 function lsp(){
-  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
+  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
 }
 function findp() {
-  find $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
+  find $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
 }
 alias fpe=findp
 
 function locatep() {
-  locate $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
+  locate $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
 }
 alias lpe=locatep
 
 function mdfindp() {
-  mdfind $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any"
+  mdfind $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
 }
 alias mpe=mdfindp
 
@@ -62,6 +62,9 @@ function input-command-any() {
   echo -n "command?:"
   read command
   eval $command $@
+}
+function copyStrings() {
+  echo $@ | perl -pe 's/ +/\n/g'|pbcopy
 }
 
 # Widgets
