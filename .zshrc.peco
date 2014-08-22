@@ -43,7 +43,7 @@ alias mpe=mdfindp
 
 function gitpeco() {
   git status --porcelain | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
-    pecoAfterAction "git add" "git checkout" "git reset HEAD" "copyStrings" "vi"
+    pecoAfterAction "git add" "git checkout" "git reset HEAD" "copyStrings" "vi" "inputCommandAny"
 }
 alias gpe=gitpeco
 
