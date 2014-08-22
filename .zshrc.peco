@@ -24,22 +24,46 @@ function ackv () {
 }
 
 function lsp(){
-  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
+  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" \
+    "cd" \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+    "rm -ri" \
+    "inputCommandAny" \
+    "copyStrings"
 }
 alias l=lsp
 
 function findp() {
-  find $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
+  find $@ | peco | pecoAfterAction "vi" \
+    "cd" \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+    "rm -ri" \
+    "inputCommandAny" \
+    "copyStrings"
 }
 alias fpe=findp
 
 function locatep() {
-  locate $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
+  locate $@ | peco | pecoAfterAction "vi" \
+    "cd" \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+    "rm -ri" \
+    "inputCommandAny" \
+    "copyStrings"
 }
 alias lpe=locatep
 
 function mdfindp() {
-  mdfind $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
+  mdfind $@ | peco | pecoAfterAction "vi" \
+    "cd" \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+    "rm -ri" \
+    "inputCommandAny" \
+    "copyStrings"
 }
 alias mpe=mdfindp
 
