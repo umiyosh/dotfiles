@@ -26,6 +26,8 @@ function ackv () {
 function lsp(){
   ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
 }
+alias l=lsp
+
 function findp() {
   find $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
 }
