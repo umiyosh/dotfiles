@@ -24,20 +24,20 @@ function ackv () {
 }
 
 function lsp(){
-  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
+  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
 }
 function findp() {
-  find $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
+  find $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
 }
 alias fpe=findp
 
 function locatep() {
-  locate $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
+  locate $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
 }
 alias lpe=locatep
 
 function mdfindp() {
-  mdfind $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "input-command-any" "copyStrings"
+  mdfind $@ | peco | pecoAfterAction "vi" "cd" "gzip" "rm -ri" "inputCommandAny" "copyStrings"
 }
 alias mpe=mdfindp
 
@@ -64,7 +64,7 @@ function pecoAfterAction() {
 }
 
 # action define
-function input-command-any() {
+function inputCommandAny() {
   echo -n "command?:"
   read command
   eval $command $@
