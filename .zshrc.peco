@@ -1,4 +1,5 @@
 # peco
+# TODO autoload化 http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 alias -g P='| peco'
 
 function cdr() {
