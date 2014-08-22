@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOT_FILES=( .ideavimrc .agignore .zshrc .zshrc.peco .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .emacs.el .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc .perltidyrc )
+DOT_DIRS=(.zsh .vim .peco)
 
 # dotfiles
 for file in ${DOT_FILES[@]}
@@ -13,13 +14,12 @@ do
   fi
 done
 
-if [[ ! -d $HOME/.zsh/ ]]; then
- ln -s $HOME/dotfiles/.zsh $HOME/.zsh
-fi
-
-if [[ ! (-e $HOME/.vim && -L $HOME/.vim) ]]; then
-  ln -s $HOME/dotfiles/.vim/ $HOME/.vim
-fi
+for directory in ${DOT_DIRS[@]}
+do
+  if [[ ! -d $HOME/${directory}/ ]]; then
+   ln -s $HOME/dotfiles/${directory} $HOME/${directory}
+  fi
+done
 
 if [[ ! -d $HOME/local/bin ]]; then
   mkdir -p $HOME/local/bin/

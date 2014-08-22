@@ -1,0 +1,16 @@
+{
+  "Keymap": {
+    "C-s": "peco.ToggleSelectionAndSelectNext",
+
+    "C-a": "peco.SelectAll",
+    "C-g": "peco.SelectNone",
+
+    "Tab":"peco.RotateMatcher"
+  },
+    "CustomMatcher": {
+        "Migemo": [
+            "migemogrep",
+            "$QUERY"
+        ]
+    }
+}
