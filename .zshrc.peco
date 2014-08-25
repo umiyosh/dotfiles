@@ -93,7 +93,7 @@ function pecoAfterAction() {
   else
     Action=$Actions
   fi
-  if [[ -z $Source ]]; then
+  if [[ -z $Source || -z $Action ]]; then
     echo
     echo nothing selected
     return
