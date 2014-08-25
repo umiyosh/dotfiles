@@ -73,7 +73,15 @@ alias mpe=pecoMdfind
 
 function pecoGit() {
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
-    pecoAfterAction "git add" "git checkout" "git reset HEAD" "git diff" "git diff --cached" "copyStrings" "vi" "inputCommandAny"
+    pecoAfterAction "git add" \
+      "git checkout" \
+      "git reset HEAD" \
+      "git diff" \
+      "git diff --cached" \
+      "copyStrings" \
+      "vi" \
+      "rm -ri" \
+      "inputCommandAny"
 }
 alias gpe=pecoGit
 
