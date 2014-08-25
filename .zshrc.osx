@@ -17,6 +17,10 @@ export PATH=$JAVA_HOME/bin:$PATH
 # デフォルトエンコーディングSJISをUTF-8へ
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 
+# Go lang
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
 # scala
 export SCALA_HOME=/Users/ozaki/.svm/current/rt
 PATH=$SCALA_HOME/bin:$PATH
@@ -75,12 +79,6 @@ export PATH=$PATH:$GAEJ_HOME/bin
 
 # Ruby
 export REFE_DATA_DIR=/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/share/refe
-
-# Go Lang
-export GOROOT=$HOME/dev/go
-export GOOS=darwin
-export GOARCH=386
-export PATH=$PATH:$GOROOT/bin
 
 # node.js
 export NODE_PATH=/usr/local/lib/node:$PATH
