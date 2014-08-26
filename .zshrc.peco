@@ -78,6 +78,7 @@ function pecoGit() {
       "git reset HEAD" \
       "git diff" \
       "git diff --cached" \
+      "git rm" \
       "copyStrings" \
       "vi" \
       "rm -ri" \
