@@ -81,6 +81,7 @@ function pecoMdfind() {
 alias mpe=pecoMdfind
 
 function pecoGit() {
+  cd $(git rev-parse --show-toplevel)
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
     pecoAfterAction "git add" \
       "git checkout" \
@@ -92,6 +93,7 @@ function pecoGit() {
       "vi" \
       "rm -ri" \
       "inputCommandAny"
+  popd
 }
 alias gpe=pecoGit
 
