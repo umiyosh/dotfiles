@@ -1,7 +1,16 @@
 # peco
 # TODO autoload化 http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
 alias -g P='| peco'
-alias pcp='peco | pbcopy'
+
+function pecoPipe() {
+  peco | pecoAfterAction "vi" \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+    "rm -ri" \
+    "inputCommandAny" \
+    "%%STDIN%% pbcopy"
+}
+alias p=pecoPipe
 
 function pecoCdr() {
   dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"

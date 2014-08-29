@@ -38,7 +38,7 @@ alias 'mc'='make clean'
 
 alias pon='predict-on'
 alias poff='predict-off'
-alias p='ping -c 4'
+alias pi='ping -c 4'
 
 #alias ls='ls -al'
 alias cp='nocorrect cp -irp'
