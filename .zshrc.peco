@@ -7,8 +7,9 @@ function pecoPipe() {
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "%%STDIN%% pbcopy"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias p=pecoPipe
 
@@ -42,8 +43,9 @@ function pecoLs(){
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
+    "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias l=pecoLs
 
@@ -53,8 +55,9 @@ function pecoFind() {
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "%%STDIN%% pbcopy"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias fpe=pecoFind
 
@@ -64,8 +67,9 @@ function pecoLocate() {
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "%%STDIN%% pbcopy"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias lpe=pecoLocate
 
@@ -75,8 +79,9 @@ function pecoMdfind() {
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "%%STDIN%% pbcopy"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias mpe=pecoMdfind
 
@@ -92,7 +97,7 @@ function pecoGit() {
       "%%STDIN%% pbcopy" \
       "vi" \
       "rm -ri" \
-      "inputCommandAny"
+      "paaInputCommandAny"
   popd
 }
 alias gpe=pecoGit
@@ -122,11 +127,21 @@ function pecoAfterAction() {
   fi
 }
 
-# action define
-function inputCommandAny() {
+# peco after action define
+function paaInputCommandAny() {
   echo -n "command?:"
   read command
   eval $command $@
+}
+function paaExecuteAsCommand() {
+  Actions=( ${(@f)"$(< /dev/stdin)"} )
+  for Action in $Actions; do
+    if [[ $Action =~ ^/ ]]; then
+      $Action
+    else
+      ./$Action
+    fi
+  done
 }
 
 # Widgets
