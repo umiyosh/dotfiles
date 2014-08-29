@@ -34,7 +34,7 @@ function pecoLs(){
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
     "inputCommandAny" \
-    "copyStrings"
+    "%%STDIN%% pbcopy" \
 }
 alias l=pecoLs
 
@@ -45,7 +45,7 @@ function pecoFind() {
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
     "inputCommandAny" \
-    "copyStrings"
+    "%%STDIN%% pbcopy"
 }
 alias fpe=pecoFind
 
@@ -56,7 +56,7 @@ function pecoLocate() {
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
     "inputCommandAny" \
-    "copyStrings"
+    "%%STDIN%% pbcopy"
 }
 alias lpe=pecoLocate
 
@@ -67,7 +67,7 @@ function pecoMdfind() {
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
     "inputCommandAny" \
-    "copyStrings"
+    "%%STDIN%% pbcopy"
 }
 alias mpe=pecoMdfind
 
@@ -79,16 +79,18 @@ function pecoGit() {
       "git diff" \
       "git diff --cached" \
       "git rm" \
-      "copyStrings" \
+      "%%STDIN%% pbcopy" \
       "vi" \
       "rm -ri" \
       "inputCommandAny"
 }
 alias gpe=pecoGit
 
+# %%STDIN%% command => Sournce | command
+# command           => eval command Source
 function pecoAfterAction() {
   Actions=($@)
-  Source=($( < /dev/stdin  ))
+  Source=( ${(@f)"$(< /dev/stdin)"} )
   if [[ $#Actions -gt 1 ]]; then
     Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
   else
@@ -99,7 +101,14 @@ function pecoAfterAction() {
     echo nothing selected
     return
   fi
-  eval $Action $Source < /dev/tty
+  if [[ $Action =~ ^%%STDIN%% ]]; then
+    Action=$(echo $Action | perl -pe 's/^%%STDIN%% +//g')
+    for selected in $Source; do
+      echo $selected
+    done | $Action
+  else
+    eval $Action $Source < /dev/tty
+  fi
 }
 
 # action define
@@ -107,9 +116,6 @@ function inputCommandAny() {
   echo -n "command?:"
   read command
   eval $command $@
-}
-function copyStrings() {
-  echo $@ | perl -pe 's/ +/\n/g'|pbcopy
 }
 
 # Widgets
