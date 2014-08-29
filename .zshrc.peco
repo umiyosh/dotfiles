@@ -37,7 +37,7 @@ function pecoAck () {
 alias ackv=pecoAck
 
 function pecoLs(){
-  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" \
+  ls -alL $@| peco | perl -lane 'print "@F[8..$#F]"' | pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
