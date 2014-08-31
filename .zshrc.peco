@@ -103,6 +103,21 @@ function pecoGit() {
 }
 alias gpe=pecoGit
 
+function pecoGitBranch() {
+  (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
+    pecoAfterAction "git add" \
+      "git checkout" \
+      "git checkout -t" \
+      "git checkout -d" \
+      "git checkout -D" \
+      "git diff" \
+      "git reset --soft" \
+      "git reset --hard" \
+      "%%STDIN%% pbcopy" \
+      "paaInputCommandAny"
+}
+alias gpb=pecoGitBranch
+
 # %%STDIN%% command => Sournce | command
 # command           => eval command Source
 function pecoAfterAction() {
