@@ -38,7 +38,7 @@ alias 'mc'='make clean'
 
 alias pon='predict-on'
 alias poff='predict-off'
-alias p='ping -c 4'
+alias pi='ping -c 4'
 
 #alias ls='ls -al'
 alias cp='nocorrect cp -irp'
@@ -134,6 +134,7 @@ function ssh(){
   command -p ssh -o PermitLocalCommand=yes -o LocalCommand="${local_command}" "$@"
   if [ -n "$TMUX" ]; then
       tmux set-window-option -u automatic-rename
+      TERM=screen-256color
   fi
 }
 

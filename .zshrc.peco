@@ -1,7 +1,17 @@
 # peco
 # TODO autoload化 http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
-alias -g P='| peco'
-alias pcp='peco | tr -d " \n" | pbcopy'
+alias -g P='| p'
+
+function pecoPipe() {
+  peco | pecoAfterAction "vi" \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+    "rm -ri" \
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
+}
+alias p=pecoPipe
 
 function pecoCdr() {
   dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
@@ -28,13 +38,14 @@ function pecoAck () {
 alias ackv=pecoAck
 
 function pecoLs(){
-  ls $@| peco | awk '{print $NF}' | pecoAfterAction "vi" \
+  ls -alL $@| peco | perl -lane 'print "@F[8..$#F]"' | pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "copyStrings"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias l=pecoLs
 
@@ -44,8 +55,9 @@ function pecoFind() {
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "copyStrings"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias fpe=pecoFind
 
@@ -55,8 +67,9 @@ function pecoLocate() {
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "copyStrings"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias lpe=pecoLocate
 
@@ -66,41 +79,106 @@ function pecoMdfind() {
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     "rm -ri" \
-    "inputCommandAny" \
-    "copyStrings"
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
 }
 alias mpe=pecoMdfind
 
 function pecoGit() {
+  cd $(git rev-parse --show-toplevel)
+  workDir=$(pwd)
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
-    pecoAfterAction "git add" "git checkout" "git reset HEAD" "git diff" "git diff --cached" "copyStrings" "vi" "inputCommandAny"
+    pecoAfterAction "git add" \
+      "git checkout" \
+      "git reset HEAD" \
+      "git diff" \
+      "git diff --cached" \
+      "git rm" \
+      "%%STDIN%% pbcopy" \
+      "vi" \
+      "rm -ri" \
+      "paaInputCommandAny"
+  cd $workDir
 }
 alias gpe=pecoGit
 
+function pecoGitBranch() {
+  (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
+    pecoAfterAction "git checkout" \
+      "git checkout -t" \
+      "git checkout -d" \
+      "git checkout -D" \
+      "git diff" \
+      "git reset --soft" \
+      "git reset --hard" \
+      "%%STDIN%% pbcopy" \
+      "paaInputCommandAny"
+}
+alias gpb=pecoGitBranch
+
+# %%STDIN%% command => Sournce | command
+# command           => eval command Source
 function pecoAfterAction() {
   Actions=($@)
-  Source=($( < /dev/stdin  ))
+  Source=( ${(@f)"$(< /dev/stdin)"} )
   if [[ $#Actions -gt 1 ]]; then
     Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
   else
     Action=$Actions
   fi
-  if [[ -z $Source ]]; then
+  if [[ -z $Source || -z $Action ]]; then
     echo
     echo nothing selected
     return
   fi
-  eval $Action $Source < /dev/tty
+  if [[ $Action =~ ^%%STDIN%% ]]; then
+    Action=$(echo $Action | perl -pe 's/^%%STDIN%% +//g')
+    for selected in $Source; do
+      echo $selected
+    done | $Action
+  else
+    eval $Action $Source < /dev/tty
+  fi
 }
 
-# action define
-function inputCommandAny() {
+# peco after action define
+function paaInputCommandAny() {
   echo -n "command?:"
   read command
   eval $command $@
 }
-function copyStrings() {
-  echo $@ | perl -pe 's/ +/\n/g'|pbcopy
+function paaExecuteAsCommand() {
+  Actions=( ${(@f)"$(< /dev/stdin)"} )
+  for Action in $Actions; do
+    if [[ $Action =~ ^/ ]]; then
+      $Action
+    else
+      ./$Action
+    fi
+  done
+}
+
+function zlePasteBuffer() {
+  Selected=( ${(@f)"$(< /dev/stdin)"} )
+  pasteBuf=$Selected[1]
+  shift Selected
+  for Action in $Selected; do
+      pasteBuf="$pasteBuf ;$Action"
+  done
+  BUFFER=$pasteBuf
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+function zleExecuteAsCommand() {
+  Selected=( ${(@f)"$(< /dev/stdin)"} )
+  pasteBuf=$Selected[1]
+  shift Selected
+  for Action in $Selected; do
+      pasteBuf="$pasteBuf ;$Action"
+  done
+  BUFFER=$pasteBuf
+  zle accept-line
 }
 
 # Widgets
@@ -118,3 +196,31 @@ function peco-select-gitadd() {
 }
 zle -N peco-select-gitadd
 bindkey "^a^a" peco-select-gitadd
+
+# peco history
+function pecoHistory() {
+    history 0 | tail -r | perl -lane 'print "@F[1..$#F]"' |peco --query "$LBUFFER"| \
+      pecoAfterAction \
+        "%%STDIN%% zleExecuteAsCommand" \
+        "%%STDIN%% zlePasteBuffer" \
+        "%%STDIN%% pbcopy"
+}
+zle -N pecoHistory
+bindkey '^r' pecoHistory
+
+# peco autojump
+function pecoAutojump() {
+    autojump --stat | perl -e '
+      while(<>){push @line, $_}
+      for $jumplist (reverse @line){
+        @jumplist = split /\t/, $jumplist;
+        $jumplist[1] =~ s/ /\\ /g;
+        print "$jumplist[1]"
+      }' |peco --query "$LBUFFER"| \
+        pecoAfterAction \
+          "%%STDIN%% zleExecuteAsCommand" \
+          "%%STDIN%% zlePasteBuffer" \
+          "%%STDIN%% pbcopy"
+}
+zle -N pecoAutojump
+bindkey '^j' pecoAutojump
