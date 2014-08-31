@@ -184,7 +184,11 @@ zle -N peco-select-gitadd
 bindkey "^a^a" peco-select-gitadd
 
 function pecoHistory() {
-    history 0 | tail -r | perl -lane 'print "@F[1..$#F]"' |peco --query "$LBUFFER"| pecoAfterAction "%%STDIN%% zleExecuteAsCommand" "%%STDIN%% zlePasteBuffer" "%%STDIN%% pbcopy"
+    history 0 | tail -r | perl -lane 'print "@F[1..$#F]"' |peco --query "$LBUFFER"| \
+      pecoAfterAction \
+        "%%STDIN%% zleExecuteAsCommand" \
+        "%%STDIN%% zlePasteBuffer" \
+        "%%STDIN%% pbcopy"
 }
 zle -N pecoHistory
 bindkey '^g^e' pecoHistory
