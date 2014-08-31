@@ -447,15 +447,6 @@ function zle-line-init () {
 zle -N zle-line-init
 zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
 
-#=============================
-# source zaw: zshのunite
-#=============================
-source ~/dotfiles/.zshrc.zaw.j
-zstyle ':filter-select' case-insensitive yes
-bindkey '^G' zaw
-bindkey '^R' zaw-history
-bindkey '^j' zaw-j
-
 # zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
 ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'

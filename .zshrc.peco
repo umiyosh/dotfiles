@@ -207,7 +207,7 @@ function pecoHistory() {
         "%%STDIN%% pbcopy"
 }
 zle -N pecoHistory
-bindkey '^g^r' pecoHistory
+bindkey '^r' pecoHistory
 
 # peco autojump
 function pecoAutojump() {
@@ -224,4 +224,4 @@ function pecoAutojump() {
           "%%STDIN%% pbcopy"
 }
 zle -N pecoAutojump
-bindkey '^g^j' pecoAutojump
+bindkey '^j' pecoAutojump
