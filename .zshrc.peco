@@ -112,6 +112,8 @@ function pecoGitBranch() {
       "git diff" \
       "git reset --soft" \
       "git reset --hard" \
+      "git push origin" \
+      "git pull origin" \
       "%%STDIN%% pbcopy" \
       "paaInputCommandAny"
 }
