@@ -61,8 +61,8 @@ if ! which peco; then
     brew install migemogrep
     ;;
   linux*)
-    ## TODO:go get github.com/peco/peco/cmd/peco するのでgolang環境を整える
-    ## TODO:go get github.com/peco/migemogrep するのでgolang環境を整える
+    go get github.com/peco/peco/cmd/peco
+    go get github.com/peco/migemogrep
     ;;
   esac
 fi
