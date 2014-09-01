@@ -128,9 +128,7 @@ function precmd() {
 # alias tml='tmux list-window'
 
 # j
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
+[[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
 alias jj='autojump --stat'
 # jの補完周り
 if [ -x /usr/local/bin/brew ]; then

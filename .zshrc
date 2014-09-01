@@ -516,8 +516,6 @@ bindkey -M menuselect '^h' backward-char
 # ペーストが補完効いて遅いのでこうした
 bindkey "^V" '^G^V'
 
-[[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
-
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 [ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
