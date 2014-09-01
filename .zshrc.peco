@@ -107,8 +107,8 @@ function pecoGitBranch() {
   (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
     pecoAfterAction "git checkout" \
       "git checkout -t" \
-      "git checkout -d" \
-      "git checkout -D" \
+      "git branch -d" \
+      "git branch -D" \
       "git diff" \
       "git reset --soft" \
       "git reset --hard" \
