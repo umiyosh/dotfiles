@@ -6,7 +6,7 @@ function pecoPipe() {
   peco | pecoAfterAction "vi" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "rm -ri" \
+    "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
@@ -42,7 +42,7 @@ function pecoLs(){
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "rm -ri" \
+    "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
@@ -54,7 +54,7 @@ function pecoFind() {
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "rm -ri" \
+    "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
@@ -66,7 +66,7 @@ function pecoLocate() {
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "rm -ri" \
+    "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
@@ -78,7 +78,7 @@ function pecoMdfind() {
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "rm -ri" \
+    "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
@@ -97,7 +97,7 @@ function pecoGit() {
       "git rm" \
       "%%STDIN%% pbcopy" \
       "vi" \
-      "rm -ri" \
+      "%%STDIN%% paaSafeRm" \
       "paaInputCommandAny"
   cd $workDir
 }
@@ -148,6 +148,14 @@ function paaInputCommandAny() {
   read command
   eval $command $@
 }
+
+function paaSafeRm() {
+  files=( ${(@f)"$(< /dev/stdin)"} )
+  for file in $files; do
+    rm -ri "$file" </dev/tty
+  done
+}
+
 function paaExecuteAsCommand() {
   Actions=( ${(@f)"$(< /dev/stdin)"} )
   for Action in $Actions; do
