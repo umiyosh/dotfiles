@@ -60,7 +60,7 @@ function pecoFind() {
     "%%STDIN%% paaExecuteAsCommand"
 }
 alias fpe=pecoFind
-alias r='fpe ~/bin/ ~/dotfiles/bin/ -type d -name '.git' -prune -o -type f'
+alias r="fpe ~/bin/ ~/dotfiles/bin/ -type f"
 
 function pecoLocate() {
   locate $@ | peco | pecoAfterAction "vi" \
