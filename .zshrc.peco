@@ -227,7 +227,7 @@ function pecoAutojump() {
         @jumplist = split /\t/, $jumplist;
         $jumplist[1] =~ s/ /\\ /g;
         print "$jumplist[1]"
-      }' |peco --query "$LBUFFER"| \
+      }'|egrep -v '^\\ ' |peco --query "$LBUFFER"| \
         pecoAfterAction \
           "%%STDIN%% zleExecuteAsCommand" \
           "%%STDIN%% zlePasteBuffer" \
