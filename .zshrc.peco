@@ -86,7 +86,8 @@ function pecoMdfind() {
 alias mpe=pecoMdfind
 
 function pecoGit() {
-  cd $(git rev-parse --show-toplevel)
+  gitRootDir=$(git rev-parse --show-toplevel)
+  cd "$gitRootDir"
   workDir=$(pwd)
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
     pecoAfterAction "git add" \
@@ -99,7 +100,7 @@ function pecoGit() {
       "vi" \
       "%%STDIN%% paaSafeRm" \
       "paaInputCommandAny"
-  cd $workDir
+  cd "$workDir"
 }
 alias gpe=pecoGit
 
