@@ -148,7 +148,7 @@ function pecoSsh() {
   )
   for candidate in $candidates; do
     echo $candidate
-  done | peco | pecoAfterAction "ssh"
+  done | peco | sort | uniq | pecoAfterAction "ssh"
 }
 alias ss=pecoSsh
 
