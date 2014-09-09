@@ -122,25 +122,9 @@ function pecoGitBranch() {
 }
 alias gpb=pecoGitBranch
 
-function pecoGitBranch() {
-  (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
-    pecoAfterAction "git checkout" \
-      "git checkout " \
-      "git checkout -t" \
-      "git branch -d" \
-      "git branch -D" \
-      "git diff" \
-      "git reset --soft" \
-      "git reset --hard" \
-      "git push origin" \
-      "git pull origin" \
-      "%%STDIN%% pbcopy" \
-      "paaInputCommandAny"
-}
-alias gpb=pecoGitBranch
-
 function pecoGitLog() {
- git log --oneline| peco | awk 'BEGIN{FS= " "}{print $1}'| \
+ git log --pretty=format:'%h - %d %s %cr <%an>'  --abbrev-commit \
+  | peco | awk 'BEGIN{FS= " "}{print $1}'| \
     pecoAfterAction "%%STDIN%% pbcopy" \
       "git show" \
       "git checkout" \
