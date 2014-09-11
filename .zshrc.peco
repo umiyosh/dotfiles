@@ -123,7 +123,7 @@ function pecoGitBranch() {
 alias gpb=pecoGitBranch
 
 function pecoGitLog() {
- git log --pretty=format:'%h - %d %s %cr <%an>'  --abbrev-commit \
+ git log --date=iso --pretty=format:'%h - <%an> %ce - %cd - %d %s ' --abbrev-commit \
   | peco | awk 'BEGIN{FS= " "}{print $1}'| \
     pecoAfterAction "%%STDIN%% pbcopy" \
       "git show" \
