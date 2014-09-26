@@ -151,7 +151,7 @@ function pecoGitRefLog() {
 }
 alias gpr=pecoGitRefLog
 
-function pecoSsh() {
+function _sshSourceAction() {
   # candidates was written by NAKAMURA Yoshitaka
   # Copyright (c) 2011, NAKAMURA Yoshitaka
   # All rights reserved. BSD-3.
@@ -175,11 +175,24 @@ function pecoSsh() {
     localhost
     127.0.0.1
   )
+  echo $candidates
+}
+
+function pecoSsh() {
+  candidates=($(_sshSourceAction))
   for candidate in $candidates; do
     echo $candidate
   done | peco | sort | uniq | pecoAfterAction "ssh"
 }
 alias ss=pecoSsh
+
+function pecoTssh() {
+  candidates=($(_sshSourceAction))
+  for candidate in $candidates; do
+    echo $candidate
+  done | peco | sort | uniq | pecoAfterAction "tssh"
+}
+alias tss=pecoTssh
 
 # %%STDIN%% command => Sournce | command
 # command           => eval command Source
