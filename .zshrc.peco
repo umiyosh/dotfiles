@@ -175,7 +175,7 @@ function _sshSourceAction() {
     localhost
     127.0.0.1
   )
-  echo $candidates
+  echo $(echo $candidates |perl -pe 's/ /\n/g'|sort |uniq)
 }
 
 function pecoSsh() {
