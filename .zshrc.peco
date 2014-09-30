@@ -195,7 +195,7 @@ function pecoTssh() {
 alias tss=pecoTssh
 
 # %%STDIN%% command => Sournce | command
-# command           => eval command Source
+# command           => tmux send-keys command Source
 function pecoAfterAction() {
   Actions=($@)
   Source=( ${(@f)"$(< /dev/stdin)"} )
@@ -215,7 +215,7 @@ function pecoAfterAction() {
       echo $selected
     done | $Action
   else
-    eval $Action $Source < /dev/tty
+    tmux send-keys "$Action $Source" C-m
   fi
 }
 
@@ -237,9 +237,9 @@ function paaExecuteAsCommand() {
   Actions=( ${(@f)"$(< /dev/stdin)"} )
   for Action in $Actions; do
     if [[ $Action =~ ^/ ]]; then
-      $Action
+      tmux send-keys "$Action" C-m
     else
-      ./$Action
+      tmux send-keys "./$Action" C-m
     fi
   done
 }
