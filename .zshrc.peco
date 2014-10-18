@@ -224,6 +224,11 @@ function pecoAfterAction() {
       echo $selected
     done | $Action
   else
+    i=1
+    for selected in $Source; do
+      Source[$i]="'$selected'"
+      i=$((i+1))
+    done
     tmux send-keys "$Action $Source" C-m
   fi
 }
