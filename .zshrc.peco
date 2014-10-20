@@ -46,7 +46,7 @@ function pecoLs(){
     searchPath=$searchPath/
   fi
 
-  find $searchPath -type f -maxdepth 1 -print0 |xargs -0 ls -al | \
+  find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | \
     peco | perl -lane 'print "@F[8..$#F]"' | pecoAfterAction "vi" \
       "cd" \
       'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
@@ -224,6 +224,11 @@ function pecoAfterAction() {
       echo $selected
     done | $Action
   else
+    i=1
+    for selected in $Source; do
+      Source[$i]="'$selected'"
+      i=$((i+1))
+    done
     tmux send-keys "$Action $Source" C-m
   fi
 }
