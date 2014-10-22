@@ -182,6 +182,8 @@ call vundle#rc()
   Bundle 'davidoc/taskpaper.vim'
   " repeat.vim
   Bundle 'tpope/vim-repeat'
+  " ag.vim
+  Bundle 'rking/ag.vim'
   "
 " }}}
 
