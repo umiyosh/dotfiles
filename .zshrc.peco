@@ -97,8 +97,8 @@ alias mpe=pecoMdfind
 
 function pecoGitStatus() {
   gitRootDir=$(git rev-parse --show-toplevel)
-  cd "$gitRootDir"
   workDir=$(pwd)
+  cd "$gitRootDir"
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
     pecoAfterAction "git add" \
       "git checkout" \
