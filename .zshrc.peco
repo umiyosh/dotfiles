@@ -117,7 +117,6 @@ alias gps=pecoGitStatus
 function pecoGitBranch() {
   (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
     pecoAfterAction "git checkout" \
-      "git checkout " \
       "git checkout -t" \
       "git branch -d" \
       "git branch -D" \
