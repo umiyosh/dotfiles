@@ -184,6 +184,8 @@ call vundle#rc()
   Bundle 'tpope/vim-repeat'
   " ag.vim
   Bundle 'rking/ag.vim'
+  " ag.vim
+  Bundle 'vim-scripts/DirDiff.vim'
   "
 " }}}
 
