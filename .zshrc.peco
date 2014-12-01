@@ -110,7 +110,7 @@ function pecoGitStatus() {
       "vi" \
       "%%STDIN%% paaSafeRm" \
       "paaInputCommandAny"
-  cd "$workDir"
+  _executeTmuxBuffer "cd $workDir"
 }
 alias gps=pecoGitStatus
 
@@ -261,6 +261,7 @@ function _executeTmuxBuffer() {
   Commands=($@)
   tmux send-keys $Commands C-m
 }
+
 function _pasteTmuxBuffer() {
   Commands=($@)
   tmux send-keys $Commands
