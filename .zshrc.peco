@@ -228,7 +228,7 @@ function pecoAfterAction() {
       Source[$i]="'$selected'"
       i=$((i+1))
     done
-    tmux send-keys "$Action $Source" C-m
+    _executeTmuxBuffer "$Action $Source"
   fi
 }
 
@@ -250,11 +250,20 @@ function paaExecuteAsCommand() {
   Actions=( ${(@f)"$(< /dev/stdin)"} )
   for Action in $Actions; do
     if [[ $Action =~ ^/ ]]; then
-      tmux send-keys "$Action" C-m
+      _executeTmuxBuffer "$Action"
     else
-      tmux send-keys "./$Action" C-m
+      _executeTmuxBuffer "./$Action"
     fi
   done
+}
+
+function _executeTmuxBuffer() {
+  Commands=($@)
+  tmux send-keys $Commands C-m
+}
+function _pasteTmuxBuffer() {
+  Commands=($@)
+  tmux send-keys $Commands
 }
 
 function zlePasteBuffer() {
