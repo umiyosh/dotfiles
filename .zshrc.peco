@@ -68,7 +68,9 @@ function pecoFind() {
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
 }
-alias fpe=pecoFind
+alias fp=pecoFind
+alias f="fp . -name '.git' -prune -o -print"
+alias fd="fp . -name '.git' -prune -o -type d"
 alias r="fpe ~/bin/ ~/dotfiles/bin/ ~/local/bin/ -type f"
 
 function pecoLocate() {
@@ -207,6 +209,7 @@ alias tss=pecoTssh
 function pecoAfterAction() {
   Actions=($@)
   Source=( ${(@f)"$(< /dev/stdin)"} )
+  # Source=($(_fixSource $unEscapedSource))
   if [[ $#Actions -gt 1 ]]; then
     Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
   else
