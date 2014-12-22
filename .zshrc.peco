@@ -99,8 +99,8 @@ alias mpe=pecoMdfind
 
 function pecoGitStatus() {
   gitRootDir=$(git rev-parse --show-toplevel)
-  workDir=$(pwd)
   cd "$gitRootDir"
+  workDir=$(pwd)
   (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
     pecoAfterAction "git add" \
       "git checkout" \
@@ -326,6 +326,8 @@ function pecoAutojump() {
       for $jumplist (reverse @line){
         @jumplist = split /\t/, $jumplist;
         $jumplist[1] =~ s/ /\\ /g;
+        $jumplist[1] =~ s/[()]/\\ /g;
+        $jumplist[1] =~ s/[[]]/\\ /g;
         print "$jumplist[1]"
       }'|egrep -v '^\\ ' |peco --query "$LBUFFER"| \
         pecoAfterAction \
