@@ -23,7 +23,7 @@ function pecoFu()
   for i in $(seq 1 40)
   do
     cmdline-fu matching $1 browse $i &
-  done |pecoPipe
+  done |_removeColor|pecoPipe
 }
 alias fu=pecoFu
 
@@ -274,6 +274,11 @@ function paaExecuteAsCommand() {
   done
 }
 
+function _removeColor()
+{
+  # TODO:-rと-Eの分岐
+  col | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
+}
 function _executeTmuxBuffer() {
   Commands=($@)
   tmux send-keys $Commands C-m
