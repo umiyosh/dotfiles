@@ -15,15 +15,14 @@ alias p=pecoPipe
 
 # need cmdline-fu gem package
 # % gem i cmdline-fu
-# TODO: カラーコードの除去
 # TODO: pecoAfterActionの再定義
 # TODO: 意味とコマンドの単一行出力
 function pecoFu()
 {
   for i in $(seq 1 40)
   do
-    cmdline-fu matching $1 browse $i &
-  done |_removeColor|pecoPipe
+    cmdline-fu -n matching $1 browse $i &
+  done |pecoPipe
 }
 alias fu=pecoFu
 
