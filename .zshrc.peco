@@ -13,6 +13,14 @@ function pecoPipe() {
 }
 alias p=pecoPipe
 
+function pecoFu()
+{
+  for i in $(seq 1 40)
+  do
+  cmdline-fu matching $1 browse $i
+  done |pecoPipe
+}
+
 function pecoCdr() {
   dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
 }
