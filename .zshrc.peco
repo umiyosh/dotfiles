@@ -15,6 +15,9 @@ alias p=pecoPipe
 
 # need cmdline-fu gem package
 # % gem i cmdline-fu
+# TODO: カラーコードの除去
+# TODO: pecoAfterActionの再定義
+# TODO: 意味とコマンドの単一行出力
 function pecoFu()
 {
   for i in $(seq 1 40)
