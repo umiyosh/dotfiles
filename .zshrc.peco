@@ -19,7 +19,7 @@ function pecoFu()
 {
   for i in $(seq 1 40)
   do
-    cmdline-fu matching $1 browse $i
+    cmdline-fu matching $1 browse $i &
   done |pecoPipe
 }
 alias fu=pecoFu
