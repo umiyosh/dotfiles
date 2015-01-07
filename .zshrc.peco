@@ -221,8 +221,7 @@ alias tss=pecoTssh
 # command           => tmux send-keys command Source
 function pecoAfterAction() {
   Actions=($@)
-  Source=( ${(@f)"$(< /dev/stdin)"} )
-  # Source=($(_fixSource $unEscapedSource))
+  Source=( ${(@f)"$(< /dev/stdin|_escapePath)"} )
   if [[ $#Actions -gt 1 ]]; then
     Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
   else
@@ -278,6 +277,22 @@ function _removeColor()
   # TODO:-rと-Eの分岐
   col | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
 }
+
+function _escapePath()
+{
+  perl -e '
+    while (<STDIN>) {
+      chomp;
+      if (-e $_) {
+        $_ =~ s/ /\\ /g;
+        $_ =~ s/([()])/\\$1/g;
+        $_ =~ s/([[]])/\\$1/g;
+      }
+      print $_ . "\n";
+    }
+  '
+}
+
 function _executeTmuxBuffer() {
   Commands=($@)
   tmux send-keys $Commands C-m
@@ -343,11 +358,8 @@ function pecoAutojump() {
       while(<>){push @line, $_}
       for $jumplist (reverse @line){
         @jumplist = split /\t/, $jumplist;
-        $jumplist[1] =~ s/ /\\ /g;
-        $jumplist[1] =~ s/[()]/\\ /g;
-        $jumplist[1] =~ s/[[]]/\\ /g;
         print "$jumplist[1]"
-      }'|egrep -v '^\\ ' |peco --query "$LBUFFER"| \
+      }'|egrep -v '^[^/]' |peco --query "$LBUFFER"| \
         pecoAfterAction \
           "%%STDIN%% zleExecuteAsCommand" \
           "%%STDIN%% zlePasteBuffer" \
