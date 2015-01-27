@@ -125,7 +125,7 @@ function pecoGitStatus() {
       "vi" \
       "%%STDIN%% paaSafeRm" \
       "paaInputCommandAny"
-  _executeTmuxBuffer "cd $workDir"
+  _executeTmuxBuffer "cd '$workDir'"
 }
 alias gps=pecoGitStatus
 
