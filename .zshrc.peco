@@ -205,7 +205,8 @@ function pecoSsh() {
   candidates=($(_sshSourceAction))
   for candidate in $candidates; do
     echo $candidate
-  done | peco | sort | uniq | pecoAfterAction "ssh"
+  done | peco | sort | uniq | pecoAfterAction "ssh" \
+                                "%%STDIN%% pbcopy"
 }
 alias ss=pecoSsh
 
@@ -213,7 +214,8 @@ function pecoTssh() {
   candidates=($(_sshSourceAction))
   for candidate in $candidates; do
     echo $candidate
-  done | peco | sort | uniq | pecoAfterAction "tssh"
+  done | peco | sort | uniq | pecoAfterAction "tssh" \
+                                "%%STDIN%% pbcopy"
 }
 alias tss=pecoTssh
 
