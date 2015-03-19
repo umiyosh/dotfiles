@@ -58,7 +58,7 @@ alias cp='nocorrect cp -irp'
 alias erl='nocorrect erl'
 alias sbcl='nocorrect sbcl'
 alias gosh='nocorrect gosh'
-alias node='nocorrect node'
+# alias node='nocorrect node'
 alias hg='nocorrect hg --encoding=utf-8'
 
 # scala
