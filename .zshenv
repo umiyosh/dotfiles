@@ -8,3 +8,5 @@ fi
 eval "$($HOME/Dropbox/bin/addticket/bin/addticket init -)"
 
 export PATH=$PATH:${HOME}/.nodebrew/current/bin
+export PATH=$PATH:${HOME}/.composer/vendor/bin
+
