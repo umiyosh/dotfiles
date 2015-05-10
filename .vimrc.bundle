@@ -186,6 +186,8 @@ call vundle#rc()
   Bundle 'rking/ag.vim'
   " ag.vim
   Bundle 'vim-scripts/DirDiff.vim'
+  " benchvimrc-vim
+  Bundle 'mattn/benchvimrc-vim'
   "
 " }}}
 
