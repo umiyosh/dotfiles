@@ -523,3 +523,20 @@ bindkey "^V" '^G^V'
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# perlbrew
+if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
+  source $HOME/perl5/perlbrew/etc/bashrc
+fi
+
+# redmine tool
+eval "$($HOME/Dropbox/bin/addticket/bin/addticket init -)"
+
+# node関連
+export PATH=$PATH:${HOME}/.nodebrew/current/bin
+
+# composer
+export PATH=$PATH:${HOME}/.composer/vendor/bin
+
+# ローカルなやつ
+[[ -f $HOME/.zshenv.local ]] && source "$HOME/.zshenv.local"
