@@ -534,6 +534,7 @@ eval "$($HOME/Dropbox/bin/addticket/bin/addticket init -)"
 
 # node関連
 export PATH=$PATH:${HOME}/.nodebrew/current/bin
+. <(npm completion)
 
 # composer
 export PATH=$PATH:${HOME}/.composer/vendor/bin
