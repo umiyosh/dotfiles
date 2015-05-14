@@ -96,6 +96,8 @@ call vundle#rc()
   Bundle 'joonty/vdebug'
   " phpを整える
   Bundle 'stephpy/vim-php-cs-fixer'
+  " Node.js用
+  Bundle 'moll/vim-node'
   " vital.vim
   Bundle 'vim-jp/vital.vim'
 " }}}
