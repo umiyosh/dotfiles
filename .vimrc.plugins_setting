@@ -181,7 +181,7 @@ function! s:vimfiler_my_exploler()
     :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
   endif
 endfunction
-autocmd VimEnter * call s:vimfiler_my_exploler()
+" autocmd VimEnter * call s:vimfiler_my_exploler()
 
 "------------------------------------
 " unite.vim
