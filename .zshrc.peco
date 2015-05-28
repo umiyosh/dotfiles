@@ -297,12 +297,13 @@ function _escapePath()
 
 function _executeTmuxBuffer() {
   Commands=($@)
-  tmux send-keys $Commands C-m
+  print -z $Commands
+  tmux send-keys C-m
 }
 
 function _pasteTmuxBuffer() {
   Commands=($@)
-  tmux send-keys $Commands
+  print -z $Commands
 }
 
 function zlePasteBuffer() {
