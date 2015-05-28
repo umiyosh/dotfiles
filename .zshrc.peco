@@ -60,7 +60,7 @@ function pecoLs(){
   fi
 
   find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | \
-    peco | perl -lane 'print "@F[8..$#F]"' | pecoAfterAction "vi" \
+    peco | perl -lane 'print "@F[8..$#F]"' | _getAbsolutePath $searchPath | pecoAfterAction "vi" \
       "cd" \
       'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
       'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
@@ -293,6 +293,25 @@ function _escapePath()
       print $_ . "\n";
     }
   '
+}
+
+function _getAbsolutePath() {
+  if [[ -n $1 ]]; then
+    pathstrSub="$1/"
+  else
+    pathstrSub=""
+  fi
+  while read pathstr;do
+    case "${OSTYPE}" in
+      freebsd*|darwin*)
+        absolutePath=$(greadlink -f ${pathstrSub}$pathstr)
+        ;;
+      linux*)
+        absolutePath=$(readlink -f ${pathstrSub}$pathstr)
+        ;;
+    esac
+    echo ${absolutePath}
+  done
 }
 
 function _executeTmuxBuffer() {
