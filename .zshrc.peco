@@ -1,6 +1,8 @@
 # peco
 # TODO autoload化 http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
-alias -g P='| p'
+source ~/dotfiles/.zshrc.peco.lib
+source ~/dotfiles/.zshrc.peco.widgets
+source ~/dotfiles/.zshrc.peco.aliases
 
 function pecoPipe() {
   peco | pecoAfterAction "vi" \
@@ -11,7 +13,6 @@ function pecoPipe() {
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
 }
-alias p=pecoPipe
 
 # need cmdline-fu gem package
 # % gem i cmdline-fu
@@ -24,12 +25,10 @@ function pecoFu()
     cmdline-fu -n matching $1 browse $i &
   done |pecoPipe
 }
-alias fu=pecoFu
 
 function pecoCdr() {
   dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
 }
-alias cdr=pecoCdr
 
 function pecoKill() {
     for pid in `ps aux | peco | awk '{ print $2 }'`
@@ -38,17 +37,14 @@ function pecoKill() {
         echo "Killed ${pid}"
     done
 }
-alias pk="pecoKill"
 
 function pecoAg () {
   ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
 }
-alias agv=pecoAg
 
 function pecoAck () {
   ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
 }
-alias ackv=pecoAck
 
 function pecoLs(){
   searchPath=$@
@@ -69,7 +65,6 @@ function pecoLs(){
       "%%STDIN%% pbcopy" \
       "%%STDIN%% paaExecuteAsCommand"
 }
-alias l=pecoLs
 
 function pecoFind() {
   find $@ | peco | pecoAfterAction "vi" \
@@ -81,10 +76,6 @@ function pecoFind() {
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
 }
-alias fp=pecoFind
-alias f="fp  . -name '.git' -prune -o     -print"
-alias fd="fp . -name '.git' -prune -o     -type d"
-alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
 
 function pecoLocate() {
   locate $@ | peco | pecoAfterAction "vi" \
@@ -96,7 +87,6 @@ function pecoLocate() {
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
 }
-alias lpe=pecoLocate
 
 function pecoMdfind() {
   mdfind $@ | peco | pecoAfterAction "vi" \
@@ -108,7 +98,6 @@ function pecoMdfind() {
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaExecuteAsCommand"
 }
-alias mpe=pecoMdfind
 
 function pecoGitStatus() {
   gitRootDir=$(git rev-parse --show-toplevel)
@@ -127,7 +116,6 @@ function pecoGitStatus() {
       "paaInputCommandAny"
   _executeTmuxBuffer "cd '$workDir'"
 }
-alias gps=pecoGitStatus
 
 function pecoGitBranch() {
   (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
@@ -143,7 +131,6 @@ function pecoGitBranch() {
       "%%STDIN%% pbcopy" \
       "paaInputCommandAny"
 }
-alias gpb=pecoGitBranch
 
 function pecoGitLog() {
  git log --date=iso --pretty=format:'%h - <%an> %ce - %cd - %d %s ' --abbrev-commit \
@@ -158,7 +145,6 @@ function pecoGitLog() {
       "git reset --hard" \
       "paaInputCommandAny"
 }
-alias gpl=pecoGitLog
 
 function pecoGitRefLog() {
  git reflog | peco | awk 'BEGIN{FS= " "}{print $1}'| \
@@ -172,34 +158,6 @@ function pecoGitRefLog() {
       "git reset --hard" \
       "paaInputCommandAny"
 }
-alias gpr=pecoGitRefLog
-
-function _sshSourceAction() {
-  # candidates was written by NAKAMURA Yoshitaka
-  # Copyright (c) 2011, NAKAMURA Yoshitaka
-  # All rights reserved. BSD-3.
-  # https://github.com/zsh-users/zaw/blob/master/LICENSE
-  local -a _global_ssh_known_hosts _global_ssh_known_hosts2 _ssh_known_hosts _ssh_known_hosts2 _etc_hosts _ssh_config_hosts
-  [ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_known_hosts=(${${${(f)"$(< /etc/ssh/ssh_known_hosts)"}%%\ *}%%,*}) 2>/dev/null || _global_ssh_known_hosts=()
-  [ -r /etc/ssh/ssh_known_hosts2 ] && _global_ssh_known_hosts2=(${${${(f)"$(< /etc/ssh/ssh_known_hosts2)"}%%\ *}%%,*}) 2>/dev/null || _global_ssh_known_hosts2=()
-  [ -r "$HOME/.ssh/known_hosts" ] && _ssh_known_hosts=(${${${(f)"$(< ~/.ssh/known_hosts)"}%%\ *}%%,*}) 2>/dev/null || _ssh_known_hosts=()
-  [ -r "$HOME/.ssh/known_hosts2" ] && _ssh_known_hosts=(${${${(f)"$(< ~/.ssh/known_hosts2)"}%%\ *}%%,*}) 2>/dev/null || _ssh_known_hosts2=()
-  [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
-  [ -r "$HOME/.ssh/config" ] && _ssh_config_hosts=(${${${(@M)${(f)"$(< ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*}) || _ssh_config_hosts=()
-  candidates=(
-    $_global_ssh_known_hosts[@]
-    $_global_ssh_known_hosts2[@]
-    $_ssh_known_hosts[@]
-    $_ssh_known_hosts2[@]
-    $_etc_hosts[@]
-    $_ssh_config_hosts[@]
-    "$HOST"
-    ::1
-    localhost
-    127.0.0.1
-  )
-  echo $(echo $candidates |perl -pe 's/ /\n/g'|sort |uniq)
-}
 
 function pecoSsh() {
   candidates=($(_sshSourceAction))
@@ -208,7 +166,6 @@ function pecoSsh() {
   done | peco | sort | uniq | pecoAfterAction "ssh" \
                                 "%%STDIN%% pbcopy"
 }
-alias ss=pecoSsh
 
 function pecoTssh() {
   candidates=($(_sshSourceAction))
@@ -217,175 +174,4 @@ function pecoTssh() {
   done | peco | sort | uniq | pecoAfterAction "tssh" \
                                 "%%STDIN%% pbcopy"
 }
-alias tss=pecoTssh
 
-# %%STDIN%% command => Sournce | command
-# command           => tmux send-keys command Source
-function pecoAfterAction() {
-  Actions=($@)
-  Source=( ${(@f)"$(< /dev/stdin|_escapePath)"} )
-  if [[ $#Actions -gt 1 ]]; then
-    Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
-  else
-    Action=$Actions
-  fi
-  if [[ -z $Source || -z $Action ]]; then
-    echo
-    echo nothing selected
-    return
-  fi
-  if [[ $Action =~ ^%%STDIN%% ]]; then
-    Action=$(echo $Action | perl -pe 's/^%%STDIN%% +//g')
-    for selected in $Source; do
-      echo $selected
-    done | $Action
-  else
-    i=1
-    for selected in $Source; do
-      Source[$i]="'$selected'"
-      i=$((i+1))
-    done
-    _executeTmuxBuffer "$Action $Source"
-  fi
-}
-
-# peco after action define
-function paaInputCommandAny() {
-  echo -n "command?:"
-  read command
-  eval $command $@
-}
-
-function paaSafeRm() {
-  files=( ${(@f)"$(< /dev/stdin)"} )
-  for file in $files; do
-    rm -ri "$file" </dev/tty
-  done
-}
-
-function paaExecuteAsCommand() {
-  Actions=( ${(@f)"$(< /dev/stdin)"} )
-  for Action in $Actions; do
-    if [[ $Action =~ ^/ ]]; then
-      _executeTmuxBuffer "$Action"
-    else
-      _executeTmuxBuffer "./$Action"
-    fi
-  done
-}
-
-function _removeColor()
-{
-  # TODO:-rと-Eの分岐
-  col | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
-}
-
-function _escapePath()
-{
-  perl -e '
-    while (<STDIN>) {
-      chomp;
-      if (-e $_) {
-        $_ =~ s/ /\\ /g;
-        $_ =~ s/([\(\)])/\\$1/g;
-        $_ =~ s/([\[\]])/\\$1/g;
-      }
-      print $_ . "\n";
-    }
-  '
-}
-
-function _getAbsolutePath() {
-  if [[ -n $1 ]]; then
-    pathstrSub="$1/"
-  else
-    pathstrSub=""
-  fi
-  while read pathstr;do
-    case "${OSTYPE}" in
-      freebsd*|darwin*)
-        absolutePath=$(greadlink -f ${pathstrSub}$pathstr)
-        ;;
-      linux*)
-        absolutePath=$(readlink -f ${pathstrSub}$pathstr)
-        ;;
-    esac
-    echo ${absolutePath}
-  done
-}
-
-function _executeTmuxBuffer() {
-  Commands=($@)
-  print -z $Commands
-  tmux send-keys C-m
-}
-
-function _pasteTmuxBuffer() {
-  Commands=($@)
-  print -z $Commands
-}
-
-function zlePasteBuffer() {
-  Selected=( ${(@f)"$(< /dev/stdin)"} )
-  pasteBuf=$Selected[1]
-  shift Selected
-  for Action in $Selected; do
-      pasteBuf="$pasteBuf ;$Action"
-  done
-  BUFFER=$pasteBuf
-  CURSOR=$#BUFFER
-  zle clear-screen
-}
-function zleExecuteAsCommand() {
-  Selected=( ${(@f)"$(< /dev/stdin)"} )
-  pasteBuf=$Selected[1]
-  shift Selected
-  for Action in $Selected; do
-      pasteBuf="$pasteBuf ;$Action"
-  done
-  BUFFER=$pasteBuf
-  zle accept-line
-}
-
-# Widgets
-## git add をpecoでする
-## http://petitviolet.hatenablog.com/entry/20140722/1406034439
-function peco-select-gitadd() {
-    local SELECTED_FILE_TO_ADD="$(git status --porcelain | \
-                                  peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{print $NF}')"
-    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
-      BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
-      CURSOR=$#BUFFER
-    fi
-    zle accept-line
-}
-zle -N peco-select-gitadd
-bindkey "^a^a" peco-select-gitadd
-
-# peco history
-function pecoHistory() {
-    history 0 | tail -r | perl -lane 'print "@F[1..$#F]"' |peco --query "$LBUFFER"| \
-      pecoAfterAction \
-        "%%STDIN%% zleExecuteAsCommand" \
-        "%%STDIN%% zlePasteBuffer" \
-        "%%STDIN%% pbcopy"
-}
-zle -N pecoHistory
-bindkey '^r' pecoHistory
-
-# peco autojump
-function pecoAutojump() {
-    autojump --stat | perl -e '
-      while(<>){push @line, $_}
-      for $jumplist (reverse @line){
-        @jumplist = split /\t/, $jumplist;
-        print "$jumplist[1]"
-      }'|egrep -v '^[^/]' |peco --query "$LBUFFER"| \
-        pecoAfterAction \
-          "%%STDIN%% zleExecuteAsCommand" \
-          "%%STDIN%% zlePasteBuffer" \
-          "%%STDIN%% pbcopy"
-}
-zle -N pecoAutojump
-bindkey '^j' pecoAutojump

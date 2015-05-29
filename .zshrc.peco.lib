@@ -1,0 +1,234 @@
+#!/usr/bin/env zsh
+
+# %%STDIN%% command => Sournce | command
+# command           => tmux send-keys command Source
+function pecoAfterAction() {
+  Actions=($@)
+  Source=( ${(@f)"$(< /dev/stdin|_escapePath)"} )
+  if [[ $#Actions -gt 1 ]]; then
+    Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
+  else
+    Action=$Actions
+  fi
+  if [[ -z $Source || -z $Action ]]; then
+    echo
+    echo nothing selected
+    return
+  fi
+  if [[ $Action =~ ^%%STDIN%% ]]; then
+    Action=$(echo $Action | perl -pe 's/^%%STDIN%% +//g')
+    for selected in $Source; do
+      echo $selected
+    done | $Action
+  else
+    i=1
+    for selected in $Source; do
+      Source[$i]="'$selected'"
+      i=$((i+1))
+    done
+    _executeTmuxBuffer "$Action $Source"
+  fi
+}
+
+# peco after action define
+function paaInputCommandAny() {
+  echo -n "command?:"
+  read command
+  eval $command $@
+}
+
+function paaSafeRm() {
+  files=( ${(@f)"$(< /dev/stdin)"} )
+  for file in $files; do
+    rm -ri "$file" </dev/tty
+  done
+}
+
+function paaExecuteAsCommand() {
+  Actions=( ${(@f)"$(< /dev/stdin)"} )
+  for Action in $Actions; do
+    if [[ $Action =~ ^/ ]]; then
+      _executeTmuxBuffer "$Action"
+    else
+      _executeTmuxBuffer "./$Action"
+    fi
+  done
+}
+
+function _removeColor()
+{
+  # TODO:-rと-Eの分岐
+  col | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
+}
+
+function _escapePath()
+{
+  perl -e '
+    while (<STDIN>) {
+      chomp;
+      if (-e $_) {
+        $_ =~ s/ /\\ /g;
+        $_ =~ s/([\(\)])/\\$1/g;
+        $_ =~ s/([\[\]])/\\$1/g;
+      }
+      print $_ . "\n";
+    }
+  '
+}
+
+function _getAbsolutePath() {
+  if [[ -n $1 ]]; then
+    pathstrSub="$1/"
+  else
+    pathstrSub=""
+  fi
+  while read pathstr;do
+    case "${OSTYPE}" in
+      freebsd*|darwin*)
+        absolutePath=$(greadlink -f ${pathstrSub}$pathstr)
+        ;;
+      linux*)
+        absolutePath=$(readlink -f ${pathstrSub}$pathstr)
+        ;;
+    esac
+    echo ${absolutePath}
+  done
+}
+
+function _executeTmuxBuffer() {
+  Commands=($@)
+  print -z $Commands
+  tmux send-keys C-m
+}
+
+function _pasteTmuxBuffer() {
+  Commands=($@)
+  print -z $Commands
+}
+
+function _sshSourceAction() {
+  # candidates was written by NAKAMURA Yoshitaka
+  # Copyright (c) 2011, NAKAMURA Yoshitaka
+  # All rights reserved. BSD-3.
+  # https://github.com/zsh-users/zaw/blob/master/LICENSE
+  local -a _global_ssh_known_hosts _global_ssh_known_hosts2 _ssh_known_hosts _ssh_known_hosts2 _etc_hosts _ssh_config_hosts
+  [ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_known_hosts=(${${${(f)"$(< /etc/ssh/ssh_known_hosts)"}%%\ *}%%,*}) 2>/dev/null || _global_ssh_known_hosts=()
+  [ -r /etc/ssh/ssh_known_hosts2 ] && _global_ssh_known_hosts2=(${${${(f)"$(< /etc/ssh/ssh_known_hosts2)"}%%\ *}%%,*}) 2>/dev/null || _global_ssh_known_hosts2=()
+  [ -r "$HOME/.ssh/known_hosts" ] && _ssh_known_hosts=(${${${(f)"$(< ~/.ssh/known_hosts)"}%%\ *}%%,*}) 2>/dev/null || _ssh_known_hosts=()
+  [ -r "$HOME/.ssh/known_hosts2" ] && _ssh_known_hosts=(${${${(f)"$(< ~/.ssh/known_hosts2)"}%%\ *}%%,*}) 2>/dev/null || _ssh_known_hosts2=()
+  [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
+  [ -r "$HOME/.ssh/config" ] && _ssh_config_hosts=(${${${(@M)${(f)"$(< ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*}) || _ssh_config_hosts=()
+  candidates=(
+    $_global_ssh_known_hosts[@]
+    $_global_ssh_known_hosts2[@]
+    $_ssh_known_hosts[@]
+    $_ssh_known_hosts2[@]
+    $_etc_hosts[@]
+    $_ssh_config_hosts[@]
+    "$HOST"
+    ::1
+    localhost
+    127.0.0.1
+  )
+  echo $(echo $candidates |perl -pe 's/ /\n/g'|sort |uniq)
+}
+
+# peco after action define
+function paaInputCommandAny() {
+  echo -n "command?:"
+  read command
+  eval $command $@
+}
+
+function paaSafeRm() {
+  files=( ${(@f)"$(< /dev/stdin)"} )
+  for file in $files; do
+    rm -ri "$file" </dev/tty
+  done
+}
+
+function paaExecuteAsCommand() {
+  Actions=( ${(@f)"$(< /dev/stdin)"} )
+  for Action in $Actions; do
+    if [[ $Action =~ ^/ ]]; then
+      _executeTmuxBuffer "$Action"
+    else
+      _executeTmuxBuffer "./$Action"
+    fi
+  done
+}
+
+function _removeColor()
+{
+  # TODO:-rと-Eの分岐
+  col | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
+}
+
+function _escapePath()
+{
+  perl -e '
+    while (<STDIN>) {
+      chomp;
+      if (-e $_) {
+        $_ =~ s/ /\\ /g;
+        $_ =~ s/([\(\)])/\\$1/g;
+        $_ =~ s/([\[\]])/\\$1/g;
+      }
+      print $_ . "\n";
+    }
+  '
+}
+
+function _getAbsolutePath() {
+  if [[ -n $1 ]]; then
+    pathstrSub="$1/"
+  else
+    pathstrSub=""
+  fi
+  while read pathstr;do
+    case "${OSTYPE}" in
+      freebsd*|darwin*)
+        absolutePath=$(greadlink -f ${pathstrSub}$pathstr)
+        ;;
+      linux*)
+        absolutePath=$(readlink -f ${pathstrSub}$pathstr)
+        ;;
+    esac
+    echo ${absolutePath}
+  done
+}
+
+function _executeTmuxBuffer() {
+  Commands=($@)
+  print -z $Commands
+  tmux send-keys C-m
+}
+
+function _pasteTmuxBuffer() {
+  Commands=($@)
+  print -z $Commands
+}
+
+# for widgets function
+function zlePasteBuffer() {
+  Selected=( ${(@f)"$(< /dev/stdin)"} )
+  pasteBuf=$Selected[1]
+  shift Selected
+  for Action in $Selected; do
+      pasteBuf="$pasteBuf ;$Action"
+  done
+  BUFFER=$pasteBuf
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+function zleExecuteAsCommand() {
+  Selected=( ${(@f)"$(< /dev/stdin)"} )
+  pasteBuf=$Selected[1]
+  shift Selected
+  for Action in $Selected; do
+      pasteBuf="$pasteBuf ;$Action"
+  done
+  BUFFER=$pasteBuf
+  zle accept-line
+}
+
