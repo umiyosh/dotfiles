@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+#概要：git statusで出てくるファイルをいろいろする
+gitRootDir=$(git rev-parse --show-toplevel)
+cd "$gitRootDir"
+workDir=$(pwd)
+(git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
+  pecoAfterAction "git add" \
+    "git checkout" \
+    "git reset HEAD" \
+    "git diff" \
+    "git diff --cached" \
+    "git rm" \
+    "%%STDIN%% pbcopy" \
+    "vi" \
+    "%%STDIN%% paaSafeRm" \
+    "paaInputCommandAny"
+_executeTmuxBuffer "cd '$workDir'"
+

@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+# 概要: lsしてpecoしてアクションする
+searchPath=$@
+if [[ -z $searchPath ]]; then
+  searchPath="."
+fi
+if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
+  searchPath=$searchPath/
+fi
+
+find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | \
+  peco | perl -lane 'print "@F[8..$#F]"' | _getAbsolutePath $searchPath | pecoAfterAction "vi" \
+    "cd" \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+    "%%STDIN%% paaSafeRm" \
+    "paaInputCommandAny" \
+    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaExecuteAsCommand"
+

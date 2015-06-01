@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+#概要：known_hostsなどからssh先をpecoして接続する
+candidates=($(_sshSourceAction))
+for candidate in $candidates; do
+  echo $candidate
+done | peco | sort | uniq | pecoAfterAction "ssh" \
+                              "%%STDIN%% pbcopy"
+

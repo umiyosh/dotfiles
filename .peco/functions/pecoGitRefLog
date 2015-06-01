@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+#概要：git reflogにたいしていろいろやる
+git reflog | peco | awk 'BEGIN{FS= " "}{print $1}'| \
+  pecoAfterAction "%%STDIN%% pbcopy" \
+    "git show" \
+    "git checkout" \
+    "git checkout " \
+    "git checkout -t" \
+    "git diff" \
+    "git reset --soft" \
+    "git reset --hard" \
+    "paaInputCommandAny"
+

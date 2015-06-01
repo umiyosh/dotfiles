@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+#概要：mdfindしてpecoしてactionする
+mdfind $@ | peco | pecoAfterAction "vi" \
+  "cd" \
+  'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
+  'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+  "%%STDIN%% paaSafeRm" \
+  "paaInputCommandAny" \
+  "%%STDIN%% pbcopy" \
+  "%%STDIN%% paaExecuteAsCommand"
+

@@ -13,133 +13,14 @@ autoload pecoCdr
 autoload pecoKill
 autoload pecoAg
 autoload pecoAck
-
-function pecoLs(){
-  searchPath=$@
-  if [[ -z $searchPath ]]; then
-    searchPath="."
-  fi
-  if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
-    searchPath=$searchPath/
-  fi
-
-  find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | \
-    peco | perl -lane 'print "@F[8..$#F]"' | _getAbsolutePath $searchPath | pecoAfterAction "vi" \
-      "cd" \
-      'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
-      'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-      "%%STDIN%% paaSafeRm" \
-      "paaInputCommandAny" \
-      "%%STDIN%% pbcopy" \
-      "%%STDIN%% paaExecuteAsCommand"
-}
-
-function pecoFind() {
-  find $@ | peco | pecoAfterAction "vi" \
-    "cd" \
-    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
-    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "%%STDIN%% paaSafeRm" \
-    "paaInputCommandAny" \
-    "%%STDIN%% pbcopy" \
-    "%%STDIN%% paaExecuteAsCommand"
-}
-
-function pecoLocate() {
-  locate $@ | peco | pecoAfterAction "vi" \
-    "cd" \
-    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
-    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "%%STDIN%% paaSafeRm" \
-    "paaInputCommandAny" \
-    "%%STDIN%% pbcopy" \
-    "%%STDIN%% paaExecuteAsCommand"
-}
-
-function pecoMdfind() {
-  mdfind $@ | peco | pecoAfterAction "vi" \
-    "cd" \
-    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
-    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "%%STDIN%% paaSafeRm" \
-    "paaInputCommandAny" \
-    "%%STDIN%% pbcopy" \
-    "%%STDIN%% paaExecuteAsCommand"
-}
-
-function pecoGitStatus() {
-  gitRootDir=$(git rev-parse --show-toplevel)
-  cd "$gitRootDir"
-  workDir=$(pwd)
-  (git status --porcelain;git ls-files) | peco | awk 'BEGIN{FS= " "}{print $NF}'| \
-    pecoAfterAction "git add" \
-      "git checkout" \
-      "git reset HEAD" \
-      "git diff" \
-      "git diff --cached" \
-      "git rm" \
-      "%%STDIN%% pbcopy" \
-      "vi" \
-      "%%STDIN%% paaSafeRm" \
-      "paaInputCommandAny"
-  _executeTmuxBuffer "cd '$workDir'"
-}
-
-function pecoGitBranch() {
-  (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
-    pecoAfterAction "git checkout" \
-      "git checkout -t" \
-      "git branch -d" \
-      "git branch -D" \
-      "git diff" \
-      "git reset --soft" \
-      "git reset --hard" \
-      "git push origin" \
-      "git pull origin" \
-      "%%STDIN%% pbcopy" \
-      "paaInputCommandAny"
-}
-
-function pecoGitLog() {
- git log --date=iso --pretty=format:'%h - <%an> %ce - %cd - %d %s ' --abbrev-commit \
-  | peco | awk 'BEGIN{FS= " "}{print $1}'| \
-    pecoAfterAction "%%STDIN%% pbcopy" \
-      "git show" \
-      "git checkout" \
-      "git checkout " \
-      "git checkout -t" \
-      "git diff" \
-      "git reset --soft" \
-      "git reset --hard" \
-      "paaInputCommandAny"
-}
-
-function pecoGitRefLog() {
- git reflog | peco | awk 'BEGIN{FS= " "}{print $1}'| \
-    pecoAfterAction "%%STDIN%% pbcopy" \
-      "git show" \
-      "git checkout" \
-      "git checkout " \
-      "git checkout -t" \
-      "git diff" \
-      "git reset --soft" \
-      "git reset --hard" \
-      "paaInputCommandAny"
-}
-
-function pecoSsh() {
-  candidates=($(_sshSourceAction))
-  for candidate in $candidates; do
-    echo $candidate
-  done | peco | sort | uniq | pecoAfterAction "ssh" \
-                                "%%STDIN%% pbcopy"
-}
-
-function pecoTssh() {
-  candidates=($(_sshSourceAction))
-  for candidate in $candidates; do
-    echo $candidate
-  done | peco | sort | uniq | pecoAfterAction "tssh" \
-                                "%%STDIN%% pbcopy"
-}
+autoload pecoLs
+autoload pecoFind
+autoload pecoLocate
+autoload pecoMdfind
+autoload pecoGitStatus
+autoload pecoGitBranch
+autoload pecoGitLog
+autoload pecoGitRefLog
+autoload pecoSsh
+autoload pecoTssh
 
