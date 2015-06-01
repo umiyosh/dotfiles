@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+# 概要: cmdline-fu をpecoする
+# need cmdline-fu gem package
+# % gem i cmdline-fu
+# TODO: pecoAfterActionの再定義
+# TODO: 意味とコマンドの単一行出力
+
+for i in $(seq 1 40)
+do
+  cmdline-fu -n matching $1 browse $i &
+done |pecoPipe
+

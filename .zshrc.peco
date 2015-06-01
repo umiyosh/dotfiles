@@ -1,50 +1,18 @@
 # peco
 # TODO autoload化 http://qiita.com/mollifier/items/6fdeff2750fe80f830c8
+
+FPATH="${HOME}/dotfiles/.peco/functions:${FPATH}"
+
 source ~/dotfiles/.zshrc.peco.lib
 source ~/dotfiles/.zshrc.peco.widgets
 source ~/dotfiles/.zshrc.peco.aliases
 
-function pecoPipe() {
-  peco | pecoAfterAction "vi" \
-    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
-    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    "%%STDIN%% paaSafeRm" \
-    "paaInputCommandAny" \
-    "%%STDIN%% pbcopy" \
-    "%%STDIN%% paaExecuteAsCommand"
-}
-
-# need cmdline-fu gem package
-# % gem i cmdline-fu
-# TODO: pecoAfterActionの再定義
-# TODO: 意味とコマンドの単一行出力
-function pecoFu()
-{
-  for i in $(seq 1 40)
-  do
-    cmdline-fu -n matching $1 browse $i &
-  done |pecoPipe
-}
-
-function pecoCdr() {
-  dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
-}
-
-function pecoKill() {
-    for pid in `ps aux | peco | awk '{ print $2 }'`
-    do
-        kill $pid
-        echo "Killed ${pid}"
-    done
-}
-
-function pecoAg () {
-  ag $@  | peco  | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
-}
-
-function pecoAck () {
-  ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
-}
+autoload pecoPipe
+autoload pecoFu
+autoload pecoCdr
+autoload pecoKill
+autoload pecoAg
+autoload pecoAck
 
 function pecoLs(){
   searchPath=$@

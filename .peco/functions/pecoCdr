@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+# 概要：cdrをpeco風味にやる
+dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"

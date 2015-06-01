@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+#概要：ackしてpecoしてvimで開く
+ack $@  | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
