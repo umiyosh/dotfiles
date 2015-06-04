@@ -34,7 +34,7 @@ function _sshSourceAction() {
 # command           => tmux send-keys command Source
 function pecoAfterAction() {
   Actions=($@)
-  Source=( ${(@f)"$(< /dev/stdin|_escapePath)"} )
+  Source=( ${(@f)"$(< /dev/stdin|_pecoAfterFilter)"} )
   if [[ $#Actions -gt 1 ]]; then
     Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
   else
@@ -51,12 +51,6 @@ function pecoAfterAction() {
       echo $selected
     done | $Action
   else
-    #TODO: ここ除去
-    i=1
-    for selected in $Source; do
-      Source[$i]="'$selected'"
-      i=$((i+1))
-    done
     _executeTmuxBuffer "$Action $Source"
   fi
 }
@@ -115,27 +109,22 @@ function _trim() {
 ## afteraction後処理フィルター
 function _pecoAfterFilter() {
   Sources=( ${(@f)"$(< /dev/stdin)"} )
-  for Source in Sources
+  for Source in $Sources
   do
-    if [[ -f $Source ]]; then
+    if [[ -e $Source ]]; then
       echo $Source | _getAbsolutePath | _escapePath
+    else
+      echo $Source
     fi
   done
 }
 
 function _escapePath()
 {
-  perl -e '
-    while (<STDIN>) {
-      chomp;
-      if (-e $_) {
-        $_ =~ s/ /\\ /g;
-        $_ =~ s/([\(\)])/\\$1/g;
-        $_ =~ s/([\[\]])/\\$1/g;
-      }
-      print $_ . "\n";
-    }
-  '
+  while read value
+  do
+    printf %q "$value"|perl -pe 's/\\/\\\\/g'
+  done
 }
 
 function _getAbsolutePath() {
