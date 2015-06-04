@@ -30,82 +30,7 @@ function pecoAfterAction() {
   fi
 }
 
-# peco after action define
-function paaInputCommandAny() {
-  echo -n "command?:"
-  read command
-  eval $command $@
-}
-
-function paaSafeRm() {
-  files=( ${(@f)"$(< /dev/stdin)"} )
-  for file in $files; do
-    rm -ri "$file" </dev/tty
-  done
-}
-
-function paaExecuteAsCommand() {
-  Actions=( ${(@f)"$(< /dev/stdin)"} )
-  for Action in $Actions; do
-    if [[ $Action =~ ^/ ]]; then
-      _executeTmuxBuffer "$Action"
-    else
-      _executeTmuxBuffer "./$Action"
-    fi
-  done
-}
-
-function _removeColor()
-{
-  # TODO:-rと-Eの分岐
-  col | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
-}
-
-function _escapePath()
-{
-  perl -e '
-    while (<STDIN>) {
-      chomp;
-      if (-e $_) {
-        $_ =~ s/ /\\ /g;
-        $_ =~ s/([\(\)])/\\$1/g;
-        $_ =~ s/([\[\]])/\\$1/g;
-      }
-      print $_ . "\n";
-    }
-  '
-}
-
-function _getAbsolutePath() {
-  if [[ -n $1 ]]; then
-    pathstrSub="$1/"
-  else
-    pathstrSub=""
-  fi
-  while read pathstr;do
-    case "${OSTYPE}" in
-      freebsd*|darwin*)
-        absolutePath=$(greadlink -f ${pathstrSub}$pathstr)
-        ;;
-      linux*)
-        absolutePath=$(readlink -f ${pathstrSub}$pathstr)
-        ;;
-    esac
-    echo ${absolutePath}
-  done
-}
-
-function _executeTmuxBuffer() {
-  Commands=($@)
-  print -z $Commands
-  tmux send-keys C-m
-}
-
-function _pasteTmuxBuffer() {
-  Commands=($@)
-  print -z $Commands
-}
-
+# source action define
 function _sshSourceAction() {
   # candidates was written by NAKAMURA Yoshitaka
   # Copyright (c) 2011, NAKAMURA Yoshitaka
@@ -158,6 +83,7 @@ function paaExecuteAsCommand() {
   done
 }
 
+# input filter
 function _removeColor()
 {
   # TODO:-rと-Eの分岐
