@@ -112,8 +112,8 @@ function _trim() {
   while read line;do echo $line;done
 }
 
-## afteraction前処理フィルター
-function _pecoBeforeFilter() {
+## afteraction後処理フィルター
+function _pecoAfterFilter() {
   Sources=( ${(@f)"$(< /dev/stdin)"} )
   for Source in Sources
   do
