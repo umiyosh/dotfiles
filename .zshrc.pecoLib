@@ -1,35 +1,5 @@
 #!/usr/bin/env zsh
 
-# %%STDIN%% command => Sournce | command
-# command           => tmux send-keys command Source
-function pecoAfterAction() {
-  Actions=($@)
-  Source=( ${(@f)"$(< /dev/stdin|_escapePath)"} )
-  if [[ $#Actions -gt 1 ]]; then
-    Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
-  else
-    Action=$Actions
-  fi
-  if [[ -z $Source || -z $Action ]]; then
-    echo
-    echo nothing selected
-    return
-  fi
-  if [[ $Action =~ ^%%STDIN%% ]]; then
-    Action=$(echo $Action | perl -pe 's/^%%STDIN%% +//g')
-    for selected in $Source; do
-      echo $selected
-    done | $Action
-  else
-    i=1
-    for selected in $Source; do
-      Source[$i]="'$selected'"
-      i=$((i+1))
-    done
-    _executeTmuxBuffer "$Action $Source"
-  fi
-}
-
 # source action define
 function _sshSourceAction() {
   # candidates was written by NAKAMURA Yoshitaka
@@ -59,6 +29,38 @@ function _sshSourceAction() {
 }
 
 # peco after action define
+
+# %%STDIN%% command => Sournce | command
+# command           => tmux send-keys command Source
+function pecoAfterAction() {
+  Actions=($@)
+  Source=( ${(@f)"$(< /dev/stdin|_escapePath)"} )
+  if [[ $#Actions -gt 1 ]]; then
+    Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
+  else
+    Action=$Actions
+  fi
+  if [[ -z $Source || -z $Action ]]; then
+    echo
+    echo nothing selected
+    return
+  fi
+  if [[ $Action =~ ^%%STDIN%% ]]; then
+    Action=$(echo $Action | perl -pe 's/^%%STDIN%% +//g')
+    for selected in $Source; do
+      echo $selected
+    done | $Action
+  else
+    #TODO: ここ除去
+    i=1
+    for selected in $Source; do
+      Source[$i]="'$selected'"
+      i=$((i+1))
+    done
+    _executeTmuxBuffer "$Action $Source"
+  fi
+}
+
 function paaInputCommandAny() {
   echo -n "command?:"
   read command
@@ -83,11 +85,42 @@ function paaExecuteAsCommand() {
   done
 }
 
+function _executeTmuxBuffer() {
+  Commands=($@)
+  print -z $Commands
+  tmux send-keys C-m
+}
+
+function _pasteTmuxBuffer() {
+  Commands=($@)
+  print -z $Commands
+}
+
 # input filter
+## peco前処理フィルター: pecoに渡す前の見栄えの調整
+function _pecoBeforeFilter() {
+  _removeColor | _trim
+}
+
 function _removeColor()
 {
   # TODO:-rと-Eの分岐
   col | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
+}
+
+function _trim() {
+  while read line;do echo $line;done
+}
+
+## afteraction前処理フィルター
+function _pecoBeforeFilter() {
+  Sources=( ${(@f)"$(< /dev/stdin)"} )
+  for Source in Sources
+  do
+    if [[ -f $Source ]]; then
+      echo $Source | _getAbsolutePath | _escapePath
+    fi
+  done
 }
 
 function _escapePath()
@@ -122,17 +155,6 @@ function _getAbsolutePath() {
     esac
     echo ${absolutePath}
   done
-}
-
-function _executeTmuxBuffer() {
-  Commands=($@)
-  print -z $Commands
-  tmux send-keys C-m
-}
-
-function _pasteTmuxBuffer() {
-  Commands=($@)
-  print -z $Commands
 }
 
 # for widgets function
