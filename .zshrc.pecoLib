@@ -123,7 +123,7 @@ function _escapePath()
 {
   while read value
   do
-    printf %q "$value"|perl -pe 's/\\/\\\\/g'
+    printf "%q\n" "$value"|perl -pe 's/\\/\\\\/g'
   done
 }
 
