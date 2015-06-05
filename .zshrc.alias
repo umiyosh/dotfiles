@@ -112,8 +112,6 @@ alias align='column -s " " -t'
 alias st='open -a SourceTree "`git rev-parse --show-toplevel`"'
 
 function mkd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-function cdls() { \cd $1; ls -la; }
-alias cd=cdls
 function chpwd() { ls -la }
 
 alias u='..'
