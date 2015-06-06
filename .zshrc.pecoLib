@@ -113,6 +113,8 @@ function _pecoAfterFilter() {
   do
     if [[ -e $Source ]]; then
       echo $Source | _getAbsolutePath | _escapePath
+    elif [[ $Source =~ '^-[a-z0-9]+ ' ]]; then
+      echo $Source | _treatGetOptions
     else
       echo $Source
     fi
@@ -144,6 +146,10 @@ function _getAbsolutePath() {
     esac
     echo ${absolutePath}
   done
+}
+
+function _treatGetOptions() {
+  cat
 }
 
 # for widgets function
