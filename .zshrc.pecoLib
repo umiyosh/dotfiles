@@ -149,7 +149,19 @@ function _getAbsolutePath() {
 }
 
 function _treatGetOptions() {
-  cat
+  Options=( ${(@f)"$(< /dev/stdin)"} )
+  for Option in $Options
+  do
+    fragments=(${(ps: :)${Option}})
+    for fragment in $fragments
+    do
+      if [[ -e $fragment ]]; then
+        echo $fragment | _getAbsolutePath | _escapePath
+      else
+        echo $fragment
+      fi
+    done
+  done
 }
 
 # for widgets function
