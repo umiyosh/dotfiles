@@ -3,7 +3,7 @@
 "------------------------------------
 " AutoComplPopを無効にする
 let g:acp_enableAtStartup = 0
-" NeoComplCacheを有効にする
+" neocompleteを有効にする
 let g:neocomplete#enable_at_startup = 1
 " 補完が自動で開始される文字数
 let g:neocomplete#auto_completion_start_length = 3
@@ -11,10 +11,8 @@ let g:neocomplete#auto_completion_start_length = 3
 let g:neocomplete#enable_smart_case = 1
 " シンタックスをキャッシュするときの最小文字長を3に
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-" neocomplcacheを自動的にロックするバッファ名のパターン
-let g:neocomplete#keyword_patterns = '\*ku\*'
-" -入力による候補番号の表示
-" let g:neocomplcache_enable_quick_match = 1
+" neocompleteを自動的にロックするバッファ名のパターン
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
 let g:neocomplete#enable_auto_select = 1
 "ポップアップメニューで表示される候補の数。初期値は100
@@ -43,6 +41,7 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 " ユーザー定義スニペット保存ディレクトリ
 let g:neosnippet#snippets_directory = $HOME.'/.vim/snippets'
 
@@ -56,7 +55,7 @@ nnoremap sS  :NeoSnippetEdit<CR>
 "vim-snippets用: snipMate 互換関数を使えるようにする
 let g:neosnippet#enable_snipmate_compatibility = 1
 
-" C-nでneocomplcache補完
+" C-nでneocomplete補完
 inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 " C-pでkeyword補完
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
@@ -113,21 +112,4 @@ let g:neocomplcache_include_suffixes = {
   \ 'ruby' : '.rb',
   \ 'haskell' : '.hs'
   \ }
-
-" inertモード時に辞書とバッファを強制キャッシュ
-" http://d.hatena.ne.jp/basyura/20120318/p1
-" autocmd InsertEnter * call s:neco_pre_cache()
-" function! s:neco_pre_cache()
-  " if exists('b:neco_pre_cache')
-    " return
-  " endif
-  " " let b:neco_pre_cache = 1
-  " if bufname('%') =~ g:neocomplete#keyword_patterns
-    " return
-  " endif
-  " if exists('g:neocomplete#same_filetypes') && exists('g:neocomplete#sources#dictionary#keyword_patterns')
-    " :NeoCompleteBufferMakeCache
-    " :NeoCompleteDictionaryMakeCache
-  " endif
-" endfunction
 
