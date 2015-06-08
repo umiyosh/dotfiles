@@ -138,6 +138,7 @@ function _getAbsolutePath() {
   while read pathstr;do
     case "${OSTYPE}" in
       freebsd*|darwin*)
+        # TODO greadlinkはデフォルトで入ってないのでsetup.shに追記する
         absolutePath=$(greadlink -f ${pathstrSub}$pathstr)
         ;;
       linux*)
