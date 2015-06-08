@@ -45,7 +45,8 @@ call vundle#rc()
 
 " Completion {{{
   " 補完 neocomplcache.vim : 究極のVim的補完環境
-  Bundle 'Shougo/neocomplcache'
+  " Bundle 'Shougo/neocomplcache'
+  Bundle 'Shougo/neocomplete.vim'
   " neocomplcacheのsinpet補完
   Bundle 'Shougo/neosnippet'
   " phpcomplete: phpのomni補完最新版
