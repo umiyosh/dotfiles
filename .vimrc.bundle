@@ -11,8 +11,8 @@ call vundle#rc()
   Bundle 'c9s/cascading.vim'
   " visually indent guide
   Bundle 'nathanaelkane/vim-indent-guides'
-  " Align : 高機能整形・桁揃えプラグイン
-  Bundle 'Align'
+  " vim-easy-align : 高機能整形・桁揃えプラグイン
+  Bundle 'junegunn/vim-easy-align'
   " マルチバイト対応の整形
   Bundle 'h1mesuke/vim-alignta'
   " undo履歴を追える (need python support)

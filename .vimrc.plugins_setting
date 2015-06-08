@@ -1,12 +1,14 @@
-"-------------------------------------------------------------------------------
+"/-------------------------------------------------------------------------------
 " プラグインごとの設定 Plugins
 "-------------------------------------------------------------------------------
 
 "------------------------------------
 " Align
 "------------------------------------
-" Alignを日本語環境で使用するための設定
-let g:Align_xstrlen = 3
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "------------------------------------
 " NERD_commenter.vim
@@ -39,8 +41,8 @@ endif
 nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 let g:surround_{char2nr('e')} = "begin \r end"
-let g:surround_{char2nr('m')} = "~~~ \r ~~~"
-let g:surround_{char2nr("-")} = ":\r"
+let g:surround_{char2nr('m')}    = "~~~ \r ~~~"
+let g:surround_{char2nr("-")}    = ":\r"
 let g:surround_{char2nr('(')} = "(\r)"
 let g:surround_{char2nr('{')} = "{\r}"
 let g:surround_{char2nr('[')} = "[\r]"
