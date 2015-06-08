@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 # 概要：psをcandidateとしてpecoしてkillする
 # TODO 任意SIGNALの送信
+# TODO pecoAfteraActionへ置き換え
 for pid in `ps aux | peco | awk '{ print $2 }'`
 do
   kill $pid

@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-#概要：
+#概要：git branchにたいしていろいろする
 (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|perl -pe 's/^ +//g'| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
   pecoAfterAction "git checkout" \
     "git checkout -t" \
