@@ -2,4 +2,4 @@
 
 # 概要：cdrをpeco風味にやる
 #TODO afteractionにpbcopy追加
-dirs -l|perl -pe 's/ /\n/g'| peco | pecoAfterAction "cd"
+dirs -l|perl -pe 's# /#\n /#g'| _pecoBeforeFilter |peco | pecoAfterAction "cd"
