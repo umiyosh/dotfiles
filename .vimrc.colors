@@ -2,7 +2,17 @@
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-colorscheme desert256
+colorscheme molokai
+
+" molokai setting
+let g:rehash256 = 1
+highlight Normal ctermbg=none
+set cursorline
+set cursorcolumn
+
+autocmd VimEnter,ColorScheme * : highlight CursorLine cterm=underline ctermbg=234
+
+" autocmd VimEnter,ColorScheme * hilight CursorLine cterm=underline
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
