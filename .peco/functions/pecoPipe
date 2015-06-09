@@ -5,6 +5,8 @@ _pecoBeforeFilter | peco | pecoAfterAction \
   "vi" \
   'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
   'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
+  'vimdiff' \
+  'open' \
   "%%STDIN%% paaSafeRm" \
   "paaInputCommandAny" \
   "%%STDIN%% pbcopy" \

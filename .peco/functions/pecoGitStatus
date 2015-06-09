@@ -11,6 +11,8 @@ cd "$gitRootDir"
     "git diff" \
     "git diff --cached" \
     "git rm" \
+    'vimdiff' \
+    'open' \
     "%%STDIN%% pbcopy" \
     "vi" \
     "%%STDIN%% paaSafeRm" \
