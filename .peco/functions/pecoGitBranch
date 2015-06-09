@@ -10,6 +10,7 @@
     "git reset --hard" \
     "git push origin" \
     "git pull origin" \
+    "git merge" \
     "%%STDIN%% pbcopy" \
     "paaInputCommandAny"
 
