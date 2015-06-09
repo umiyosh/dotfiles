@@ -190,6 +190,8 @@ call vundle#rc()
   Bundle 'vim-scripts/DirDiff.vim'
   " benchvimrc-vim
   Bundle 'mattn/benchvimrc-vim'
+  " dash.vim
+  Bundle 'rizzatti/dash.vim'
   "
 " }}}
 
