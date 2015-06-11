@@ -98,6 +98,16 @@ call vundle#rc()
   Bundle 'moll/vim-node'
   " vital.vim
   Bundle 'vim-jp/vital.vim'
+  " vim-go
+  Bundle 'fatih/vim-go'
+  " vim-go-impl
+  Bundle 'rhysd/vim-go-impl'
+  " vim-godef
+  " Bundle 'dgryski/vim-godef'
+  "
+  " Bundle ''
+  "
+  " Bundle ''
 " }}}
 
 " Syntax {{{
@@ -205,7 +215,7 @@ call vundle#rc()
   " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
   Bundle 'Shougo/unite.vim'
   Bundle 'tsukkee/unite-help'
-  Bundle 'h1mesuke/unite-outline'
+  Bundle 'Shougo/unite-outline'
   Bundle 'basyura/unite-rails'
   Bundle 'thinca/vim-unite-history'
   Bundle 'tsukkee/unite-tag'

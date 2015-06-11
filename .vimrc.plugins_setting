@@ -87,6 +87,33 @@ else
 endif
 let g:tagbar_ctags_bin = g:Ctags_Cmd
 map <silent> <leader>tl :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 "------------------------------------
 " Srcexp
@@ -227,6 +254,8 @@ nnoremap <silent> [unite]h :<C-u>Unite -start-insert history/command<CR>
 nnoremap <silent> [unite]s :<C-u>Unite -start-insert history/search<CR>
 " jump 一覧
 nnoremap <silent> [unite]j :<C-u>Unite -start-insert jump<CR>
+" unite outline
+nnoremap <silent> [unite]o :<C-u>Unite -start-insert outline<CR>
 
 " Unite keymap
 nnoremap <silent> [unite]k :<C-u>Unite -start-insert output:map\|map!\|lmap<CR>
@@ -312,6 +341,7 @@ let g:syntastic_enable_highlighting = 1
 let g:syntastic_auto_jump=1
 let g:syntastic_php_checkers=['php', 'phpmd']
 let g:syntastic_javascript_checker = "jshint"
+let g:syntastic_go_checkers = ['go', 'golint']
 
 "------------------------------------
 " toggle.vim
