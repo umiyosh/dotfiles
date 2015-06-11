@@ -13,8 +13,6 @@ call vundle#rc()
   Bundle 'nathanaelkane/vim-indent-guides'
   " vim-easy-align : 高機能整形・桁揃えプラグイン
   Bundle 'junegunn/vim-easy-align'
-  " マルチバイト対応の整形
-  Bundle 'h1mesuke/vim-alignta'
   " undo履歴を追える (need python support)
   Bundle 'Gundo'
   " surround.vim : テキストを括弧で囲む／削除する
