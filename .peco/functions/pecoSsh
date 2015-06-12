@@ -6,5 +6,7 @@ candidates=($(_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
 done | peco | sort | uniq | pecoAfterAction "ssh" \
+                              "tssh" \
+                              "sftp" \
                               "%%STDIN%% pbcopy"
 
