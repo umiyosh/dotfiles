@@ -63,9 +63,15 @@ function paaInputCommandAny() {
 
 function paaSafeRm() {
   files=( ${(@f)"$(< /dev/stdin)"} )
-  for file in $files; do
-    rm -ri "$file" </dev/tty
-  done
+  echo $files
+  read -q "REPLY?This is the question I want to ask?"
+  echo    # (optional) move to a new line
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    for file in $files; do
+      rm -rf "$file" </dev/tty
+    done
+  fi
 }
 
 function paaExecuteAsCommand() {
