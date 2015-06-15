@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 #概要：known_hostsなどからssh先をpecoして接続する
-#TODO tssとマージ
-#TODO afteractionにsftp追加
 candidates=($(_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
