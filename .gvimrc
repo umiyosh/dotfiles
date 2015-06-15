@@ -1,14 +1,14 @@
+autocmd ColorScheme * hi Visual  gui=reverse
+autocmd ColorScheme * hi PmenuSel gui=reverse
+
 colorscheme molokai
 " molokai setting
+let g:molokai_original = 1
 let g:rehash256 = 1
-highlight Normal guibg=none
-set cursorline
-set cursorcolumn
-autocmd VimEnter,ColorScheme * : highlight CursorLine gui=underline guibg=234
-hi Visual  gui=reverse guifg=#3399ff guibg=#f0e68c
+set background=dark
+
 " ハイライト on
 syntax enable
-hi PmenuSel gui=reverse guifg=33 guibg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
 
 "gvimでバックスラッシュが入力できないのでキーバインド追加
 inoremap 促 \
