@@ -143,6 +143,10 @@ function ssh(){
 # python
 alias pdb="python -m pdb"
 
+# rainbow
+# need toilet: brew install toilet
+alias rainbow="toilet -f term --gay"
+
 alias geeknote="python ~/local/bin/geeknote/geeknote.py"
 
 # Finderで開いているディレクトリに移動
