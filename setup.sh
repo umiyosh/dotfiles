@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOT_FILES=( .ideavimrc .agignore .zshrc .zshrc.peco .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .emacs.el .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc .perltidyrc )
-DOT_DIRS=(.zsh .vim .peco .mackup )
+DOT_FILES=( .ideavimrc .agignore .zshrc .zshrc.peco .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .emacs.el .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg )
+DOT_DIRS=(.zsh .vim .peco )
 
 # dotfiles
 for file in ${DOT_FILES[@]}
