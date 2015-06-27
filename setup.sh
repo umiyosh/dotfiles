@@ -21,6 +21,10 @@ do
   fi
 done
 
+if [[ ! "$SHELL" =~ .+zsh$ ]]; then
+  chsh -s /bin/zsh
+fi
+
 if [[ ! -d $HOME/local/bin ]]; then
   mkdir -p $HOME/local/bin/
   ln -s $HOME/dotfiles/bin/git_diff_wrapper $HOME/local/bin/git_diff_wrapper
