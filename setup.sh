@@ -21,6 +21,10 @@ do
   fi
 done
 
+if [[ -e $HOME/Dropbox/.zshrc.local ]]; then
+  ln -s $HOME/Dropbox/conf/.zshrc.local $HOME/.zshrc.local
+fi
+
 if [[ ! "$SHELL" =~ .+zsh$ ]]; then
   chsh -s /bin/zsh
 fi
