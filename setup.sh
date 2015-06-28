@@ -27,7 +27,7 @@ if [[ -e $HOME/Dropbox/.zshrc.local ]]; then
 fi
 
 if [[ ! "$SHELL" =~ .+zsh$ ]]; then
-  chsh -s /bin/zsh
+  chsh -s $(which zsh)
 fi
 
 if [[ ! -d $HOME/local/bin ]]; then
