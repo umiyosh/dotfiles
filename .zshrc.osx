@@ -124,7 +124,7 @@ function precmd() {
 [ -f ~/.zshrc.osx.local ] && source ~/.zshrc.osx.local
 
 # j
-[[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 alias jj='autojump --stat'
 # jの補完周り
 if [ -x /usr/local/bin/brew ]; then
