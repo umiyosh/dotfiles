@@ -1,4 +1,5 @@
 #!/bin/bash
+# TODO: refactor : 見通し悪くなってきたので各処理を関数化する
 
 DOT_FILES=( .ideavimrc .agignore .zshrc .zshrc.peco .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .emacs.el .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg )
 DOT_DIRS=(.zsh .vim .peco )
@@ -20,6 +21,14 @@ do
    ln -s $HOME/dotfiles/${directory} $HOME/${directory}
   fi
 done
+
+if [[ -e $HOME/Dropbox/.zshrc.local ]]; then
+  ln -s $HOME/Dropbox/conf/.zshrc.local $HOME/.zshrc.local
+fi
+
+if [[ ! "$SHELL" =~ .+zsh$ ]]; then
+  chsh -s $(which zsh)
+fi
 
 if [[ ! -d $HOME/local/bin ]]; then
   mkdir -p $HOME/local/bin/
