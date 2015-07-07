@@ -10,3 +10,8 @@ you must install zsh and vim before install these dotfiles.
   % ./setup.sh
   % zsh
 ~~~
+
+### See also
+
+* [umiyosh/OSXBootstrap](https://github.com/umiyosh/OSXBootstrap)
+* [umiyosh/Brewfile](https://github.com/umiyosh/Brewfile)
