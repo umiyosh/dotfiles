@@ -542,3 +542,5 @@ export PATH=$PATH:${HOME}/.composer/vendor/bin
 
 # ローカルなやつ
 [[ -f $HOME/.zshenv.local ]] && source "$HOME/.zshenv.local"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
