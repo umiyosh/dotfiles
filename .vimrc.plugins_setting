@@ -81,7 +81,7 @@ nmap U :<C-u>GundoToggle<CR>
 set tags=tags;
 "set tags+=~/.tags
 if has('mac')
-  let g:Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags'
+  let g:Ctags_Cmd = '/usr/local/bin/ctags'
 else
   let g:Ctags_Cmd = 'ctags'
 endif
