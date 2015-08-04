@@ -103,7 +103,8 @@ alias pc='pbcopy'
 
 alias pp='pbpaste'
 
-alias vif='vi +VimFilerBufferDir'
+# todoデフォルト値付与
+alias vif='vi +VimFilerBufferDir .'
 alias psvi='vi +"Unite process" +"only" +"set number"'
 
 alias align='column -s " " -t'
