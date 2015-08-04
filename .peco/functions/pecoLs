@@ -9,7 +9,7 @@ if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
   searchPath=$searchPath/
 fi
 
-find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | \
+find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al |_pecoBeforeFilter | \
   peco | perl -lane 'print "@F[8..$#F]"' | awk 'BEGIN{FS="->"}{print $NF}' |pecoAfterAction "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
