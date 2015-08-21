@@ -18,7 +18,7 @@ let NERDSpaceDelims = 1
 "<Leader>xでコメントをトグル(NERD_commenter.vim)
 map <Leader>x <Leader>c<space>
 ""未対応ファイルタイプのエラーメッセージを表示しない
-let NERDShutUp=1
+let NERDShutUp      = 1
 
 "------------------------------------
 " dash.vim
@@ -29,11 +29,11 @@ nmap <silent> <leader>d <Plug>DashSearch
 " grep.vim
 "------------------------------------
 " 検索外のディレクトリ、ファイルパターン
-let Grep_Skip_Dirs = '.svn .git .hg'
+let Grep_Skip_Dirs  = '.svn .git .hg'
 let Grep_Skip_Files = '*.bak *~'
 if has('mac')
   if system('which gxargs')
-    let Grep_Xargs_Path = 'gxargs'
+    let Grep_Xargs_Path     = 'gxargs'
   else
     let Grep_Find_Use_Xargs = 0
   endif
@@ -46,8 +46,8 @@ endif
 nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 let g:surround_{char2nr('e')} = "begin \r end"
-let g:surround_{char2nr('m')}    = "~~~ \r ~~~"
-let g:surround_{char2nr("-")}    = ":\r"
+let g:surround_{char2nr('m')} = "~~~ \r ~~~"
+let g:surround_{char2nr("-")} = ":\r"
 let g:surround_{char2nr('(')} = "(\r)"
 let g:surround_{char2nr('{')} = "{\r}"
 let g:surround_{char2nr('[')} = "[\r]"
@@ -57,7 +57,7 @@ let g:surround_{char2nr('[')} = "[\r]"
 "------------------------------------
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 4
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size  = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
@@ -190,9 +190,9 @@ call smartinput#define_rule({
 "------------------------------------
 " Edit file by tabedit.
 let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_enable_auto_cd = 1
-let g:vimfiler_as_default_explorer = 1
-let Tlist_Use_Right_Window = 1
+let g:vimfiler_enable_auto_cd       = 1
+let g:vimfiler_as_default_explorer  = 1
+let Tlist_Use_Right_Window          = 1
 nmap <leader>e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 nmap <leader>rr <leader>e<Leader>e<c-l>
 "デフォルトのキーマッピングを変更
@@ -295,7 +295,7 @@ cnoremap UO Unite outline<Enter>
 "------------------------------------
 " quickrun.vim
 "------------------------------------
-let g:quickrun_config = {}
+let g:quickrun_config   = {}
 "runnerをvimprocにする
 let g:quickrun_config._ = {'runner' : 'vimproc'}
 let g:quickrun_config._ = {'runner/vimproc/updatetime' : 100}
@@ -335,13 +335,13 @@ let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
 " Syntastic
 "------------------------------------
 " エラー行をsignで表示する
-let g:syntastic_enable_signs = 1
+let g:syntastic_enable_signs        = 1
 " 可能ならhighligt表示する
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_auto_jump=1
-let g:syntastic_php_checkers=['php', 'phpmd']
-let g:syntastic_javascript_checker = "jshint"
-let g:syntastic_go_checkers = ['go', 'golint']
+let g:syntastic_auto_jump           = 1
+let g:syntastic_php_checkers        = ['php', 'phpmd']
+let g:syntastic_javascript_checker  = "jshint"
+let g:syntastic_go_checkers         = ['go', 'golint']
 
 "------------------------------------
 " toggle.vim
@@ -377,10 +377,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkg
 " EasyMotion.vim
 "------------------------------------
 let g:EasyMotion_leader_key = 's'
-let g:EasyMotion_mapping_f = 'f'
-let g:EasyMotion_mapping_t = 't'
-let g:EasyMotion_mapping_F = 'F'
-let g:EasyMotion_mapping_T = 'T'
+let g:EasyMotion_mapping_f  = 'f'
+let g:EasyMotion_mapping_t  = 't'
+let g:EasyMotion_mapping_F  = 'F'
+let g:EasyMotion_mapping_T  = 'T'
 
 "------------------------------------
 " matchit.vim
@@ -398,8 +398,8 @@ let b:match_ignorecase = 1
 " ref.vim
 "------------------------------------
 " カーソルしたの英単語の意味を表示する
-let g:ref_phpmanual_path = $HOME . '/.vim/refdoc/php-chunked-xhtml'
-let g:ref_source_webdict_cmd = 'w3m -dump %s'
+let g:ref_phpmanual_path       = $HOME . '/.vim/refdoc/php-chunked-xhtml'
+let g:ref_source_webdict_cmd   = 'w3m -dump %s'
 let g:ref_source_webdict_sites = {
 \   'infoseek': {
 \     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
@@ -438,9 +438,9 @@ let g:Powerline_mode_cs = '矩形選択'
 "------------------------------------
 " VoOM (markdown outliner)
 "------------------------------------
-let g:voom_tree_width=60
-let g:voom_tree_placement='right'
-let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
+let g:voom_tree_width     = 60
+let g:voom_tree_placement = 'right'
+let g:voom_ft_modes       = {'markdown': 'markdown', 'pandoc': 'markdown'}
 map <Leader>vm <ESC>:<C-u>VoomToggle<CR>
 
 "------------------------------------
@@ -495,7 +495,7 @@ nmap  <Leader>t :TagsGenerate<CR>
 "------------------------------------
 " Vim-php-cs-fixer
 "------------------------------------
-let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+let g:php_cs_fixer_path        = "/usr/local/bin/php-cs-fixer"
 let g:php_cs_fixer_fixers_list = "linefeed,trailing_spaces,unused_use,php_closing_tag,short_tag,return,visibility,phpdoc_params,eof_ending,extra_empty_lines,include,PSR0,controls_spaces,elseif"
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
