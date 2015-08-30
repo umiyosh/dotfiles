@@ -16,6 +16,10 @@ find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al |_pecoBeforeFilter | \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
     'vimdiff' \
+    'less +F'\
+    'cat'\
+    'zcat'\
+    'gzcat'\
     'open' \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
