@@ -19,7 +19,10 @@ let NERDSpaceDelims = 1
 map <Leader>x <Leader>c<space>
 ""未対応ファイルタイプのエラーメッセージを表示しない
 let NERDShutUp      = 1
-
+""カスタムdelimiters
+let g:NERDCustomDelimiters = {
+    \ 'terraform': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' }
+\ }
 "------------------------------------
 " dash.vim
 "------------------------------------

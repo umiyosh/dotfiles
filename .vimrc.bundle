@@ -104,6 +104,8 @@ call vundle#rc()
   Bundle 'rhysd/vim-go-impl'
   " vim-ansible-yaml
   Bundle 'chase/vim-ansible-yaml'
+  " terraform
+  Bundle 'markcornick/vim-terraform'
   " vim-godef
   " Bundle 'dgryski/vim-godef'
   "
