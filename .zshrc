@@ -544,3 +544,6 @@ export PATH=$PATH:${HOME}/.composer/vendor/bin
 [[ -f $HOME/.zshenv.local ]] && source "$HOME/.zshenv.local"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# ec2ssh completion
+type ec2ssh >/dev/null 2>&1 && eval "$(ec2ssh shellcomp -)"
