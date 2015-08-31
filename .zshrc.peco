@@ -21,7 +21,6 @@ autoload pecoGitBranch
 autoload pecoGitLog
 autoload pecoGitRefLog
 autoload pecoSsh
-autoload pecoTssh
 
 # peco alias
 alias -g P='| p'

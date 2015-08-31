@@ -69,7 +69,12 @@ function paaSafeRm() {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     for file in $files; do
-      rm -rf "$file" </dev/tty
+      file=$(echo $file | perl -pe 's{\\}{}g')
+      if [[ ! $file -eq '/' ]]; then
+        rm -rf $file </dev/tty
+      else
+        echo can not recursive delete /
+      fi
     done
   fi
 }
