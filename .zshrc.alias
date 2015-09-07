@@ -49,6 +49,7 @@ alias g='git'
 alias gi='git'
 alias oppai='git'
 alias gs='git status'
+alias gn='git now --all --stat'
 alias gc='git commit'
 alias gci='git commit -a'
 alias '偽ｔ'=git
