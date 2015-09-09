@@ -139,6 +139,8 @@ call vundle#rc()
   Bundle 'hail2u/vim-css3-syntax'
   " json.vim
   Bundle 'elzr/vim-json'
+  " plantuml
+  Bundle 'aklt/plantuml-syntax'
 " }}}
 
 " Buffer {{{

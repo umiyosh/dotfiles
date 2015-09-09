@@ -21,7 +21,8 @@ map <Leader>x <Leader>c<space>
 let NERDShutUp      = 1
 ""カスタムdelimiters
 let g:NERDCustomDelimiters = {
-    \ 'terraform': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' }
+    \ 'terraform': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
+    \ 'plantuml': { 'left': '''', 'leftAlt': 'FOO', 'rightAlt': 'BAR' }
 \ }
 "------------------------------------
 " dash.vim
