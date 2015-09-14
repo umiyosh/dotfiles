@@ -30,7 +30,7 @@ function _sshSourceAction() {
 
 # peco after action define
 
-# %%STDIN%% command => Sournce | command
+# %%STDIN%% command => Source | command
 # command           => tmux send-keys command Source
 function pecoAfterAction() {
   Actions=($@)
