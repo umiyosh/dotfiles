@@ -2,13 +2,13 @@
 # TODO: refactor : 見通し悪くなってきたので各処理を関数化する
 set -eu
 
-DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .emacs.el .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg )
+DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg )
 DOT_DIRS=(.zsh .vim .peco )
 
 # dotfiles
 for file in ${DOT_FILES[@]}
 do
-  if [[ -f $HOME/$file ]]; then
+  if [[ -L $HOME/$file ]]; then
     mv $HOME/$file $HOME/${file}.orig.$(date +"%Y%m%d%H%M%S")
   fi
   if [[ ! -f $HOME/$file ]]; then
