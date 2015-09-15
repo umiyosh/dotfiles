@@ -8,7 +8,7 @@ DOT_DIRS=(.zsh .vim .peco )
 # dotfiles
 for file in ${DOT_FILES[@]}
 do
-  if [[ ! -L $HOME/$file ]]; then
+  if [[ -f $HOME/$file ]]; then
     mv $HOME/$file $HOME/${file}.orig.$(date +"%Y%m%d%H%M%S")
   fi
   if [[ ! -f $HOME/$file ]]; then
