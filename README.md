@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/umiyosh/dotfiles.svg?style=svg)](https://circleci.com/gh/umiyosh/dotfiles)
+
 ## Clone from github and setup.sh and zsh
 
 ### Install
