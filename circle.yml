@@ -5,7 +5,7 @@ dependencies:
   pre:
     - sudo apt-get install zsh
     - sudo apt-get install vim
-    - sudo apt-get install go
+    - sudo apt-get install golang
     - ./setup.sh
     - zsh -c 'exit'
     - vim +qall
