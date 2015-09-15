@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/umiyosh/dotfiles.svg?style=svg)](https://circleci.com/gh/umiyosh/dotfiles)
+[![Circle CI](https://circleci.com/gh/umiyosh/dotfiles.svg?&style=shield&circle-token=6f05689996d57b6456a193e2d83ef122801c2a90)](https://circleci.com/gh/umiyosh/dotfiles.svg?&style=shield&circle-token=6f05689996d57b6456a193e2d83ef122801c2a90)
 
 ## Clone from github and setup.sh and zsh
 
