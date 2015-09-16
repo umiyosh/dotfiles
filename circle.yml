@@ -5,7 +5,9 @@ dependencies:
   pre:
     - sudo apt-get install zsh
     - sudo apt-get install vim
+  override:
     - ./setup.sh
+  post:
     - zsh -c 'exit'
     - vim +qall
 test:
