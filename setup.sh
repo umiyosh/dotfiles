@@ -56,7 +56,7 @@ if ! autojump --stat 1>/dev/null 2>&1; then
   linux*)
     git clone https://github.com/joelthelion/autojump.git $HOME/.zsh/extention/autojump
     cd $HOME/.zsh/extention/autojump/
-    ./install.sh --local
+    ./install.py
     cd $HOME/dotfiles/
     ;;
   esac
