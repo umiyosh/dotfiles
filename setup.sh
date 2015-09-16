@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# TODO: refactor : 見通し悪くなってきたので各処理を関数化する
 set -eu
 
 function deployDotfiles() {
