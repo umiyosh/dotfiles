@@ -2,26 +2,35 @@
 # TODO: refactor : 見通し悪くなってきたので各処理を関数化する
 set -eu
 
-DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco .zshrc.alias .zshrc.linux .zshrc.osx .zshenv .ctags .gdbinit .gemrc .gitconfig .gitignore .inputrc .irbrc .sbtconfig .screenrc .vimrc .gvimrc .vrapperrc import.scala .tmux.conf .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg )
-DOT_DIRS=(.zsh .vim .peco )
+function deployDotfiles() {
+  DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco \
+              .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
+              .ctags .gdbinit .gemrc .gitconfig .gitignore \
+              .inputrc .irbrc .sbtconfig .screenrc .vimrc \
+              .gvimrc .vrapperrc import.scala .tmux.conf \
+              .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg
+             )
+  DOT_DIRS=(.zsh .vim .peco )
+  # dotfiles
+  for file in ${DOT_FILES[@]}
+  do
+    if [[ -L $HOME/$file ]]; then
+      mv $HOME/$file $HOME/${file}.orig.$(date +"%Y%m%d%H%M%S")
+    fi
+    if [[ ! -f $HOME/$file ]]; then
+      ln -s $HOME/dotfiles/$file $HOME/$file
+    fi
+  done
 
-# dotfiles
-for file in ${DOT_FILES[@]}
-do
-  if [[ -L $HOME/$file ]]; then
-    mv $HOME/$file $HOME/${file}.orig.$(date +"%Y%m%d%H%M%S")
-  fi
-  if [[ ! -f $HOME/$file ]]; then
-    ln -s $HOME/dotfiles/$file $HOME/$file
-  fi
-done
+  for directory in ${DOT_DIRS[@]}
+  do
+    if [[ ! -d $HOME/${directory}/ ]]; then
+     ln -s $HOME/dotfiles/${directory} $HOME/${directory}
+    fi
+  done
+}
 
-for directory in ${DOT_DIRS[@]}
-do
-  if [[ ! -d $HOME/${directory}/ ]]; then
-   ln -s $HOME/dotfiles/${directory} $HOME/${directory}
-  fi
-done
+deployDotfiles
 
 if [[ -e $HOME/Dropbox/.zshrc.local ]]; then
   ln -s $HOME/Dropbox/conf/.zshrc.local $HOME/.zshrc.local
