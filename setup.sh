@@ -117,6 +117,7 @@ function setupVimPlugins() {
   else
     vim -Nu $HOME/dotfiles/.vimrc.bundle +BundleInstall +qall
   fi
+  vim +GoInstallBinaries +qall
 }
 
 deployDotfiles
