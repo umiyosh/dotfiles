@@ -6,6 +6,7 @@
     "C-g": "peco.SelectNone",
     "C-u": "peco.ScrollPageUp",
     "C-d": "peco.ScrollPageDown",
+    "C-f": "peco.ToggleSingleKeyJump",
     "Pgdn": "peco.ScrollPageUp",
     "Pgdn": "peco.ScrollPageDown",
 
