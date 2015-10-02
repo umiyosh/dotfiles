@@ -537,6 +537,11 @@ eval "$($HOME/Dropbox/bin/addticket/bin/addticket init -)"
 export PATH=$PATH:${HOME}/.nodebrew/current/bin
 . <(npm completion)
 
+# golang
+if [[ -f $HOME/.gvm/scripts/gvm ]]; then
+  source $HOME/.gvm/scripts/gvm
+fi
+
 # composer
 export PATH=$PATH:${HOME}/.composer/vendor/bin
 
@@ -547,3 +552,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # ec2ssh completion
 type ec2ssh >/dev/null 2>&1 && eval "$(ec2ssh shellcomp -)"
+
