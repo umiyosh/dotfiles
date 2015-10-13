@@ -264,6 +264,9 @@ nnoremap <silent> [unite]o :<C-u>Unite -start-insert outline<CR>
 " Unite keymap
 nnoremap <silent> [unite]k :<C-u>Unite -start-insert output:map\|map!\|lmap<CR>
 
+" Unite neosnippet
+nnoremap <silent> [unite]n :<C-u>Unite -start-insert neosnippet<CR>
+
 " Unite history/yank
 nnoremap <silent> [unite]/ :<C-u>Unite -start-insert history/yank<CR>
 nnoremap <silent> [unite]/ :<C-u>Unite -start-insert history/yank<CR>
