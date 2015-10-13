@@ -29,7 +29,7 @@ inoremap <C-u>  <C-g>u<C-u>
 inoremap <C-w>  <C-g>u<C-w>
 inoremap ∑     <C-g>u<C-w>
 
-" :Ptでインデントモード切替
+" :Ptでpasteモード切替
 command! Pt :set paste!
 
 " インサートモード中に<C-o>でyankした内容をputする
