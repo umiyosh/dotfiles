@@ -46,6 +46,7 @@ command! Sw :call BanTabIndentWrite()
 
 " <leader>j でJSONをformat
 " http://wozozo.hatenablog.com/entry/2012/02/08/121504
+" TODO: jqに置き換え
 map <Leader>j !python -m json.tool<CR>
 
 " quickfixウィンドウではq/ESCで閉じる
