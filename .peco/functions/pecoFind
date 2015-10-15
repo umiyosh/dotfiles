@@ -15,5 +15,6 @@ find $@ | _pecoBeforeFilter| peco | pecoAfterAction "vi" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaTovim" \
     "%%STDIN%% paaExecuteAsCommand"
 

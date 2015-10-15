@@ -16,6 +16,7 @@ cd "$gitRootDir"
     'open' \
     "%%STDIN%% pbcopy" \
     "vi" \
+    "%%STDIN%% paaTovim" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny"
 _executeTmuxBuffer "cd '$workDir'"

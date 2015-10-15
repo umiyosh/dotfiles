@@ -12,5 +12,6 @@
     "git pull origin" \
     "git merge" \
     "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaTovim" \
     "paaInputCommandAny"
 

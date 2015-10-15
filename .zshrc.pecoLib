@@ -29,11 +29,12 @@ function _sshSourceAction() {
 }
 
 # peco after action define
-
+ActionsBuffer=()
 # %%STDIN%% command => Source | command
 # command           => tmux send-keys command Source
 function pecoAfterAction() {
   Actions=($@)
+  ActionsBuffer=($Actions)
   Source=( ${(@f)"$(< /dev/stdin|_pecoAfterFilter)"} )
   if [[ $#Actions -gt 1 ]]; then
     Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
@@ -99,6 +100,10 @@ function _executeTmuxBuffer() {
 function _pasteTmuxBuffer() {
   Commands=($@)
   print -z $Commands
+}
+
+function paaTovim() {
+  tovim | pecoAfterAction $ActionsBuffer
 }
 
 # input filter

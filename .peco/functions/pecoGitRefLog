@@ -9,5 +9,6 @@ git reflog | peco | awk 'BEGIN{FS= " "}{print $1}'| \
     "git diff" \
     "git reset --soft" \
     "git reset --hard" \
+    "%%STDIN%% paaTovim" \
     "paaInputCommandAny"
 
