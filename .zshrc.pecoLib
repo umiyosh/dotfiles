@@ -85,6 +85,8 @@ function paaExecuteAsCommand() {
   for Action in $Actions; do
     if [[ $Action =~ ^/ ]]; then
       _executeTmuxBuffer "$Action"
+    elif which $(echo $Action| awk '{print $1}') >/dev/null; then
+      _executeTmuxBuffer "$Action"
     else
       _executeTmuxBuffer "./$Action"
     fi
