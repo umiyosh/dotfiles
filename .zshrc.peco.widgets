@@ -20,6 +20,7 @@ function pecoHistory() {
       pecoAfterAction \
         "%%STDIN%% zleExecuteAsCommand" \
         "%%STDIN%% zlePasteBuffer" \
+        "%%STDIN%% paaTovim" \
         "%%STDIN%% pbcopy"
 }
 zle -N pecoHistory
@@ -36,6 +37,7 @@ function pecoAutojump() {
         pecoAfterAction \
           "%%STDIN%% zleExecuteAsCommand" \
           "%%STDIN%% zlePasteBuffer" \
+          "%%STDIN%% paaTovim" \
           "%%STDIN%% pbcopy"
 }
 zle -N pecoAutojump
