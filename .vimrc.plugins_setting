@@ -359,9 +359,10 @@ let g:syntastic_perl_checkers = ['perl', 'podchecker']
 let g:syntastic_php_checkers        = ['php', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
 
-let g:syntastic_mode_map = { 'mode': 'passive',
-    \ 'active_filetypes': ['go'] }
-let g:syntastic_go_checkers         = ['go', 'golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'passive','active_filetypes': ['go'] }
+let g:syntastic_go_checkers         = ['golint', 'govet', 'errcheck']
+" let g:syntastic_go_checkers         = ['gometalinter']
+" let g:syntastic_go_checkers         = ['go', 'golint', 'govet', 'errcheck']
 " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 "------------------------------------
