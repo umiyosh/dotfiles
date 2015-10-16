@@ -19,6 +19,7 @@ alias su="su -l"
 # vim
 alias 'src'='exec zsh'
 alias -g V="| vim -"
+alias man=manv
 
 # kobito
 alias 'kob'='open -a Kobito '
