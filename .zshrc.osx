@@ -18,9 +18,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 
 # Go lang
-export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
-launchctl setenv GOROOT $(go env GOROOT)
 launchctl setenv GOPATH $GOPATH
 
 # scala
