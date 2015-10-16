@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
 #概要：ackしてpecoしてvimで開く
-#TODO afteractionにpbcopy追加
-ack $@ | _pecoBeforeFilter | peco | awk -F : '{print "-c " $2 " " $1}' | pecoAfterAction "vi"
+ack $@ | _pecoBeforeFilter | peco | awk -F : '{print "-c " $2 " " $1}' | \
+  pecoAfterAction "vi" "pbcopy"
