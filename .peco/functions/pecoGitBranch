@@ -6,6 +6,7 @@
     "git branch -d" \
     "git branch -D" \
     "git diff" \
+    "git vdiff" \
     "git reset --soft" \
     "git reset --hard" \
     "git push origin" \

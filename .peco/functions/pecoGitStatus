@@ -9,7 +9,9 @@ cd "$gitRootDir"
     "git checkout" \
     "git reset HEAD" \
     "git diff" \
+    "git vdiff" \
     "git diff --cached" \
+    "git vdiff --cached" \
     "git rm" \
     'vimdiff' \
     'cat'\
