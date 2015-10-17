@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+git difftool --tool=vimdiff  --no-prompt

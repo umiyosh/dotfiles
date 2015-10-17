@@ -14,8 +14,8 @@
   excludesfile = ~/.gitignore
   editor = vim
   quotepath = false
-[merge]
-  tool = vimdiff
+; [merge]
+  ; tool = vimdiff
 [alias]
   s   = status
   st  = status
@@ -120,12 +120,6 @@
   generic = ^F move-page-down
   generic = ^B move-page-up
 
-# vimdiffで差分を表示する。複数ファイルにまたがるdiff
-# のときはqするたびにvimdiffが起動する。
-# 詳細は以下参照。
-# http://technotales.wordpress.com/2009/05/17/git-diff-with-vimdiff/
-[diff]
-  external = git_diff_wrapper
 [pager]
   diff =
 # p4fiff使いたい時はこっち使う
@@ -138,7 +132,7 @@
   helper = osxkeychain
 [difftool "sourcetree"]
 	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 	trustExitCode = true
