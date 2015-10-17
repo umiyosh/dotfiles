@@ -14,8 +14,8 @@
   excludesfile = ~/.gitignore
   editor = vim
   quotepath = false
-; [merge]
-  ; tool = vimdiff
+[merge]
+  tool = vimdiff
 [alias]
   s   = status
   st  = status
