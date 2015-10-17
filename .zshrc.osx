@@ -17,10 +17,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 # デフォルトエンコーディングSJISをUTF-8へ
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 
-# Go lang
-export PATH=$GOPATH/bin:$PATH
-launchctl setenv GOPATH $GOPATH
-
 # scala
 export SCALA_HOME=/Users/ozaki/.svm/current/rt
 PATH=$SCALA_HOME/bin:$PATH
