@@ -7,5 +7,6 @@ done | peco | sort | uniq | pecoAfterAction "ssh" \
                               "tssh" \
                               "sftp" \
                               "%%STDIN%% paaTovim" \
+                              "%%STDIN%% pecoPipe" \
                               "%%STDIN%% pbcopy"
 

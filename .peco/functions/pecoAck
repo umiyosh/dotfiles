@@ -2,4 +2,8 @@
 
 #概要：ackしてpecoしてvimで開く
 ack $@ | _pecoBeforeFilter | peco | awk -F : '{print "-c " $2 " " $1}' | \
-  pecoAfterAction "vi" "pbcopy"
+  pecoAfterAction \
+    "vi" \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
+    "pbcopy"

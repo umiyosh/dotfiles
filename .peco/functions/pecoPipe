@@ -15,5 +15,6 @@ _pecoBeforeFilter | peco | pecoAfterAction \
   "paaInputCommandAny" \
   "%%STDIN%% pbcopy" \
   "%%STDIN%% paaTovim" \
+  "%%STDIN%% pecoPipe" \
   "%%STDIN%% paaExecuteAsCommand"
 

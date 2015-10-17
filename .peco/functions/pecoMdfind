@@ -15,5 +15,6 @@ mdfind $@ | peco | pecoAfterAction "vi" \
   "paaInputCommandAny" \
   "%%STDIN%% pbcopy" \
   "%%STDIN%% paaTovim" \
+  "%%STDIN%% pecoPipe" \
   "%%STDIN%% paaExecuteAsCommand"
 

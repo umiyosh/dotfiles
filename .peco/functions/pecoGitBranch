@@ -13,5 +13,6 @@
     "git merge" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
     "paaInputCommandAny"
 

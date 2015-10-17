@@ -25,4 +25,5 @@ find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al |_pecoBeforeFilter | \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
     "%%STDIN%% paaExecuteAsCommand"

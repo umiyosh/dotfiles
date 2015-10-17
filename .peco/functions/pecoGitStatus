@@ -17,6 +17,7 @@ cd "$gitRootDir"
     "%%STDIN%% pbcopy" \
     "vi" \
     "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny"
 _executeTmuxBuffer "cd '$workDir'"
