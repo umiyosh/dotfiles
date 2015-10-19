@@ -126,3 +126,4 @@ if [ -x /usr/local/bin/brew ]; then
   fpath=($BREW_PREFIX/share/zsh/functions(N) $BREW_PREFIX/share/zsh/site-functions(N) $fpath)
 fi
 
+eval "$(direnv hook zsh)"
