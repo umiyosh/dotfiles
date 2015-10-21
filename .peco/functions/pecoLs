@@ -1,6 +1,21 @@
 #!/usr/bin/env zsh
 
 # 概要: lsしてpecoしてアクションする
+function _replaceChar() {
+  # adhocなやつ
+  perl -pe 's{\Domain Users}{\DomainUsers}g'
+}
+
+function _interporatePath() {
+  perl -e 'while(<STDIN>){
+    if (not $ARGV[0] =~ /\./) {
+      print "$ARGV[0]/$_";
+    } else {
+      print $_;
+    }
+  }' $1
+}
+
 searchPath=$@
 if [[ -z $searchPath ]]; then
   searchPath="."
@@ -9,9 +24,9 @@ if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
   searchPath=$searchPath/
 fi
 
-find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al |_pecoBeforeFilter | \
-  peco | perl -lane 'print "@F[8..$#F]"' | awk 'BEGIN{FS="->"}{print $NF}' | \
-  perl -e 'while(<STDIN>){print "$ARGV[0]/$_"}' $searchPath| pecoAfterAction "vi" \
+find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | _replaceChar | \
+  peco | awk '{print $NF}' | _interporatePath $searchPath | pecoAfterAction \
+    "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
