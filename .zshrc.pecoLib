@@ -127,7 +127,7 @@ function _removeColor()
 }
 
 function _trim() {
-  perl -pe 's/\\/\\\\ /g' | while read line;do echo $line;done
+  perl -pe 's/\\$/\\\\ /g' | while read line;do echo $line;done
 }
 
 ## afteraction後処理フィルター
