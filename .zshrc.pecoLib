@@ -111,13 +111,7 @@ function paaTovim() {
 # input filter
 ## peco前処理フィルター: pecoに渡す前の見栄えの調整
 function _pecoBeforeFilter() {
-  _removeColor | _trim | _replaceChar
-}
-
-function _replaceChar()
-{
-  # adhocなやつ
-  perl -pe 's{\Domain Users}{\DomainUsers}g'
+  _removeColor | _trim
 }
 
 function _removeColor()
