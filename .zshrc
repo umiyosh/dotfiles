@@ -518,8 +518,6 @@ bindkey "^V" '^G^V'
 
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
-[ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
-
 # python
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -553,3 +551,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # ec2ssh completion
 type ec2ssh >/dev/null 2>&1 && eval "$(ec2ssh shellcomp -)"
 
+# ruby
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
