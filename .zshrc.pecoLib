@@ -121,7 +121,7 @@ function _removeColor()
 }
 
 function _trim() {
-  perl -pe 's/^\s+(.*?)\s+$/$1/;'
+  sed 's,^ *,,; s, *$,,'
 }
 
 ## afteraction後処理フィルター
