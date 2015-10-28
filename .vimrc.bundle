@@ -70,6 +70,10 @@ call vundle#rc()
 " Programming {{{
   " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
   Bundle 'thinca/vim-quickrun'
+  " watchdogs関連
+  Bundle "osyo-manga/shabadou.vim"
+  Bundle "osyo-manga/vim-watchdogs"
+  Bundle "jceb/vim-hier"
   " szw/vim-tags
   Bundle 'szw/vim-tags'
   " perldocやphpmanual等のリファレンスをvim上で見る
