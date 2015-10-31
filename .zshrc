@@ -519,9 +519,6 @@ export PATH=$PATH:${HOME}/.composer/vendor/bin
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-# ec2ssh completion
-type ec2ssh >/dev/null 2>&1 && eval "$(ec2ssh shellcomp -)"
-
 # ruby
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
