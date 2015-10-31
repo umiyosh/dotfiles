@@ -528,9 +528,6 @@ if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
   source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
-# redmine tool
-eval "$($HOME/Dropbox/bin/addticket/bin/addticket init -)"
-
 # node関連
 export PATH=$PATH:${HOME}/.nodebrew/current/bin
 . <(npm completion)
