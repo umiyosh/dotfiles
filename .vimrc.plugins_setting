@@ -636,3 +636,10 @@ au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>ge <Plug>(go-rename)
 let g:go_fmt_command = "goimports"
 
+"------------------------------------
+" autopep8
+"------------------------------------
+augroup source-autopep8
+  autocmd!
+  autocmd BufWritePost *.py !autopep8 -i %
+augroup END
