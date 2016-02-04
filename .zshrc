@@ -522,3 +522,9 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # ruby
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# profiler
+# if type zprof > /dev/null 2>&1; then
+  # zprof | less
+# fi
+
