@@ -138,3 +138,7 @@
 	trustExitCode = true
 [url "https://"]
 	insteadOf = git://
+[github]
+	user = umiyosh
+[ghi]
+	token = !security find-internet-password -a umiyosh -s github.com -l 'ghi token' -w
