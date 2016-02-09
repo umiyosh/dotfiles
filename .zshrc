@@ -524,6 +524,7 @@ export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # profiler
+# usage: modifie .zshenv and modifie this
 # if type zprof > /dev/null 2>&1; then
   # zprof | less
 # fi
