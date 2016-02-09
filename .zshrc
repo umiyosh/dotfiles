@@ -528,3 +528,10 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
   # zprof | less
 # fi
 
+
+# The next line updates PATH for the Google Cloud SDK.
+autoload -U +X bashcompinit && bashcompinit
+source "${HOME}/Dropbox/bin/google-cloud-sdk/path.zsh.inc"
+
+# The next line enables shell command completion for gcloud.
+source "${HOME}/Dropbox/bin/google-cloud-sdk/completion.zsh.inc"
