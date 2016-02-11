@@ -1,10 +1,11 @@
-source ~/.zsh/extention/antigen/antigen.zsh
+source "${HOME}/.zsh/extention/zgen//zgen.zsh"
 
-# Bundles from the default repo
-antigen-bundle git
-antigen-bundle hchbaw/auto-fu.zsh.git --branch=pu
-antigen-bundle zsh-users/zsh-completions.git
-antigen-bundle zsh-users/zsh-syntax-highlighting
+if ! zgen saved; then
+    # plugins
+    zgen load  hchbaw/auto-fu.zsh.git . pu
+    zgen load  zsh-users/zsh-completions.git
+    zgen load  zsh-users/zsh-syntax-highlighting
+fi
 
 #=============================
 # source auto-fu.zsh

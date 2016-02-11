@@ -190,8 +190,8 @@ select-word-style default
 zstyle ':zle:*' word-chars " _-./;@"
 zstyle ':zle:*' word-style unspecified
 
-## antigen :pluginとか拡張的なものとか
-source ~/dotfiles/.zshrc.antigen
+## zgen :pluginとか拡張的なものとか
+source ~/dotfiles/.zshrc.zgen
 
 ## Command history configuration
 HISTFILE=~/.zsh_history

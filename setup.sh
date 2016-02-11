@@ -56,10 +56,10 @@ function deploySnippets() {
   fi
 }
 
-function installAntigen() {
-  ## antigen
+function installZgen() {
+  ## zgen
   if [[ ! -d $HOME/.zsh/extention/antigen/ ]]; then
-   git clone https://github.com/zsh-users/antigen.git $HOME/.zsh/extention/antigen/
+   git clone https://github.com/tarjoilija/zgen.git $HOME/.zsh/extention/zgen/
   fi
 }
 
@@ -126,7 +126,7 @@ deployDotfiles
 changeShell
 deployLocalBin
 deploySnippets
-installAntigen
+installZgen
 installAutojump
 installPeco
 setupVimPlugins
