@@ -58,7 +58,7 @@ function deploySnippets() {
 
 function installZgen() {
   ## zgen
-  if [[ ! -d $HOME/.zsh/extention/antigen/ ]]; then
+  if [[ ! -d $HOME/.zsh/extention/zgen/ ]]; then
    git clone https://github.com/tarjoilija/zgen.git $HOME/.zsh/extention/zgen/
   fi
 }
