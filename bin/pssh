@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+set -eu
+
+hosts=("$@")
+
+if [[ $#hosts -gt 1 ]]; then
+  tssh $hosts
+else
+  ssh $hosts
+fi

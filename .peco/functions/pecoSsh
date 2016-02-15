@@ -3,8 +3,7 @@
 candidates=($(_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
-done | peco | sort | uniq | pecoAfterAction "ssh" \
-                              "tssh" \
+done | peco | sort | uniq | pecoAfterAction "pssh" \
                               "sftp" \
                               "%%STDIN%% paaTovim" \
                               "%%STDIN%% pecoPipe" \
