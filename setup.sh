@@ -7,7 +7,8 @@ function deployDotfiles() {
               .ctags .gdbinit .gemrc .gitconfig .gitignore \
               .inputrc .irbrc .sbtconfig .screenrc .vimrc \
               .gvimrc .vrapperrc import.scala .tmux.conf \
-              .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg
+              .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg \
+              .zprofile
              )
   DOT_DIRS=(.zsh .vim .peco )
 
