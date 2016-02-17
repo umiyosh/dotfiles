@@ -152,6 +152,10 @@ alias rainbow="toilet -f term --gay"
 
 alias geeknote="python ~/local/bin/geeknote/geeknote.py"
 
+function da() {
+  open dash://$@
+}
+
 # Finderで開いているディレクトリに移動
 # http://www.rickynews.com/blog/2014/07/19/useful-bash-aliases/
 cdf () {
