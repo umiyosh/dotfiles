@@ -65,6 +65,8 @@ call vundle#rc()
   Bundle 'othree/eregex.vim'
   " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
   Bundle 'tyru/open-browser.vim'
+  " incremental search
+  Bundle 'haya14busa/incsearch.vim'
 " }}}
 
 " Programming {{{

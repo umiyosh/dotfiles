@@ -637,9 +637,16 @@ au FileType go nmap <Leader>ge <Plug>(go-rename)
 let g:go_fmt_command = "goimports"
 
 "------------------------------------
-" autopep8
+" autopeghp8
 "------------------------------------
 augroup source-autopep8
   autocmd!
   autocmd BufWritePost *.py !autopep8 -i %
 augroup END
+
+"------------------------------------
+" Bundle 'haya14busa/incsearch.vim'
+"------------------------------------
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
