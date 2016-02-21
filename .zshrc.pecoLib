@@ -48,9 +48,17 @@ function pecoAfterAction() {
   fi
   if [[ $Action =~ ^%%STDIN%% ]]; then
     Action=$(echo $Action | perl -pe 's/^%%STDIN%% +//g')
+    ActionScrap=("${(@s/ /)Action}")
+    Action=$ActionScrap[1]
+    shift ActionScrap
+    if [[ ! -z $ActionScrap[2] ]]; then
+      for argment in $ActionScrap; do
+        argment="$argment argment"
+      done
+    fi
     for selected in $Source; do
       echo $selected
-    done | $Action
+    done | $Action $argment
   else
     _executeTmuxBuffer "$Action $Source"
   fi
@@ -90,6 +98,14 @@ function paaExecuteAsCommand() {
     else
       _executeTmuxBuffer "./$Action"
     fi
+  done
+}
+
+function paaKill() {
+  PIDS=( ${(@f)"$(< /dev/stdin)"} )
+  SINGNAL=$1
+  for pid in $PIDS; do
+    kill $SINGNAL $pid
   done
 }
 
