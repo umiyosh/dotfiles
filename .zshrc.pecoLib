@@ -51,11 +51,12 @@ function pecoAfterAction() {
     ActionScrap=("${(@s/ /)Action}")
     Action=$ActionScrap[1]
     shift ActionScrap
-    if [[ ! -z $ActionScrap[2] ]]; then
+    if [[ ! -z $ActionScrap[1] ]]; then
       for argment in $ActionScrap; do
-        argment="$argment argment"
+        argments="$argments $argment"
       done
     fi
+    echo $Action $argment > /tmp/wk.log
     for selected in $Source; do
       echo $selected
     done | $Action $argment
