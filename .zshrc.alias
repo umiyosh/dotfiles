@@ -151,6 +151,7 @@ alias pdb="python -m pdb"
 alias rainbow="toilet -f term --gay"
 
 alias geeknote="python ~/local/bin/geeknote/geeknote.py"
+alias weather="while :;do curl -4 wttr.in/Tokyo;sleep 60;clear ;done"
 
 function da() {
   open dash://$@
