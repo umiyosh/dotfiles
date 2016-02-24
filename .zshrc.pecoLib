@@ -56,7 +56,6 @@ function pecoAfterAction() {
         argments="$argments $argment"
       done
     fi
-    echo $Action $argment > /tmp/wk.log
     for selected in $Source; do
       echo $selected
     done | $Action $argment
