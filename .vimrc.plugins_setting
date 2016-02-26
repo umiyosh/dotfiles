@@ -435,6 +435,8 @@ let g:EasyMotion_space_jump_first = 1
 map  sb  <Plug>(easymotion-b)
 map  sj <Plug>(easymotion-j)
 map  sk <Plug>(easymotion-k)
+map  se <Plug>(easymotion-e)
+map  sE <Plug>(easymotion-E)
 map  sw <Plug>(easymotion-bd-w)
 nmap sw <Plug>(easymotion-overwin-w)
 map  sl <Plug>(easymotion-bd-jk)
