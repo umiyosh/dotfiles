@@ -432,7 +432,7 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_space_jump_first = 1
 
-map  sb  <Plug>(easymotion-b)
+map  sb <Plug>(easymotion-b)
 map  sj <Plug>(easymotion-j)
 map  sk <Plug>(easymotion-k)
 map  se <Plug>(easymotion-e)
@@ -445,12 +445,8 @@ map  sf <Plug>(easymotion-bd-f)
 nmap sf <Plug>(easymotion-overwin-f)
 nmap st <Plug>(easymotion-overwin-f2)
 vmap st <Plug>(easymotion-bd-f2)
-nmap g/ <Plug>(easymotion-sn)
-xmap g/ <Plug>(easymotion-sn)
-omap g/ <Plug>(easymotion-tn)
-
-map z/ <Plug>(incsearch-easymotion-/)
-map z? <Plug>(incsearch-easymotion-?)
+map  s/ <Plug>(incsearch-easymotion-/)
+map  s? <Plug>(incsearch-easymotion-?)
 
 "------------------------------------
 " matchit.vim
