@@ -143,6 +143,8 @@ function ssh(){
 
 # alias dpeco="cd "
 
+alias terraform='~/dotfiles/bin/terraform'
+
 # python
 alias pdb="python -m pdb"
 

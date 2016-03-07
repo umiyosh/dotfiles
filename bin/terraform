@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+ESC="\e["
+ESCEND=m
+COLOR_OFF=${ESC}${ESCEND}
+echoRed() {
+  # 文字色：Red
+  echo -en "${ESC}31${ESCEND}"
+  echo "${@}"
+  echo -en "${COLOR_OFF}"
+}
+
+args=($@)
+
+if [[ $args[1] = 'destroy' ]]; then
+  if [[ -z $args[2] ]]; then
+    echoRed '事故防止のためterraform destroy単体実行は潰してます' $0
+    exit 255
+  fi
+fi
+
+terraform $args
