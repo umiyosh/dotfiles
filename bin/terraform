@@ -2,19 +2,29 @@
 ESC="\e["
 ESCEND=m
 COLOR_OFF=${ESC}${ESCEND}
-echoRed() {
+SCRIPT_NAME=$0
+args=($@)
+
+function echoRed() {
   # 文字色：Red
   echo -en "${ESC}31${ESCEND}"
   echo "${@}"
   echo -en "${COLOR_OFF}"
 }
 
-args=($@)
+function mes() {
+    echoRed '事故防止のためterraform destroy単体実行は潰してます' $SCRIPT_NAME
+}
 
 if [[ $args[1] = 'destroy' ]]; then
   if [[ -z $args[2] ]]; then
-    echoRed '事故防止のためterraform destroy単体実行は潰してます' $0
+    mes
     exit 255
+  else
+    if [[ $args[2] = '-force' ]] || [[ $args[2] = '-f' ]]; then
+      mes
+      exit 255
+    fi
   fi
 fi
 
