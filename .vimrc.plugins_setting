@@ -368,7 +368,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs        = 1
 " 可能ならhighligt表示する
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_auto_jump           = 1
+let g:syntastic_auto_jump           = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -378,11 +378,11 @@ let g:syntastic_perl_checkers       = ['perl', 'podchecker']
 let g:syntastic_php_checkers        = ['php', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
 
-let g:syntastic_go_checkers         = ['govet']
+" let g:syntastic_go_checkers         = ['govet']
 " let g:syntastic_mode_map            = { 'mode': 'passive','active_filetypes': ['go'] }
 " let g:syntastic_go_checkers         = ['golint', 'govet', 'errcheck']
 " let g:syntastic_go_checkers         = ['gometalinter']
-" let g:syntastic_go_checkers         = ['go', 'golint', 'govet', 'errcheck']
+let g:syntastic_go_checkers         = ['go', 'golint', 'govet', 'errcheck']
 " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 "------------------------------------
