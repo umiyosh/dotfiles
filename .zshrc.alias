@@ -171,3 +171,9 @@ cdf () {
                 echo 'No Finder window found' >&2
         fi
 }
+
+# Back and forth between current dir and previous dir
+function bk() {
+  cd -
+}
+
