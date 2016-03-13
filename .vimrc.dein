@@ -180,6 +180,7 @@ if s:use_dein && v:version >= 704
   call dein#add('vim-scripts/DirDiff.vim',                )
   call dein#add('mattn/benchvimrc-vim',                   )
   call dein#add('rizzatti/dash.vim',                      )
+  call dein#add('thinca/vim-zenspace')
   " }}}
 
   " ColorSchema{{{{
