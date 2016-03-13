@@ -1,0 +1,191 @@
+" Flags
+let s:use_dein = 1
+
+" vi compatibility
+if !&compatible
+  set nocompatible
+endif
+
+" Prepare .vim dir
+let s:vimdir = $HOME . "/.vim"
+if has("vim_starting")
+  if ! isdirectory(s:vimdir)
+    call system("mkdir " . s:vimdir)
+  endif
+endif
+
+" dein
+let s:dein_enabled  = 0
+if s:use_dein && v:version >= 704
+  let s:dein_enabled = 1
+
+  " Set dein paths
+  let s:dein_dir = s:vimdir . '/dein'
+  let s:dein_github = s:dein_dir . '/repos/github.com'
+  let s:dein_repo_name = "Shougo/dein.vim"
+  let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
+
+  " Check dein has been installed or not.
+  if !isdirectory(s:dein_repo_dir)
+    echo "dein is not installed, install now "
+    let s:dein_repo = "https://github.com/" . s:dein_repo_name
+    echo "git clone " . s:dein_repo . " " . s:dein_repo_dir
+    call system("git clone " . s:dein_repo . " " . s:dein_repo_dir)
+  endif
+  let &runtimepath = &runtimepath . "," . s:dein_repo_dir
+
+  " Begin plugin part
+  call dein#begin(s:dein_dir)
+
+
+  " Check cache
+  if dein#load_cache()
+
+    call dein#add('Shougo/dein.vim')
+
+    call dein#add('Shougo/vimproc', {
+          \ 'build': {
+          \     'windows': 'tools\\update-dll-mingw',
+          \     'cygwin': 'make -f make_cygwin.mak',
+          \     'mac': 'make -f make_mac.mak',
+          \     'linux': 'make',
+          \     'unix': 'gmake'}})
+
+    call dein#add('Shougo/unite.vim', {
+          \ 'depends': ['vimproc'],
+          \ 'on_cmd': ['Unite'],
+          \ 'lazy': 1})
+
+    if has('lua')
+      call dein#add('Shougo/neocomplete.vim', {
+            \ 'on_i': 1,
+            \ 'lazy': 1})
+
+    endif
+
+    call dein#add('tyru/open-browser.vim', {
+          \ 'on_map': ['<Plug>(openbrowser-smart-search)'],
+          \ 'lazy': 1})
+
+  call dein#add('scrooloose/nerdcommenter.git')
+  call dein#add('c9s/cascading.vim')
+  call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('junegunn/vim-easy-align')
+  call dein#add('Gundo')
+  call dein#add('tpope/vim-surround.git')
+  call dein#add('smartchr')
+  call dein#add('operator-user')
+  call dein#add('operator-camelize')
+  call dein#add('operator-replace')
+  call dein#add('textobj-user')
+  call dein#add('kana/vim-textobj-fold.git')
+  call dein#add('kana/vim-textobj-indent.git')
+  call dein#add('taku-o/vim-toggle')
+  call dein#add('kana/vim-smartinput')
+  call dein#add('vim-scripts/PDV--phpDocumentor-for-Vim')
+  call dein#add('mattn/emmet-vim')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neosnippet')
+  call dein#add('shawncplus/phpcomplete.vim')
+  call dein#add('smartword')
+  call dein#add('camelcasemotion')
+  call dein#add('easymotion/vim-easymotion')
+  call dein#add('matchit.zip')
+  call dein#add('grep.vim')
+  call dein#add('othree/eregex.vim')
+  call dein#add('haya14busa/incsearch.vim')
+  call dein#add('haya14busa/incsearch-easymotion.vim')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('osyo-manga/shabadou.vim')
+  call dein#add('osyo-manga/vim-watchdogs')
+  call dein#add('jceb/vim-hier')
+  call dein#add('szw/vim-tags')
+  call dein#add('thinca/vim-ref')
+  call dein#add('SQLUtilities')
+  call dein#add('ruby.vim')
+  call dein#add('tpope/vim-rails')
+  call dein#add('Pydiction')
+  call dein#add('majutsushi/tagbar')
+  call dein#add('wesleyche/SrcExpl')
+  call dein#add('davidhalter/jedi-vim')
+  call dein#add('klen/python-mode')
+  call dein#add('joonty/vdebug')
+  call dein#add('stephpy/vim-php-cs-fixer')
+  call dein#add('moll/vim-node')
+  call dein#add('vim-jp/vital.vim')
+  call dein#add('fatih/vim-go')
+  call dein#add('rhysd/vim-go-impl')
+  call dein#add('chase/vim-ansible-yaml')
+  call dein#add('markcornick/vim-terraform')
+  call dein#add('haml.zip')
+  call dein#add('JavaScript-syntax')
+  call dein#add('jQuery')
+  call dein#add('nginx.vim')
+  call dein#add('umiyosh/vim-markdown')
+  call dein#add('kchmck/vim-coffee-script')
+  call dein#add('yuroyoro/vim-python')
+  call dein#add('yuroyoro/vim-scala')
+  call dein#add('scrooloose/syntastic')
+  call dein#add('othree/html5.vim')
+  call dein#add('hail2u/vim-css3-syntax')
+  call dein#add('elzr/vim-json')
+  call dein#add('aklt/plantuml-syntax')
+  call dein#add('fholgado/minibufexpl.vim')
+  call dein#add('banyan/recognize_charcode.vim')
+  call dein#add('tpope/vim-pathogen')
+  call dein#add('Shougo/vimfiler.git')
+  call dein#add('tyru/vim-altercmd')
+  call dein#add('mattn/webapi-vim')
+  call dein#add('cecutil')
+  call dein#add('L9')
+  call dein#add('thinca/vim-openbuf')
+  call dein#add('yuroyoro/vimdoc_ja')
+  call dein#add('TwitVim')
+  call dein#add('tsukkee/lingr-vim')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('Lokaltog/vim-powerline')
+  call dein#add('rgarver/Kwbd.vim')
+  call dein#add('duff/vim-bufonly')
+  call dein#add('umiyosh/vim-prove')
+  call dein#add('Shougo/vinarise')
+  call dein#add('airblade/vim-rooter')
+  call dein#add('vim-scripts/VOoM')
+  call dein#add('LeafCage/foldCC')
+  call dein#add('davidoc/taskpaper.vim')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('rking/ag.vim')
+  call dein#add('vim-scripts/DirDiff.vim')
+  call dein#add('mattn/benchvimrc-vim')
+  call dein#add('rizzatti/dash.vim')
+  call dein#add('desert256.vim')
+  call dein#add('mrkn256.vim')
+  call dein#add('tomasr/molokai')
+  call dein#add('yuroyoro/yuroyoro256.vim')
+  call dein#add('tsukkee/unite-help')
+  call dein#add('Shougo/unite-outline')
+  call dein#add('basyura/unite-rails')
+  call dein#add('thinca/vim-unite-history')
+  call dein#add('tsukkee/unite-tag')
+  call dein#add('choplin/unite-vim_hacks')
+  call dein#add('tacroe/unite-mark')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('zoncoen/unite-autojump')
+
+    call dein#save_cache()
+  endif
+
+  call dein#end()
+
+  " Installation check.
+  if dein#check_install()
+    call dein#install()
+  endif
+endif
+
+if s:dein_enabled && dein#tap("unite.vim")
+  nnoremap [unite] <Nop>
+  nmap <Leader>u [unite]
+  nnoremap <silent> [unite]b :Unite buffer<CR>
+endif
+
