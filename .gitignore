@@ -19,5 +19,6 @@ Session.vim
 samples
 
 .vim/bundle/
+.vim/dein/
 .zsh/extention/
 .vim/view/
