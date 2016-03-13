@@ -99,6 +99,7 @@ function installPeco() {
 }
 
 function setupVimPlugins() {
+  vim +qall
   if [[ -z $CIRCLECI ]]; then
     vim +GoInstallBinaries +qall
   fi
