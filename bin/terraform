@@ -13,10 +13,10 @@ function echoRed() {
 }
 
 function mes() {
-    echoRed '事故防止のためterraform destroy単体実行は潰してます' $SCRIPT_NAME
+    echoRed '事故防止のためterraform destroy/apply 単体実行は潰してます' $SCRIPT_NAME
 }
 
-if [[ $args[1] = 'destroy' ]]; then
+if [[ $args[1] = 'destroy' ]] || [[ $args[1] = 'apply' ]] ; then
   if [[ -z $args[2] ]]; then
     mes
     exit 255
