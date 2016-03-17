@@ -1,3 +1,4 @@
+export PATH=$PATH:$HOME/bin/
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/
 export PATH=$PATH:$HOME/local/bin:/usr/local/git/bin
