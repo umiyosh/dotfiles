@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 set -eu
 
-pbpaste | $1 |pbcopy
+pbpaste | perl -pe 's/\r./\n/g' | $1 |pbcopy
