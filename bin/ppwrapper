@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -eu
+
+pbpaste | $1 |pbcopy

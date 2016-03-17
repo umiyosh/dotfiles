@@ -127,3 +127,6 @@ if [ -x /usr/local/bin/brew ]; then
 fi
 
 eval "$(direnv hook zsh)"
+
+alias pw=$HOME/dotfiles/bin/ppwrapper
+
