@@ -173,7 +173,4 @@ cdf () {
 }
 
 # Back and forth between current dir and previous dir
-function bk() {
-  cd -
-}
-
+alias bk="cd -"
