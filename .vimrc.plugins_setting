@@ -136,6 +136,12 @@ map E  <Plug>(smartword-e)
 map ge  <Plug>(smartword-ge)
 
 "------------------------------------
+" operator-replace.vim
+"------------------------------------
+" RwなどでYankしてるもので置き換える
+map _ <Plug>(operator-replace)
+
+"------------------------------------
 " camelcasemotion.vim
 "------------------------------------
 " <Shift-wbe>でCameCaseやsnake_case単位での単語移動
