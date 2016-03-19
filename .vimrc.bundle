@@ -199,6 +199,7 @@ call vundle#rc()
 " ColorSchema{{{{
   " color schema 256
   Bundle 'tomasr/molokai'
+  Bundle 'HybridText'
 " }}}
 
 " Unite {{{{

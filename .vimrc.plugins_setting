@@ -436,10 +436,15 @@ map  sl <Plug>(easymotion-bd-jk)
 nmap sl <Plug>(easymotion-overwin-line)
 map  sf <Plug>(easymotion-bd-f)
 nmap sf <Plug>(easymotion-overwin-f)
-nmap st <Plug>(easymotion-overwin-f2)
 vmap st <Plug>(easymotion-bd-f2)
+nmap st <Plug>(easymotion-overwin-f2)
 map  s/ <Plug>(incsearch-easymotion-/)
 map  s? <Plug>(incsearch-easymotion-?)
+
+"------------------------------------
+" HybridText
+"------------------------------------
+autocmd BufEnter * if &filetype == "" || &filetype == "text"| setlocal ft=hybrid | endif
 
 "------------------------------------
 " matchit.vim
