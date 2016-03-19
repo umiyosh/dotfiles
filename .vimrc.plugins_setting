@@ -128,19 +128,12 @@ map <Leader>u <Plug>(operator-camelize)<CR>
 map <Leader>U <Plug>(operator-decamelize)<CR>
 
 "------------------------------------
-" operator-replace.vim
-"------------------------------------
-" RwなどでYankしてるもので置き換える
-map _ <Plug>(operator-replace)
-
-"------------------------------------
 " sumartword.vim
 "------------------------------------
 map W  <Plug>(smartword-w)
 map B  <Plug>(smartword-b)
 map E  <Plug>(smartword-e)
 map ge  <Plug>(smartword-ge)
-
 
 "------------------------------------
 " camelcasemotion.vim
@@ -455,12 +448,6 @@ map  s? <Plug>(incsearch-easymotion-?)
 let b:match_ignorecase = 1
 
 "------------------------------------
-" TwitVim.vim
-"------------------------------------
-" twitvimのキーアサイン
-" nnoremap <Leader>tw <ESC>:<C-u>CPosttoTwitter<CR>
-
-"------------------------------------
 " ref.vim
 "------------------------------------
 " カーソルしたの英単語の意味を表示する
@@ -594,6 +581,14 @@ let g:pymode_folding              = 1
 command! Pdb :!python -m pdb %
 
 "------------------------------------
+" autopeghp8
+"------------------------------------
+augroup source-autopep8
+  autocmd!
+  autocmd BufWritePost *.py !autopep8 -i %
+augroup END
+
+"------------------------------------
 " Emmet-vim
 "------------------------------------
 let g:use_emmet_complete_tag = 1
@@ -660,14 +655,6 @@ au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>ge <Plug>(go-rename)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 let g:go_fmt_command = "goimports"
-
-"------------------------------------
-" autopeghp8
-"------------------------------------
-augroup source-autopep8
-  autocmd!
-  autocmd BufWritePost *.py !autopep8 -i %
-augroup END
 
 "------------------------------------
 " Bundle 'haya14busa/incsearch.vim'
