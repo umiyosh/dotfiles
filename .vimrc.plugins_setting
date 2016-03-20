@@ -212,10 +212,6 @@ nmap    ss [unite]
 vmap    ss [unite]
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
-"history/yankの有効化
-let g:unite_source_history_yank_enable =1
-nnoremap <silent> ,gy :<C-u>Unite history/yank<CR>
-
 " 全部乗せ
 nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -start-insert  -buffer-name=files buffer file_mru bookmark file<CR>
 " ファイル一覧
@@ -230,8 +226,6 @@ nnoremap <silent> [unite]m  :<C-u>Unite -start-insert  file_mru<CR>
 nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir -start-insert  file<CR>
 " レジスタ一覧
 nnoremap <silent> [unite]r :<C-u>Unite -start-insert -buffer-name=register register<CR>
-" yank history
-nnoremap <silent> [unite]y :<C-u>Unite -start-insert history/yank<CR>
 " mark一覧
 nnoremap <silent> [unite]M :<C-u>Unite -start-insert mark<CR>
 " command history一覧
@@ -242,17 +236,11 @@ nnoremap <silent> [unite]s :<C-u>Unite -start-insert history/search<CR>
 nnoremap <silent> [unite]j :<C-u>Unite -start-insert jump<CR>
 " unite outline
 nnoremap <silent> [unite]o :<C-u>Unite -start-insert outline<CR>
-
 " Unite keymap
 nnoremap <silent> [unite]k :<C-u>Unite -start-insert output:map\|map!\|lmap<CR>
-
 " Unite neosnippet
 nnoremap <silent> [unite]n :<C-u>Unite -start-insert neosnippet<CR>
 
-" Unite history/yank
-nnoremap <silent> [unite]/ :<C-u>Unite -start-insert history/yank<CR>
-nnoremap <silent> [unite]/ :<C-u>Unite -start-insert history/yank<CR>
-nnoremap <silent> [unite]J  :<C-u>Unite autojump -start-insert -default-action=lcd<CR>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
   " Overwrite settings.
