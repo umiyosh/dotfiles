@@ -13,11 +13,12 @@ cd "$gitRootDir"
     "git diff --cached" \
     "git vdiff --cached" \
     "git rm" \
+    "vi" \
     'vimdiff' \
     'cat'\
     'open' \
     "%%STDIN%% pbcopy" \
-    "vi" \
+    "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
     "%%STDIN%% paaSafeRm" \

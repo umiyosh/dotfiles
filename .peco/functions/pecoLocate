@@ -13,6 +13,7 @@ locate $@ | peco | pecoAfterAction "vi" \
   "%%STDIN%% paaSafeRm" \
   "paaInputCommandAny" \
   "%%STDIN%% pbcopy" \
+  "%%STDIN%% paaPbCopyFilename" \
   "%%STDIN%% paaTovim" \
   "%%STDIN%% pecoPipe" \
   "%%STDIN%% paaExecuteAsCommand"

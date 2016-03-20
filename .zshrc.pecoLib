@@ -109,6 +109,17 @@ function paaKill() {
   done
 }
 
+function paaPbCopyFilename() {
+  FILEPATHS=( ${(@f)"$(< /dev/stdin)"} )
+  for filepath in $FILEPATHS; do
+    basename $filepath
+  done | pbcopy
+}
+
+function paaTovim() {
+  tovim | pecoAfterAction $ActionsBuffer
+}
+
 function _executeTmuxBuffer() {
   Commands=($@)
   print -z $Commands
@@ -118,10 +129,6 @@ function _executeTmuxBuffer() {
 function _pasteTmuxBuffer() {
   Commands=($@)
   print -z $Commands
-}
-
-function paaTovim() {
-  tovim | pecoAfterAction $ActionsBuffer
 }
 
 # input filter
@@ -210,6 +217,7 @@ function zlePasteBuffer() {
   CURSOR=$#BUFFER
   zle clear-screen
 }
+
 function zleExecuteAsCommand() {
   Selected=( ${(@f)"$(< /dev/stdin)"} )
   pasteBuf=$Selected[1]

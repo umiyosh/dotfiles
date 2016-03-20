@@ -40,6 +40,7 @@ find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | _rep
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
     "%%STDIN%% paaExecuteAsCommand"
