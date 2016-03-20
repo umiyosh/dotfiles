@@ -9,6 +9,7 @@
     "git vdiff" \
     "git reset --soft" \
     "git reset --hard" \
+    "git rebase -i" \
     "git push origin" \
     "git pull origin" \
     "git merge" \
