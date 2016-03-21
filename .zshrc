@@ -505,7 +505,7 @@ fi
 
 # node関連
 export PATH=$PATH:${HOME}/.nodebrew/current/bin
-. <(npm completion)
+source ${HOME}/dotfiles/.zshrc.complition.npm
 
 # golang
 if [[ -f $HOME/.gvm/scripts/gvm ]]; then
