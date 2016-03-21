@@ -436,6 +436,13 @@ map  s/ <Plug>(incsearch-easymotion-/)
 map  s? <Plug>(incsearch-easymotion-?)
 
 "------------------------------------
+" Bundle 'haya14busa/incsearch.vim'
+"------------------------------------
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+"------------------------------------
 " HybridText
 "------------------------------------
 autocmd BufEnter * if &filetype == "" || &filetype == "text"| setlocal ft=hybrid | endif
@@ -655,9 +662,3 @@ au FileType go nmap <Leader>ge <Plug>(go-rename)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 let g:go_fmt_command = "goimports"
 
-"------------------------------------
-" Bundle 'haya14busa/incsearch.vim'
-"------------------------------------
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
