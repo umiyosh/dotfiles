@@ -101,11 +101,9 @@ function installPeco() {
 function setupVimPlugins() {
   # vim
   ## vunndle and BundleInstall and make vimproc
-  if [[ ! -d $HOME/.vim/bundle/vundle/ ]]; then
-    mkdir -p $HOME/.vim/bundle/
-    git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle/
-    vim -Nu $HOME/dotfiles/.vimrc.bundle +BundleInstall! +qall
-    cd $HOME/.vim/bundle/vimproc/
+  if [[ ! -d $HOME/.vim/plugged ]]; then
+    vim -Nu $HOME/dotfiles/.vimrc.plug +PlugInstall! +qall
+    cd $HOME/.vim/plugged/vimproc/
     case "${OSTYPE}" in
     darwin*)
       make -f make_mac.mak
@@ -116,7 +114,7 @@ function setupVimPlugins() {
     esac
     cd $HOME/dotfiles/
   else
-    vim -Nu $HOME/dotfiles/.vimrc.bundle +BundleInstall +qall
+    vim -Nu $HOME/dotfiles/.vimrc.plug +PlugInstall! +qall
   fi
   if [[ -z $CIRCLECI ]]; then
     vim +GoInstallBinaries +qall
