@@ -18,6 +18,8 @@ Session.vim
 .zshrc.local
 samples
 
+.vim/plugged/
+.vim/dein/
 .vim/bundle/
 .zsh/extention/
 .vim/view/
