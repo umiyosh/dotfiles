@@ -1,5 +1,5 @@
 "vunlde.vimで管理してるpluginを読み込む
-source ~/dotfiles/.vimrc.bundle
+source ~/dotfiles/.vimrc.plug
 
 "基本設定
 source ~/dotfiles/.vimrc.basic
