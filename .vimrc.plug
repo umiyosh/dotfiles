@@ -174,7 +174,7 @@ call plug#begin('~/.vim/plugged')
   " gitgutter
   Plug 'airblade/vim-gitgutter'
   " ステータスラインをカッコよくする
-  Plug 'Lokaltog/vim-powerline'
+  Plug 'Lokaltog/vim-powerline', { 'branch': 'develop' }
   " 分割を維持してバッファ削除
   Plug 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除
