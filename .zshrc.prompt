@@ -1,109 +1,76 @@
-# The MIT License
+# set prompt
+# colors enables us to idenfity color by $fg[red].
+autoload colors
+colors
+case ${UID} in
+  0)
+    setopt prompt_subst
+    source ~/dotfiles/.zshrc.prompt.define
+    ;;
+  *)
+    #
+    # Color
+    #
+    DEFAULT=$'%{\e[1;0m%}'
+    RESET="%{${reset_color}%}"
+    #GREEN=$'%{\e[1;32m%}'
+    GREEN="%{${fg[green]}%}"
+    #BLUE=$'%{\e[1;35m%}'
+    BLUE="%{${fg[blue]}%}"
+    RED="%{${fg[red]}%}"
+    CYAN="%{${fg[cyan]}%}"
+    WHITE="%{${fg[white]}%}"
+    #
+    # Prompt
+    #
+    setopt prompt_subst
+    source ~/dotfiles/.zshrc.prompt.define
 
-# Copyright (c) 2009-2013 Robby Russell and contributors (see https://github.com/robbyrussell/oh-my-zsh/contributors)
+    # Show git branch when you are in git repository
+    # http://d.hatena.ne.jp/mollifier/20100906/p1
 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
+    autoload -Uz add-zsh-hook
+    autoload -Uz vcs_info
 
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
+    zstyle ':vcs_info:*' enable git svn hg bzr
+    zstyle ':vcs_info:*' formats '(%s)-[%b]'
+    zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+    zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
+    zstyle ':vcs_info:bzr:*' use-simple true
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
+    autoload -Uz is-at-least
+    if is-at-least 4.3.10; then
+      # この check-for-changes が今回の設定するところ
+      zstyle ':vcs_info:git:*' check-for-changes true
+      zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
+      zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
+      zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
+      zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
+    fi
 
-function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-      ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  echo ${ref#refs/heads/}
-}
+    function _update_vcs_info_msg() {
+      psvar=()
+      LANG=en_US.UTF-8 vcs_info
+      psvar[2]=$(_git_not_pushed)
+      [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+    }
+    add-zsh-hook precmd _update_vcs_info_msg
 
-function my_git_prompt() {
-  tester=$(git rev-parse --git-dir 2> /dev/null) || return
+    function _git_not_pushed()
+    {
+      if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
+        head="$(git rev-parse HEAD)"
+        for x in $(git rev-parse --remotes)
+        do
+          if [ "$head" = "$x" ]; then
+            return 0
+          fi
+        done
+        echo "{?}"
+      fi
+      return 0
+    }
 
-  INDEX=$(git status --porcelain 2> /dev/null)
-  STATUS=""
+  ;;
+esac
 
-  # is branch ahead?
-  if $(echo "$(git log origin/$(current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD"
-  fi
-
-  # is anything staged?
-  if $(echo "$INDEX" | grep -E -e '^(D[ M]|[MARC][ MD]) ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED"
-  fi
-
-  # is anything unstaged?
-  if $(echo "$INDEX" | grep -E -e '^[ MARC][MD] ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNSTAGED"
-  fi
-
-  # is anything untracked?
-  if $(echo "$INDEX" | grep '^?? ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED"
-  fi
-
-  # is anything unmerged?
-  if $(echo "$INDEX" | grep -E -e '^(A[AU]|D[DU]|U[ADU]) ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNMERGED"
-  fi
-
-  if [[ ! -n $(git status -s 2> /dev/null) ]]; then
-    STATUS="$ZSH_THEME_GIT_PROMPT_CLEAN"
-  fi
-
-  if [[ -n $STATUS ]]; then
-    STATUS=" $STATUS"
-  fi
-
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-function my_current_branch() {
-  echo $(current_branch || echo "(no branch)")
-}
-
-function ssh_connection() {
-  if [[ -n $SSH_CONNECTION ]]; then
-    echo "%{$fg_bold[red]%}(ssh) "
-  fi
-}
-
-# git stash count
-function git_prompt_stash_count(){
-  COUNT=$(git stash list 2>/dev/null | wc -l | tr -d ' ')
-  if [ "$COUNT" -gt 0 ]; then
-    echo "$ZSH_THEME_GIT_PROMPT_STASH_COUNT_BEFORE$COUNT$ZSH_THEME_GIT_PROMPT_STASH_COUNT_AFTER"
-  fi
-}
-
-local ret_status="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})%?%{$reset_color%}"
-PROMPT=$'\n$(ssh_connection)%{$fg_bold[green]%}%n@%m%{$reset_color%}$(my_git_prompt) %{$reset_color%}$(git_prompt_stash_count)%{$reset_color%} : \
-%{$fg_bold[blue]%}%~\
-${time} [${ret_status}] %# '
-
-# local time, color coded by last return code
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
-time_disabled="%{$fg[green]%}%*%{$reset_color%}"
-time=$time_enabled
-ZSH_THEME_GIT_PROMPT_STASH_COUNT_BEFORE="%{$fg[yellow]%} 【%{$fg[green]%}♻ "
-ZSH_THEME_GIT_PROMPT_STASH_COUNT_AFTER="%{$fg[yellow]%}】"
-
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✔  "
-ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
-ZSH_THEME_GIT_PROMPT_PREFIX=" $fg[white]‹ %{$fg_bold[yellow]%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%} ↑ "
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%} ✎  "
-ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%} ✎  "
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%} ？ "
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[white]›%{$reset_color%}"

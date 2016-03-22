@@ -1,0 +1,29 @@
+## Completion configuration
+#
+# completion
+# fpath=($fpath $HOME/local/functions(N))
+fpath=(~/.zsh/functions/Completion ${fpath})
+
+autoload -Uz compinit
+compinit -u
+
+# sudoも補完の対象
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+
+# 色付きで補完する
+zstyle ':completion:*' list-colors di=34 fi=0
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%B--- %d ---%b'
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*:default' list-colors ln=35 di=36
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':completion:*:kill:*:processes' command 'ps x'
+zstyle ':completion:*:-command-:*' \
+    fake-parameters PERL5LIB # for perl
+zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
+
