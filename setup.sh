@@ -103,7 +103,7 @@ function setupVimPlugins() {
   ## vunndle and BundleInstall and make vimproc
   if [[ ! -d $HOME/.vim/plugged ]]; then
     vim -Nu $HOME/dotfiles/.vimrc.plug +PlugInstall! +qall
-    cd $HOME/.vim/plugged/vimproc/
+    cd $HOME/.vim/plugged/vimproc.vim/
     case "${OSTYPE}" in
     darwin*)
       make -f make_mac.mak
