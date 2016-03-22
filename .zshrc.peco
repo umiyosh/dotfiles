@@ -2,7 +2,7 @@
 
 FPATH="${HOME}/dotfiles/.peco/functions:${FPATH}"
 
-source ~/dotfiles/.zshrc.peco.lib
+source ~/dotfiles/.zshrc.peco.library
 source ~/dotfiles/.zshrc.peco.widgets
 
 # autoload peco functions
