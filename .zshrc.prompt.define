@@ -107,7 +107,7 @@ function getKubeCluster() {
   if [[ $clusterInfo =~ "prd" ]]; then
     clusterInfo="%{$fg_bold[red]%}$clusterInfo%{$reset_color%}"
   else
-    clusterInfo="%{$fg_bold[green]%}$clusterInfo%{$reset_color%}"
+    clusterInfo="%{$fg_bold[cyan]%}$clusterInfo%{$reset_color%}"
   fi
   echo $clusterInfo
 }
