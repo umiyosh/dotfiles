@@ -233,3 +233,6 @@ cdf () {
 
 # Back and forth between current dir and previous dir
 alias bk="cd -"
+
+# docker関連
+alias dl='docker ps -l -q'
