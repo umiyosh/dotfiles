@@ -86,8 +86,22 @@ function git_prompt_stash_count(){
   fi
 }
 
+function get_kube_cluster() {
+  if  which kubectl >/dev/null; then
+    clusterInfo=$(kubectl config view --minify|egrep cluster:|egrep -v '^-'|awk '{print $NF}')
+  else
+    clusterInfo="none of gke cluster"
+  fi
+  if [[ $clusterInfo =~ "prd" ]]; then
+    clusterInfo="%{$fg_bold[red]%}$clusterInfo%{$reset_color%}"
+  else
+    clusterInfo="%{$fg_bold[green]%}$clusterInfo%{$reset_color%}"
+  fi
+  echo $clusterInfo
+}
+
 local ret_status="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})%?%{$reset_color%}"
-PROMPT=$'\n$(ssh_connection)%{$fg_bold[green]%}%n@%m%{$reset_color%}$(my_git_prompt) %{$reset_color%}$(git_prompt_stash_count)%{$reset_color%} : \
+PROMPT=$'\n$(get_kube_cluster)\n$(ssh_connection)%{$fg_bold[green]%}%n@%m%{$reset_color%}$(my_git_prompt) %{$reset_color%}$(git_prompt_stash_count)%{$reset_color%} :  \
 %{$fg_bold[blue]%}%~\
 ${time} [${ret_status}] %# '
 
