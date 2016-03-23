@@ -20,20 +20,36 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-function current_branch() {
+ZSH_THEME_GIT_PROMPT_STASH_COUNT_BEFORE="%{$fg[yellow]%} 【%{$fg[green]%}♻ "
+ZSH_THEME_GIT_PROMPT_STASH_COUNT_AFTER="%{$fg[yellow]%}】"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✔  "
+ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" $fg[white]‹ %{$fg_bold[yellow]%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%} ↑ "
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%} ✎  "
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%} ✎  "
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%} ？ "
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
+ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[white]›%{$reset_color%}"
+
+function currentBranch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
       ref=$(git rev-parse --short HEAD 2> /dev/null) || return
   echo ${ref#refs/heads/}
 }
 
-function my_git_prompt() {
+function myCurrentBranch() {
+  echo $(currentBranch || echo "(no branch)")
+}
+
+function myGitPrompt() {
   tester=$(git rev-parse --git-dir 2> /dev/null) || return
 
   INDEX=$(git status --porcelain 2> /dev/null)
   STATUS=""
 
   # is branch ahead?
-  if $(echo "$(git log origin/$(current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
+  if $(echo "$(git log origin/$(currentBranch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD"
   fi
 
@@ -65,29 +81,25 @@ function my_git_prompt() {
     STATUS=" $STATUS"
   fi
 
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(myCurrentBranch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-function my_current_branch() {
-  echo $(current_branch || echo "(no branch)")
-}
-
-function ssh_connection() {
+function sshConnection() {
   if [[ -n $SSH_CONNECTION ]]; then
     echo "%{$fg_bold[red]%}(ssh) "
   fi
 }
 
 # git stash count
-function git_prompt_stash_count(){
+function gitPromptStashCount(){
   COUNT=$(git stash list 2>/dev/null | wc -l | tr -d ' ')
   if [ "$COUNT" -gt 0 ]; then
     echo "$ZSH_THEME_GIT_PROMPT_STASH_COUNT_BEFORE$COUNT$ZSH_THEME_GIT_PROMPT_STASH_COUNT_AFTER"
   fi
 }
 
-function get_kube_cluster() {
-  if  which kubectl >/dev/null; then
+function getKubeCluster() {
+  if which kubectl >/dev/null; then
     clusterInfo=$(kubectl config view --minify|egrep cluster:|egrep -v '^-'|awk '{print $NF}')
   else
     clusterInfo="none of gke cluster"
@@ -100,24 +112,28 @@ function get_kube_cluster() {
   echo $clusterInfo
 }
 
-local ret_status="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})%?%{$reset_color%}"
-PROMPT=$'\n$(get_kube_cluster)\n$(ssh_connection)%{$fg_bold[green]%}%n@%m%{$reset_color%}$(my_git_prompt) %{$reset_color%}$(git_prompt_stash_count)%{$reset_color%} :  \
-%{$fg_bold[blue]%}%~\
-${time} [${ret_status}] %# '
+function currentTime() {
+  # local time, color coded by last return code
+  timeEnabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
+  echo $timeEnabled
+}
 
-# local time, color coded by last return code
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
-time_disabled="%{$fg[green]%}%*%{$reset_color%}"
-time=$time_enabled
-ZSH_THEME_GIT_PROMPT_STASH_COUNT_BEFORE="%{$fg[yellow]%} 【%{$fg[green]%}♻ "
-ZSH_THEME_GIT_PROMPT_STASH_COUNT_AFTER="%{$fg[yellow]%}】"
+function getStatus() {
+  retStatus="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})%?%{$reset_color%}"
+  echo $retStatus
+}
 
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✔  "
-ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
-ZSH_THEME_GIT_PROMPT_PREFIX=" $fg[white]‹ %{$fg_bold[yellow]%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%} ↑ "
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%} ✎  "
-ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%} ✎  "
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%} ？ "
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[white]›%{$reset_color%}"
+function getHost() {
+  currenthost="%{$fg_bold[green]%}%n@%m%{$reset_color%}"
+  echo $currenthost
+}
+
+function getCurrntDir() {
+  currentDir="%{$fg_bold[blue]%}%~"
+  echo $currentDir
+}
+
+PROMPT=$'\n$(getKubeCluster)\n$(sshConnection)$(getHost)$(myGitPrompt) $(gitPromptStashCount) :  \
+$(getCurrntDir)\
+$(currentTime) [$(getStatus)] %# '
+
