@@ -105,8 +105,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'stephpy/vim-php-cs-fixer'
   " Node.js用
   Plug 'moll/vim-node'
-  " vital.vim
-  Plug 'vim-jp/vital.vim'
   " vim-go
   Plug 'fatih/vim-go'
   " vim-go-impl
