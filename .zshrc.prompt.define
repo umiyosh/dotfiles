@@ -101,7 +101,12 @@ function gitPromptStashCount(){
 
 function getKubeCluster() {
   if which kubectl >/dev/null; then
-    clusterInfo=$(kubectl config view --minify|egrep cluster:|egrep -v '^-'|awk '{print $NF}')
+    clusterInfo=$(kubectl config view --minify 2>/dev/null)
+    if [[ $? -ne 0 ]]; then
+      clusterInfo="none of gke cluster"
+    else
+      clusterInfo=$(echo $clusterInfo |egrep cluster:|egrep -v '^-'|awk '{print $NF}')
+    fi
   else
     clusterInfo="none of gke cluster"
   fi
