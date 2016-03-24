@@ -236,3 +236,6 @@ alias bk="cd -"
 
 # docker関連
 alias dl='docker ps -l -q'
+
+# kube関連
+alias swumidev='eval "$(kmachine env umidev)"'
