@@ -20,6 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+function addColor() {
+  strings=$1
+  color=$2
+  echo "%{$fg_bold[$color]%}${strings}%{$reset_color%}"
+}
+
 ZSH_THEME_GIT_PROMPT_STASH_COUNT_BEFORE="%{$fg[yellow]%} 【%{$fg[green]%}♻ "
 ZSH_THEME_GIT_PROMPT_STASH_COUNT_AFTER="%{$fg[yellow]%}】"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✔  "
@@ -31,9 +37,11 @@ ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%} ✎  "
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%} ？ "
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
 ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[white]›%{$reset_color%}"
-ZSH_THEME_KUBERNETES_PROMPT_PREFIX="%{$fg_bold[blue]%}⎈ %{$reset_color%}==>: "
-ZSH_THEME_DOCKER_PROMPT_PREFIX="┊🐳 ==>: "
+ZSH_THEME_KUBERNETES_PROMPT_PREFIX="$(addColor '⎈ ' blue)=>: "
+ZSH_THEME_DOCKER_PROMPT_PREFIX="┊🐳 =>: "
 ZSH_THEME_DOCKER_PROMPT_SUFFIX="┊ "
+ZSH_THEME_GCP_PROMPT_PREFIX="$(addColor "g" blue)=>: "
+ZSH_THEME_GCP_PROMPT_SUFFIX="┊ "
 
 function currentBranch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
@@ -89,7 +97,7 @@ function myGitPrompt() {
 
 function sshConnection() {
   if [[ -n $SSH_CONNECTION ]]; then
-    echo "%{$fg_bold[red]%}(ssh) "
+    echo $(addColor "(ssh) " red)
   fi
 }
 
@@ -103,9 +111,9 @@ function gitPromptStashCount(){
 
 function get_docker_machine() {
   if [[ "$DOCKER_MACHINE_NAME" != "" ]]; then
-    prompt_docker_machine="${ZSH_THEME_DOCKER_PROMPT_PREFIX}%{$fg_bold[cyan]%}${DOCKER_MACHINE_NAME}%{$reset_color%}${ZSH_THEME_DOCKER_PROMPT_SUFFIX}"
+    prompt_docker_machine="${ZSH_THEME_DOCKER_PROMPT_PREFIX}$(addColor ${DOCKER_MACHINE_NAME} cyan)${ZSH_THEME_DOCKER_PROMPT_SUFFIX}"
   else
-    prompt_docker_machine="${ZSH_THEME_DOCKER_PROMPT_PREFIX}%{$fg_bold[black]%}NOTHING%{$reset_color%}${ZSH_THEME_DOCKER_PROMPT_SUFFIX}"
+    prompt_docker_machine="${ZSH_THEME_DOCKER_PROMPT_PREFIX}$(addColor "NOTHING" black)${ZSH_THEME_DOCKER_PROMPT_SUFFIX}"
   fi
   echo $prompt_docker_machine
 }
@@ -114,17 +122,17 @@ function getKubeCluster() {
   if which kubectl >/dev/null; then
     clusterInfo=$(kubectl config view --minify 2>/dev/null)
     if [[ $? -ne 0 ]]; then
-      clusterInfo="%{$fg_bold[black]%}none of k8s cluster%{$reset_color%}"
+      clusterInfo=$(addColor $clusterInfo black)
     else
       clusterInfo=$(echo $clusterInfo |egrep cluster:|egrep -v '^-'|awk '{print $NF}')
     fi
   else
-    clusterInfo="%{$fg_bold[black]%}none of k8s cluster%{$reset_color%}"
+    clusterInfo=$(addColor $clusterInfo black)
   fi
   if [[ $clusterInfo =~ "prd" ]]; then
-    clusterInfo="%{$fg_bold[red]%}$clusterInfo%{$reset_color%}"
+    clusterInfo=$(addColor $clusterInfo red)
   else
-    clusterInfo="%{$fg_bold[cyan]%}$clusterInfo%{$reset_color%}"
+    clusterInfo=$(addColor $clusterInfo cyan)
   fi
   echo ${ZSH_THEME_KUBERNETES_PROMPT_PREFIX}${clusterInfo}${ZSH_THEME_DOCKER_PROMPT_SUFFIX}
 }
@@ -141,16 +149,22 @@ function getStatus() {
 }
 
 function getHost() {
-  currenthost="%{$fg_bold[green]%}%n@%m%{$reset_color%}"
+  currenthost=$(addColor "%n@%m" green)
   echo $currenthost
 }
 
 function getCurrntDir() {
-  currentDir="%{$fg_bold[blue]%}%~"
+  currentDir=$(addColor "%~" blue)
   echo $currentDir
 }
 
-PROMPT=$'\n$(get_docker_machine)$(getKubeCluster)\n$(sshConnection)$(getHost)$(myGitPrompt) $(gitPromptStashCount) :  \
+function getCurrntGcpConf() {
+  gcpconf=$(cat ~/.config/gcloud/active_config)
+  gcpconf=$(addColor $gcpconf cyan)
+  echo ${ZSH_THEME_GCP_PROMPT_PREFIX}${gcpconf}${ZSH_THEME_GCP_PROMPT_SUFFIX}
+}
+
+PROMPT=$'\n$(get_docker_machine)$(getKubeCluster)$(getCurrntGcpConf)\n$(sshConnection)$(getHost)$(myGitPrompt) $(gitPromptStashCount) :  \
 $(getCurrntDir)\
 $(currentTime) [$(getStatus)] %# '
 
