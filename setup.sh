@@ -121,12 +121,13 @@ function setupVimPlugins() {
   fi
 }
 
-deployDotfiles
-changeShell
-deployLocalBin
-deploySnippets
-installZgen
-installAutojump
-installPeco
-setupVimPlugins
-
+: "install" && {
+  deployDotfiles
+  changeShell
+  deployLocalBin
+  deploySnippets
+  installZgen
+  installAutojump
+  installPeco
+  setupVimPlugins
+}
