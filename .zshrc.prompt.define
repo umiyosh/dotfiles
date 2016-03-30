@@ -113,7 +113,7 @@ function gitPromptStashCount(){
   fi
 }
 
-function get_docker_machine() {
+function getDockerMachine() {
   if [[ "$DOCKER_MACHINE_NAME" != "" ]]; then
     prompt_docker_machine="${ZSH_THEME_DOCKER_PROMPT_PREFIX}$(addColor ${DOCKER_MACHINE_NAME} cyan)${ZSH_THEME_DOCKER_PROMPT_SUFFIX}"
   else
@@ -175,7 +175,7 @@ function promptTermination() {
 function makePrompt() {
 cat <<PROMPT_TEMPLATE
 
-$(get_docker_machine)$(getKubeCluster)$(getCurrntGcpConf)
+$(getDockerMachine)$(getKubeCluster)$(getCurrntGcpConf)
 $(sshConnection)$(getHost)$(myGitPrompt) $(gitPromptStashCount) :
 $(getCurrntDir)
 $(currentTime) [$(getStatus)] %# $(promptTermination)
