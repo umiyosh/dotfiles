@@ -126,6 +126,7 @@ function getKubeCluster() {
   if which kubectl >/dev/null; then
     clusterInfo=$(kubectl config view --minify 2>/dev/null)
     if [[ $? -ne 0 ]]; then
+      clusterInfo="NOTHING"
       clusterInfo=$(addColor $clusterInfo black)
     else
       clusterInfo=$(echo $clusterInfo |egrep cluster:|egrep -v '^-'|awk '{print $NF}')
@@ -164,7 +165,7 @@ function getCurrntDir() {
 
 function getCurrntGcpConf() {
   gconf="~/.config/gcloud/active_config"
-  if [[ ! -f $gconf ]]; then
+  if [[ -f $gconf ]]; then
     gcpconf=$(cat ~/.config/gcloud/active_config)
     gcpconf=$(addColor $gcpconf cyan)
   else
