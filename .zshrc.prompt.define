@@ -21,6 +21,10 @@
 # THE SOFTWARE.
 
 function addColor() {
+  if [[ $# -lt 2 ]]; then
+    echo ""
+    return
+  fi
   strings=$1
   color=$2
   echo "%{$fg_bold[$color]%}${strings}%{$reset_color%}"
@@ -164,7 +168,19 @@ function getCurrntGcpConf() {
   echo ${ZSH_THEME_GCP_PROMPT_PREFIX}${gcpconf}${ZSH_THEME_GCP_PROMPT_SUFFIX}
 }
 
-PROMPT=$'\n$(get_docker_machine)$(getKubeCluster)$(getCurrntGcpConf)\n$(sshConnection)$(getHost)$(myGitPrompt) $(gitPromptStashCount) :  \
-$(getCurrntDir)\
-$(currentTime) [$(getStatus)] %# '
+function promptTermination() {
+:
+}
+
+function makePrompt() {
+cat <<PROMPT_TEMPLATE
+
+$(get_docker_machine)$(getKubeCluster)$(getCurrntGcpConf)
+$(sshConnection)$(getHost)$(myGitPrompt) $(gitPromptStashCount) :
+$(getCurrntDir)
+$(currentTime) [$(getStatus)] %# $(promptTermination)
+PROMPT_TEMPLATE
+}
+
+PROMPT=$'$(makePrompt)'
 
