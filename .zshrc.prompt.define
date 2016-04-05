@@ -164,7 +164,7 @@ function getCurrntDir() {
 }
 
 function getCurrntGcpConf() {
-  gconf="~/.config/gcloud/active_config"
+  gconf=~/.config/gcloud/active_config
   if [[ -f $gconf ]]; then
     gcpconf=$(cat $gconf)
     gcpconf=$(addColor $gcpconf cyan)
