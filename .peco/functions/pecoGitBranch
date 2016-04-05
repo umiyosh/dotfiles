@@ -11,6 +11,8 @@
     "git reset --hard" \
     "git rebase -i" \
     "git push origin" \
+    "git push origin --force" \
+    "git push origin --force-with-lease" \
     "git pull origin" \
     "git merge" \
     "%%STDIN%% pbcopy" \
