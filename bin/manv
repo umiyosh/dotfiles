@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-set -eu
-
-if ! man $1 1>/dev/null 2>&1; then
-  echo  No manual entry for $1
-  exit 1
-fi
-man $1 |col -b -x|tovim -R -c 'set ft=man nolist nomod noma' >/dev/null

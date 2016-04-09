@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-set -eu
-somecomand=("$@")
-pbpaste | perl -pe 's/\r./\n/g' | $somecomand |pbcopy
