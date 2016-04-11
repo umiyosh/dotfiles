@@ -6,4 +6,5 @@ ack $@ | _pecoBeforeFilter | peco | awk -F : '{print "-c " $2 " " $1}' | \
     "vi" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
+    "%%STDIN%% cat" \
     "pbcopy"

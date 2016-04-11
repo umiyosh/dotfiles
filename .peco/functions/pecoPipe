@@ -11,6 +11,7 @@ _pecoBeforeFilter | peco | pecoAfterAction \
   'zcat'\
   'gzcat'\
   'open' \
+  "%%STDIN%% cat" \
   "%%STDIN%% paaSafeRm" \
   "paaInputCommandAny" \
   "%%STDIN%% pbcopy" \

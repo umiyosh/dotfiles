@@ -15,6 +15,7 @@
     "git push origin --force-with-lease" \
     "git pull origin" \
     "git merge" \
+    "%%STDIN%% cat" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \

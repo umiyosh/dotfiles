@@ -10,6 +10,7 @@ locate $@ | peco | pecoAfterAction "vi" \
   'zcat'\
   'gzcat'\
   'open' \
+  "%%STDIN%% cat" \
   "%%STDIN%% paaSafeRm" \
   "paaInputCommandAny" \
   "%%STDIN%% pbcopy" \

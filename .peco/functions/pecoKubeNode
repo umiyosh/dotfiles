@@ -10,6 +10,7 @@ kubectl get po -o wide | peco | awk '{print $NF}'| getIp|\
   pecoAfterAction \
     "pssh" \
     "sftp" \
+    "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
     "%%STDIN%% pbcopy"

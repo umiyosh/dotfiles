@@ -37,6 +37,7 @@ find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | _rep
     'zcat'\
     'gzcat'\
     'open' \
+    "%%STDIN%% cat" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
     "%%STDIN%% pbcopy" \

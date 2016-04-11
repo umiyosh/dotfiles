@@ -6,4 +6,5 @@ dirs -l|perl -pe 's# /#\n /#g'| _pecoBeforeFilter |peco | \
     "cd" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
+    "%%STDIN%% cat" \
     "pbcopy"

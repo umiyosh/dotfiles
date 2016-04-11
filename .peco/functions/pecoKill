@@ -8,6 +8,7 @@ ps aux | peco | awk '{ print $2 }'|pecoAfterAction \
   "%%STDIN%% paaKill -SIGILL" \
   "%%STDIN%% paaKill -KILL" \
   "paaInputCommandAny" \
+  "%%STDIN%% cat" \
   "%%STDIN%% pbcopy" \
   "%%STDIN%% paaTovim" \
   "%%STDIN%% pecoPipe"

@@ -17,6 +17,7 @@ cd "$gitRootDir"
     'vimdiff' \
     'cat'\
     'open' \
+    "%%STDIN%% cat" \
     "%%STDIN%% pbcopy" \
     "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
