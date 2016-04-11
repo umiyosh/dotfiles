@@ -143,6 +143,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'elzr/vim-json'
   " plantuml
   Plug 'aklt/plantuml-syntax'
+  " vcl for varnish
+  Plug 'smerrill/vcl-vim-plugin'
 " }}}
 
 " Buffer {{{
