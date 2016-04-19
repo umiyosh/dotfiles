@@ -110,6 +110,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'moll/vim-node'
   " vim-go
   Plug 'fatih/vim-go'
+  " godoctor : refactoring
+  Plug 'godoctor/godoctor.vim'
   " vim-go-impl
   Plug 'rhysd/vim-go-impl'
   " vim-ansible-yaml
