@@ -660,3 +660,9 @@ au FileType go nmap <Leader>ge <Plug>(go-rename)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 let g:go_fmt_command = "goimports"
 
+"------------------------------------
+" vim-markdown
+"------------------------------------
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_folding_level = 6
