@@ -130,3 +130,6 @@ eval "$(direnv hook zsh)"
 
 alias pw=$HOME/dotfiles/bin/ppwrapper
 
+## for Docker
+eval $(docker-machine env)
+
