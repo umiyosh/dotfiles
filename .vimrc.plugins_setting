@@ -212,6 +212,15 @@ nmap    ss [unite]
 vmap    ss [unite]
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
+"" unite-grep {{{
+" unite-grepのバックエンドをagに切り替える
+" http://qiita.com/items/c8962f9325a5433dc50d
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_max_candidates = 200
+" }}}
+
 " 全部乗せ
 nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -start-insert  -buffer-name=files buffer file_mru bookmark file<CR>
 " ファイル一覧
@@ -240,6 +249,8 @@ nnoremap <silent> [unite]o :<C-u>Unite -start-insert outline<CR>
 nnoremap <silent> [unite]k :<C-u>Unite -start-insert output:map\|map!\|lmap<CR>
 " Unite neosnippet
 nnoremap <silent> [unite]n :<C-u>Unite -start-insert neosnippet<CR>
+" Unite Grep
+nnoremap <silent> [unite]g :<C-u>Unite -start-insert grep<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
