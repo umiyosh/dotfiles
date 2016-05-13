@@ -5,6 +5,7 @@ for candidate in $candidates; do
   echo $candidate
 done | peco | sort | uniq | pecoAfterAction "pssh" \
                               "sftp" \
+                              "tsftp" \
                               "%%STDIN%% cat" \
                               "%%STDIN%% paaTovim" \
                               "%%STDIN%% pecoPipe" \
