@@ -12,20 +12,55 @@ function echoRed() {
   echo -en "${COLOR_OFF}"
 }
 
-function mes() {
-    echoRed '事故防止のためterraform destroy/apply 単体実行は潰してます' $SCRIPT_NAME
+function confirmation(){
+  echo
+  echoRed '実行するなら yes を,  実行しないなら no入力か ctrl+c で抜けてください'
+    read answer
+    case $answer in
+      yes)
+        echo -e "tyeped yes.\n"
+        return 0
+        ;;
+      no)
+        echo -e "tyeped no.\n"
+        echo -e "実行をキャンセルしました.\n"
+        exit 255
+        ;;
+      *)
+        echo -e "cannot understand $answer.\n"
+        confirmation
+        ;;
+    esac
 }
 
-if [[ $args[1] = 'destroy' ]] || [[ $args[1] = 'apply' ]] ; then
-  if [[ -z $args[2] ]]; then
-    mes
+function confirmMes() {
+    echoRed '本気でterraform apply実行しますか？' $SCRIPT_NAME
+    confirmation
+    echo terraform apply
+    terraform apply
+}
+
+function preventMes() {
+    echoRed '事故防止のためterraform destroy単体実行は潰してます' $SCRIPT_NAME
     exit 255
+}
+
+if [[ $args[1] = 'destroy' ]] ; then
+  if [[ -z $args[2] ]]; then
+    preventMes
   else
     if [[ $args[2] = '-force' ]] || [[ $args[2] = '-f' ]]; then
-      mes
-      exit 255
+      preventMes
     fi
   fi
 fi
 
-terraform $args
+if [[ $args[1] = 'apply' ]] ; then
+  if [[ -z $args[2] ]]; then
+    confirmMes
+  else
+    if [[ $args[2] = '-force' ]] || [[ $args[2] = '-f' ]]; then
+      confirmMes
+    fi
+  fi
+fi
