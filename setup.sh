@@ -5,9 +5,9 @@ function deployDotfiles() {
   DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco \
               .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
               .ctags .gdbinit .gemrc .gitconfig .gitignore \
-              .inputrc .irbrc .sbtconfig .screenrc .vimrc \
-              .gvimrc .vrapperrc import.scala .tmux.conf \
-              .dir_colors .rdebugrc .rvmrc .perltidyrc .mackup.cfg \
+              .inputrc .irbrc .sbtconfig .vimrc \
+              .gvimrc .tmux.conf \
+              .dir_colors .rdebugrc .perltidyrc .mackup.cfg \
               .zprofile
              )
   DOT_DIRS=(.zsh .vim .peco )
@@ -15,9 +15,6 @@ function deployDotfiles() {
   # dotfiles
   for file in "${DOT_FILES[@]}"
   do
-    if [[ -L $HOME/$file ]]; then
-      mv "$HOME/$file" "$HOME/${file}.orig.$(date +"%Y%m%d%H%M%S")"
-    fi
     if [[ ! -f $HOME/$file ]]; then
       ln -s "$HOME/dotfiles/$file" "$HOME/$file"
     fi
