@@ -33,8 +33,17 @@ alias agv="pecoAg"
 alias ackv="pecoAck"
 alias l="pecoLs"
 alias fp="pecoFind"
-alias f="fp  . -name '.git' -prune -o -print"
-alias fd="fp . -name '.git' -prune -o -type d"
+function f() {
+  target=${1:=.}
+  fp ${target} -name '.git' -prune -o -print
+}
+function fd() {
+  target=${1:=.}
+  fp ${target} -name '.git' -prune -o -type d
+}
+
+alias fgo='fp $GOPATH'
+alias fgd='fd $GOPATH'
 alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
 alias lpe="pecoLocate"
 alias mpe="pecoMdfind"

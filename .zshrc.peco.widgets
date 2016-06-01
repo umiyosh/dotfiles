@@ -38,7 +38,8 @@ function pecoAutojump() {
           "%%STDIN%% zleExecuteAsCommand" \
           "%%STDIN%% zlePasteBuffer" \
           "%%STDIN%% paaTovim" \
-          "%%STDIN%% pbcopy"
+          "%%STDIN%% pbcopy" \
+          "cd"
 }
 zle -N pecoAutojump
 bindkey '^j' pecoAutojump
