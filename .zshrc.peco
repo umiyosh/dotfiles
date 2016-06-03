@@ -43,7 +43,7 @@ function fd() {
 }
 
 alias fgo='fp $GOPATH'
-alias fgd='fd $GOPATH'
+alias fgd='fd $GOPATH/src'
 alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
 alias lpe="pecoLocate"
 alias mpe="pecoMdfind"
