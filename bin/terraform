@@ -37,7 +37,6 @@ function confirmMes() {
     echoRed '本気でterraform apply実行しますか？' $SCRIPT_NAME
     confirmation
     echo terraform apply
-    terraform apply
 }
 
 function preventMes() {
@@ -64,3 +63,4 @@ if [[ $args[1] = 'apply' ]] ; then
     fi
   fi
 fi
+terraform $args
