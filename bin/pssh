@@ -5,7 +5,7 @@ set -eu
 hosts=("$@")
 
 if [[ $#hosts -gt 1 ]]; then
-  tssh $hosts
+  tcmd "ssh $hosts"
 else
   ssh $hosts
 fi

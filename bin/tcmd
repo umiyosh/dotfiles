@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cmd=$1
+shift $@
+hosts=("$@")
+
+is_first="true"
+for host in ${hosts[@]}; do
+  if [ "${is_first}" == "true" ]; then
+    tmux send-keys "$cmd" C-m
+    is_first="false"
+  else
+    tmux split-window "$cmd"
+    tmux select-layout tiled 1>/dev/null
+  fi
+done
+
+tmux set-window-option synchronize-panes on
+tmux select-pane -t 0
+exit
