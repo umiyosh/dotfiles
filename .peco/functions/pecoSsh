@@ -4,9 +4,8 @@ candidates=($(_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
 done | peco | sort | uniq | pecoAfterAction "pssh" \
-                              "sftp" \
-                              "tsftp" \
-                              "tsredis-stat" \
+                              "tcmd sftp" \
+                              "tcmd redis-stat" \
                               "%%STDIN%% cat" \
                               "%%STDIN%% paaTovim" \
                               "%%STDIN%% pecoPipe" \
