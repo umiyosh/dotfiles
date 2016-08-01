@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -e
 
 function deployDotfiles() {
   DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco \
@@ -36,7 +36,8 @@ function deployDotfiles() {
 
 function changeShell() {
   if [[ ! "$SHELL" =~ .+zsh$ ]]; then
-    sudo chsh -s "$(which zsh)"
+    sudo which zsh >>/private/etc/shells
+    chsh -s "$(which zsh)"
   fi
 }
 
@@ -98,6 +99,10 @@ function installPeco() {
 function setupVimPlugins() {
   # vim
   ## vunndle and BundleInstall and make vimproc
+  if [[ -e /usr/local/bin/mvim ]]; then
+    alias vim='mvim -v'
+  fi
+  alias vim='mvim -v'
   if [[ ! -d $HOME/.vim/plugged ]]; then
     vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qall
     cd "$HOME/.vim/plugged/vimproc.vim/"
