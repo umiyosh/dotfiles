@@ -36,7 +36,9 @@ function deployDotfiles() {
 
 function changeShell() {
   if [[ ! "$SHELL" =~ .+zsh$ ]]; then
-    sudo which zsh >>/private/etc/shells
+    if [[ ${OSTYPE} =~ "^darwin" ]]; then
+      sudo which zsh >>/private/etc/shells
+    fi
     chsh -s "$(which zsh)"
   fi
 }
