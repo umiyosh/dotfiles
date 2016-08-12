@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+# see also
+# http://vim-jp.org/blog/2015/10/15/tovim-on-shell-command-pipes.html
+
+set -e
+# exec 1> /tmp/vimDeubgLog.$(basename $0) 2>&1 ; set -xe
+
+TOVIMTMP=~/.tovim_tmp_`date +%Y-%m-%d_%H-%M-%S.md`
+trap 'rm $TOVIMTMP' ERR
+
+pbpaste > $TOVIMTMP
+mvim -g -f $TOVIMTMP < /dev/tty > /dev/tty
+cat $TOVIMTMP |pbcopy
+open /Applications/Quiver.app
+
