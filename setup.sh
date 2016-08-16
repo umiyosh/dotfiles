@@ -36,10 +36,12 @@ function deployDotfiles() {
 
 function changeShell() {
   if [[ ! "$SHELL" =~ .+zsh$ ]]; then
-    if [[ ${OSTYPE} =~ "^darwin" ]]; then
-      sudo which zsh >>/private/etc/shells
+    if [[ -z $CIRCLECI ]]; then
+      if [[ ${OSTYPE} =~ "^darwin" ]]; then
+        sudo which zsh >>/private/etc/shells
+      fi
+      chsh -s "$(which zsh)"
     fi
-    chsh -s "$(which zsh)"
   fi
 }
 
