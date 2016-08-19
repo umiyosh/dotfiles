@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+#概要： minion nodeに対してなにかする やつ
+
+kubectl get node | peco |egrep -v 'NAME.+STATUS.+AGE'| \
+  awk '{print $1}'|sort | uniq | \
+    pecoAfterAction \
+      "kubectl describe node " \
+      "kubectl get node " \
+      "kubectl get node --output=json " \
+      "kubectl get node --output=yaml " \
+      "%%STDIN%% cat" \
+      "%%STDIN%% paaTovim" \
+      "%%STDIN%% pecoPipe" \
+      "%%STDIN%% pbcopy"

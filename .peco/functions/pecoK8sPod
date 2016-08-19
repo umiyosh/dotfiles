@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+#概要： podに対してなにかする やつ
+
+function _getIp() {
+  while read node;do
+    (kubectl describe node $node|egrep Addresses:|awk '{print $NF}'|awk 'BEGIN{FS=","}{print $1}'|perl -pe 's/^$//g') &
+  done
+  wait
+}
+
+function _convertPodToNode() {
+  while read pod ;do
+    (kubectl get po $pod -o wide | awk '{print $NF}' |egrep -v '^NODE$') &
+  done
+  wait
+}
+
+function nodeSsh() {
+  _convertPodToNode | sort | uniq | _getIp | pecoAfterAction pssh
+}
+
+kubectl get po -o wide | peco | awk '{print $1}'|sort | uniq | \
+  pecoAfterAction \
+    "kubectl describe pod " \
+    "kubectl logs " \
+    "kubectl logs -f " \
+    "kubectl get pod " \
+    "kubectl get pod --output=json " \
+    "kubectl get pod --output=yaml " \
+    "%%STDIN%% nodeSsh" \
+    "%%STDIN%% cat" \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% pbcopy"

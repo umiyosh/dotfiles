@@ -21,7 +21,8 @@ autoload pecoGitBranch
 autoload pecoGitLog
 autoload pecoGitRefLog
 autoload pecoSsh
-autoload pecoKubeNode
+autoload pecoK8sNode
+autoload pecoK8sPod
 
 # peco alias
 alias -g P='| p'
@@ -52,4 +53,5 @@ alias gpb="pecoGitBranch"
 alias gpl="pecoGitLog"
 alias gpr="pecoGitRefLog"
 alias s="pecoSsh"
-alias kn="pecoKubeNode"
+alias kn="pecoK8sNode"
+alias kp="pecoK8sPod"
