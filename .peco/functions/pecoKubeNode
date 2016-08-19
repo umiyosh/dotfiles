@@ -6,10 +6,22 @@ function getIp() {
   done
 }
 
-kubectl get po -o wide | peco | awk '{print $NF}'| getIp|\
+function nodeSsh() {
+  getIp | pecoAfterAction pssh
+}
+
+function nodeSftp() {
+  getIp | pecoAfterAction sftp
+}
+
+kubectl get po -o wide | peco | awk '{print $NF}'|sort | uniq | \
   pecoAfterAction \
-    "pssh" \
-    "sftp" \
+    "kubectl describe node " \
+    "kubectl get node " \
+    "kubectl get node --output=json " \
+    "kubectl get node --output=yaml " \
+    "%%STDIN%% nodeSsh" \
+    "%%STDIN%% nodeSftp" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
