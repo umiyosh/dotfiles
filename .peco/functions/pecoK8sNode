@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 #概要： minion nodeに対してなにかする やつ
+<<<<<<< HEAD
 function getIp() {
   while read node;do
     kubectl describe node $node|egrep Addresses:|awk '{print $NF}'|awk 'BEGIN{FS=","}{print $1}'|perl -pe 's/^$//g'
@@ -26,3 +27,17 @@ kubectl get po -o wide | peco | awk '{print $NF}'|sort | uniq | \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
     "%%STDIN%% pbcopy"
+=======
+
+kubectl get node | peco |egrep -v 'NAME.+STATUS.+AGE'| \
+  awk '{print $1}'|sort | uniq | \
+    pecoAfterAction \
+      "kubectl describe node " \
+      "kubectl get node " \
+      "kubectl get node --output=json " \
+      "kubectl get node --output=yaml " \
+      "%%STDIN%% cat" \
+      "%%STDIN%% paaTovim" \
+      "%%STDIN%% pecoPipe" \
+      "%%STDIN%% pbcopy"
+>>>>>>> add-pecok8s

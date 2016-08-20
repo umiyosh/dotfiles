@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+pod=$1
+kubectl exec $pod -ti -- sh

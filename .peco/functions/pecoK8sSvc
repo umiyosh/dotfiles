@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+kubectl get svc | peco | awk '{print $1}'|egrep -v 'NAME.+CLUSTER-IP'|sort | uniq | \
+  pecoAfterAction \
+    "kubectl describe svc " \
+    "kubectl get svc " \
+    "kubectl get svc --output=json " \
+    "kubectl get svc --output=yaml " \
+    "%%STDIN%% cat" \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% pbcopy"
