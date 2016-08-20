@@ -7,7 +7,7 @@ targets=("$@")
 is_first="true"
 for target in ${targets[@]}; do
   chunk="$cmd $target"
-  if [ "${is_first}" == "true" ]; then
+  if [ "${is_first}" = "true" ]; then
     tmux send-keys "$chunk" C-m
     is_first="false"
   else
