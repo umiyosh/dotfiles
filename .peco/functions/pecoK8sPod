@@ -7,16 +7,22 @@ function _getIp() {
   done
   wait
 }
-
 function _convertPodToNode() {
   while read pod ;do
     (kubectl get po $pod -o wide | awk '{print $NF}' |egrep -v '^NODE$') &
   done
   wait
 }
-
 function nodeSsh() {
   _convertPodToNode | sort | uniq | _getIp | pecoAfterAction pssh
+}
+
+function _k8sSh() {
+  pods=("$@")
+  tcmd kubectlSh $pods
+}
+function k8sSh() {
+  pecoAfterAction _k8sSh
 }
 
 kubectl get po -o wide | peco | awk '{print $1}'|sort | uniq | \
@@ -27,6 +33,7 @@ kubectl get po -o wide | peco | awk '{print $1}'|sort | uniq | \
     "kubectl get pod " \
     "kubectl get pod --output=json " \
     "kubectl get pod --output=yaml " \
+    "%%STDIN%% k8sSh" \
     "%%STDIN%% nodeSsh" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \

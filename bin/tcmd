@@ -2,11 +2,11 @@
 
 cmd=$1
 shift
-hosts=("$@")
+targets=("$@")
 
 is_first="true"
-for host in ${hosts[@]}; do
-  chunk="$cmd $host"
+for target in ${targets[@]}; do
+  chunk="$cmd $target"
   if [ "${is_first}" == "true" ]; then
     tmux send-keys "$chunk" C-m
     is_first="false"
