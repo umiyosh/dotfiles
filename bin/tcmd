@@ -10,12 +10,16 @@ for target in ${targets[@]}; do
   if [ "${is_first}" = "true" ]; then
     tmux send-keys "$chunk" C-m
     is_first="false"
+    split_flg="false"
   else
     tmux split-window "$chunk"
     tmux select-layout tiled 1>/dev/null
+    split_flg="true"
   fi
 done
 
-tmux set-window-option synchronize-panes on
+if [[ $split_flg = "true" ]]; then
+  tmux set-window-option synchronize-panes on
+fi
 tmux select-pane -t 0
 exit
