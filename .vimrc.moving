@@ -137,3 +137,7 @@ nnoremap [Mark]l :<C-u>marks<CR>
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 " バッファ読み込み時にマークを初期化
 autocmd BufReadPost * delmarks!
+
+nnoremap <silent>bp :bprevious<CR>
+nnoremap <silent>bn :bnext<CR>
+nnoremap <Leader>bb :b#<CR>
