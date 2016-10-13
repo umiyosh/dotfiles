@@ -16,6 +16,7 @@ cd "$gitRootDir"
     "vi" \
     'vimdiff' \
     'cat'\
+    'chmod +x'\
     'open' \
     "%%STDIN%% cat" \
     "%%STDIN%% pbcopy" \

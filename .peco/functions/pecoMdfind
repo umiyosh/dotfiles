@@ -10,6 +10,7 @@ mdfind $@ | peco | pecoAfterAction "vi" \
   'cat'\
   'zcat'\
   'gzcat'\
+  'chmod +x'\
   'open' \
   "%%STDIN%% cat" \
   "%%STDIN%% paaSafeRm" \
