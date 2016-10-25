@@ -78,8 +78,8 @@ call plug#begin('~/.vim/plugged')
   " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
   Plug 'thinca/vim-quickrun'
   " watchdogs関連
-  Plug 'osyo-manga/shabadou.vim'
-  Plug 'osyo-manga/vim-watchdogs'
+  " Plug 'osyo-manga/shabadou.vim'
+  " Plug 'osyo-manga/vim-watchdogs'
   Plug 'jceb/vim-hier'
   " szw/vim-tags
   Plug 'szw/vim-tags'
