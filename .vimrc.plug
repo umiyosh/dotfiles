@@ -95,9 +95,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'majutsushi/tagbar'
   " Source code Explorer
   Plug 'wesleyche/SrcExpl'
-  " Pydiction : Python用の入力補完
-  " TODO: jedi-vimと用途がぶつかっているかも？
-  Plug 'Pydiction'
   " pythonのomni補完 jedi.vim
   Plug 'davidhalter/jedi-vim'
   " python-mode

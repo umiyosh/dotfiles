@@ -73,7 +73,14 @@ autocmd BufReadPost,BufEnter,BufWritePost :NeoCompleteBufferMakeCache <buffer>
 "" omni補完時のプレビューウィンドウ抑止
 set completeopt-=preview
 "" python jedi-vim設定
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
+if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
+
 autocmd FileType python let b:did_ftplugin = 1
 
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
