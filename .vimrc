@@ -1,3 +1,4 @@
+scriptencoding utf-8
 "vunlde.vimで管理してるpluginを読み込む
 source ~/dotfiles/.vimrc.plug
 
