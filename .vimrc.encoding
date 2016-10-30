@@ -1,9 +1,9 @@
-scriptencoding utf-8
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
 "-------------------------------------------------------------------------------
-set ffs=unix,dos,mac  " 改行文字
+set fileformats=unix,dos,mac  " 改行文字
 set encoding=utf-8    " デフォルトエンコーディング
+scriptencoding utf-8
 
 " 文字コード認識はbanyan/recognize_charcode.vimへ
 
