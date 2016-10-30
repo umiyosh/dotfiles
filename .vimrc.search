@@ -31,5 +31,5 @@ command! -nargs=1 Gr :Rgrep <args> *<Enter><CR>
 " カーソル下の単語をgrepする
 nnoremap <silent> <C-g><C-r> :<C-u>Rgrep<Space><C-r><C-w> *<Enter><CR>
 
-let Grep_Skip_Dirs = '.svn .git'
-let Grep_Skip_Files = '*.bak *~'
+let g:Grep_Skip_Dirs = '.svn .git'
+let g:Grep_Skip_Files = '*.bak *~'
