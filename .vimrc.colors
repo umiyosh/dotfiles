@@ -6,7 +6,6 @@ colorscheme molokai
 
 " molokai setting
 let g:rehash256 = 1
-highlight Normal ctermbg=none
 set cursorline
 set cursorcolumn
 
@@ -32,5 +31,6 @@ endif
 
 " ハイライト on
 syntax enable
+hi Normal   ctermbg=none
 hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222
-hi Visual  term=reverse cterm=reverse
+hi Visual   term=reverse  cterm=reverse
