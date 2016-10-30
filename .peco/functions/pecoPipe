@@ -10,6 +10,7 @@ _pecoBeforeFilter | peco | pecoAfterAction \
   'cat'\
   'zcat'\
   'gzcat'\
+  'gunzip'\
   'chmod +x'\
   'open' \
   "%%STDIN%% cat" \

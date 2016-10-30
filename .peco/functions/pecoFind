@@ -11,6 +11,7 @@ find $@ | _pecoBeforeFilter| peco | pecoAfterAction "vi" \
     'cat'\
     'zcat'\
     'gzcat'\
+    'gunzip'\
     'chmod +x'\
     'open' \
     "%%STDIN%% cat" \
