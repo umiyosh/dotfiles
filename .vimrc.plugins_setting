@@ -15,11 +15,11 @@ nmap ga <Plug>(EasyAlign)
 " NERD_commenter.vim
 "------------------------------------
 " コメントの間にスペースを空ける
-let NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 1
 "<Leader>xでコメントをトグル(NERD_commenter.vim)
 map <Leader>x <Leader>c<space>
 ""未対応ファイルタイプのエラーメッセージを表示しない
-let NERDShutUp      = 1
+let g:NERDShutUp      = 1
 ""カスタムdelimiters
 let g:NERDCustomDelimiters = {
     \ 'terraform': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
@@ -34,13 +34,13 @@ nmap <silent> <leader>d <Plug>DashSearch
 " grep.vim
 "------------------------------------
 " 検索外のディレクトリ、ファイルパターン
-let Grep_Skip_Dirs  = '.svn .git .hg'
-let Grep_Skip_Files = '*.bak *~'
+let g:Grep_Skip_Dirs  = '.svn .git .hg'
+let g:Grep_Skip_Files = '*.bak *~'
 if has('mac')
   if system('which gxargs')
-    let Grep_Xargs_Path     = 'gxargs'
+    let g:Grep_Xargs_Path     = 'gxargs'
   else
-    let Grep_Find_Use_Xargs = 0
+    let g:Grep_Find_Use_Xargs = 0
   endif
 endif
 
@@ -107,7 +107,7 @@ let g:tagbar_type_go = {
 " Srcexp
 "------------------------------------
 " [Srcexpl] tagsを利用したソースコード閲覧・移動補助機能
-let g:SrcExpl_updateTagsCmd =  g:Ctags_Cmd . " -R --sort=foldcase -a ."
+let g:SrcExpl_updateTagsCmd =  g:Ctags_Cmd . ' -R --sort=foldcase -a .'
 let g:SrcExpl_RefreshTime   = 10
 let g:SrcExpl_WinHeight     = 9   " プレビューウインドウの高さ
 let g:SrcExpl_UpdateTags    = 1
@@ -179,7 +179,7 @@ call smartinput#define_rule({
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_enable_auto_cd       = 1
 let g:vimfiler_as_default_explorer  = 1
-let Tlist_Use_Right_Window          = 1
+let g:Tlist_Use_Right_Window        = 1
 nmap <leader>e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 nmap <leader>rr <leader>e<Leader>e<c-l>
 "デフォルトのキーマッピングを変更
@@ -193,8 +193,8 @@ function! s:vimfiler_my_settings()
   nmap <buffer> <c-d> <Plug>(vimfiler_cd_input_directory)
 endfunction
 function! s:vimfiler_my_exploler()
-  if ( argc() == 1 && bufname('%') != 'COMMIT_EDITMSG' && bufname('%') !~ '\vchrome_.+\.md' )
-    if ( &filetype != 'markdown' )
+  if ( argc() == 1 && bufname('%') !=? 'COMMIT_EDITMSG' && bufname('%') !~? '\vchrome_.+\.md' )
+    if ( &filetype !=? 'markdown' )
       :TagbarOpen
     else
       :Voom
@@ -284,7 +284,7 @@ cnoremap UO Unite outline<Enter>
 "------------------------------------
 " quickrun.vim
 "------------------------------------
-if !exists("g:quickrun_config")
+if !exists('g:quickrun_config')
     let g:quickrun_config = {}
 endif
 "runnerをvimprocにする
@@ -492,8 +492,8 @@ let g:ac_smooth_scroll_fb_sleep_time_msec = 0
 " joonty/vdebug
 "------------------------------------
 let g:vdebug_keymap = {
-\    "get_context" : "sc",
-\    "eval_under_cursor" : "sv",
+\    'get_context' : 'sc',
+\    'eval_under_cursor' : 'sv',
 \}
 
 "------------------------------------
@@ -514,8 +514,8 @@ nmap  <Leader>t :TagsGenerate<CR>
 "------------------------------------
 " Vim-php-cs-fixer
 "------------------------------------
-let g:php_cs_fixer_path        = "/usr/local/bin/php-cs-fixer"
-let g:php_cs_fixer_fixers_list = "linefeed,trailing_spaces,unused_use,php_closing_tag,short_tag,return,visibility,phpdoc_params,eof_ending,extra_empty_lines,include,PSR0,controls_spaces,elseif"
+let g:php_cs_fixer_path        = '/usr/local/bin/php-cs-fixer'
+let g:php_cs_fixer_fixers_list = 'linefeed,trailing_spaces,unused_use,php_closing_tag,short_tag,return,visibility,phpdoc_params,eof_ending,extra_empty_lines,include,PSR0,controls_spaces,elseif'
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
@@ -553,18 +553,18 @@ hi def link  taskpaperCancelled     Ignore
 function! s:taskpaper_setup()
   " My Funtion : 一括toggle
   function! Toggle_tag_eachline(tag) range
-    let l:startpos  = getpos(".")
+    let l:startpos  = getpos('.')
     call taskpaper#toggle_tag(a:tag,  '')
-    for line_cnt in range( a:firstline,  a:lastline )
+    for l:line_cnt in range( a:firstline,  a:lastline )
       call taskpaper#toggle_tag(a:tag,  '')
-      call cursor(line_cnt, 0)
+      call cursor(l:line_cnt, 0)
     endfor
     call taskpaper#toggle_tag(a:tag,  '')
     call cursor(l:startpos)
   endfunction
   " アーカイブ時にカーソルをその場の位置に固定
   function! Archive_done_and_backpos()
-    let l:startpos  = getpos(".")
+    let l:startpos  = getpos('.')
     echo l:startpos
     call taskpaper#archive_done()
     call setpos('.', l:startpos)
