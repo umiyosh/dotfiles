@@ -98,6 +98,8 @@ call plug#begin('~/.vim/plugged')
   " pythonの環境周り
   Plug 'davidhalter/jedi-vim'
   Plug 'jmcantrell/vim-virtualenv'
+  " python formatter
+  Plug 'mindriot101/vim-yapf'
   " phpのデバッガ:xdebugをvimから使う
   " Plug 'joonty/vdebug'
   " phpを整える

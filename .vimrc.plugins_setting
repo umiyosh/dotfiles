@@ -361,7 +361,6 @@ let g:indent_guides_guide_size            = 1 " ガイドの幅
 " let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=grey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkgrey
-
 "------------------------------------
 " vim-eqsymotion
 "------------------------------------
@@ -519,8 +518,14 @@ let g:php_cs_fixer_fixers_list = "linefeed,trailing_spaces,unused_use,php_closin
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
+"------------------------------------
+" python
+"------------------------------------
 " pdb起動
 command! Pdb :!python -m pdb %
+" yapf
+let g:yapf_style = 'pep8'
+nnoremap <leader>y :call Yapf()<cr>
 
 "------------------------------------
 " autopeghp8
