@@ -3,7 +3,7 @@ scriptencoding utf-8
 " タグ関連 Tags
 "-------------------------------------------------------------------------------
 " set tags
-if has("autochdir")
+if has('autochdir')
   " 編集しているファイルのディレクトリに自動で移動(ターミナル)
   set autochdir
   augroup BufferAu
@@ -14,7 +14,7 @@ if has("autochdir")
 else
   " 編集しているファイルのディレクトリに自動で移動(gui)
   function! Pathchange()
-    if  isdirectory(expand("%:p:h")) && bufname("%") !~ "NERD_tree"
+    if  isdirectory(expand('%:p:h')) && bufname('%') !~? 'NERD_tree'
       cd %:p:h
     else
       cd $HOME
