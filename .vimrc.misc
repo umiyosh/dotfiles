@@ -14,7 +14,7 @@ function! s:open_junk_file()
   endif
 
   let l:filename = input('Junk Code: ', l:junk_dir.strftime('/%Y-%m-%d-%H%M%S.'))
-  if l:filename != ''
+  if l:filename !=? ''
     execute 'edit ' . l:filename
   endif
 endfunction"}}}
@@ -37,7 +37,7 @@ map <F5> <ESC>:! perl -d %:p<CR>
 command! -nargs=0 Textile2markdown call <SID>Textile2markdown()
 noremap <Leader>tm :Textile2markdown<CR>
 function! s:Textile2markdown()
-  let result = system("$HOME/dotfiles/bin/textile2markdown.rb " . shellescape(expand('%')) . '|pbcopy'  )
+  let l:result = system('$HOME/dotfiles/bin/textile2markdown.rb ' . shellescape(expand('%')) . '|pbcopy'  )
 endfunction
 
 "Markdown2textile fo OSX
@@ -45,19 +45,19 @@ endfunction
 command! -nargs=0 Markdown2textile call <SID>Markdown2textile()
 noremap <Leader>mt :Markdown2textile<CR>
 function! s:Markdown2textile()
-  let result = system('pandoc -t textile ' . shellescape(expand('%')) . '|pbcopy'  )
+  let l:result = system('pandoc -t textile ' . shellescape(expand('%')) . '|pbcopy'  )
 endfunction
 
 " 文字数カウント
 vnoremap <leader>ii :call Count_Char()<cr>
 function! Count_Char() range
   silent normal gvy
-  let str = @@
+  let l:str = @@
   normal `<
-  let start_line_num = line('.')
+  let l:start_line_num = line('.')
   normal `>
-  let end_line_num = line('.')
-  let linenum = end_line_num - start_line_num + 1
+  let l:end_line_num = line('.')
+  let l:linenum = l:end_line_num - l:start_line_num + 1
 
 perl << EOF
 use strict;
@@ -105,5 +105,5 @@ nnoremap œ :q!<CR>
 nnoremap ß :<C-u>w<CR>
 
 "libperl直接指定
-let $PERL_DLL = "/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib"
+let $PERL_DLL = '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib'
 
