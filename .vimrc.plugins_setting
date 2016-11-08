@@ -378,7 +378,9 @@ let g:EasyMotion_use_upper = 1
 " Jump to first match with enter & space
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_space_jump_first = 1
-
+" custom for Colorscheme
+hi EasyMotionTarget ctermbg=none ctermfg=green
+" keymap
 map  sb <Plug>(easymotion-b)
 map  sj <Plug>(easymotion-j)
 map  sk <Plug>(easymotion-k)
@@ -610,8 +612,9 @@ let g:go_list_type = "quickfix"
 "------------------------------------
 " plasticboy/vim-markdown
 "------------------------------------
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_no_default_key_mappings = 1
+" let g:vim_markdown_conceal = 0
+" let g:vim_markdown_no_default_key_mappings = 1
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'go', 'perl', 'php', 'vim']
 
 "------------------------------------
 " rcmdnk/vim-markdown

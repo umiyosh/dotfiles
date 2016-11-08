@@ -2,11 +2,8 @@ scriptencoding utf-8
 "-------------------------------------------------------------------------------
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
+colo gruvbox
 
-colorscheme molokai
-
-" molokai setting
-let g:rehash256 = 1
 set cursorline
 set cursorcolumn
 
