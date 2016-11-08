@@ -131,7 +131,9 @@ call plug#begin('~/.vim/plugged')
   " nginx conf
   Plug 'nginx.vim'
   " markdown
-  Plug 'rcmdnk/vim-markdown'
+  Plug 'tpope/vim-markdown'
+  Plug 'nelstrom/vim-markdown-folding'
+
   " coffee script
   Plug 'kchmck/vim-coffee-script'
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
