@@ -97,8 +97,7 @@ call plug#begin('~/.vim/plugged')
   " pythonのomni補完 jedi.vim
   Plug 'davidhalter/jedi-vim'
   " pythonの環境周り
-  Plug 'davidhalter/jedi-vim'
-  Plug 'jmcantrell/vim-virtualenv'
+  Plug 'lambdalisue/vim-pyenv'
   " python formatter
   Plug 'mindriot101/vim-yapf'
   " phpのデバッガ:xdebugをvimから使う
