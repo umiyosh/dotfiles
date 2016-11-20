@@ -115,7 +115,7 @@ call plug#begin('~/.vim/plugged')
   " vim-ansible-yaml
   Plug 'chase/vim-ansible-yaml'
   " terraform
-  Plug 'markcornick/vim-terraform'
+  Plug 'hashivim/vim-terraform'
   " vim-godef
   " Plug 'dgryski/vim-godef'
 " }}}
