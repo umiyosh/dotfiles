@@ -58,7 +58,7 @@ function pecoAfterAction() {
     fi
     for selected in $Source; do
       echo $selected
-    done | $Action $argment
+    done |_removeLineFeedAtTheEnd |$Action $argment
   else
     _executeTmuxBuffer "$Action $Source"
   fi
@@ -160,6 +160,10 @@ function _pecoAfterFilter() {
       echo $Source
     fi
   done
+}
+
+function _removeLineFeedAtTheEnd() {
+  perl -0pe 's/\n$//g'
 }
 
 function _escapePath()
