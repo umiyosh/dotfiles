@@ -539,6 +539,12 @@ augroup source-autopep8
 augroup END
 
 "------------------------------------
+" pydocstring
+"------------------------------------
+let g:pydocstring_enable_mapping = 0
+nmap <silent><Leader>l  <Plug>(pydocstring)
+
+"------------------------------------
 " Emmet-vim
 "------------------------------------
 let g:use_emmet_complete_tag = 1
