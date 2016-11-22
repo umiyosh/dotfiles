@@ -234,6 +234,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tacroe/unite-mark'
   Plug 'Shougo/neomru.vim'
   Plug 'zoncoen/unite-autojump'
+  Plug 'umiyosh/unite-outline-terraform'
 " }}}
 call plug#end()
 
