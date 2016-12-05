@@ -1,0 +1,71 @@
+#!/usr/bin/env zsh
+
+self=$0
+
+if ! alias help; then
+  source ~/dotfiles/.zshrc
+fi
+
+function $self::_is_alias() {
+ if [[ -z $1 ]]; then
+   return 1
+ fi
+ alias $1 1>/dev/null 2>&1
+}
+
+function $self::_is_function() {
+ if [[ -z $1 ]]; then
+   return 1
+ fi
+ declare -f $1 1>/dev/null 2>&1
+}
+
+function $self::_extractFuncName() {
+  perl -pe 's/(.+)\(\).+\{/$1/g'
+}
+
+function $self::_extractAliasName() {
+  perl -pe 's/(.+)=.+/$1/g'
+}
+
+function $self::define() {
+  local cmd=$1
+  if $self::_is_alias $cmd; then
+    alias $cmd | perl -pe 's/^(.+)/alias \1/g'
+  elif $self::_is_function $cmd; then
+    declare -f $cmd
+  else
+    echo "undefined type"
+    return 1
+  fi
+}
+
+function $self::redefine() {
+  if $self::define $1 1>/dev/null 2>/dev/null; then
+    def=$( $self::define $1 | tovim )
+    local tempsh=$(mktemp)
+    echo $def >$tempsh
+    source $tempsh
+    rm -f $tempsh
+  fi
+}
+
+## TODO: Enable to execute with multiple commands
+function $self::execute() {
+  echo $1 | paaExecuteAsCommand
+}
+
+# peco define
+(declare -f | perl -ne '/^[^\t\r\n]+\(.*\).*\{/&&print'|egrep -v '^ +' ; alias) | _pecoBeforeFilter | peco |
+   $self::_extractFuncName | $self::_extractAliasName |
+    pecoAfterAction \
+      "$self::define" \
+      "$self::redefine" \
+      "$self::execute" \
+      "paaInputCommandAny" \
+      "%%STDIN%% cat" \
+      "%%STDIN%% pbcopy" \
+      "%%STDIN%% paaTovim" \
+      "%%STDIN%% pecoPipe" \
+      "%%STDIN%% paaExecuteAsCommand"
+
