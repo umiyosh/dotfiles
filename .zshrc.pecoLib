@@ -58,7 +58,7 @@ function pecoAfterAction() {
     fi
     for selected in $Source; do
       echo $selected
-    done |_removeLineFeedAtTheEnd |$Action $argment
+    done |$Action $argment
   else
     _executeTmuxBuffer "$Action $Source"
   fi
@@ -113,7 +113,11 @@ function paaPbCopyFilename() {
   FILEPATHS=( ${(@f)"$(< /dev/stdin)"} )
   for filepath in $FILEPATHS; do
     basename $filepath
-  done | pbcopy
+  done | _removeLineFeedAtTheEnd |pbcopy
+}
+
+function paaPbCopy() {
+  _removeLineFeedAtTheEnd |pbcopy
 }
 
 function paaTovim() {

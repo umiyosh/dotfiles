@@ -8,4 +8,4 @@ kubectl get svc | peco | awk '{print $1}'|egrep -v 'NAME.+CLUSTER-IP'|sort | uni
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
-    "%%STDIN%% pbcopy"
+    "%%STDIN%% paaPbCopy"

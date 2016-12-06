@@ -15,6 +15,7 @@ git log --date=iso --pretty=format:'%h - <%an> %ce - %cd - %d %s ' --abbrev-comm
     "git reset --hard" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
+    "%%STDIN%% paaPbCopy" \
     "%%STDIN%% pecoPipe" \
     "paaInputCommandAny"
 

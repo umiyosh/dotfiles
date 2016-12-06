@@ -13,5 +13,6 @@ git reflog | peco | awk 'BEGIN{FS= " "}{print $1}'| \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
+    "%%STDIN%% paaPbCopy" \
     "paaInputCommandAny"
 

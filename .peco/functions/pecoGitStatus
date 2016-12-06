@@ -19,7 +19,7 @@ cd "$gitRootDir"
     'chmod +x'\
     'open' \
     "%%STDIN%% cat" \
-    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaPbCopy" \
     "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \

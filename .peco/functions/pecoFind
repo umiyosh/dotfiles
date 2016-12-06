@@ -17,7 +17,7 @@ find $@ | _pecoBeforeFilter| peco | pecoAfterAction "vi" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
-    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaPbCopy" \
     "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \

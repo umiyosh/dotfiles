@@ -9,4 +9,4 @@ kubectl get rc | peco | awk '{print $1}'|sort | uniq | \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
-    "%%STDIN%% pbcopy"
+    "%%STDIN%% paaPbCopy"

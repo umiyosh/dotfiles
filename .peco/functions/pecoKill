@@ -11,5 +11,5 @@ ps aux | peco | awk '{ print $2 }'|pecoAfterAction \
   "%%STDIN%% cat" \
   "%%STDIN%% pbcopy" \
   "%%STDIN%% paaTovim" \
-  "%%STDIN%% pecoPipe"
+  "%%STDIN%% paaPbCopy"
 

@@ -42,7 +42,7 @@ find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | _rep
     "%%STDIN%% cat" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
-    "%%STDIN%% pbcopy" \
+    "%%STDIN%% paaPbCopy" \
     "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \

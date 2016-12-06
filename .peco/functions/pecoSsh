@@ -9,5 +9,5 @@ done | peco | sort | uniq | pecoAfterAction "pssh" \
                               "%%STDIN%% cat" \
                               "%%STDIN%% paaTovim" \
                               "%%STDIN%% pecoPipe" \
-                              "%%STDIN%% pbcopy"
+                              "%%STDIN%% paaPbCopy"
 
