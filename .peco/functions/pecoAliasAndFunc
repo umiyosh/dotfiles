@@ -28,10 +28,14 @@ function $self::_extractAliasName() {
   perl -pe 's/(.+)=.+/$1/g'
 }
 
+function $self::_addAliasCmdToHead() {
+  perl -pe 's/^(.+)/alias \1/g'
+}
+
 function $self::define() {
   local cmd=$1
   if $self::_is_alias $cmd; then
-    alias $cmd | perl -pe 's/^(.+)/alias \1/g'
+    alias $cmd | $self::_addAliasCmdToHead
   elif $self::_is_function $cmd; then
     declare -f $cmd
   else
