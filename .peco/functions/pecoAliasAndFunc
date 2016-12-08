@@ -46,7 +46,7 @@ function $self::define() {
 
 function $self::redefine() {
   if $self::define $1 1>/dev/null 2>/dev/null; then
-    def=$( $self::define $1 | tovim )
+    def=$( $self::define $1 | tovim +'set ft=sh')
     local tempsh=$(mktemp)
     echo $def >$tempsh
     source $tempsh
