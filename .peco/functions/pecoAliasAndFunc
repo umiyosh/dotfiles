@@ -39,7 +39,7 @@ function $self::define() {
   elif $self::_is_function $cmd; then
     declare -f $cmd
   else
-    echo "undefined type"
+    echo "ERROR : $1 is not defined"
     return 1
   fi
 }
@@ -51,6 +51,9 @@ function $self::redefine() {
     echo $def >$tempsh
     source $tempsh
     rm -f $tempsh
+  else
+    echo "ERROR : $1 is not defined"
+    return 1
   fi
 }
 
