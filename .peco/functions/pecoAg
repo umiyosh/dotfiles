@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 #概要：agしてpecoしてvimで開く
-ag $@ | _pecoBeforeFilter | peco  | awk -F : '{print "-c " $2 " " $1}' | \
+ag $@ | _pecoBeforeFilter | peco --prompt "[$0]" | awk -F : '{print "-c " $2 " " $1}' | \
   pecoAfterAction \
     "vi" \
     "%%STDIN%% paaTovim" \

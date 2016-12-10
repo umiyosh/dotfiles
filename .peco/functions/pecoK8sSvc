@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-kubectl get svc | peco | awk '{print $1}'|egrep -v 'NAME.+CLUSTER-IP'|sort | uniq | \
+kubectl get svc | peco --prompt "[$0]"| awk '{print $1}'|egrep -v 'NAME.+CLUSTER-IP'|sort | uniq | \
   pecoAfterAction \
     "kubectl describe svc " \
     "kubectl get svc " \

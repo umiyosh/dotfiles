@@ -25,7 +25,7 @@ function k8sSh() {
   pecoAfterAction _k8sSh
 }
 
-kubectl get po -o wide | peco | awk '{print $1}'|sort | uniq | \
+kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
   pecoAfterAction \
     "kubectl describe pod " \
     "kubectl logs " \

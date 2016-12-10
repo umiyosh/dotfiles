@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 #概要：git branchにたいしていろいろする
-(git branch |perl -pe 's/^\* //g';git branch -r;git tag )|_pecoBeforeFilter| peco | awk 'BEGIN{FS= " "}{print $NF}'| \
+(git branch |perl -pe 's/^\* //g';git branch -r;git tag )|_pecoBeforeFilter| peco --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $NF}'| \
   pecoAfterAction "git checkout" \
     "git checkout -t" \
     "git branch -d" \

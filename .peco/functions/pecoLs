@@ -26,7 +26,7 @@ if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
 fi
 
 find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | _replaceChar | \
-  peco | awk '{print $NF}' | _interporatePath $searchPath | pecoAfterAction \
+  peco --prompt "[$0]"| awk '{print $NF}' | _interporatePath $searchPath | pecoAfterAction \
     "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \

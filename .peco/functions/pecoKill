@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # 概要：psをcandidateとしてpecoしてkillする
-ps aux | peco | awk '{ print $2 }'|pecoAfterAction \
+ps aux | peco --prompt "[$0]"| awk '{ print $2 }'|pecoAfterAction \
   "%%STDIN%% paaKill -TERM" \
   "%%STDIN%% paaKill -INT" \
   "%%STDIN%% paaKill -HUP" \

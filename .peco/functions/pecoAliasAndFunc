@@ -67,7 +67,7 @@ function $self::execute() {
 }
 
 # peco define
-(declare -f | perl -ne '/^[^\t\r\n]+\(.*\).*\{/&&print'|egrep -v '^ +' ; alias) | _pecoBeforeFilter | peco |
+(declare -f | perl -ne '/^[^\t\r\n]+\(.*\).*\{/&&print'|egrep -v '^ +' ; alias) | _pecoBeforeFilter | peco --prompt "[$0]"|
    $self::_extractFuncName | $self::_extractAliasName |
     pecoAfterAction \
       "$self::define" \

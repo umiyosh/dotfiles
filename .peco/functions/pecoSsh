@@ -3,7 +3,7 @@
 candidates=($(_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
-done | peco | sort | uniq | pecoAfterAction "pssh" \
+done | peco --prompt "[$0]"| sort | uniq | pecoAfterAction "pssh" \
                               "tcmd sftp" \
                               "tcmd redis-stat" \
                               "%%STDIN%% cat" \
