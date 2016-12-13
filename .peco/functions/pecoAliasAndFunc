@@ -20,6 +20,13 @@ function $self::_is_function() {
  declare -f $1 1>/dev/null 2>&1
 }
 
+function $self::_is_command() {
+ if [[ -z $1 ]]; then
+   return 1
+ fi
+  which $cmd 1>/dev/null 2>/dev/null
+}
+
 function $self::_extractFuncName() {
   perl -pe 's/(.+)\(\).+\{/$1/g'
 }
@@ -38,8 +45,10 @@ function $self::define() {
     alias $cmd | $self::_addAliasCmdToHead
   elif $self::_is_function $cmd; then
     declare -f $cmd
+  elif $self::_is_command $cmd; then
+    echo "# INFO : $1 is command"
   else
-    echo "ERROR : $1 is not defined"
+    echo "# ERROR : $1 is not defined"
     return 1
   fi
 }
