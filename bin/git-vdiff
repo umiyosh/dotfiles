@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
 GITARG=($@)
-git difftool --tool=vimdiff  --no-prompt $GITARG
+git difftool --tool=mvimdiff --no-prompt $GITARG
