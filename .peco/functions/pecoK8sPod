@@ -26,8 +26,13 @@ function k8sSh() {
 }
 
 function k8sPortForward() {
-	local port=$(kubectl get pod --output=json grafana-ae46y|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
-	echo kubectl port-forward $1 $port:$port
+	podName=$1
+	if [[ -z $podName ]]
+	then
+		return 1
+	fi
+	local port=$(kubectl get pod --output=json $podName|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
+	echo kubectl port-forward $podName $port:$port
 	kubectl port-forward $1 $port:$port
 }
 
