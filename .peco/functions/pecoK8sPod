@@ -25,6 +25,12 @@ function k8sSh() {
   pecoAfterAction _k8sSh
 }
 
+function k8sPortForward() {
+	local port=$(kubectl get pod --output=json grafana-ae46y|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
+	echo kubectl port-forward $1 $port:$port
+	kubectl port-forward $1 $port:$port
+}
+
 kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
   pecoAfterAction \
     "kubectl describe pod " \
@@ -33,6 +39,7 @@ kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
     "kubectl get pod " \
     "kubectl get pod --output=json " \
     "kubectl get pod --output=yaml " \
+    "k8sPortForward" \
     "%%STDIN%% k8sSh" \
     "%%STDIN%% nodeSsh" \
     "%%STDIN%% cat" \
