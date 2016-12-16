@@ -2,7 +2,7 @@
 
 self=$0
 
-if ! alias help; then
+if ! alias help 1>/dev/null 2>/dev/null; then
   source ~/dotfiles/.zshrc
 fi
 
