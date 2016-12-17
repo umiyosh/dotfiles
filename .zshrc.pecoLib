@@ -1,33 +1,5 @@
 #!/usr/bin/env zsh
 
-# source action define
-function _sshSourceAction() {
-  # candidates was written by NAKAMURA Yoshitaka
-  # Copyright (c) 2011, NAKAMURA Yoshitaka
-  # All rights reserved. BSD-3.
-  # https://github.com/zsh-users/zaw/blob/master/LICENSE
-  local -a _global_ssh_known_hosts _global_ssh_known_hosts2 _ssh_known_hosts _ssh_known_hosts2 _etc_hosts _ssh_config_hosts
-  [ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_known_hosts=(${${${(f)"$(< /etc/ssh/ssh_known_hosts)"}%%\ *}%%,*}) 2>/dev/null || _global_ssh_known_hosts=()
-  [ -r /etc/ssh/ssh_known_hosts2 ] && _global_ssh_known_hosts2=(${${${(f)"$(< /etc/ssh/ssh_known_hosts2)"}%%\ *}%%,*}) 2>/dev/null || _global_ssh_known_hosts2=()
-  [ -r "$HOME/.ssh/known_hosts" ] && _ssh_known_hosts=(${${${(f)"$(< ~/.ssh/known_hosts)"}%%\ *}%%,*}) 2>/dev/null || _ssh_known_hosts=()
-  [ -r "$HOME/.ssh/known_hosts2" ] && _ssh_known_hosts=(${${${(f)"$(< ~/.ssh/known_hosts2)"}%%\ *}%%,*}) 2>/dev/null || _ssh_known_hosts2=()
-  [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
-  [ -r "$HOME/.ssh/config" ] && _ssh_config_hosts=(${${${(@M)${(f)"$(< ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*}) || _ssh_config_hosts=()
-  candidates=(
-    $_global_ssh_known_hosts[@]
-    $_global_ssh_known_hosts2[@]
-    $_ssh_known_hosts[@]
-    $_ssh_known_hosts2[@]
-    $_etc_hosts[@]
-    $_ssh_config_hosts[@]
-    "$HOST"
-    ::1
-    localhost
-    127.0.0.1
-  )
-  echo $(echo $candidates |perl -pe 's/ /\n/g'|sort |uniq)
-}
-
 # peco after action define
 ActionsBuffer=()
 # %%STDIN%% command => Source | command
