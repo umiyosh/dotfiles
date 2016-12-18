@@ -27,11 +27,6 @@ function deployDotfiles() {
      ln -s "$HOME/dotfiles/${directory}" "$HOME/${directory}"
     fi
   done
-
-  # local dotfile
-  if [[ -e $HOME/Dropbox/.zshrc.local ]]; then
-    ln -s "$HOME/Dropbox/conf/.zshrc.local" "$HOME/.zshrc.local"
-  fi
 }
 
 function changeShell() {
