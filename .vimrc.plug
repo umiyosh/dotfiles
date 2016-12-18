@@ -218,9 +218,6 @@ call plug#begin('~/.vim/plugged')
   " color schema 256
   Plug 'tomasr/molokai'
   Plug 'HybridText'
-  Plug 'junegunn/seoul256.vim'
-  Plug 'NLKNguyen/papercolor-theme'
-  Plug 'altercation/vim-colors-solarized'
   Plug 'morhetz/gruvbox'
 " }}}
 
