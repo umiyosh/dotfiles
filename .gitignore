@@ -15,7 +15,6 @@ Session.vim
 *.dvi
 *.aux
 *.elc
-.zshrc.local
 samples
 
 .vim/plugged/
