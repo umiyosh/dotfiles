@@ -21,12 +21,13 @@ function _k8sSh() {
   pods=("$@")
   tcmd kubectlSh $pods
 }
+
 function k8sSh() {
   pecoAfterAction _k8sSh
 }
 
 function k8sPortForward() {
-	podName=$1
+	local podName=$1
 	if [[ -z $podName ]]
 	then
 		return 1
@@ -34,6 +35,15 @@ function k8sPortForward() {
 	local port=$(kubectl get pod --output=json $podName|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
 	echo kubectl port-forward $podName $port:$port
 	kubectl port-forward $1 $port:$port
+}
+
+function k8sGetPodIP() {
+	local podName=$1
+	if [[ -z $podName ]]
+	then
+		return 1
+	fi
+  kubectl get pod --output=json $podName|gron|grep -i podip | perl -pe 's/.+=|;//g'|perl -pe 's/ //g' | perl -pe 's/"//g'
 }
 
 kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
@@ -44,6 +54,7 @@ kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
     "kubectl get pod " \
     "kubectl get pod --output=json " \
     "kubectl get pod --output=yaml " \
+    "k8sGetPodIP" \
     "k8sPortForward" \
     "%%STDIN%% k8sSh" \
     "%%STDIN%% nodeSsh" \
