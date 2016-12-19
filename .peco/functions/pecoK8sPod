@@ -46,6 +46,17 @@ function k8sGetPodIP() {
   kubectl get pod --output=json $podName|gron|grep -i podip | perl -pe 's/.+=|;//g'|perl -pe 's/ //g' | perl -pe 's/"//g'
 }
 
+function k8sGetPodIPToPbcopy() {
+	local podName=$1
+	if [[ -z $podName ]]
+	then
+		return 1
+	fi
+  podIp=$(k8sGetPodIP $podName)
+  echo "pbcopied " $podIp
+  echo $podIp | pbcopy
+}
+
 kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
   pecoAfterAction \
     "kubectl describe pod " \
@@ -56,6 +67,7 @@ kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
     "kubectl get pod --output=yaml " \
     "k8sGetPodIP" \
     "k8sPortForward" \
+    "k8sGetPodIPToPbcopy" \
     "%%STDIN%% k8sSh" \
     "%%STDIN%% nodeSsh" \
     "%%STDIN%% cat" \
