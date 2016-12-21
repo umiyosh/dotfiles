@@ -1,7 +1,3 @@
-## local zshrc設定
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-
 ## 基本設定
 source ~/dotfiles/.zshrc.basic
 
@@ -43,6 +39,9 @@ esac
 
 ## 各言語の設定
 source ~/dotfiles/.zshrc.devenv
+
+## local zshrc設定
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # profiler
 # usage: modifie .zshenv and modifie this
