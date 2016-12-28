@@ -5,7 +5,7 @@ ps aux | peco --prompt "[$0]"| awk '{ print $2 }'|pecoAfterAction \
   "%%STDIN%% paaKill -INT" \
   "%%STDIN%% paaKill -HUP" \
   "%%STDIN%% paaKill -QUIT" \
-  "%%STDIN%% paaKill -SIGILL" \
+  "%%STDIN%% paaKill -SIGKILL" \
   "%%STDIN%% paaKill -KILL" \
   "paaInputCommandAny" \
   "%%STDIN%% cat" \
