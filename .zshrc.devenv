@@ -35,3 +35,8 @@ source "${HOME}/Dropbox/bin/google-cloud-sdk/path.zsh.inc"
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init -)"
+
+# scalaenv
+export PATH="${HOME}/.scalaenv/bin:${PATH}"
+eval "$(scalaenv init -)"
+
