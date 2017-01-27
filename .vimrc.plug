@@ -120,6 +120,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'hashivim/vim-terraform'
   " vim-godef
   " Plug 'dgryski/vim-godef'
+  " Scala
+  Plug 'derekwyatt/vim-scala'
 " }}}
 
 " Syntax {{{
