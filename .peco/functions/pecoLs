@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
+self=$0
 
 # 概要: lsしてpecoしてアクションする
-function _replaceChar() {
+function $self::_replaceChar() {
   # adhocなやつ
   perl -pe 's{ \Domain Users}{\DomainUsers}g'
   # | tee > /tmp/debug.log
@@ -25,8 +26,8 @@ if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
   searchPath=$searchPath/
 fi
 
-find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | _replaceChar | \
-  peco --prompt "[$0]"| awk '{print $NF}' | _interporatePath $searchPath | pecoAfterAction \
+find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | $self::_replaceChar | \
+  peco --prompt "[$0]"| awk '{print $NF}' | $self::_interporatePath $searchPath | pecoAfterAction \
     "vi" \
     "cd" \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \

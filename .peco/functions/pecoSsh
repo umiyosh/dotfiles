@@ -2,7 +2,7 @@
 #概要：known_hostsなどからssh先をpecoして接続する
 
 # source action define
-function _sshSourceAction() {
+function $self::_sshSourceAction() {
   # candidates was written by NAKAMURA Yoshitaka
   # Copyright (c) 2011, NAKAMURA Yoshitaka
   # All rights reserved. BSD-3.
@@ -29,7 +29,7 @@ function _sshSourceAction() {
   echo $(echo $candidates |perl -pe 's/ /\n/g'|sort |uniq)
 }
 
-candidates=($(_sshSourceAction))
+candidates=($($self::_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
 done | peco --prompt "[$0]"| sort | uniq | pecoAfterAction "pssh" \

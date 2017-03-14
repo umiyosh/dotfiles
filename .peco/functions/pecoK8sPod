@@ -1,32 +1,33 @@
 #!/usr/bin/env zsh
 #概要： podに対してなにかする やつ
+self=$0
 
-function _getIp() {
+function $self::_getIp() {
   while read node;do
     (kubectl describe node $node|egrep Addresses:|awk '{print $NF}'|awk 'BEGIN{FS=","}{print $1}'|perl -pe 's/^$//g') &
   done
   wait
 }
-function _convertPodToNode() {
+function $self::_convertPodToNode() {
   while read pod ;do
     (kubectl get po $pod -o wide | awk '{print $NF}' |egrep -v '^NODE$') &
   done
   wait
 }
-function nodeSsh() {
-  _convertPodToNode | sort | uniq | _getIp | pecoAfterAction pssh
+function $self::nodeSsh() {
+  $self::_convertPodToNode | sort | uniq | $self::_getIp | pecoAfterAction pssh
 }
 
-function _k8sSh() {
+function $self::_k8sSh() {
   pods=("$@")
   tcmd kubectlSh $pods
 }
 
-function k8sSh() {
-  pecoAfterAction _k8sSh
+function $self::k8sSh() {
+  pecoAfterAction $self::_k8sSh
 }
 
-function k8sPortForward() {
+function $self::k8sPortForward() {
 	local podName=$1
 	if [[ -z $podName ]]
 	then
@@ -37,7 +38,7 @@ function k8sPortForward() {
 	kubectl port-forward $1 $port:$port
 }
 
-function k8sGetPodIP() {
+function $self::k8sGetPodIP() {
 	local podName=$1
 	if [[ -z $podName ]]
 	then
@@ -46,13 +47,13 @@ function k8sGetPodIP() {
   kubectl get pod --output=json $podName|gron|grep -i podip | perl -pe 's/.+=|;//g'|perl -pe 's/ //g' | perl -pe 's/"//g'
 }
 
-function k8sGetPodIPToPbcopy() {
+function $self::k8sGetPodIPToPbcopy() {
 	local podName=$1
 	if [[ -z $podName ]]
 	then
 		return 1
 	fi
-  podIp=$(k8sGetPodIP $podName)
+  podIp=$($self::k8sGetPodIP $podName)
   echo "pbcopied " $podIp
   echo $podIp | pbcopy
 }
@@ -65,10 +66,10 @@ kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
     "kubectl get pod " \
     "kubectl get pod --output=json " \
     "kubectl get pod --output=yaml " \
-    "k8sGetPodIP" \
-    "k8sPortForward" \
-    "k8sGetPodIPToPbcopy" \
-    "%%STDIN%% k8sSh" \
+    "$self::k8sGetPodIP" \
+    "$self::k8sPortForward" \
+    "$self::k8sGetPodIPToPbcopy" \
+    "%%STDIN%% $self::k8sSh" \
     "%%STDIN%% nodeSsh" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
