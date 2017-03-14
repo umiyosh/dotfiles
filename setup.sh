@@ -33,7 +33,7 @@ function changeShell() {
   if [[ ! "$SHELL" =~ .+zsh$ ]]; then
     if [[ -z $CIRCLECI ]]; then
       if [[ ${OSTYPE} =~ "^darwin" ]]; then
-        sudo which zsh >>/private/etc/shells
+        sudo which zsh |sudo tee -a /private/etc/shells
       fi
       chsh -s "$(which zsh)"
     fi
