@@ -140,7 +140,8 @@ call plug#begin('~/.vim/plugged')
   " coffee script
   Plug 'kchmck/vim-coffee-script'
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
-  Plug 'neomake/neomake'
+  Plug 'neomake/neomake' | Plug 'dojoteef/neomake-autolint'
+  " Plug 'w0rp/ale'
   " terraform and hcl
   Plug 'fatih/vim-hclfmt'
   " html5.vim
