@@ -70,7 +70,7 @@ kubectl get po -o wide | peco --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
     "$self::k8sPortForward" \
     "$self::k8sGetPodIPToPbcopy" \
     "%%STDIN%% $self::k8sSh" \
-    "%%STDIN%% nodeSsh" \
+    "%%STDIN%% $self::nodeSsh" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
