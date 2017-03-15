@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # 概要：cdrをpeco風味にやる
-dirs -l|perl -pe 's# /#\n /#g'| _pecoBeforeFilter |peco --prompt "[$0]"| \
+dirs -l|perl -pe 's# /#\n /#g'| _pecoBeforeFilter |selector --prompt "[$0]"| \
   pecoAfterAction \
     "cd" \
     "%%STDIN%% paaTovim" \

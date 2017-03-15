@@ -32,7 +32,7 @@ function $self::_sshSourceAction() {
 candidates=($($self::_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
-done | peco --prompt "[$0]"| sort | uniq | pecoAfterAction "pssh" \
+done | selector --prompt "[$0]"| sort | uniq | pecoAfterAction "pssh" \
                               "tcmd sftp" \
                               "tcmd redis-stat" \
                               "%%STDIN%% cat" \

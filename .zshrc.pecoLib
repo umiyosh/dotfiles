@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+function selector() {
+  peco --layout 'bottom-up' $@
+}
+
 # peco after action define
 ActionsBuffer=()
 # %%STDIN%% command => Source | command
@@ -9,7 +13,7 @@ function pecoAfterAction() {
   ActionsBuffer=($Actions)
   Source=( ${(@f)"$(< /dev/stdin|_pecoAfterFilter)"} )
   if [[ $#Actions -gt 1 ]]; then
-    Action=$(for Action in $Actions ;do echo $Action;done|peco --prompt "SELECT ACTION >>"|head -1)
+    Action=$(for Action in $Actions ;do echo $Action;done|selector --prompt "SELECT ACTION >>"|head -1)
   else
     Action=$Actions
   fi
