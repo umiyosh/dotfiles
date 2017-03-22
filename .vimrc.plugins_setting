@@ -538,14 +538,6 @@ let g:yapf_style = 'pep8'
 nnoremap <leader>y :call Yapf()<cr>
 
 "------------------------------------
-" autopeghp8
-"------------------------------------
-augroup source-autopep8
-  autocmd!
-  autocmd BufWritePost *.py !autopep8 -i %
-augroup END
-
-"------------------------------------
 " pydocstring
 "------------------------------------
 let g:pydocstring_enable_mapping = 0
