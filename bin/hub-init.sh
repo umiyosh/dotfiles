@@ -1,15 +1,12 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-projectRoot=$(git rev-parse --show-toplevel)
-
-if [[ $? -ne 0 ]]; then
+if ! git rev-parse --show-toplevel 1>/dev/null 2>&1; then
   hub init .
   if [[ ! -e ./README.md ]]; then
     touch README.md
   fi
   git add .
   git commit -m 'initial commited'
-  projectRoot=$(git rev-parse --show-toplevel)
 fi
 hub create -p
 hub push origin master
