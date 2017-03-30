@@ -139,8 +139,6 @@ call plug#begin('~/.vim/plugged')
 
   " coffee script
   Plug 'kchmck/vim-coffee-script'
-  " autosave
-  Plug 'vim-scripts/vim-auto-save'
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
   Plug 'neomake/neomake'
   " Plug 'w0rp/ale'
