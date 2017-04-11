@@ -79,8 +79,8 @@ alias -g V="| vim -"
 alias man=manv
 alias vim='mvim -v'
 alias vi='mvim -v'
-alias vimdiff=/Applications/MacVim.app/Contents/MacOS/vimdiff
-alias view=/Applications/MacVim.app/Contents/MacOS/view
+alias vimdiff='mvim -d'
+alias view='mvim -R'
 
 # kobito
 alias 'kob'='open -a Kobito '
