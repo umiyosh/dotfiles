@@ -2,6 +2,10 @@
 
 function selector() {
   peco --layout 'bottom-up' $@
+  # fzf -i +x --extended-exact --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
+  # fzf -m -i +x --extended-exact --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
+  # fzf-tmux -u -m -i +x --extended-exact --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
+  # fzf-tmux -u -m -i +x --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
 }
 
 # peco after action define
