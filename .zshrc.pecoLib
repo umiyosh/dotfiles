@@ -1,11 +1,16 @@
 #!/usr/bin/env zsh
 
 function selector() {
-  peco --layout 'bottom-up' $@
-  # fzf -i +x --extended-exact --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
-  # fzf -m -i +x --extended-exact --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
-  # fzf-tmux -u -m -i +x --extended-exact --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
-  # fzf-tmux -u -m -i +x --bind ctrl-a:toggle-all --bind ctrl-s:toggle-up
+  # peco --layout 'bottom-up' $@
+  fzf-tmux -m -i \
+    --exit-0 \
+    --extended-exact \
+    --no-sort \
+    --cycle \
+    --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 \
+    --color info:150,prompt:110,spinner:150,pointer:167,marker:10 \
+    --bind ctrl-a:toggle-all \
+    --bind ctrl-s:toggle-up $@
 }
 
 # peco after action define
