@@ -17,6 +17,7 @@ Session.vim
 *.elc
 samples
 
+.vim/plugin
 .vim/plugged/
 .vim/dein/
 .vim/bundle/
