@@ -50,7 +50,7 @@ call plug#begin('~/.vim/plugged')
   " 補完 neocomplcache.vim : 究極のVim的補完環境
   Plug 'Shougo/neocomplete.vim'
   " neocomplcacheのsinpet補完
-  " Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet'
   " phpcomplete: phpのomni補完最新版
   Plug 'shawncplus/phpcomplete.vim'
 " }}}
