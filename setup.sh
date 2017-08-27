@@ -78,18 +78,16 @@ function installAutojump() {
   fi
 }
 
-function installPeco() {
+function installFzf() {
   ## peco
   if ! hash peco; then
     case "${OSTYPE}" in
     darwin*)
-      brew tap peco/peco
-      brew install peco
-      brew install migemogrep
+      brew install fzf
       ;;
     linux*)
-      go get github.com/peco/peco/cmd/peco
-      go get github.com/peco/migemogrep
+      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+      ~/.fzf/install
       ;;
     esac
   fi
@@ -129,6 +127,6 @@ function setupVimPlugins() {
   deploySnippets
   installZgen
   installAutojump
-  installPeco
+  installFzf
   setupVimPlugins
 }
