@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -xe
 
 function deployDotfiles() {
   DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco \
@@ -129,6 +129,6 @@ function setupVimPlugins() {
   deploySnippets
   installZgen
   installAutojump
-  installPeco
+  # installPeco
   setupVimPlugins
 }
