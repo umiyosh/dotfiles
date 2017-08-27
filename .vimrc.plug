@@ -20,17 +20,17 @@ call plug#begin('~/.vim/plugged')
   " vim-easy-align : 高機能整形・桁揃えプラグイン
   Plug 'junegunn/vim-easy-align'
   " undo履歴を追える (need python support)
-  Plug 'Gundo'
+  Plug 'sjl/gundo.vim'
   " surround.vim : テキストを括弧で囲む／削除する
   Plug 'tpope/vim-surround'
   " smartchr.vim : ==などの前後を整形
-  Plug 'smartchr'
+  Plug 'kana/vim-smartchr'
   " vim-operator-user : 簡単にoperatorを定義できるようにする
-  Plug 'operator-user'
+  Plug 'kana/vim-operator-user'
   " operator-replace : yankしたものでreplaceする
-  Plug 'operator-replace'
+  Plug 'kana/vim-operator-replace'
   " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
-  Plug 'textobj-user'
+  Plug 'kana/vim-textobj-user'
   " vim-textobj-fold : 折りたたまれたアレをtext-objectに
   Plug 'kana/vim-textobj-fold'
   " vim-textobj-indent : インデントされたものをtext-objectに
@@ -57,13 +57,13 @@ call plug#begin('~/.vim/plugged')
 
 " Searching/Moving{{{
   " vim-smartword : 単語移動がスマートな感じで
-  Plug 'smartword'
+  Plug 'kana/vim-smartword'
   " camelcasemotion : CamelCaseやsnake_case単位でのワード移動
-  Plug 'camelcasemotion'
+  Plug 'vim-scripts/camelcasemotion'
   " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
-  Plug 'matchit.zip'
+  Plug 'vim-scripts/matchit.zip'
   " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
-  Plug 'grep.vim'
+  Plug 'vim-scripts/grep.vim'
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   Plug 'othree/eregex.vim'
   " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
@@ -85,9 +85,9 @@ call plug#begin('~/.vim/plugged')
   " perldocやphpmanual等のリファレンスをvim上で見る
   Plug 'thinca/vim-ref'
   " SQLUtilities : SQL整形、生成ユーティリティ
-  Plug 'SQLUtilities'
+  Plug 'vim-scripts/SQLUtilities'
   " vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
-  Plug 'ruby.vim'
+  Plug 'vim-scripts/ruby.vim'
   " rails.vim : rails的なアレ
   Plug 'tpope/vim-rails'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
@@ -126,13 +126,13 @@ call plug#begin('~/.vim/plugged')
 
 " Syntax {{{
   " haml"
-  Plug 'haml.zip'
+  Plug 'vim-scripts/Haml'
   " JavaScript
-  Plug 'JavaScript-syntax'
+  Plug 'vim-scripts/JavaScript-syntax'
   " jQuery
-  Plug 'jQuery'
+  Plug 'vim-scripts/jQuery'
   " nginx conf
-  Plug 'nginx.vim'
+  Plug 'vim-scripts/nginx.vim'
   " markdown
   Plug 'tpope/vim-markdown'
   Plug 'nelstrom/vim-markdown-folding'
@@ -176,9 +176,9 @@ call plug#begin('~/.vim/plugged')
   " vim Interface to Web API
   Plug 'mattn/webapi-vim'
   " cecutil.vim : 他のpluginのためのutillity1
-  Plug 'cecutil'
+  Plug 'vim-scripts/cecutil'
   " utillity
-  Plug 'L9'
+  Plug 'vim-scripts/L9'
   " Buffer管理のLibrary
   Plug 'thinca/vim-openbuf'
   " vimからGit操作する
@@ -220,7 +220,7 @@ call plug#begin('~/.vim/plugged')
 " ColorSchema{{{{
   " color schema 256
   Plug 'tomasr/molokai'
-  Plug 'HybridText'
+  Plug 'vim-scripts/HybridText'
   Plug 'morhetz/gruvbox'
 " }}}
 
