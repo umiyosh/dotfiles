@@ -87,7 +87,7 @@ function installFzf() {
       ;;
     linux*)
       git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-      ~/.fzf/install
+      ~/.fzf/install -no-key-bindings --no-completion -update-rc
       ;;
     esac
   fi
