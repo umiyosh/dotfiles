@@ -129,6 +129,6 @@ function setupVimPlugins() {
   deploySnippets
   installZgen
   installAutojump
-  installPeco
+  # installPeco
   setupVimPlugins
 }
