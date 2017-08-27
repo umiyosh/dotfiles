@@ -80,7 +80,7 @@ function installAutojump() {
 
 function installPeco() {
   ## peco
-  if ! which peco; then
+  if ! hash peco; then
     case "${OSTYPE}" in
     darwin*)
       brew tap peco/peco
