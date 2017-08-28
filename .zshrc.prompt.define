@@ -175,6 +175,10 @@ function getCurrntGcpConf() {
   echo ${ZSH_THEME_GCP_PROMPT_PREFIX}${gcpconf}${ZSH_THEME_GCP_PROMPT_SUFFIX}
 }
 
+function powerline_prompt() {
+    powerline-shell.py $? --shell zsh 2> /dev/null
+}
+
 function promptTermination() {
 :
 }
@@ -183,11 +187,11 @@ function makePrompt() {
 cat <<PROMPT_TEMPLATE
 
 $(getDockerMachine)$(getKubeCluster)$(getCurrntGcpConf)
-$(sshConnection)$(getHost)$(myGitPrompt) $(gitPromptStashCount) :
-$(getCurrntDir)
-$(currentTime) [$(getStatus)] %# $(promptTermination)
+$(powerline_prompt)
+
 PROMPT_TEMPLATE
 }
 
+# $(powerline_prompt)
 PROMPT=$'$(makePrompt)'
 
