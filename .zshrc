@@ -49,4 +49,9 @@ source ~/dotfiles/.zshrc.devenv
   # zprof | less
 # fi
 
+if hash mvim; then
+    export EDITOR='mvim'
+fi
+
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+
