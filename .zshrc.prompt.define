@@ -176,7 +176,8 @@ function getCurrntGcpConf() {
 }
 
 function powerline_prompt() {
-    powerline-shell.py $? --shell zsh 2> /dev/null
+  # powerline-go -error $? -shell zsh
+  powerline-shell.py $? --shell zsh 2> /dev/null
 }
 
 function promptTermination() {
