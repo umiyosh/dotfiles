@@ -243,3 +243,6 @@ alias dl='docker ps -l -q'
 
 # kube関連
 alias swumidev='eval "$(kmachine env umidev)"'
+
+# fuck
+eval $(thefuck --alias)
