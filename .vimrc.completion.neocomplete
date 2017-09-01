@@ -48,7 +48,8 @@ let g:neosnippet#snippets_directory = $HOME.'/.vim/snippets'
 
 "スニペット展開
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <space><bs>
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 "スニペット編集
 nnoremap sS  :NeoSnippetEdit<CR>
