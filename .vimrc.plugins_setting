@@ -616,6 +616,11 @@ let g:go_list_type = "quickfix"
 let g:markdown_fenced_languages = ['html', 'javascript' , 'python', 'bash=sh', 'go', 'ruby' , 'perl', 'php', 'vim', 'json', 'yaml', 'terraform', 'sql']
 
 "------------------------------------
+" kh3phr3n/python-syntax
+"------------------------------------
+let python_highlight_all = 1
+
+"------------------------------------
 " rcmdnk/vim-markdown
 "------------------------------------
 " let g:vim_markdown_better_folding=1
