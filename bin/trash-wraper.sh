@@ -24,6 +24,6 @@ done
 if [[ $REC_FLG -eq 1 ]]; then
   trash-put $@
 else
-  trash-rm
+  trash-rm $@
 fi
 
