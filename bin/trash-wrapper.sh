@@ -12,6 +12,8 @@ do
     r )
       REC_FLG=1
       ;;
+    f )
+      ;;
     h )
       printf "rm [-f | -i] [-dPRrvW] file ...\n"
       exit 2
@@ -20,6 +22,8 @@ do
       ;;
   esac
 done
+
+shift $((OPTIND - 1))
 
 for file_path in $@; do
   if [[ $REC_FLG -eq 1 ]]; then
