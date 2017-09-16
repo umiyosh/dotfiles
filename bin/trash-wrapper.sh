@@ -6,7 +6,14 @@ set -eu
 OPTIND=''
 REC_FLG=0
 
-while getopts "option rfdPRvWi" OPT
+function print_help() {
+      printf "rm [-f | -i] [-dPRrvW] file ...\n"
+      printf "this command is $0 alias\n"
+      printf "And the tash directory is ~/.local/share/Trash\n"
+
+}
+
+while getopts "option rfdPRvWih" OPT
 do
   case $OPT in
     r )
@@ -28,7 +35,7 @@ do
     i )
       ;;
     h)
-      printf "rm [-f | -i] [-dPRrvW] file ...\n"
+      print_help
       exit 2
       ;;
     * )
