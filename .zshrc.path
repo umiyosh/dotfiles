@@ -31,6 +31,7 @@ export PATH=$PATH:$HOME/dotfiles/bin
 export PATH=$PATH:/sbin:/usr/local/bin
 export MANPATH=$MANPATH:/opt/local/man:/usr/local/share/man
 export PATH=$PATH:~/Dropbox/bin/kmachine
+export PATH=$PATH:~/.local/bin
 
 # tfenv
 if [[ -f $HOME/tfenv/bin/tfenv ]]; then
