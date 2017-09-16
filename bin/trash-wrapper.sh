@@ -21,9 +21,14 @@ do
   esac
 done
 
-if [[ $REC_FLG -eq 1 ]]; then
-  trash-put $@
-else
-  trash-rm $@
-fi
+for file_path in $@; do
+  if [[ $REC_FLG -eq 1 ]]; then
+    trash-put $file_path
+  else
+    if [[ -d $file_path ]]; then
+      rm $file_path
+    fi
+    trash-put $file_path
+  fi
+done
 
