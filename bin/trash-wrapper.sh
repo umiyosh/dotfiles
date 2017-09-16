@@ -6,7 +6,7 @@ set -eu
 OPTIND=''
 REC_FLG=0
 
-while getopts "option rf" OPT
+while getopts "option rfdPRvWi" OPT
 do
   case $OPT in
     r )
@@ -14,7 +14,20 @@ do
       ;;
     f )
       ;;
-    h )
+    d )
+      ;;
+    P )
+      ;;
+    R )
+      REC_FLG=1
+      ;;
+    v )
+      ;;
+    W )
+      ;;
+    i )
+      ;;
+    h)
       printf "rm [-f | -i] [-dPRrvW] file ...\n"
       exit 2
       ;;
