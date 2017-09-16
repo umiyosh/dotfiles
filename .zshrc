@@ -1,31 +1,32 @@
-## 基本設定
+## basic configuration
 source ~/dotfiles/.zshrc.basic
 
-## Default shell configuration
+## Prompt Setting
 source ~/dotfiles/.zshrc.prompt
 
-## 補間
+## Complition Setting
 source ~/dotfiles/.zshrc.complition
 
-## keybind関連
+## keybind Setting
 source ~/dotfiles/.zshrc.keybind
 
-## zgen :pluginとか拡張的なものとか
+# zgen: plugin or extensive stuff
 source ~/dotfiles/.zshrc.zgen
 
-## terminal設定
+## Terminal Setting
 source ~/dotfiles/.zshrc.terminal
 
-## path関連
+## PATH Setting
 source ~/dotfiles/.zshrc.path
 
-## alias設定
+## Alias Setting
 source ~/dotfiles/.zshrc.alias
 
-## peco設定
+# Incremental search
+# Note: I have't use peco. So I'll change the filename in near future.
 source ~/dotfiles/.zshrc.peco
 
-## OSTYPE毎のzshrc
+# zshrc Setting per OSTYPE
 case "${OSTYPE}" in
 # Mac(Unix)
 darwin*)
@@ -37,10 +38,10 @@ linux*)
   ;;
 esac
 
-## 各言語の設定
+## Setting for each language
 source ~/dotfiles/.zshrc.devenv
 
-## local zshrc設定
+## local zshrc settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # profiler
