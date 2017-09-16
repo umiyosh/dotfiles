@@ -247,4 +247,4 @@ alias swumidev='eval "$(kmachine env umidev)"'
 # fuck
 eval $(thefuck --alias)
 
-alias rm='trash-wraper.sh'
+alias rm='./bin/trash-wrapper.sh'
