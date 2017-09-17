@@ -94,7 +94,7 @@ class FSHandler(FileSystemEventHandler):
             result = delegator.chain(self.cmd)
             result.block()
         except Exception as e:
-            self.logger.critical('ECEPTION OCCUR')
+            self.logger.critical('EXCEPTION OCCUR')
             self.logger.critical(e)
             return
 
