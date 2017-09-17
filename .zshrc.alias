@@ -192,16 +192,20 @@ alias now="date '+%Y%m%d_%H%M%S'"
 alias now-="date '+%Y-%m-%d_%H%M%S'"
 
 # ssh
-function ssh(){
-  TERM=xterm
-  if [ -n "$TMUX" ]; then
+# ssh wrapper
+function ssh() {
+    if [ -n "$TMUX" ]; then
+      local window_name=$(tmux display -p '#{window_name}')
       local_command='tmux rename-window $(echo "%r@%n:%p")'
-  fi
-  command -p ssh -o PermitLocalCommand=yes -o LocalCommand="${local_command}" "$@"
-  if [ -n "$TMUX" ]; then
+      command -p ssh -o PermitLocalCommand=yes -o LocalCommand="${local_command}" "$@"
+    else
+      command ssh "$@"
+    fi
+    if [ -n "$TMUX" ]; then
+      tmux rename-window $window_name
       tmux set-window-option -u automatic-rename
       TERM=screen-256color
-  fi
+    fi
 }
 
 # alias dpeco="cd "
@@ -249,10 +253,3 @@ eval $(thefuck --alias)
 
 alias rm='trash-wrapper.sh'
 
-# ssh wrapper
-function ssh() {
-    local window_name=$(tmux display -p '#{window_name}')
-    command ssh $@
-    tmux rename-window $window_name
-    tmux set-window-option -u automatic-rename
-}
