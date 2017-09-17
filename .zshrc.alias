@@ -253,3 +253,5 @@ eval $(thefuck --alias)
 
 alias rm='trash-wrapper.sh'
 
+alias wr='watchrun -c'
+alias wrq='watchrun -q -c'

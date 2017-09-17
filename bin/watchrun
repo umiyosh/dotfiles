@@ -1,0 +1,153 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import time
+import os
+import sys
+import delegator
+import argparse
+
+from logging import getLogger, Formatter, DEBUG
+from rainbow_logging_handler import RainbowLoggingHandler
+
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
+
+import zgitignore
+
+BASEDIR = os.path.abspath('./')
+
+
+class FSHandler(FileSystemEventHandler):
+    """ChangeHandler"""
+
+    def __init__(self, cmd, mode):
+        """__init__
+
+        :param cmd: command , str
+        :param mode: quiet mode , boolian
+        """
+        FileSystemEventHandler.__init__(self)
+        self.cmd = cmd
+        self.mode = mode
+        self.logger = self._get_logger()
+
+        ignorefile = zgitignore.ZgitIgnore(ignore_case=True)
+        if os.path.exists('./.gitignore'):
+            with open('./.gitignore', 'r') as f:
+                ignorefile.add_patterns(f.read().splitlines())
+        self.ignore = ignorefile
+
+    def _get_logger(self):
+        """get_logger"""
+        logger = getLogger(__name__)
+        if self.mode:
+            formatter = Formatter('%(message)s')
+        else:
+            formatter = Formatter('%(asctime)s [%(module)s] - : %(message)s')
+        handler = RainbowLoggingHandler(sys.stderr)
+        handler.setFormatter(formatter)
+        logger.setLevel(DEBUG)
+        logger.propagate = False
+        logger.addHandler(handler)
+        return logger
+
+    def on_created(self, event):
+        """on_created
+
+        :param event:
+        """
+        if self.ignore.is_ignored(event.src_path):
+            return
+        if event.is_directory:
+            return
+        self.logger.warn('%s has been created.' % event.src_path)
+        self._run()
+
+    def on_modified(self, event):
+        """on_modified
+
+        :param event:
+        """
+        if self.ignore.is_ignored(event.src_path):
+            return
+        if event.is_directory:
+            return
+        self.logger.warn('%s has been modified.' % event.src_path)
+        self._run()
+
+    def on_deleted(self, event):
+        """on_deleted
+
+        :param event:
+        """
+        if self.ignore.is_ignored(event.src_path):
+            return
+        if event.is_directory:
+            return
+        self.logger.warn('%s has been deleted.' % event.src_path)
+        self._run()
+
+    def _run(self):
+        """run"""
+        try:
+            result = delegator.chain(self.cmd)
+            result.block()
+        except Exception as e:
+            self.logger.critical('ECEPTION OCCUR')
+            self.logger.critical(e)
+            return
+
+        if result.return_code == 0:
+            completion = True
+        else:
+            completion = False
+
+        for result_line in result.out.split('\n'):
+            self.logger.info(result_line)
+        if completion:
+            self.logger.info('COMPLETION: %s' % result.return_code)
+        else:
+            self.logger.critical('COMPLETION: %s' % result.return_code)
+
+
+def arg_parse():
+    parser = argparse.ArgumentParser(
+        description='Execute the command when file event is issued')
+    parser.add_argument(
+        '-c',
+        '--command',
+        dest='command',
+        type=str,
+        help='execute command',
+        required=True)
+    parser.add_argument(
+        '-q',
+        '--quiet',
+        dest='quiet',
+        action='store_true',
+        help='quiet mode',
+        required=False)
+    parser.set_defaults(quiet=False)
+    return parser.parse_args()
+
+
+def watchdog_loop_main():
+    """watchdog_loop_main"""
+    args = arg_parse()
+
+    while True:
+        event_handler = FSHandler(cmd=args.command, mode=args.quiet)
+        observer = Observer()
+        observer.schedule(event_handler, BASEDIR, recursive=True)
+        observer.start()
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            observer.stop()
+        observer.join()
+
+
+if __name__ in '__main__':
+    watchdog_loop_main()
