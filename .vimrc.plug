@@ -43,6 +43,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   " editorconfig
   Plug 'editorconfig/editorconfig-vim'
+  " NrrwRgn
+  Plug 'chrisbra/NrrwRgn'
 
 " }}}
 
