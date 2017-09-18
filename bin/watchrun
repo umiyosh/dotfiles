@@ -10,7 +10,7 @@ import argparse
 from logging import getLogger, Formatter, DEBUG
 from rainbow_logging_handler import RainbowLoggingHandler
 
-from watchdog.events import FileSystemEventHandler
+from watchdog.events import RegexMatchingEventHandler
 from watchdog.observers import Observer
 
 import zgitignore
@@ -18,16 +18,16 @@ import zgitignore
 BASEDIR = os.path.abspath('./')
 
 
-class FSHandler(FileSystemEventHandler):
+class FSHandler(RegexMatchingEventHandler):
     """ChangeHandler"""
 
-    def __init__(self, cmd, mode):
+    def __init__(self, cmd, mode, ignore_regexes):
         """__init__
 
         :param cmd: command , str
         :param mode: quiet mode , boolian
         """
-        FileSystemEventHandler.__init__(self)
+        RegexMatchingEventHandler.__init__(self, ignore_regexes=ignore_regexes)
         self.cmd = cmd
         self.mode = mode
         self.logger = self._get_logger()
@@ -135,9 +135,10 @@ def arg_parse():
 def watchdog_loop_main():
     """watchdog_loop_main"""
     args = arg_parse()
-
+    ignore_patterns = [r".+/.git", r".+/.svn"]
     while True:
-        event_handler = FSHandler(cmd=args.command, mode=args.quiet)
+        event_handler = FSHandler(
+            cmd=args.command, mode=args.quiet, ignore_regexes=ignore_patterns)
         observer = Observer()
         observer.schedule(event_handler, BASEDIR, recursive=True)
         observer.start()
