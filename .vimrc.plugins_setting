@@ -28,7 +28,7 @@ let g:NERDCustomDelimiters = {
 "------------------------------------
 " dash.vim
 "------------------------------------
-nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader><leader>d <Plug>DashSearch
 
 " ------------------------------------
 " grep.vim
