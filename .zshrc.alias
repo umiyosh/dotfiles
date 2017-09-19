@@ -251,7 +251,9 @@ alias swumidev='eval "$(kmachine env umidev)"'
 # fuck
 eval $(thefuck --alias)
 
+# safty rm
 alias rm='trash-wrapper.sh'
 
+# watchrun
 alias wr='watchrun -c'
 alias wrq='watchrun -q -c'
