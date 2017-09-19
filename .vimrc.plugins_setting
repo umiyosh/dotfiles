@@ -532,6 +532,8 @@ command! Pdb :!python -m pdb %
 " yapf
 let g:yapf_style = 'pep8'
 nnoremap <leader>y :call Yapf()<cr>
+" isort
+autocmd FileType python nnoremap <leader>i :!isort %<CR><CR>
 
 "------------------------------------
 " pydocstring
