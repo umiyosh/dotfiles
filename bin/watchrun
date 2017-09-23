@@ -133,7 +133,7 @@ def arg_parse():
 def watchdog_loop_main():
     """watchdog_loop_main"""
     args = arg_parse()
-    ignore_patterns = [r".+/.git", r".+/.svn"]
+    ignore_patterns = [r".+/.git", r".+/.svn", r".+/data"]
     while True:
         event_handler = FSHandler(
             cmd=args.command, mode=args.quiet, ignore_regexes=ignore_patterns)
