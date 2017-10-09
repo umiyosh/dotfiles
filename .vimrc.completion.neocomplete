@@ -123,3 +123,5 @@ let g:neocomplcache_include_suffixes = {
   \ 'haskell' : '.hs'
   \ }
 
+" for neco-look
+let g:neocomplete#text_mode_filetypes = { "_" : 1 }
