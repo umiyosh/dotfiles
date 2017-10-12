@@ -70,3 +70,6 @@ if has('vim_starting') && has("unix")
       let &t_SR .= "\e[4 q"
   endif
 endif
+
+" for pyenv
+let $PATH = "~/.pyenv/shims:".$PATH
