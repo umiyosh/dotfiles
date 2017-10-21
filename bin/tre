@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-trans ja:en -no-autocorrect -b  $@
+trans :en -no-autocorrect -b  $@
