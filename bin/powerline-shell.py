@@ -315,7 +315,10 @@ import re
 def add_gke_segment(powerline):
     match = '.+cluster:.+'
     cluster_name = None
-    prompt_prefix = ' ⎈ : '.decode('utf-8')
+    if not py3:
+        prompt_prefix = ' ⎈ : '.decode('utf-8')
+    else:
+        prompt_prefix = ' ⎈ : '
     kube_cmd = [
         'kubectl',
         'config',
@@ -323,7 +326,7 @@ def add_gke_segment(powerline):
         '--minify',
     ]
     cmd_result = subprocess.check_output(kube_cmd)
-    results = cmd_result.split('\n')
+    results = cmd_result.decode('utf-8').split('\n')
     for result in results:
         if re.match(match, result):
             cluster_name = result.split()[1] + ' '
