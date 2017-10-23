@@ -628,3 +628,9 @@ let python_highlight_all = 1
 " let g:vim_markdown_better_folding=1
 " let g:vim_markdown_no_default_key_mappings=1
 
+"------------------------------------
+" zefei/vim-wintabs
+"------------------------------------
+"
+map <C-H> <Plug>(wintabs_previous)
+map <C-L> <Plug>(wintabs_next)

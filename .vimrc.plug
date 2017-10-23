@@ -163,7 +163,8 @@ call plug#begin('~/.vim/plugged')
 
 " Buffer {{{
   " buftabs:バッファ管理
-  Plug 'fholgado/minibufexpl.vim'
+  " zefei/vim-wintabs
+  Plug 'zefei/vim-wintabs'
 " }}}
 
 
