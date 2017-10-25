@@ -161,13 +161,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'kh3phr3n/python-syntax'
 " }}}
 
-" Buffer {{{
-  " buftabs:バッファ管理
-  " zefei/vim-wintabs
-  Plug 'zefei/vim-wintabs'
-" }}}
-
-
 " Encording {{{
   Plug 'banyan/recognize_charcode.vim'
 " }}}
@@ -192,7 +185,8 @@ call plug#begin('~/.vim/plugged')
   " gitgutter
   Plug 'airblade/vim-gitgutter'
   " ステータスラインをカッコよくする
-  Plug 'Lokaltog/vim-powerline', { 'branch': 'develop' }
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   " 分割を維持してバッファ削除
   Plug 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除

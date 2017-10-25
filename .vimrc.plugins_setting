@@ -447,17 +447,11 @@ nmap <Leader>k :<C-u>Ref  webdict never <C-R>=expand("<cword>")<CR><CR>
 vmap <Leader>k y:<C-u>Ref webdict never <C-R>=expand(@")<CR><CR>
 
 "------------------------------------
-" vim-powerline
+" vim-airline
 "------------------------------------
-let g:Powerline_mode_i  = '挿入'
-let g:Powerline_mode_R  = '置換'
-let g:Powerline_mode_n  = '通常'
-let g:Powerline_mode_v  = 'ビジュアル'
-let g:Powerline_mode_V  = '行ビジュアル'
-let g:Powerline_mode_cv = '矩形ビジュアル'
-let g:Powerline_mode_s  = '選択'
-let g:Powerline_mode_S  = '行選択'
-let g:Powerline_mode_cs = '矩形選択'
+let g:airline_powerline_fonts = 1
+let g:airline_theme="deus"
+let g:airline#extensions#tabline#enabled = 1
 
 "------------------------------------
 " VoOM (markdown outliner)
@@ -628,9 +622,3 @@ let python_highlight_all = 1
 " let g:vim_markdown_better_folding=1
 " let g:vim_markdown_no_default_key_mappings=1
 
-"------------------------------------
-" zefei/vim-wintabs
-"------------------------------------
-"
-map <C-H> <Plug>(wintabs_previous)
-map <C-L> <Plug>(wintabs_next)
