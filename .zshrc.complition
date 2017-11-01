@@ -27,5 +27,5 @@ zstyle ':completion:*:-command-:*' \
     fake-parameters PERL5LIB # for perl
 zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
 
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
