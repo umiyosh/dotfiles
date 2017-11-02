@@ -10,8 +10,8 @@ dependencies:
   post:
     - ./setup.sh
     - zsh -c 'exit'
-    - vim +qall
+    - yes|vim +qall
 test:
   pre:
     - zsh -c 'exit'
-    - vim +qall
+    - yes|vim +qall
