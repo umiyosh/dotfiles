@@ -12,20 +12,20 @@ jobs:
              sudo apt-get update
              sudo apt-get install zsh
              sudo apt-get install vim
-          working_directory: dotfiles
+      - run:
+          name: test
+          command: pwd && ls -la
       - run:
           name: setup
           command: |
              ./setup.sh
              zsh -c 'exit'
              yes|vim +qall
-          working_directory: dotfiles
       - run:
           name: test
           command: |
               zsh -c 'exit'
               yes|vim +qall
-          working_directory: dotfiles
 
 workflows:
   version: 2
