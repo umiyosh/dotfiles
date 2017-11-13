@@ -8,7 +8,7 @@ jobs:
       - run:
           name: dependencies
           command: |
-             sudo add-apt-repository -y ppa:fcwu-tw/ppa
+             sudo add-apt-repository ppa:jonathonf/vim
              sudo apt-get update
              sudo apt-get install zsh
              sudo apt-get install vim
@@ -17,12 +17,12 @@ jobs:
           command: |
              ./setup.sh
              zsh -c 'exit'
-             yes|vim +qall
+             vim +qa
       - run:
           name: test
           command: |
               zsh -c 'exit'
-              yes|vim +qall
+              vim +qa
 
 workflows:
   version: 2

@@ -80,7 +80,7 @@ function installAutojump() {
 
 function installFzf() {
   ## peco
-  if ! hash peco; then
+  if ! hash fzf; then
     case "${OSTYPE}" in
     darwin*)
       brew install fzf
@@ -101,7 +101,8 @@ function setupVimPlugins() {
   fi
   alias vim='mvim -v'
   if [[ ! -d $HOME/.vim/plugged ]]; then
-    vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qall
+    vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qa
+    vim +'set more!' +GoInstallBinaries +qa
     cd "$HOME/.vim/plugged/vimproc.vim/"
     case "${OSTYPE}" in
     darwin*)
@@ -113,10 +114,7 @@ function setupVimPlugins() {
     esac
     cd "$HOME/dotfiles/"
   else
-    vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qall
-  fi
-  if [[ -z $CIRCLECI ]]; then
-    vim +GoInstallBinaries +qall
+    vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qa
   fi
 }
 

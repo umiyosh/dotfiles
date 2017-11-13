@@ -112,7 +112,7 @@ call plug#begin('~/.vim/plugged')
   " Node.js用
   Plug 'moll/vim-node'
   " vim-go
-  Plug 'fatih/vim-go', { 'branch': 'vim-8.0' }
+  Plug 'fatih/vim-go'
   " godoctor : refactoring
   Plug 'godoctor/godoctor.vim'
   " vim-go-impl
