@@ -13,9 +13,6 @@ jobs:
              sudo apt-get install zsh
              sudo apt-get install vim
       - run:
-          name: test
-          command: pwd && ls -la
-      - run:
           name: setup
           command: |
              ./setup.sh
