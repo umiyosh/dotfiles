@@ -17,7 +17,6 @@ jobs:
           command: |
              ./setup.sh
              zsh -c 'exit'
-             vim +qa
       - run:
           name: test
           command: |
