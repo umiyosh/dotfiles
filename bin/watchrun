@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import argparse
@@ -17,10 +16,10 @@ BASEDIR = os.path.abspath('./')
 
 
 class FSHandler(RegexMatchingEventHandler):
-    """ChangeHandler"""
+    u"""ChangeHandler"""
 
     def __init__(self, cmd, mode, ignore_regexes):
-        """__init__
+        u"""__init__
 
         :param cmd: command , str
         :param mode: quiet mode , boolian
@@ -37,7 +36,7 @@ class FSHandler(RegexMatchingEventHandler):
         self.ignore = ignorefile
 
     def _get_logger(self):
-        """get_logger"""
+        u"""get_logger"""
         logger = getLogger(__name__)
         if self.mode:
             formatter = Formatter('%(message)s')
@@ -51,7 +50,7 @@ class FSHandler(RegexMatchingEventHandler):
         return logger
 
     def on_created(self, event):
-        """on_created
+        u"""on_created
 
         :param event:
         """
@@ -63,7 +62,7 @@ class FSHandler(RegexMatchingEventHandler):
         self._run()
 
     def on_modified(self, event):
-        """on_modified
+        u"""on_modified
 
         :param event:
         """
@@ -75,7 +74,7 @@ class FSHandler(RegexMatchingEventHandler):
         self._run()
 
     def on_deleted(self, event):
-        """on_deleted
+        u"""on_deleted
 
         :param event:
         """
@@ -87,7 +86,7 @@ class FSHandler(RegexMatchingEventHandler):
         self._run()
 
     def _run(self):
-        """run"""
+        u"""run"""
         try:
             result = delegator.chain(self.cmd)
             result.block()
@@ -110,6 +109,7 @@ class FSHandler(RegexMatchingEventHandler):
 
 
 def arg_parse():
+    u"""arg_parse"""
     parser = argparse.ArgumentParser(
         description='Execute the command when file event is issued')
     parser.add_argument(
@@ -130,10 +130,10 @@ def arg_parse():
     return parser.parse_args()
 
 
-def watchdog_loop_main():
-    """watchdog_loop_main"""
+def watchrun():
+    u"""watchdog_loop_main"""
     args = arg_parse()
-    ignore_patterns = [r".+/.git", r".+/.svn", r".+/data"]
+    ignore_patterns = [r".+/.git", r".+/.svn", r".+/data", r".+pyc"]
     while True:
         event_handler = FSHandler(
             cmd=args.command, mode=args.quiet, ignore_regexes=ignore_patterns)
@@ -149,4 +149,4 @@ def watchdog_loop_main():
 
 
 if __name__ in '__main__':
-    watchdog_loop_main()
+    watchrun()
