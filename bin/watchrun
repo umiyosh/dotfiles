@@ -87,6 +87,10 @@ class FSHandler(RegexMatchingEventHandler):
         self.logger.warn('%s has been deleted.' % event.src_path)
         self._run()
 
+    def debug_run(self):
+        """debug_run"""
+        self._run()
+
     def _run(self):
         u"""run"""
         try:
@@ -128,6 +132,13 @@ def arg_parse():
         action='store_true',
         help='quiet mode',
         required=False)
+    parser.add_argument(
+        '-d',
+        '--debug',
+        dest='debug',
+        action='store_true',
+        help='debug mode',
+        required=False)
     parser.set_defaults(quiet=False)
     return parser.parse_args()
 
@@ -139,6 +150,9 @@ def watchrun():
     while True:
         event_handler = FSHandler(
             cmd=args.command, mode=args.quiet, ignore_regexes=ignore_patterns)
+        if args.debug:
+            event_handler.debug_run()
+            sys.exit(0)
         observer = Observer()
         observer.schedule(event_handler, BASEDIR, recursive=True)
         observer.start()
