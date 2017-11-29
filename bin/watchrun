@@ -126,6 +126,13 @@ def arg_parse():
         help='execute command',
         required=True)
     parser.add_argument(
+        '-i',
+        '--ignore',
+        dest='ignore',
+        type=str,
+        help='ignore pattern regexp',
+        required=False)
+    parser.add_argument(
         '-q',
         '--quiet',
         dest='quiet',
@@ -143,10 +150,23 @@ def arg_parse():
     return parser.parse_args()
 
 
+def convert_to_regexp(pattern_str):
+    """convert_to_regexp
+
+    :param pettern_str:
+    """
+    patterns = []
+    pattern_str = str(pattern_str)
+    for pattern in pattern_str.split(','):
+        patterns.append('r"{0}"'.format(pattern))
+    return patterns
+
+
 def watchrun():
     u"""watchdog_loop_main"""
     args = arg_parse()
-    ignore_patterns = [r".+/.git", r".+/.svn", r".+/data", r".+pyc"]
+    ignore_patterns = convert_to_regexp(args.ignore)
+    ignore_patterns.extend([r".+/.git", r".+/.svn", r".+/data", r".+pyc"])
     while True:
         event_handler = FSHandler(
             cmd=args.command, mode=args.quiet, ignore_regexes=ignore_patterns)
