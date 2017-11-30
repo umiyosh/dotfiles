@@ -20,7 +20,7 @@ BASEDIR = os.path.abspath('./')
 class FSHandler(RegexMatchingEventHandler):
     u"""ChangeHandler"""
 
-    def __init__(self, cmd, mode, ignore_regexes):
+    def __init__(self, cmd, mode, ignore_regexes, timeout):
         u"""__init__
 
         :param cmd: command , str
@@ -29,6 +29,7 @@ class FSHandler(RegexMatchingEventHandler):
         RegexMatchingEventHandler.__init__(self, ignore_regexes=ignore_regexes)
         self.cmd = cmd
         self.mode = mode
+        self.timeout = timeout
         self.logger = self._get_logger()
 
         ignorefile = zgitignore.ZgitIgnore(ignore_case=True)
@@ -94,7 +95,7 @@ class FSHandler(RegexMatchingEventHandler):
     def _run(self):
         u"""run"""
         try:
-            result = delegator.chain(self.cmd)
+            result = delegator.chain(self.cmd, timeout=self.timeout)
             result.block()
         except Exception as e:
             self.logger.critical('EXCEPTION OCCUR')
@@ -138,6 +139,13 @@ def arg_parse():
         dest='quiet',
         action='store_true',
         help='quiet mode',
+        required=False),
+    parser.add_argument(
+        '-t',
+        '--timeout',
+        dest='timeout',
+        type=int,
+        help='timeout [sec]',
         required=False)
     parser.add_argument(
         '-d',
@@ -146,7 +154,7 @@ def arg_parse():
         action='store_true',
         help='debug mode',
         required=False)
-    parser.set_defaults(quiet=False)
+    parser.set_defaults(quiet=False, timeout=90)
     return parser.parse_args()
 
 
@@ -169,7 +177,10 @@ def watchrun():
     ignore_patterns.extend([r".+/.git", r".+/.svn", r".+/data", r".+pyc"])
     while True:
         event_handler = FSHandler(
-            cmd=args.command, mode=args.quiet, ignore_regexes=ignore_patterns)
+            cmd=args.command,
+            mode=args.quiet,
+            ignore_regexes=ignore_patterns,
+            timeout=args.timeout)
         if args.debug:
             event_handler.debug_run()
             sys.exit(0)
