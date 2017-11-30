@@ -91,7 +91,7 @@ class FSHandler(RegexMatchingEventHandler):
         self._run()
 
     def debug_run(self):
-        """debug_run"""
+        u"""debug_run"""
         self._run()
 
     def _run(self):
@@ -161,7 +161,7 @@ def arg_parse():
 
 
 def convert_to_regexp(pattern_str):
-    """convert_to_regexp
+    u"""convert_to_regexp
 
     :param pettern_str:
     """
