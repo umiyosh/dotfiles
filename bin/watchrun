@@ -23,8 +23,10 @@ class FSHandler(RegexMatchingEventHandler):
     def __init__(self, cmd, mode, ignore_regexes, timeout):
         u"""__init__
 
-        :param cmd: command , str
+        :param cmd: command ,  str
         :param mode: quiet mode , boolian
+        :param ignore_regexes: ignore regexp csv pttern, str
+        :param timeout: timeout sec, int
         """
         RegexMatchingEventHandler.__init__(self, ignore_regexes=ignore_regexes)
         self.cmd = cmd
