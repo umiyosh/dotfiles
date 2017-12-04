@@ -58,7 +58,7 @@ function $self::k8sGetPodIPToPbcopy() {
   echo $podIp | pbcopy
 }
 
-kubectl get po -o wide | selector --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
+kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
   pecoAfterAction \
     "kubectl describe pod " \
     "kubectl logs " \
