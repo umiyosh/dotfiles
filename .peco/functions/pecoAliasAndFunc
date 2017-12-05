@@ -79,10 +79,10 @@ function $self::execute() {
 (declare -f | perl -ne '/^[^\t\r\n]+\(.*\).*\{/&&print'|egrep -v '^ +' ; alias) | _pecoBeforeFilter | selector --prompt "[$0]"|
    $self::_extractFuncName | $self::_extractAliasName |
     pecoAfterAction \
-      "$self::define" \
-      "$self::redefine" \
-      "$self::execute" \
-      "paaInputCommandAny" \
+      "$self::define " \
+      "$self::redefine " \
+      "$self::execute " \
+      "paaInputCommandAny " \
       "%%STDIN%% cat" \
       "%%STDIN%% paaPbCopy" \
       "%%STDIN%% paaTovim" \

@@ -45,7 +45,7 @@ function pecoAfterAction() {
       echo $selected
     done |$Action $argment
   else
-    _executeTmuxBuffer "$Action $Source"
+    _executeTmuxBuffer "$Action$Source"
   fi
 }
 

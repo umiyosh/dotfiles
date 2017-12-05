@@ -2,20 +2,20 @@
 
 # 概要: 任意のcandidateをpipeでつないでpecoしてafteractionするもの
 _pecoBeforeFilter | selector --prompt "[$0]"| pecoAfterAction \
-  "vi" \
-  'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
-  'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-  'vimdiff' \
-  'less +F'\
-  'cat'\
-  'zcat'\
-  'gzcat'\
-  'gunzip'\
-  'chmod +x'\
-  'open' \
+  "vi " \
+  'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
+  'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz ' \
+  'vimdiff ' \
+  'less +F '\
+  'cat '\
+  'zcat '\
+  'gzcat '\
+  'gunzip '\
+  'chmod +x '\
+  'open ' \
   "%%STDIN%% cat" \
   "%%STDIN%% paaSafeRm" \
-  "paaInputCommandAny" \
+  "paaInputCommandAny " \
   "%%STDIN%% paaPbCopy" \
   "%%STDIN%% paaPbCopyFilename" \
   "%%STDIN%% paaTovim" \

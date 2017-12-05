@@ -28,18 +28,19 @@ function $self::k8sSh() {
 }
 
 function $self::k8sPortForward() {
-	local podName=$1
+	local nameSpace=$1
+	local podName=$2
 	if [[ -z $podName ]]
 	then
 		return 1
 	fi
 	local port=$(kubectl get pod --output=json $podName|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
 	echo kubectl port-forward $podName $port:$port
-	kubectl port-forward $1 $port:$port
+	kubectl port-forward $podName -n $nameSpace $port:$port
 }
 
 function $self::k8sGetPodIP() {
-	local podName=$1
+	local podName=$2
 	if [[ -z $podName ]]
 	then
 		return 1
@@ -48,7 +49,7 @@ function $self::k8sGetPodIP() {
 }
 
 function $self::k8sGetPodIPToPbcopy() {
-	local podName=$1
+	local podName=$2
 	if [[ -z $podName ]]
 	then
 		return 1
@@ -58,17 +59,17 @@ function $self::k8sGetPodIPToPbcopy() {
   echo $podIp | pbcopy
 }
 
-kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
+kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $1, $2}'|sort | uniq | \
   pecoAfterAction \
-    "kubectl describe pod " \
-    "kubectl logs " \
-    "kubectl logs -f " \
-    "kubectl get pod " \
-    "kubectl get pod --output=json " \
-    "kubectl get pod --output=yaml " \
-    "$self::k8sGetPodIP" \
-    "$self::k8sPortForward" \
-    "$self::k8sGetPodIPToPbcopy" \
+    "kubectl describe pod --namespace=" \
+    "kubectl logs --namespace=" \
+    "kubectl logs -f --namespace=" \
+    "kubectl get pod --namespace=" \
+    "kubectl get pod --output=json --namespace=" \
+    "kubectl get pod --output=yaml --namespace=" \
+    "$self::k8sGetPodIP " \
+    "$self::k8sPortForward " \
+    "$self::k8sGetPodIPToPbcopy " \
     "%%STDIN%% $self::k8sSh" \
     "%%STDIN%% $self::nodeSsh" \
     "%%STDIN%% cat" \

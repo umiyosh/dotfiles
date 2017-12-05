@@ -7,7 +7,7 @@ ps aux | selector --prompt "[$0]"| awk '{ print $2 }'|pecoAfterAction \
   "%%STDIN%% paaKill -QUIT" \
   "%%STDIN%% paaKill -SIGKILL" \
   "%%STDIN%% paaKill -KILL" \
-  "paaInputCommandAny" \
+  "paaInputCommandAny " \
   "%%STDIN%% cat" \
   "%%STDIN%% pbcopy" \
   "%%STDIN%% paaTovim" \

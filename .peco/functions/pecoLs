@@ -28,18 +28,18 @@ fi
 
 find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | $self::_replaceChar | \
   tail -r |selector --prompt "[$0]"| awk '{print $NF}' | $self::_interporatePath $searchPath | pecoAfterAction \
-    "vi" \
+    "vi " \
     "cd" \
-    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip' \
-    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz' \
-    'vimdiff' \
-    'less +F'\
-    'cat'\
-    'zcat'\
-    'gzcat'\
-    'gunzip'\
-    'chmod +x'\
-    'open' \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz ' \
+    'vimdiff ' \
+    'less +F '\
+    'cat '\
+    'zcat '\
+    'gzcat '\
+    'gunzip '\
+    'chmod +x '\
+    'open ' \
     "%%STDIN%% cat" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \

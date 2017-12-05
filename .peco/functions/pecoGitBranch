@@ -1,20 +1,20 @@
 #!/usr/bin/env zsh
 #概要：git branchにたいしていろいろする
 (git branch |perl -pe 's/^\* //g';git branch -r;git tag )|_pecoBeforeFilter| selector --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $NF}'| \
-  pecoAfterAction "git checkout" \
-    "git checkout -t" \
-    "git branch -d" \
-    "git branch -D" \
-    "git diff" \
-    "git vdiff" \
-    "git reset --soft" \
-    "git reset --hard" \
-    "git rebase -i" \
-    "git push origin" \
-    "git push origin --force" \
-    "git push origin --force-with-lease" \
-    "git pull origin" \
-    "git merge" \
+  pecoAfterAction "git checkout " \
+    "git checkout -t " \
+    "git branch -d " \
+    "git branch -D " \
+    "git diff " \
+    "git vdiff " \
+    "git reset --soft " \
+    "git reset --hard " \
+    "git rebase -i " \
+    "git push origin " \
+    "git push origin --force " \
+    "git push origin --force-with-lease " \
+    "git pull origin " \
+    "git merge " \
     "%%STDIN%% cat" \
     "%%STDIN%% paaPbCopy" \
     "%%STDIN%% paaTovim" \
