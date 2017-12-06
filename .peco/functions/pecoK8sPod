@@ -34,8 +34,8 @@ function $self::k8sPortForward() {
 	then
 		return 1
 	fi
-	local port=$(kubectl get pod --output=json $podName|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
-	echo kubectl port-forward $podName $port:$port
+	local port=$(kubectl get pod --output=json $podName -n $nameSpace|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
+	echo kubectl port-forward $podName -n $nameSpace $port:$port
 	kubectl port-forward $podName -n $nameSpace $port:$port
 }
 
