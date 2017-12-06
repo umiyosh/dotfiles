@@ -5,7 +5,7 @@ workDir=$(pwd)
 gitRootDir=$(git rev-parse --show-toplevel)
 cd "$gitRootDir"
 (git status --porcelain;git ls-files) | selector --prompt "[$0]"| perl -pe 's/^( ?(AM) )|( ?D )|( ?(UU) )|( ?(MM) )|( ?M )|( ?T )|( ?A )|(\?\? )//g' |perl -pe 's/^ +//g'|\
-  pecoAfterAction "git add" \
+  pecoAfterAction "git add " \
     "git checkout " \
     "git reset HEAD " \
     "git diff " \
