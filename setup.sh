@@ -8,7 +8,7 @@ function deployDotfiles() {
               .inputrc .irbrc .sbtconfig .vimrc \
               .gvimrc .tmux.conf \
               .dir_colors .rdebugrc .perltidyrc .mackup.cfg \
-              .zprofile
+              .zprofile .direnvrc
              )
   DOT_DIRS=(.zsh .vim .peco )
 
