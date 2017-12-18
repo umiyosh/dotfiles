@@ -100,6 +100,7 @@ call plug#begin('~/.vim/plugged')
   " pythonのomni補完 jedi.vim
   Plug 'davidhalter/jedi-vim'
   " pythonの環境周り
+  Plug 'jmcantrell/vim-virtualenv'
   " python formatter
   Plug 'mindriot101/vim-yapf'
   " pydocstring
