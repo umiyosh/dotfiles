@@ -1,3 +1,10 @@
+let my_python_version = substitute(system("python --version 2>&1"),"Python ","","g")
+if my_python_version < '3'
+  call has('python')
+else
+  call has('python3')
+endif
+
 scriptencoding utf-8
 "基本設定
 source ~/dotfiles/.vimrc.basic

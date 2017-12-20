@@ -71,5 +71,3 @@ if has('vim_starting') && has("unix")
   endif
 endif
 
-" for pyenv
-let $PATH = "~/.pyenv/shims:".$PATH

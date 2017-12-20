@@ -1,24 +1,3 @@
-""" for pyenv
-" PATHの自動更新関数
-" | 指定された path が $PATH に存在せず、ディレクトリとして存在している場合
-" | のみ $PATH に加える
-function! IncludePath(path)
-  " define delimiter depends on platform
-  if has('win16') || has('win32') || has('win64')
-    let delimiter = ";"
-  else
-    let delimiter = ":"
-  endif
-  let pathlist = split($PATH, delimiter)
-  if isdirectory(a:path) && index(pathlist, a:path) == -1
-    let $PATH=a:path.delimiter.$PATH
-  endif
-endfunction
-
-" ~/.pyenv/shims を $PATH に追加する
-" これを行わないとpythonが正しく検索されない
-call IncludePath(expand("~/.pyenv/shims"))
-
 scriptencoding utf-8
 if has('vim_starting')
   set runtimepath+=~/.vim/plugged/vim-plug
@@ -121,7 +100,7 @@ call plug#begin('~/.vim/plugged')
   " pythonのomni補完 jedi.vim
   Plug 'davidhalter/jedi-vim'
   " pythonの環境周り
-  Plug 'lambdalisue/vim-pyenv'
+  Plug 'jmcantrell/vim-virtualenv'
   " python formatter
   Plug 'mindriot101/vim-yapf'
   " pydocstring

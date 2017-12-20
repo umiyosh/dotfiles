@@ -7,3 +7,12 @@ use_python() {
     layout python "$python_root/bin/python2"
   fi
 }
+layout_virtualenv() {
+  local venv_path="$1"
+  source ${venv_path}/bin/activate
+}
+
+layout_virtualenvwrapper() {
+  local venv_path="${WORKON_HOME}/$1"
+  layout_virtualenv $venv_path
+}
