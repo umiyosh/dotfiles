@@ -40,21 +40,23 @@ function $self::k8sPortForward() {
 }
 
 function $self::k8sGetPodIP() {
+	local nameSpace=$1
 	local podName=$2
 	if [[ -z $podName ]]
 	then
 		return 1
 	fi
-  kubectl get pod --output=json $podName|gron|grep -i podip | perl -pe 's/.+=|;//g'|perl -pe 's/ //g' | perl -pe 's/"//g'
+  kubectl get pod --output=json $podName -n $nameSpace|gron|grep -i podip | perl -pe 's/.+=|;//g'|perl -pe 's/ //g' | perl -pe 's/"//g'
 }
 
 function $self::k8sGetPodIPToPbcopy() {
+	local nameSpace=$1
 	local podName=$2
 	if [[ -z $podName ]]
 	then
 		return 1
 	fi
-  podIp=$($self::k8sGetPodIP $podName)
+  podIp=$($self::k8sGetPodIP $nameSpace $podName)
   echo "pbcopied " $podIp
   echo $podIp | pbcopy
 }
