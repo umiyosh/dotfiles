@@ -26,6 +26,7 @@ autoload pecoK8sPod
 autoload pecoK8sSvc
 autoload pecoK8sRc
 autoload pecoAliasAndFunc
+autoload pecoVenv
 
 # peco alias
 alias -g P='| p'
@@ -60,6 +61,7 @@ alias kn="pecoK8sNode"
 alias kp="pecoK8sPod"
 alias ks="pecoK8sSvc"
 alias kr="pecoK8sRc"
+alias vr="pecoVenv"
 alias help="pecoAliasAndFunc"
 alias afp="pecoAliasAndFunc"
 

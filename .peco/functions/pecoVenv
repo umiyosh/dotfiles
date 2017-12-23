@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+self=$0
+
+workon | _pecoBeforeFilter | selector --prompt "[$0]" | pecoAfterAction \
+    "workon " \
+    "rmvirtualenv " \
+    "%%STDIN%% cat" \
+    "paaInputCommandAny" \
+    "%%STDIN%% paaPbCopy" \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% paaExecuteAsCommand"
