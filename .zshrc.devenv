@@ -4,7 +4,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 export PATH=~/.local/bin:$PATH
-workon py3.6-global
+workon py3.6.4-global
 
 # perlbrew
 if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
