@@ -257,3 +257,9 @@ alias rm='trash-wrapper.sh'
 # watchrun
 alias wr='watchrun -c'
 alias wrq='watchrun -q -c'
+
+# hub
+eval "$(hub alias -s)"
+function bai() {
+  pbpaste| while read issue ;do git issue create -m $issue ;done
+}
