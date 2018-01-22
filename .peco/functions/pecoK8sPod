@@ -15,7 +15,7 @@ function $self::_convertPodToNode() {
   wait
 }
 function $self::nodeSsh() {
-  awk '{print $2}'|$self::_convertPodToNode | sort | uniq | $self::_getIp | pecoAfterAction pssh
+  awk '{print $2}'|$self::_convertPodToNode | sort | uniq | $self::_getIp | pecoAfterAction "pssh "
 }
 
 function $self::_k8sSh() {
@@ -24,7 +24,7 @@ function $self::_k8sSh() {
 }
 
 function $self::k8sSh() {
-  awk '{print $2}'|pecoAfterAction $self::_k8sSh
+  awk '{print $2}'|pecoAfterAction "$self::_k8sSh "
 }
 
 function $self::k8sPortForward() {
