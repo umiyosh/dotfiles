@@ -47,3 +47,5 @@ export CFLAGS="-I/usr/local/opt/openssl/include"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=/usr/local/tflint/bin:$PATH
+
