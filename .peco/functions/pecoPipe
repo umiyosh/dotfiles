@@ -20,5 +20,6 @@ _pecoBeforeFilter | selector --prompt "[$0]"| pecoAfterAction \
   "%%STDIN%% paaPbCopyFilename" \
   "%%STDIN%% paaTovim" \
   "%%STDIN%% pecoPipe" \
-  "%%STDIN%% paaExecuteAsCommand"
+  "%%STDIN%% paaExecuteAsCommand" \
+  "%%STDIN%% paaPasteBuffer"
 

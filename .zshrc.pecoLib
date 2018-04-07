@@ -86,6 +86,16 @@ function paaExecuteAsCommand() {
   done
 }
 
+function paaPasteBuffer() {
+  Selected=( ${(@f)"$(< /dev/stdin)"} )
+  pasteBuf=$Selected[1]
+  shift Selected
+  for Action in $Selected; do
+      pasteBuf="$pasteBuf ;$Action"
+  done
+  _pasteTmuxBuffer $pasteBuf
+}
+
 function paaKill() {
   PIDS=( ${(@f)"$(< /dev/stdin)"} )
   SINGNAL=$1
