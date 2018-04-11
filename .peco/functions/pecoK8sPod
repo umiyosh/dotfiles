@@ -4,7 +4,7 @@ self=$0
 
 function $self::_getIp() {
   while read node;do
-    (kubectl describe node $node|egrep Addresses:|awk '{print $NF}'|awk 'BEGIN{FS=","}{print $1}'|perl -pe 's/^$//g') &
+    (kubectl get node --output=json $node | gron | fgrep 'status.addresses[0].address'|awk '{print $NF}'|perl -pe 's/[";]//g') &
   done
   wait
 }
@@ -15,7 +15,7 @@ function $self::_convertPodToNode() {
   wait
 }
 function $self::nodeSsh() {
-  awk '{print $2}'|$self::_convertPodToNode | sort | uniq | $self::_getIp | pecoAfterAction "pssh "
+  awk '{print $2}' |$self::_convertPodToNode | sort | uniq  | $self::_getIp | pecoAfterAction "pssh "
 }
 
 function $self::_k8sSh() {
