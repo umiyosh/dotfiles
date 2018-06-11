@@ -1,4 +1,4 @@
-let my_python_version = substitute(system("python --version 2>&1"),"Python ","","g")
+let my_python_version = system("python -c 'import sys;print (sys.version_info[0])'")
 if my_python_version < '3'
   call has('python')
 else
