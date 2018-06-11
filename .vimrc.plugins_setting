@@ -318,35 +318,21 @@ nmap <F7> <ESC>:Prove<CR>
 let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
 
 "------------------------------------
-" NeoMake
+" Ale
 "------------------------------------
-" augroup vimrc_neomake
-  " au!
-  " autocmd! BufWritePost * Neomake | redraw!
-" augroup END
-" let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
-" let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
-" let g:neomake_message_sign = {'text': '>>',  'texthl': 'NeomakeInfoSign'}
-" let g:neomake_yaml_yamllint_maker = {
-        " \ 'exe': 'yamllint',
-        " \ 'args': ['-f',  'parsable', '-d', 'relaxed'],
-        " \ 'errorformat': '%E%f:%l:%c: [error] %m, %W%f:%l:%c: [warning] %m',
-        " \ }
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_sign_column_always = 1
-let g:ale_lint_on_enter = 0
-let g:ale_open_list = 1
-let g:ale_keep_list_window_open = 0
-
-" let g:ale_open_list = 1
-
+" let g:ale_lint_on_enter = 1
+" let g:ale_lint_on_insert_leave = 1
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_filetype_changed = "always"
 " for golang
 let g:ale_linters = {
 \   'go': ['gometalinter'],
 \}
 let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
-" let g:ale_go_gometalinter_options = '--fast --vendored-linters --disable-all --enable=gotype --enable=vet --enable=golint -t'
 
 "------------------------------------
 " toggle.vim
