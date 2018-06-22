@@ -33,8 +33,8 @@ augroup vimrc-checktime
 augroup END
 
 " ターミナルでマウスを使用できるようにする
-set mouse=a
-set guioptions+=a
+set mouse=nv
+set guioptions+=nv
 set ttymouse=xterm2
 
 "ヤンクした文字は、システムのクリップボードに入れる"
