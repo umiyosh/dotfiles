@@ -606,7 +606,10 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_version_warning = 0
 let g:go_fmt_fail_silently = 1
-
+" vim-go, do not mess with my neosnippet config!
+" https://github.com/fatih/vim-go/issues/31
+let g:go_disable_autoinstall = 1
+let g:go_loaded_gosnippets = 1
 "------------------------------------
 " plasticboy/vim-markdown
 "------------------------------------
