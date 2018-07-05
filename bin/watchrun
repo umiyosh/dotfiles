@@ -6,6 +6,7 @@ import argparse
 import os
 import sys
 import time
+import traceback
 from logging import DEBUG, Formatter, getLogger
 
 import delegator
@@ -102,6 +103,7 @@ class FSHandler(RegexMatchingEventHandler):
         except Exception as e:
             self.logger.critical('EXCEPTION OCCUR')
             self.logger.critical(e)
+            self.logger.critical(traceback.format_exc())
             return
 
         if result.return_code == 0:
