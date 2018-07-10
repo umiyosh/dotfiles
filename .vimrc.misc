@@ -144,3 +144,4 @@ augroup spell_check
   autocmd BufReadPost,BufNewFile,Syntax * call s:SpellConf()
 augroup END
 " }}}
+"
