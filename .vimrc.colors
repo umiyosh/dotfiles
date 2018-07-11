@@ -3,6 +3,7 @@ scriptencoding utf-8
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 colo gruvbox
+set background=dark
 
 set cursorline
 set cursorcolumn
