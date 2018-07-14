@@ -6,6 +6,9 @@ url=https://bitbucket.org/umiyosh_
 
 projectRoot=$(git rev-parse --show-toplevel)
 if [[ $? -ne 0 ]]; then
+  if [[ ! -e ./README.md ]]; then
+    curl -L http://git.io/Xy0Chg -o README.md
+  fi
   git init
   git add .
   git commit -m 'initial commited'
