@@ -50,12 +50,17 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Completion {{{
+  " Deoplete
+  " Plug 'roxma/nvim-yarp'
+  " Plug 'roxma/vim-hug-neovim-rpc'
+  " Plug 'zchee/deoplete-jedi'
+  " Plug 'zchee/deoplete-go'
+  " Plug 'zchee/deoplete-zsh'
+  " Neocomplete
   " 補完 neocomplcache.vim : 究極のVim的補完環境
   Plug 'Shougo/neocomplete.vim'
   " neocomplcacheのsinpet補完
   Plug 'Shougo/neosnippet'
-  " phpcomplete: phpのomni補完最新版
-  Plug 'shawncplus/phpcomplete.vim'
 " }}}
 
 " Searching/Moving{{{
@@ -125,6 +130,8 @@ call plug#begin('~/.vim/plugged')
   " Plug 'dgryski/vim-godef'
   " Scala
   Plug 'derekwyatt/vim-scala'
+  " phpcomplete: phpのomni補完最新版
+  Plug 'shawncplus/phpcomplete.vim'
 " }}}
 
 " Syntax {{{
