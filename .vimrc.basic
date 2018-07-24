@@ -25,6 +25,7 @@ set autoread                                " 外部から変更あった場合�
 set nowrapscan                              " 検索マッチ終端までいったらそこで止める。
 set noundofile                              " undofileは作らない
 set updatetime=500
+set ttimeoutlen=50
 
 " autoreadの頻度を上げる
 augroup vimrc-checktime
