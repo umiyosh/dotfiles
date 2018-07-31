@@ -23,18 +23,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'sjl/gundo.vim'
   " surround.vim : テキストを括弧で囲む／削除する
   Plug 'tpope/vim-surround'
-  " smartchr.vim : ==などの前後を整形
-  Plug 'kana/vim-smartchr'
   " vim-operator-user : 簡単にoperatorを定義できるようにする
   Plug 'kana/vim-operator-user'
   " operator-replace : yankしたものでreplaceする
   Plug 'kana/vim-operator-replace'
   " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
-  Plug 'kana/vim-textobj-user'
+  " Plug 'kana/vim-textobj-user'
   " vim-textobj-fold : 折りたたまれたアレをtext-objectに
-  Plug 'kana/vim-textobj-fold'
+  " Plug 'kana/vim-textobj-fold'
   " vim-textobj-indent : インデントされたものをtext-objectに
-  Plug 'kana/vim-textobj-indent'
+  " Plug 'kana/vim-textobj-indent'
   " 括弧の入力
   Plug 'kana/vim-smartinput'
   " phpDocumento
@@ -43,8 +41,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   " editorconfig
   Plug 'editorconfig/editorconfig-vim'
-  " NrrwRgn
-  Plug 'chrisbra/NrrwRgn'
   " English
   Plug 'ujihisa/neco-look'
 " }}}
@@ -126,8 +122,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'chase/vim-ansible-yaml'
   " terraform
   Plug 'hashivim/vim-terraform'
-  " vim-godef
-  " Plug 'dgryski/vim-godef'
   " Scala
   Plug 'derekwyatt/vim-scala'
   " phpcomplete: phpのomni補完最新版
@@ -177,30 +171,20 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/vimproc.vim'
   " vimfiler : vimのfiler
   Plug 'Shougo/vimfiler.vim'
-  " vim-altercmd : Ex command拡張
-  Plug 'tyru/vim-altercmd'
-  " vim Interface to Web API
-  Plug 'mattn/webapi-vim'
-  " cecutil.vim : 他のpluginのためのutillity1
-  Plug 'vim-scripts/cecutil'
-  " utillity
-  Plug 'vim-scripts/L9'
-  " Buffer管理のLibrary
-  Plug 'thinca/vim-openbuf'
   " vimからGit操作する
   Plug 'tpope/vim-fugitive'
   " gitgutter
   Plug 'airblade/vim-gitgutter'
   " ステータスラインをカッコよくする
   Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  " Plug 'vim-airline/vim-airline-themes'
   " 分割を維持してバッファ削除
   Plug 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除
   Plug 'duff/vim-bufonly'
   " perl proveコマンド実行
   Plug 'umiyosh/vim-prove'
-  " perl proveコマンド実行
+  " Use vim as a vinary editor
   Plug 'Shougo/vinarise'
   " トップっぽいところをカレントディレクトリに
   " http://blog.remora.cx/2012/08/syntax-check-with-syntastic-and-rooter.html
