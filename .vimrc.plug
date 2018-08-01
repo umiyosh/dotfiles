@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdcommenter'
   " visually indent guide
   Plug 'nathanaelkane/vim-indent-guides'
+  " Plug 'Yggdroot/indentLine'
   " vim-easy-align : 高機能整形・桁揃えプラグイン
   Plug 'junegunn/vim-easy-align'
   " undo履歴を追える (need python support)
@@ -177,7 +178,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
   " ステータスラインをカッコよくする
   Plug 'vim-airline/vim-airline'
-  " Plug 'vim-airline/vim-airline-themes'
   " 分割を維持してバッファ削除
   Plug 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除
@@ -199,7 +199,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-repeat'
   " ag.vim
   Plug 'rking/ag.vim'
-  " ag.vim
+  " DirDiff.vim
   Plug 'vim-scripts/DirDiff.vim'
   " benchvimrc-vim
   " Plug 'mattn/benchvimrc-vim'

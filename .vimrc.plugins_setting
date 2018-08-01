@@ -63,7 +63,7 @@ let g:surround_{char2nr('[')} = "[\r]"
 nmap U :<C-u>GundoToggle<CR>
 
 "------------------------------------
-" taglist.Vim
+" tagbar
 "------------------------------------
 " 関数一覧
 set tags=tags;
@@ -360,11 +360,13 @@ let g:indent_guides_enable_on_vim_startup = 1 " vim立ち上げ時に自動的�
 let g:indent_guides_start_level           = 1 " 1インデント目からガイドする
 let g:indent_guides_auto_colors           = 0 " 自動カラーを無効にして手動で設定する
 let g:indent_guides_guide_size            = 1 " ガイドの幅
-" let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=grey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkgrey
+
+" let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
+
 "------------------------------------
-" vim-eqsymotion
+" vim-easymotion
 "------------------------------------
 " Do not rely on default bidings.
 let g:EasyMotion_do_mapping = 0
@@ -619,12 +621,6 @@ let g:markdown_fenced_languages = ['html', 'javascript' , 'python', 'bash=sh', '
 " kh3phr3n/python-syntax
 "------------------------------------
 let python_highlight_all = 1
-
-"------------------------------------
-" rcmdnk/vim-markdown
-"------------------------------------
-" let g:vim_markdown_better_folding=1
-" let g:vim_markdown_no_default_key_mappings=1
 
 "------------------------------------
 " hashivim/vim-terraform
