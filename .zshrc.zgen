@@ -2,18 +2,14 @@ source "${HOME}/.zsh/extention/zgen//zgen.zsh"
 
 if ! zgen saved; then
     # plugins
-    zgen load  hchbaw/auto-fu.zsh.git . pu
+    zgen load  zsh-users/zsh-autosuggestions
     zgen load  zsh-users/zsh-completions.git
     zgen load  zsh-users/zsh-syntax-highlighting
 fi
 
 #=============================
-# source auto-fu.zsh
+# zsh-users/zsh-autosuggestions
 #=============================
-function zle-line-init () {
-  auto-fu-init
-}
-zle -N zle-line-init
 zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
 
 # zsh-syntax-highlighting
