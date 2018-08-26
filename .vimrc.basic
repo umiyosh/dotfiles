@@ -26,6 +26,8 @@ set nowrapscan                              " 検索マッチ終端までいっ�
 set noundofile                              " undofileは作らない
 set updatetime=500
 set ttimeoutlen=50
+set shortmess=a
+set cmdheight=2
 
 " autoreadの頻度を上げる
 augroup vimrc-checktime

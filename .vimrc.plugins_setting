@@ -571,9 +571,9 @@ function! s:taskpaper_setup()
   endfunction
   command! -range -nargs=1 MyToggletageachline <line1>,<line2>call Toggle_tag_eachline(<args>)
   " My settings : キーマップ
-  nmap <buffer> <Leader>tD :<C-u>call Archive_done_and_backpos()<CR>
-  nmap <buffer> <Leader>tT <Plug>TaskPaperShowToday :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
-  nmap <buffer> <Leader>tX <Plug>TaskPaperShowCancelled :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
+  nmap <buffer> <silent> <Leader>tD :<C-u>call Archive_done_and_backpos()<CR>
+  nmap <buffer> <silent> <Leader>tT <Plug>TaskPaperShowToday :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
+  nmap <buffer> <silent> <Leader>tX <Plug>TaskPaperShowCancelled :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
   nnoremap <buffer> <silent> <Leader>tn :<C-u>call taskpaper#toggle_tag('now', '')<CR>
   vmap <buffer> <silent> <Leader>tn :MyToggletageachline "now"   <CR>
   vmap <buffer> <silent> <Leader>td :MyToggletageachline "done"  <CR>
