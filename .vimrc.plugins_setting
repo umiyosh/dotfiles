@@ -451,6 +451,7 @@ vmap <Leader>k y:<C-u>Ref webdict never <C-R>=expand(@")<CR><CR>
 "------------------------------------
 let g:airline_powerline_fonts = 1
 let g:airline_theme="dark"
+set ambiwidth=double
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_highlighting_cache = 1
 "------------------------------------
