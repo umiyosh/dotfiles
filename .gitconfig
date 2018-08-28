@@ -137,7 +137,7 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [difftool "mvimdiff"]
-    cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
+    cmd = mvim -v -f -d \"$LOCAL\" \"$REMOTE\"
 [url "https://"]
 	insteadOf = git://
 [include]
