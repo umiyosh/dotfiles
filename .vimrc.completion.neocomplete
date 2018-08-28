@@ -45,6 +45,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 " ユーザー定義スニペット保存ディレクトリ
 let g:neosnippet#snippets_directory = $HOME.'/.vim/snippets'
+let g:enable_refresh_always = 1
 
 "スニペット展開
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
