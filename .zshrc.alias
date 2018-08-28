@@ -79,8 +79,8 @@ alias -g V="| vim -"
 alias man=manv
 alias vim='mvim -v'
 alias vi='mvim -v'
-alias vimdiff='mvim -d'
-alias view='mvim -R'
+alias vimdiff='mvim -dv'
+alias view='mvim -Rv'
 
 # kobito
 alias 'kob'='open -a Kobito '
