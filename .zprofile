@@ -11,3 +11,5 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 if [[ -f $HOME/.gvm/scripts/gvm ]]; then
   source $HOME/.gvm/scripts/gvm
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
