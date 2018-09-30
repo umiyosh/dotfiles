@@ -2,17 +2,18 @@
 self=$0
 
 function $self::getClusterIP() {
+# TODO: implement this
 :
 }
 
-kubectl get svc | selector --prompt "[$0]"| awk '{print $1}'|egrep -v 'NAME.+CLUSTER-IP'|sort | uniq | \
+kubectl get svc --all-namespaces=true| selector --prompt "[$0]"| awk '{print $1, $2}'|egrep -v 'NAME.+CLUSTER-IP'|sort | uniq | \
   pecoAfterAction \
-    "kubectl describe svc " \
-    "kubectl get svc " \
-    "kubectl get svc --output=json " \
-    "kubectl get svc --output=yaml " \
+    "kubectl describe svc -n " \
+    "kubectl get svc -n " \
+    "kubectl get svc --output=json -n " \
+    "kubectl get svc --output=yaml -n " \
     "$self::getClusterIP " \
-    "%%STDIN%% cat" \
+    "%%STDIN%% cat " \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
     "%%STDIN%% paaPbCopy"
