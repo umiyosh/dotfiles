@@ -58,9 +58,9 @@ let g:surround_{char2nr('{')} = "{\r}"
 let g:surround_{char2nr('[')} = "[\r]"
 
 "------------------------------------
-" gundo.Vim
+" mbbill/undotree
 "------------------------------------
-nmap U :<C-u>GundoToggle<CR>
+nmap U :UndotreeToggle<cr>
 
 "------------------------------------
 " tagbar

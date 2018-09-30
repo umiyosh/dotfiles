@@ -21,7 +21,8 @@ call plug#begin('~/.vim/plugged')
   " vim-easy-align : 高機能整形・桁揃えプラグイン
   Plug 'junegunn/vim-easy-align'
   " undo履歴を追える (need python support)
-  Plug 'sjl/gundo.vim'
+  Plug 'mbbill/undotree'
+  " Plug 'sjl/gundo.vim'
   " surround.vim : テキストを括弧で囲む／削除する
   Plug 'tpope/vim-surround'
   " vim-operator-user : 簡単にoperatorを定義できるようにする
