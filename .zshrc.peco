@@ -38,6 +38,14 @@ alias agv="pecoAg"
 alias ackv="pecoAck"
 alias l="pecoLs"
 alias fp="pecoFind"
+
+function kc() {
+  kubectx $(kubectx |sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'|perl -pe 's/\x0f//g'| selector )
+}
+function aco() {
+  gcloud config configurations activate $(gcloud config configurations list |awk '{print $1}'|grep -v NAME|selector)
+}
+
 function f() {
   target=${1:=.}
   fp ${target} -name '.git' -prune -o -print
