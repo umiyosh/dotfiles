@@ -350,6 +350,9 @@ def add_gke_segment(powerline):
                          cluster_back_ground)
         powerline.append(namespace_name, namespace_fore_ground,
                          namespace_back_ground)
+    elif cluster_name:
+        powerline.append(namespace_name, namespace_fore_ground,
+                         namespace_back_ground)
     else:
         return
 
