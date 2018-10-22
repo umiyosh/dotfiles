@@ -28,47 +28,44 @@ function $self::k8sSh() {
 }
 
 function $self::k8sPortForward() {
-	local nameSpace=$1
-	local podName=$2
+	local podName=$1
 	if [[ -z $podName ]]
 	then
 		return 1
 	fi
-	local port=$(kubectl get pod --output=json $podName -n $nameSpace|gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
-	echo kubectl port-forward $podName -n $nameSpace $port:$port
-	kubectl port-forward $podName -n $nameSpace $port:$port
+	local port=$(kubectl get pod --output=json $podName |gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
+	echo kubectl port-forward $podName $port:$port
+	kubectl port-forward $podName $port:$port
 }
 
 function $self::k8sGetPodIP() {
-	local nameSpace=$1
-	local podName=$2
+	local podName=$1
 	if [[ -z $podName ]]
 	then
 		return 1
 	fi
-  kubectl get pod --output=json $podName -n $nameSpace|gron|grep -i podip | perl -pe 's/.+=|;//g'|perl -pe 's/ //g' | perl -pe 's/"//g'
+  kubectl get pod --output=json $podName |gron|grep -i podip | perl -pe 's/.+=|;//g'|perl -pe 's/ //g' | perl -pe 's/"//g'
 }
 
 function $self::k8sGetPodIPToPbcopy() {
-	local nameSpace=$1
-	local podName=$2
+	local podName=$1
 	if [[ -z $podName ]]
 	then
 		return 1
 	fi
-  podIp=$($self::k8sGetPodIP $nameSpace $podName)
+  podIp=$($self::k8sGetPodIP $podName)
   echo "pbcopied " $podIp
   echo $podIp | pbcopy
 }
 
-kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $1, $2}'|sort | uniq | \
+kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
   pecoAfterAction \
-    "kubectl describe pod --namespace=" \
-    "kubectl logs --namespace=" \
-    "kubectl logs -f --namespace=" \
-    "kubectl get pod --namespace=" \
-    "kubectl get pod --output=json --namespace=" \
-    "kubectl get pod --output=yaml --namespace=" \
+    "kubectl describe pod " \
+    "kubectl logs " \
+    "kubectl logs -f " \
+    "kubectl get pod " \
+    "kubectl get pod --output=json " \
+    "kubectl get pod --output=yaml " \
     "$self::k8sGetPodIP " \
     "$self::k8sPortForward " \
     "$self::k8sGetPodIPToPbcopy " \
