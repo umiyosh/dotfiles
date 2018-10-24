@@ -38,7 +38,7 @@ if [[ -f $HOME/tfenv/bin/tfenv ]]; then
 fi
 
 # rustup
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 # for using latest openssl
 export PATH="/usr/local/opt/openssl/bin:$PATH"
