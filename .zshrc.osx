@@ -113,14 +113,8 @@ function precmd() {
   typeset -gi CALCTIME=0
 }
 
-# j
+# automjump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-# alias jj='autojump --stat'
-# jの補完周り
-# if [ -x /usr/local/bin/brew ]; then
-  # BREW_PREFIX=`brew --prefix`
-  # fpath=($BREW_PREFIX/share/zsh/functions(N) $BREW_PREFIX/share/zsh/site-functions(N) $fpath)
-# fi
 
 # eval "$(direnv hook zsh)"
 
