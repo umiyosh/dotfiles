@@ -2,8 +2,17 @@ case "${OSTYPE}" in
 # MacOSX
 darwin*)
   PATH=$HOME/.cabal/bin:$PATH
-  export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
   export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+  export PATH=/opt/local/bin:/opt/local/sbin/:~/bin:$PATH
+  # node.js
+  export NODE_PATH=/usr/local/lib/node:$PATH
+  export PATH=/usr/local/share/npm/bin:$PATH
+  # man path
+  MANPATH=/usr/local/man:$MANPATH
+  export MANPATH
+  INFOPATH=/usr/local/info:$INFOPATH
+  export INFOPATH
   ;;
 freebsd*)
   case ${UID} in
