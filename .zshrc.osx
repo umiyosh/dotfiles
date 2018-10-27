@@ -114,7 +114,9 @@ function precmd() {
 }
 
 # automjump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+## alternative "brew --prefix". Because it's too slow
+export BREW_PREFIX=${BREW_PREFIX:-$(dirname $(dirname $(which brew)))}
+[[ -s ${BREW_PREFIX}/etc/profile.d/autojump.sh ]] && . ${BREW_PREFIX}/etc/profile.d/autojump.sh
 
 # eval "$(direnv hook zsh)"
 
