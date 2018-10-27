@@ -35,6 +35,9 @@ export PATH=$PATH:${HOME}/.composer/vendor/bin
 # export PATH="${HOME}/.scalaenv/bin:${PATH}"
 # eval "$(scalaenv init -)"
 
+# rustup
+# source $HOME/.cargo/env
+
 # The next line updates PATH for the Google Cloud SDK.
 source "${HOME}/Dropbox/bin/google-cloud-sdk/path.zsh.inc"
 source "${HOME}/google-cloud-sdk/completion.zsh.inc"

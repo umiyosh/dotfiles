@@ -34,7 +34,6 @@ freebsd*)
   ;;
 esac
 
-export EDITOR=vim
 export PATH=$PATH:$HOME/local/bin:/usr/local/git/bin
 export PATH=$PATH:$HOME/dotfiles/bin
 export PATH=$PATH:/sbin:/usr/local/bin
@@ -45,9 +44,6 @@ export PATH=$PATH:~/Dropbox/bin/kmachine
 if [[ -f $HOME/tfenv/bin/tfenv ]]; then
   export PATH=$PATH:$HOME/tfenv/bin/
 fi
-
-# rustup
-# source $HOME/.cargo/env
 
 # for using latest openssl
 export PATH="/usr/local/opt/openssl/bin:$PATH"

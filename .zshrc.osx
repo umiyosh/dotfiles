@@ -5,9 +5,6 @@ alias pbc='pbcopy'
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-# vim
-export EDITOR=vim
-
 function preexec() {
     typeset -gi CALCTIME=1
     typeset -gi CMDSTARTTIME=SECONDS
