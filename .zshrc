@@ -52,12 +52,6 @@ fi
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/a14073/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/a14073/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-# if [ -f '/Users/a14073/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/a14073/google-cloud-sdk/completion.zsh.inc'; fi
-
 # profiler
 # usage: modifie .zshenv and modifie this
 # if type zprof > /dev/null 2>&1; then
