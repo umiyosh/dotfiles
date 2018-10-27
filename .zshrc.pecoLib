@@ -3,7 +3,7 @@
 function selector() {
   # peco --layout 'bottom-up' $@
   # fzf-tmux -m -i \
-  fzf -m -i \
+ fzf -m -i \
     --exit-0 \
     --extended-exact \
     --no-sort \
