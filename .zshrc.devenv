@@ -1,19 +1,21 @@
 # python
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
 export PATH=~/.local/bin:$PATH
-workon python3.7
-
-# perlbrew
-if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
-  source $HOME/perl5/perlbrew/etc/bashrc
+if [[ -z $VIRTUAL_ENV ]]; then
+  workon python3.7
 fi
 
+# perlbrew
+# if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
+  # source $HOME/perl5/perlbrew/etc/bashrc
+# fi
+
 # node関連
-export PATH=$PATH:${HOME}/.nodebrew/current/bin
-source ${HOME}/dotfiles/.zshrc.complition.npm
+# export PATH=$PATH:${HOME}/.nodebrew/current/bin
+# source ${HOME}/dotfiles/.zshrc.complition.npm
 
 # golang
 if [[ -f $HOME/.gvm/scripts/gvm ]]; then
@@ -21,24 +23,24 @@ if [[ -f $HOME/.gvm/scripts/gvm ]]; then
 fi
 
 # composer
-export PATH=$PATH:${HOME}/.composer/vendor/bin
+# export PATH=$PATH:${HOME}/.composer/vendor/bin
 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # ruby
-export RBENV_ROOT=/usr/local/var/rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# export RBENV_ROOT=/usr/local/var/rbenv
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # The next line updates PATH for the Google Cloud SDK.
-source "${HOME}/Dropbox/bin/google-cloud-sdk/path.zsh.inc"
+# source "${HOME}/Dropbox/bin/google-cloud-sdk/path.zsh.inc"
 
 # rbenv
-[[ -d ~/.rbenv  ]] && \
-  export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  eval "$(rbenv init -)"
+# [[ -d ~/.rbenv  ]] && \
+  # export PATH=${HOME}/.rbenv/bin:${PATH} && \
+  # eval "$(rbenv init -)"
 
 # scalaenv
-export PATH="${HOME}/.scalaenv/bin:${PATH}"
-eval "$(scalaenv init -)"
+# export PATH="${HOME}/.scalaenv/bin:${PATH}"
+# eval "$(scalaenv init -)"
 
