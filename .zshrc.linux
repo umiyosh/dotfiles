@@ -33,4 +33,7 @@ export PATH=/opt/firefox:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$GOPATH/bin:$PATH
 
+# vim
+export EDITOR=vim
+
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh && alias jj='autojump --stat'

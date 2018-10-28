@@ -39,3 +39,9 @@ export BREW_PREFIX=${BREW_PREFIX:-$(dirname $(dirname $(which brew)))}
 
 alias pw=$HOME/dotfiles/bin/ppwrapper
 
+if hash mvim; then
+    export EDITOR='mvim'
+else
+    export EDITOR='vim'
+fi
+

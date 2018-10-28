@@ -45,10 +45,6 @@ source ~/dotfiles/.zshrc.devenv
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 
-if hash mvim; then
-    export EDITOR='mvim'
-fi
-
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 
