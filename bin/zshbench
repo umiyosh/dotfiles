@@ -4,8 +4,8 @@ function _zshbench() {
 }
 
 # requirement: sudo cpanm App::St
-function _bencn_statistics() {
+function _bench_statistics() {
   awk '{print $7}'|st
 }
 
-_zshbench | _bencn_statistics
+_zshbench | _bench_statistics
