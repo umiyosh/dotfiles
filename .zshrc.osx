@@ -1,25 +1,9 @@
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin/:~/bin:$PATH
-
 # osx alias
 alias pbc='pbcopy'
 
 # Terminal Colorの設定
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-
-# vim
-export EDITOR=vim
-
-# man path
-MANPATH=/usr/local/man:$MANPATH
-export MANPATH
-INFOPATH=/usr/local/info:$INFOPATH
-export INFOPATH
-
-# node.js
-export NODE_PATH=/usr/local/lib/node:$PATH
-export PATH=/usr/local/share/npm/bin:$PATH
 
 function preexec() {
     typeset -gi CALCTIME=1
