@@ -1,4 +1,4 @@
-source "${HOME}/.zsh/extention/zgen//zgen.zsh"
+source "${HOME}/.zsh/extention/zgen/zgen.zsh"
 
 if ! zgen saved; then
     # plugins
