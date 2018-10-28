@@ -16,12 +16,10 @@ function cwaf() {
   LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 
-
 # ls
 alias ll="ls -la"
 
 # process
-# alias j="jobs -l"
 alias 'ps?'='pgrep -l -f'
 
 # du/df
@@ -31,8 +29,6 @@ alias duh="du -h ./ --max-depth=1"
 alias su="su -l"
 
 # vim
-# alias 'src'='exec zsh'
-# alias -g V="| vim -"
 alias man=manv
 alias vim='mvim -v'
 alias vi='mvim -v'
@@ -48,7 +44,6 @@ alias 'mc'='make clean'
 
 alias pi='ping -c 4'
 
-#alias ls='ls -al'
 alias cp='nocorrect cp -irp'
 
 # git
