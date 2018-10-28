@@ -248,9 +248,6 @@ alias dl='docker ps -l -q'
 # kube関連
 alias swumidev='eval "$(kmachine env umidev)"'
 
-# fuck
-eval $(thefuck --alias)
-
 # safty rm
 alias rm='trash-wrapper.sh'
 
@@ -259,7 +256,7 @@ alias wr='watchrun -c'
 alias wrq='watchrun -q -c'
 
 # hub
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 function bai() {
   pbpaste| while read issue ;do git issue create -m $issue ;done
 }
