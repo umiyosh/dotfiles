@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+function _zshbench() {
+  for i in $(seq 1 10); do time zsh -i -c exit; done  2>&1 1>/dev/null
+}
+
+# requirement: sudo cpanm App::St
+function _bencn_statistics() {
+  awk '{print $7}'|st
+}
+
+_zshbench | _bencn_statistics
