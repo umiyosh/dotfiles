@@ -4,9 +4,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
 export PATH=~/.local/bin:$PATH
-if [[ -z $VIRTUAL_ENV ]]; then
-  workon python3.7
-fi
+source ~/.virtualenvs/python3.7/bin/activate
 
 # perlbrew
 if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
@@ -18,12 +16,14 @@ export PATH=$PATH:${HOME}/.nodebrew/current/bin
 source ${HOME}/dotfiles/.zshrc.complition.npm
 
 # golang
-if [[ -f $HOME/.gvm/scripts/gvm ]]; then
+# if [[ -f $HOME/.gvm/scripts/gvm ]] && [[ -z $GVM_ROOT ]]; then
+if [[ -f $HOME/.gvm/scripts/gvm ]] ; then
   source $HOME/.gvm/scripts/gvm
 fi
+# gvm use go1.10
 
 # composer
-export PATH=$PATH:${HOME}/.composer/vendor/bin
+# export PATH=$PATH:${HOME}/.composer/vendor/bin
 
 # rbenv
 # [[ -d ~/.rbenv  ]] && \
