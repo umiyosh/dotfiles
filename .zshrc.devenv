@@ -16,11 +16,36 @@ export PATH=$PATH:${HOME}/.nodebrew/current/bin
 source ${HOME}/dotfiles/.zshrc.complition.npm
 
 # golang
-# if [[ -f $HOME/.gvm/scripts/gvm ]] && [[ -z $GVM_ROOT ]]; then
+lazy_source () {
+    eval "$1 () { [ -f $2 ] && source $2 && $1 \$@ }"
+}
 if [[ -f $HOME/.gvm/scripts/gvm ]] ; then
-  source $HOME/.gvm/scripts/gvm
+  export GVM_ROOT=/Users/a14073/.gvm
+  unset GOROOT
+  unset GOARCH
+  unset GOOS
+  unset GOPATH
+  unset GOBIN
+
+  unset gvm_go_name
+  unset gvm_pkgset_name
+
+  if [[ -f "$GVM_ROOT/logs" ]]; then
+    mkdir -p "$GVM_ROOT/logs" > /dev/null 2>&1
+    mkdir -p "$GVM_ROOT/gos" > /dev/null 2>&1
+    mkdir -p "$GVM_ROOT/archive" > /dev/null 2>&1
+    mkdir -p "$GVM_ROOT/archive/package" > /dev/null 2>&1
+    mkdir -p "$GVM_ROOT/environments" > /dev/null 2>&1
+  fi
+
+  export GVM_VERSION=$(cat "$GVM_ROOT/VERSION")
+  export PATH="$GVM_ROOT/bin:$PATH"
+  export GVM_PATH_BACKUP="$PATH"
+  [ -f "$GVM_ROOT/environments/default" ] && . "$GVM_ROOT/environments/default"
+  lazy_source gvm "$GVM_ROOT/scripts/env/gvm"
+
+  # source $HOME/.gvm/scripts/gvm
 fi
-# gvm use go1.10
 
 # composer
 # export PATH=$PATH:${HOME}/.composer/vendor/bin
