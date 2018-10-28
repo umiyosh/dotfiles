@@ -16,49 +16,8 @@ function cwaf() {
   LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 
-function rmf(){
- for file in $*
- do
-  __rm_single_file $file
- done
-}
-
-function __rm_single_file(){
-  if ! [ -d ~/.Trash/ ]
-  then
-    command /bin/mkdir ~/.Trash
-  fi
-  if ! [ $# -eq 1 ]
-  then
-    echo "__rm_single_file: 1 argument required but $# passed."
-    exit
-  fi
-  if [ -e $1 ]
-  then
-    BASENAME=`basename $1`
-    NAME=$BASENAME
-    COUNT=0
-    while [ -e ~/.Trash/$NAME ]
-    do
-      COUNT=$(($COUNT+1))
-      NAME="$BASENAME.$COUNT"
-    done
-    command /bin/mv $1 ~/.Trash/$NAME
-  else
-    echo "No such file or directory: $file"
-  fi
-}
-
-# C-M-h でチートシートを表示する
-cheat-sheet () { zle -M "`cat ~/dotfiles/.zsh/cheat-sheet`" }
-zle -N cheat-sheet
-
-
-alias where="command -v"
 
 # ls
-alias la="ls -a"
-alias lf="ls -F"
 alias ll="ls -la"
 
 # process
@@ -66,71 +25,41 @@ alias ll="ls -la"
 alias 'ps?'='pgrep -l -f'
 
 # du/df
-alias du="du -h"
-alias df="df -h"
 alias duh="du -h ./ --max-depth=1"
 
 # su
 alias su="su -l"
 
 # vim
-alias 'src'='exec zsh'
-alias -g V="| vim -"
+# alias 'src'='exec zsh'
+# alias -g V="| vim -"
 alias man=manv
 alias vim='mvim -v'
 alias vi='mvim -v'
 alias vimdiff='mvim -dv'
 alias view='mvim -Rv'
-
-# kobito
-alias 'kob'='open -a Kobito '
-
-# grep
-alias 'gr'='grep --color=auto -RUIn'
+alias vif='vi +VimFilerBufferDir .'
+alias psvi='vi +"Unite process" +"only" +"set number"'
 
 #make
 alias 'm'='make'
 alias 'mn'='make native-code'
 alias 'mc'='make clean'
 
-# tmux
-# alias tm='tmux'
-# alias tma='tmux attach'
-# alias tml='tmux list-window'
-
-alias pon='predict-on'
-alias poff='predict-off'
 alias pi='ping -c 4'
 
 #alias ls='ls -al'
 alias cp='nocorrect cp -irp'
-alias refe='nocorrect refe'
 
 # git
 alias g='git'
 alias gi='git'
-alias oppai='git'
 alias gs='git status'
 alias gn='git now --all --stat'
 alias ga='git add'
 alias gaa='git add .'
 alias gc='git commit'
 alias gca='git commit -a'
-alias '偽ｔ'=git
-
-alias java='nocorrect java'
-alias cp='nocorrect cp -irp'
-alias erl='nocorrect erl'
-alias sbcl='nocorrect sbcl'
-alias gosh='nocorrect gosh'
-# alias node='nocorrect node'
-alias hg='nocorrect hg --encoding=utf-8'
-
-# scala
-alias scala='scala -deprecation -unchecked -explaintypes'
-alias scc='scalac -deprecation -unchecked -explaintypes'
-alias sci='scala -deprecation -unchecked -explaintypes -cp $SCALA_CLASSPATH -i ~/import.scala'
-alias sce='scala'
 
 # extract http://d.hatena.ne.jp/jeneshicc/20110215/1297778049
 extract () {
@@ -168,17 +97,12 @@ alias pc='pbcopy'
 
 alias pp='pbpaste'
 
-# todoデフォルト値付与
-alias vif='vi +VimFilerBufferDir .'
-alias psvi='vi +"Unite process" +"only" +"set number"'
-
 alias align='column -s " " -t'
 
 # sourceTreeコマンドライン起動
 alias srt='open -a SourceTree "`git rev-parse --show-toplevel`"'
 
 function mkd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-function chpwd() { ls -la }
 
 alias u='..'
 alias uu='../..'
@@ -257,6 +181,3 @@ alias wrq='watchrun -q -c'
 
 # hub
 # eval "$(hub alias -s)"
-function bai() {
-  pbpaste| while read issue ;do git issue create -m $issue ;done
-}
