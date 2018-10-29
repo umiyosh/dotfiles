@@ -228,6 +228,9 @@ class DefaultColor:
     GKE_PRD_BG = 124
     GKE_PRD_FG = 15
 
+    GVM_BG = 22
+    GVM_FG = 14
+
     GCP_BG = 31
     GCP_FG = 15
 
@@ -392,165 +395,22 @@ def add_virtual_env_segment(powerline):
 
 
 add_virtual_env_segment(powerline)
-
-def add_username_segment(powerline):
-    import os
-    if powerline.args.shell == 'bash':
-        user_prompt = ' \\u '
-    elif powerline.args.shell == 'zsh':
-        user_prompt = ' %n '
-    else:
-        user_prompt = ' %s ' % os.getenv('USER')
-
-    if os.getenv('USER') == 'root':
-        bgcolor = Color.USERNAME_ROOT_BG
-    else:
-        bgcolor = Color.USERNAME_BG
-
-    powerline.append(user_prompt, Color.USERNAME_FG, bgcolor)
-
-
-add_username_segment(powerline)
-def add_hostname_segment(powerline):
-    if powerline.args.colorize_hostname:
-        from lib.color_compliment import stringToHashToColorAndOpposite
-        from lib.colortrans import rgb2short
-        from socket import gethostname
-        hostname = gethostname()
-        FG, BG = stringToHashToColorAndOpposite(hostname)
-        FG, BG = (rgb2short(*color) for color in [FG, BG])
-        host_prompt = ' %s ' % hostname.split('.')[0]
-
-        powerline.append(host_prompt, FG, BG)
-    else:
-        if powerline.args.shell == 'bash':
-            host_prompt = ' \\h '
-        elif powerline.args.shell == 'zsh':
-            host_prompt = ' %m '
-        else:
-            import socket
-            host_prompt = ' %s ' % socket.gethostname().split('.')[0]
-
-        powerline.append(host_prompt, Color.HOSTNAME_FG, Color.HOSTNAME_BG)
-
-
-add_hostname_segment(powerline)
+import subprocess
 import os
 
-def add_ssh_segment(powerline):
-
-    if os.getenv('SSH_CLIENT'):
-        powerline.append(' %s ' % powerline.network, Color.SSH_FG, Color.SSH_BG)
-
-
-add_ssh_segment(powerline)
-import os
-
-ELLIPSIS = u'\u2026'
-
-
-def replace_home_dir(cwd):
-    home = os.getenv('HOME')
-    if cwd.startswith(home):
-        return '~' + cwd[len(home):]
-    return cwd
-
-
-def split_path_into_names(cwd):
-    names = cwd.split(os.sep)
-
-    if names[0] == '':
-        names = names[1:]
-
-    if not names[0]:
-        return ['/']
-
-    return names
-
-
-def requires_special_home_display(name):
-    """Returns true if the given directory name matches the home indicator and
-    the chosen theme should use a special home indicator display."""
-    return (name == '~' and Color.HOME_SPECIAL_DISPLAY)
-
-
-def maybe_shorten_name(powerline, name):
-    """If the user has asked for each directory name to be shortened, will
-    return the name up to their specified length. Otherwise returns the full
-    name."""
-    if powerline.args.cwd_max_dir_size:
-        return name[:powerline.args.cwd_max_dir_size]
-    return name
-
-
-def get_fg_bg(name, is_last_dir):
-    """Returns the foreground and background color to use for the given name.
-    """
-    if requires_special_home_display(name):
-        return (Color.HOME_FG, Color.HOME_BG,)
-
-    if is_last_dir:
-        return (Color.CWD_FG, Color.PATH_BG,)
-    else:
-        return (Color.PATH_FG, Color.PATH_BG,)
-
-
-def add_cwd_segment(powerline):
-    cwd = powerline.cwd or os.getenv('PWD')
-    if not py3:
-        cwd = cwd.decode("utf-8")
-    cwd = replace_home_dir(cwd)
-
-    if powerline.args.cwd_mode == 'plain':
-        powerline.append(' %s ' % (cwd,), Color.CWD_FG, Color.PATH_BG)
+def add_gvm_segment(powerline):
+    env = os.getenv('GVM_ROOT')
+    if env is None:
         return
 
-    names = split_path_into_names(cwd)
-
-    max_depth = powerline.args.cwd_max_depth
-    if max_depth <= 0:
-        warn("Ignoring --cwd-max-depth argument since it's not greater than 0")
-    elif len(names) > max_depth:
-        # https://github.com/milkbikis/powerline-shell/issues/148
-        # n_before is the number is the number of directories to put before the
-        # ellipsis. So if you are at ~/a/b/c/d/e and max depth is 4, it will
-        # show `~ a ... d e`.
-        #
-        # max_depth must be greater than n_before or else you end up repeating
-        # parts of the path with the way the splicing is written below.
-        n_before = 2 if max_depth > 2 else max_depth - 1
-        names = names[:n_before] + [ELLIPSIS] + names[n_before - max_depth:]
-
-    if (powerline.args.cwd_mode == 'dironly' or powerline.args.cwd_only):
-        # The user has indicated they only want the current directory to be
-        # displayed, so chop everything else off
-        names = names[-1:]
-
-    for i, name in enumerate(names):
-        is_last_dir = (i == len(names) - 1)
-        fg, bg = get_fg_bg(name, is_last_dir)
-
-        separator = powerline.separator_thin
-        separator_fg = Color.SEPARATOR_FG
-        if requires_special_home_display(name) or is_last_dir:
-            separator = None
-            separator_fg = None
-
-        powerline.append(' %s ' % maybe_shorten_name(powerline, name), fg, bg,
-                         separator, separator_fg)
+    cmd_result = subprocess.check_output('gvm-prompt')
+    go_version = cmd_result.decode('utf-8').split('\n')[0]
+    bg = Color.GVM_BG
+    fg = Color.GVM_FG
+    powerline.append(' %s ' % go_version, fg, bg)
 
 
-add_cwd_segment(powerline)
-import os
-
-def add_read_only_segment(powerline):
-    cwd = powerline.cwd or os.getenv('PWD')
-
-    if not os.access(cwd, os.W_OK):
-        powerline.append(' %s ' % powerline.lock, Color.READONLY_FG, Color.READONLY_BG)
-
-
-add_read_only_segment(powerline)
+add_gvm_segment(powerline)
 import re
 import subprocess
 import os
@@ -779,6 +639,170 @@ def add_fossil_segment(powerline):
 
 
 add_fossil_segment(powerline)
+def add_newline_segment(powerline):
+    powerline.append("\n", Color.RESET, Color.RESET, separator='')
+
+
+add_newline_segment(powerline)
+
+def add_username_segment(powerline):
+    import os
+    if powerline.args.shell == 'bash':
+        user_prompt = ' \\u '
+    elif powerline.args.shell == 'zsh':
+        user_prompt = ' %n '
+    else:
+        user_prompt = ' %s ' % os.getenv('USER')
+
+    if os.getenv('USER') == 'root':
+        bgcolor = Color.USERNAME_ROOT_BG
+    else:
+        bgcolor = Color.USERNAME_BG
+
+    powerline.append(user_prompt, Color.USERNAME_FG, bgcolor)
+
+
+add_username_segment(powerline)
+def add_hostname_segment(powerline):
+    if powerline.args.colorize_hostname:
+        from lib.color_compliment import stringToHashToColorAndOpposite
+        from lib.colortrans import rgb2short
+        from socket import gethostname
+        hostname = gethostname()
+        FG, BG = stringToHashToColorAndOpposite(hostname)
+        FG, BG = (rgb2short(*color) for color in [FG, BG])
+        host_prompt = ' %s ' % hostname.split('.')[0]
+
+        powerline.append(host_prompt, FG, BG)
+    else:
+        if powerline.args.shell == 'bash':
+            host_prompt = ' \\h '
+        elif powerline.args.shell == 'zsh':
+            host_prompt = ' %m '
+        else:
+            import socket
+            host_prompt = ' %s ' % socket.gethostname().split('.')[0]
+
+        powerline.append(host_prompt, Color.HOSTNAME_FG, Color.HOSTNAME_BG)
+
+
+add_hostname_segment(powerline)
+import os
+
+def add_ssh_segment(powerline):
+
+    if os.getenv('SSH_CLIENT'):
+        powerline.append(' %s ' % powerline.network, Color.SSH_FG, Color.SSH_BG)
+
+
+add_ssh_segment(powerline)
+import os
+
+ELLIPSIS = u'\u2026'
+
+
+def replace_home_dir(cwd):
+    home = os.getenv('HOME')
+    if cwd.startswith(home):
+        return '~' + cwd[len(home):]
+    return cwd
+
+
+def split_path_into_names(cwd):
+    names = cwd.split(os.sep)
+
+    if names[0] == '':
+        names = names[1:]
+
+    if not names[0]:
+        return ['/']
+
+    return names
+
+
+def requires_special_home_display(name):
+    """Returns true if the given directory name matches the home indicator and
+    the chosen theme should use a special home indicator display."""
+    return (name == '~' and Color.HOME_SPECIAL_DISPLAY)
+
+
+def maybe_shorten_name(powerline, name):
+    """If the user has asked for each directory name to be shortened, will
+    return the name up to their specified length. Otherwise returns the full
+    name."""
+    if powerline.args.cwd_max_dir_size:
+        return name[:powerline.args.cwd_max_dir_size]
+    return name
+
+
+def get_fg_bg(name, is_last_dir):
+    """Returns the foreground and background color to use for the given name.
+    """
+    if requires_special_home_display(name):
+        return (Color.HOME_FG, Color.HOME_BG,)
+
+    if is_last_dir:
+        return (Color.CWD_FG, Color.PATH_BG,)
+    else:
+        return (Color.PATH_FG, Color.PATH_BG,)
+
+
+def add_cwd_segment(powerline):
+    cwd = powerline.cwd or os.getenv('PWD')
+    if not py3:
+        cwd = cwd.decode("utf-8")
+    cwd = replace_home_dir(cwd)
+
+    if powerline.args.cwd_mode == 'plain':
+        powerline.append(' %s ' % (cwd,), Color.CWD_FG, Color.PATH_BG)
+        return
+
+    names = split_path_into_names(cwd)
+
+    max_depth = powerline.args.cwd_max_depth
+    if max_depth <= 0:
+        warn("Ignoring --cwd-max-depth argument since it's not greater than 0")
+    elif len(names) > max_depth:
+        # https://github.com/milkbikis/powerline-shell/issues/148
+        # n_before is the number is the number of directories to put before the
+        # ellipsis. So if you are at ~/a/b/c/d/e and max depth is 4, it will
+        # show `~ a ... d e`.
+        #
+        # max_depth must be greater than n_before or else you end up repeating
+        # parts of the path with the way the splicing is written below.
+        n_before = 2 if max_depth > 2 else max_depth - 1
+        names = names[:n_before] + [ELLIPSIS] + names[n_before - max_depth:]
+
+    if (powerline.args.cwd_mode == 'dironly' or powerline.args.cwd_only):
+        # The user has indicated they only want the current directory to be
+        # displayed, so chop everything else off
+        names = names[-1:]
+
+    for i, name in enumerate(names):
+        is_last_dir = (i == len(names) - 1)
+        fg, bg = get_fg_bg(name, is_last_dir)
+
+        separator = powerline.separator_thin
+        separator_fg = Color.SEPARATOR_FG
+        if requires_special_home_display(name) or is_last_dir:
+            separator = None
+            separator_fg = None
+
+        powerline.append(' %s ' % maybe_shorten_name(powerline, name), fg, bg,
+                         separator, separator_fg)
+
+
+add_cwd_segment(powerline)
+import os
+
+def add_read_only_segment(powerline):
+    cwd = powerline.cwd or os.getenv('PWD')
+
+    if not os.access(cwd, os.W_OK):
+        powerline.append(' %s ' % powerline.lock, Color.READONLY_FG, Color.READONLY_BG)
+
+
+add_read_only_segment(powerline)
 def add_newline_segment(powerline):
     powerline.append("\n", Color.RESET, Color.RESET, separator='')
 
