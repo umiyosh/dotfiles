@@ -45,6 +45,12 @@ function kco() {
 function gco() {
   gcloud config configurations activate $(gcloud config configurations list |awk '{print $1}'|grep -v NAME|selector)
 }
+function up (){
+  current_dir=$(pwd)
+  target_dir_segment=$(echo $current_dir|perl -pe 's#/#\n#g'|sed '/^$/d' |selector)
+  target_dir=$(echo ${current_dir} |perl -pe "s#(/.+/${target_dir_segment})/.+#\1#g")
+  cd $target_dir
+}
 
 function f() {
   target=${1:=.}
