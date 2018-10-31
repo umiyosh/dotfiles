@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+pod=$1
+Container=$(kubectl get pod --output=json $pod|gron|egrep 'json.spec.containers\[[0-9]+\].name'|awk '{print $3}'|perl -pe 's/[";]//g'|fzf)
+
+echo "==== created commnd and pbcopied commnd ===="
+echo "kubectl -c $Container exec $pod -ti -- sh"|tee /dev/stderr |pbcopy

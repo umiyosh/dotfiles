@@ -27,6 +27,14 @@ function $self::k8sSh() {
   pecoAfterAction "$self::_k8sSh "
 }
 
+function $self::_k8sShContainer() {
+  pods=("$@")
+  kubectlShCon $pods
+}
+
+function $self::k8sShContainer() {
+  pecoAfterAction "$self::_k8sShContainer "
+}
 function $self::k8sPortForward() {
 	local podName=$1
 	if [[ -z $podName ]]
@@ -70,6 +78,7 @@ kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{pr
     "$self::k8sPortForward " \
     "$self::k8sGetPodIPToPbcopy " \
     "%%STDIN%% $self::k8sSh" \
+    "%%STDIN%% $self::k8sShContainer" \
     "%%STDIN%% $self::nodeSsh" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
