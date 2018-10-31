@@ -1,7 +1,20 @@
 #!/usr/bin/env zsh
 
 pod=$1
-Container=$(kubectl get pod --output=json $pod|gron|egrep 'json.spec.containers\[[0-9]+\].name'|awk '{print $3}'|perl -pe 's/[";]//g'|fzf)
+
+function __remove_k8spod_debris_char() {
+  perl -pe 's/[";]//g'
+}
+
+function __extract_k8scontainer_names() {
+  egrep 'json.spec.containers\[[0-9]+\].name'|awk '{print $3}'
+}
+
+function __get_k8scontainer_name() {
+  __extract_k8scontainer_names|__remove_k8spod_debris_char
+}
+
+Container=$(kubectl get pod --output=json $pod|gron|__get_k8scontainer_name|fzf)
 
 echo "==== created commnd and pbcopied commnd ===="
 echo "kubectl -c $Container exec $pod -ti -- sh"|tee /dev/stderr |pbcopy
