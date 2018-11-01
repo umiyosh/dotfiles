@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+function _bench_once() {
+  vim --startuptime /tmp/time.log +q
+}
+
+function _bench() {
+  vim-startuptime
+}
+
+#option parse
+OPTIND=''
+listFLG="0"
+while getopts "option o:m:d:l" name
+do
+  case $name in
+    opiton )
+      optvar=$OPTARG;;
+    * )
+      printf "Usage: %s:usage options \n"
+      exit 2
+  esac
+done
