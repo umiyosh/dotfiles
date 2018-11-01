@@ -29,7 +29,6 @@ autoload pecoAliasAndFunc
 autoload pecoVenv
 
 # peco alias
-alias -g P='| p'
 alias p="pecoPipe"
 alias fu="pecoFu"
 alias cdr="pecoCdr"
@@ -38,6 +37,25 @@ alias agv="pecoAg"
 alias ackv="pecoAck"
 alias l="pecoLs"
 alias fp="pecoFind"
+alias lpe="pecoLocate"
+alias mpe="pecoMdfind"
+alias gps="pecoGitStatus"
+alias gpb="pecoGitBranch"
+alias gpl="pecoGitLog"
+alias gpr="pecoGitRefLog"
+alias s="pecoSsh"
+alias kn="pecoK8sNode"
+alias kp="pecoK8sPod"
+alias ks="pecoK8sSvc"
+alias kr="pecoK8sRc"
+alias vr="pecoVenv"
+alias help="pecoAliasAndFunc"
+alias afp="pecoAliasAndFunc"
+
+alias -g P='| p'
+alias fgo='fp $GOPATH'
+alias fgd='fd $GOPATH/src'
+alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
 
 function kco() {
   kubectx $(kubectx |sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'|perl -pe 's/\x0f//g'| selector )
@@ -60,22 +78,4 @@ function fd() {
   target=${1:=.}
   fp ${target} -name '.git' -prune -o -type d
 }
-
-alias fgo='fp $GOPATH'
-alias fgd='fd $GOPATH/src'
-alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
-alias lpe="pecoLocate"
-alias mpe="pecoMdfind"
-alias gps="pecoGitStatus"
-alias gpb="pecoGitBranch"
-alias gpl="pecoGitLog"
-alias gpr="pecoGitRefLog"
-alias s="pecoSsh"
-alias kn="pecoK8sNode"
-alias kp="pecoK8sPod"
-alias ks="pecoK8sSvc"
-alias kr="pecoK8sRc"
-alias vr="pecoVenv"
-alias help="pecoAliasAndFunc"
-alias afp="pecoAliasAndFunc"
 
