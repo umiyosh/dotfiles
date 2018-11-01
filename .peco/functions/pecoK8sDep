@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+self=$0
+
+kubectl get deployment --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
+  pecoAfterAction \
+    "kubectl describe deployment " \
+    "kubectl get deployment " \
+    "kubectl get deployment --output=json " \
+    "kubectl get deployment --output=yaml " \
+    "kubectl edit deployment " \
+    "$self::getClusterIP " \
+    "%%STDIN%% cat " \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% paaPbCopy"
