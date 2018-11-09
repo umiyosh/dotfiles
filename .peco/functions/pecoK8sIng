@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+self=$0
+
+kubectl get ingress --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
+  pecoAfterAction \
+    "kubectl describe ingress " \
+    "kubectl get ingress " \
+    "kubectl get ingress --output=json " \
+    "kubectl get ingress --output=yaml " \
+    "kubectl edit ingress " \
+    "$self::getClusterIP " \
+    "%%STDIN%% cat " \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% paaPbCopy"
