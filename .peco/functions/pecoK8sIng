@@ -8,7 +8,6 @@ kubectl get ingress --all-namespaces=true| selector --prompt "[$0]"| awk '{print
     "kubectl get ingress --output=json " \
     "kubectl get ingress --output=yaml " \
     "kubectl edit ingress " \
-    "$self::getClusterIP " \
     "%%STDIN%% cat " \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
