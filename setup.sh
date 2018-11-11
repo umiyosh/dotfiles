@@ -35,7 +35,7 @@ function changeShell() {
       if [[ ${OSTYPE} =~ "^darwin" ]]; then
         sudo which zsh |sudo tee -a /private/etc/shells
       fi
-      chsh -s "$(which zsh)"
+      chsh -s "$(command -v zsh)"
     fi
   fi
 }
