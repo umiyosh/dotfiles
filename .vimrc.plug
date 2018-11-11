@@ -49,14 +49,15 @@ call plug#begin('~/.vim/plugged')
 
 " Completion {{{
   " Deoplete
-  " Plug 'roxma/nvim-yarp'
-  " Plug 'roxma/vim-hug-neovim-rpc'
-  " Plug 'zchee/deoplete-jedi'
-  " Plug 'zchee/deoplete-go'
-  " Plug 'zchee/deoplete-zsh'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-go'
+  Plug 'zchee/deoplete-zsh'
   " Neocomplete
   " 補完 neocomplcache.vim : 究極のVim的補完環境
-  Plug 'Shougo/neocomplete.vim'
+  " Plug 'Shougo/neocomplete.vim'
   " neocomplcacheのsinpet補完
   Plug 'Shougo/neosnippet'
 " }}}
