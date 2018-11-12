@@ -1,10 +1,3 @@
-let my_python_version = system("python -c 'import sys;print (sys.version_info[0])'")
-if my_python_version < '3'
-  call has('python')
-else
-  call has('python3')
-endif
-
 scriptencoding utf-8
 "基本設定
 source ~/dotfiles/.vimrc.basic
