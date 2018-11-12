@@ -11,7 +11,6 @@ endif
 
 filetype off
 call plug#begin('~/.vim/plugged')
-
 " Edit {{{
   " NERD_commenter.vim :最強コメント処理 (<Leader>c<space>でコメントをトグル)
   Plug 'scrooloose/nerdcommenter'
@@ -75,8 +74,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/grep.vim'
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   Plug 'othree/eregex.vim'
-  " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
-  Plug 'tyru/open-browser.vim'
   " vim-eqsymotion
   Plug 'easymotion/vim-easymotion'
   " incremental search
@@ -85,6 +82,16 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Programming {{{
+  " pythonの環境周り
+  Plug 'jmcantrell/vim-virtualenv'
+  " pythonのomni補完 jedi.vim
+  Plug 'davidhalter/jedi-vim'
+  " python formatter
+  Plug 'mindriot101/vim-yapf'
+  " pydocstring
+  Plug 'heavenshell/vim-pydocstring'
+  " python
+  Plug 'kh3phr3n/python-syntax'
   " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
   Plug 'thinca/vim-quickrun'
   " vim-hier
@@ -103,18 +110,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'majutsushi/tagbar'
   " Source code Explorer
   Plug 'wesleyche/SrcExpl'
-  " pythonのomni補完 jedi.vim
-  Plug 'davidhalter/jedi-vim'
-  " pythonの環境周り
-  Plug 'jmcantrell/vim-virtualenv'
-  " python formatter
-  Plug 'mindriot101/vim-yapf'
-  " pydocstring
-  Plug 'heavenshell/vim-pydocstring'
-  " phpのデバッガ:xdebugをvimから使う
-  " Plug 'joonty/vdebug'
-  " phpを整える
-  Plug 'stephpy/vim-php-cs-fixer'
   " Node.js用
   Plug 'moll/vim-node'
   " vim-go
@@ -149,7 +144,6 @@ call plug#begin('~/.vim/plugged')
   " coffee script
   Plug 'kchmck/vim-coffee-script'
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
-  " Plug 'neomake/neomake'
   Plug 'w0rp/ale'
   " terraform and hcl
   " Plug 'fatih/vim-hclfmt'
@@ -163,8 +157,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'aklt/plantuml-syntax'
   " vcl for varnish
   Plug 'smerrill/vcl-vim-plugin'
-  " python
-  Plug 'kh3phr3n/python-syntax'
 " }}}
 
 " Encording {{{
@@ -186,15 +178,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除
   Plug 'duff/vim-bufonly'
-  " perl proveコマンド実行
-  Plug 'umiyosh/vim-prove'
   " Use vim as a vinary editor
   Plug 'Shougo/vinarise'
   " トップっぽいところをカレントディレクトリに
   " http://blog.remora.cx/2012/08/syntax-check-with-syntastic-and-rooter.html
   Plug 'airblade/vim-rooter'
   " markdownのアウトライン表示
-  Plug 'vim-scripts/VOoM'
+  " Plug 'vim-scripts/VOoM'
   " foldtextの見た目をよくする
   Plug 'LeafCage/foldCC'
   " taskpaper.vim
@@ -205,7 +195,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'rking/ag.vim'
   " DirDiff.vim
   Plug 'vim-scripts/DirDiff.vim'
-  " benchvimrc-vim
+  "operator-camelize.vim benchvimrc-vim
   " Plug 'mattn/benchvimrc-vim'
   " dash.vim
   Plug 'rizzatti/dash.vim'
@@ -214,8 +204,6 @@ call plug#begin('~/.vim/plugged')
 
 " ColorSchema{{{{
   " color schema 256
-  Plug 'tomasr/molokai'
-  Plug 'vim-scripts/HybridText'
   Plug 'morhetz/gruvbox'
 " }}}
 
