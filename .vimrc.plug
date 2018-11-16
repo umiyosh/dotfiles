@@ -170,6 +170,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/vimfiler.vim'
   " vimからGit操作する
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
   " gitgutter
   Plug 'airblade/vim-gitgutter'
   " ステータスラインをカッコよくする
