@@ -238,6 +238,8 @@ nnoremap <silent> [unite]k :<C-u>Unite -start-insert output:map\|map!\|lmap<CR>
 nnoremap <silent> [unite]n :<C-u>Unite -start-insert neosnippet<CR>
 " Unite Grep
 nnoremap <silent> [unite]g :<C-u>Unite -start-insert grep<CR>
+" Unite line
+nnoremap <silent> [unite]l :<C-u>Unite line<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
