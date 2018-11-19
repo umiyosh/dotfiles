@@ -157,6 +157,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'aklt/plantuml-syntax'
   " vcl for varnish
   Plug 'smerrill/vcl-vim-plugin'
+  " tweekmonster/hl-goimport.vim
+  Plug 'tweekmonster/hl-goimport.vim'
 " }}}
 
 " Encording {{{
