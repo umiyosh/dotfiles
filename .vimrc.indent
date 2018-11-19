@@ -10,8 +10,7 @@ set cindent      " Cプログラムファイルの自動インデントを始め
 set tabstop=2 shiftwidth=2 softtabstop=0
 
 if has('autocmd')
-  "ファイルタイプの検索を有効にする
-  filetype plugin on
+  "ファイルタイプの検索を有効にする filetype plugin on
   "そのファイルタイプにあわせたインデントを利用する
   filetype indent on
   " これらのftではインデントを無効に
@@ -44,5 +43,6 @@ if has('autocmd')
   autocmd FileType zsh        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go         setlocal noexpandtab list tabstop=2 shiftwidth=2
+  autocmd FileType neosnippet setlocal noexpandtab list tabstop=2 shiftwidth=2
 endif
 
