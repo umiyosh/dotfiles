@@ -1,0 +1,6 @@
+
+" keymap
+nnoremap sh :belowright :terminal ++rows=10<CR>
+nnoremap <c-w>s :belowright :terminal ++rows=10<CR>
+tnoremap <c-w><Esc> <C-w>N
+

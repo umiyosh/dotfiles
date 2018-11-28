@@ -26,6 +26,8 @@ source ~/dotfiles/.vimrc.misc
 source ~/dotfiles/.vimrc.plug
 "Color関連
 source ~/dotfiles/.vimrc.colors
+"terminal関連
+source ~/dotfiles/.vimrc.terminal
 "プラグインに依存するアレ
 source ~/dotfiles/.vimrc.plugins_setting
 
