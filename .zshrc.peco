@@ -11,6 +11,7 @@ autoload pecoFu
 autoload pecoCdr
 autoload pecoKill
 autoload pecoAg
+autoload pecoRg
 autoload pecoAck
 autoload pecoLs
 autoload pecoFind
@@ -36,6 +37,7 @@ alias fu="pecoFu"
 alias cdr="pecoCdr"
 alias pk="pecoKill"
 alias agv="pecoAg"
+alias rgv="pecoRg"
 alias ackv="pecoAck"
 alias l="pecoLs"
 alias fp="pecoFind"
