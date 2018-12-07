@@ -30,9 +30,10 @@ set lazyredraw
 set ttyfast
 
 "折りたたみ関連
+set foldtext=FoldCCtext()
 set foldmethod=marker
-" set foldcolumn=3
-set foldlevel=0
+set foldcolumn=3
+set foldlevel=5
 hi Folded gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey30 guifg=Grey80
 hi FoldColumn gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey guifg=DarkBlue
 

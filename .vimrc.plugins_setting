@@ -501,6 +501,8 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
+au Syntax go set fdm=syntax
+let g:go_fold_enable = ['block',  'import',  'varconst']
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>gt <Plug>(go-test)
