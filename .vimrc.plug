@@ -188,8 +188,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-rooter'
   " markdownのアウトライン表示
   " Plug 'vim-scripts/VOoM'
-  " foldtextの見た目をよくする
-  Plug 'LeafCage/foldCC'
   " taskpaper.vim
   Plug 'davidoc/taskpaper.vim'
   " repeat.vim
