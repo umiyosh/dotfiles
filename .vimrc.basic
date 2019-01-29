@@ -24,6 +24,7 @@ set notitle                                 " 「VIMを使ってくれてあり�
 set autoread                                " 外部から変更あった場合は自動読み込みする
 set nowrapscan                              " 検索マッチ終端までいったらそこで止める。
 set noundofile                              " undofileは作らない
+set history=1000                            " コマンド・検索パターンの履歴数
 set updatetime=500
 set ttimeoutlen=50
 set shortmess=a
