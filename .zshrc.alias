@@ -164,6 +164,7 @@ alias dl='docker ps -l -q'
 
 # kube関連
 alias swumidev='eval "$(kmachine env umidev)"'
+alias k="k9s"
 
 # safty rm
 alias rm='trash-wrapper.sh'
