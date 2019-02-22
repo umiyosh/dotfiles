@@ -158,7 +158,7 @@ def arg_parse():
         action='store_true',
         help='debug mode',
         required=False)
-    parser.set_defaults(quiet=False, timeout=90)
+    parser.set_defaults(quiet=False, timeout=360)
     return parser.parse_args()
 
 
