@@ -6,6 +6,7 @@ find $@ | _pecoBeforeFilter| selector --prompt "[$0]"| pecoAfterAction "vi " \
     "cd " \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz ' \
+    'tar xvfz ' \
     'vimdiff ' \
     'less +F '\
     'cat '\
