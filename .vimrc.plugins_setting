@@ -308,9 +308,8 @@ let g:ale_sign_column_always = 1
 " let g:ale_lint_on_filetype_changed = "always"
 " for golang
 let g:ale_linters = {
-\   'go': ['gometalinter'],
-\}
-let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
+	\ 'go': ['gopls'],
+	\}
 
 "------------------------------------
 " fugitive.vim
@@ -402,10 +401,11 @@ let g:airline_highlighting_cache = 1
 "------------------------------------
 " VoOM (markdown outliner)
 "------------------------------------
-" let g:voom_tree_width     = 60
-" let g:voom_tree_placement = 'right'
-" let g:voom_ft_modes       = {'markdown': 'markdown', 'pandoc': 'markdown'}
-" map <Leader>vm <ESC>:<C-u>VoomToggle<CR>
+let g:voom_tree_width     = 60
+let g:voom_tree_placement = 'right'
+let g:voom_ft_modes       = {'markdown': 'markdown', 'pandoc': 'markdown'}
+let g:voom_user_command = "python3 import voom_addons"
+map <Leader>vm <ESC>:<C-u>VoomToggle<CR>
 
 "------------------------------------
 " eregex.vim
