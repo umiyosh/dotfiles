@@ -42,6 +42,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   " editorconfig
   Plug 'editorconfig/editorconfig-vim'
+  " Ansible
+  Plug 'pearofducks/ansible-vim'
   " English
   Plug 'ujihisa/neco-look'
 " }}}
@@ -112,8 +114,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'godoctor/godoctor.vim'
   " vim-go-impl
   Plug 'rhysd/vim-go-impl'
-  " vim-ansible-yaml
-  Plug 'chase/vim-ansible-yaml'
   " terraform
   Plug 'hashivim/vim-terraform'
   " Scala
