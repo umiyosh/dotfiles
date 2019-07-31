@@ -145,3 +145,8 @@ augroup spell_check
 augroup END
 " }}}
 "
+"
+" for vimdiff
+"" https://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
+"" Forcing vimdiff to wrap lines
+au VimEnter * if &diff | execute 'windo set wrap' | endif
