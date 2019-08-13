@@ -176,3 +176,7 @@ alias wrq='watchrun -q -c'
 
 # hub
 # eval "$(hub alias -s)"
+
+# misc
+alias rr="pw perl -pe 's//> /g'"
+
