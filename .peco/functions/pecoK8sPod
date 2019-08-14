@@ -74,6 +74,7 @@ kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{pr
     "kubectl get pod " \
     "kubectl get pod --output=json " \
     "kubectl get pod --output=yaml " \
+    "kubectl edit pod " \
     "$self::k8sGetPodIP " \
     "$self::k8sPortForward " \
     "$self::k8sGetPodIPToPbcopy " \

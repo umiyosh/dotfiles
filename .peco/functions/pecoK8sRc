@@ -6,6 +6,7 @@ kubectl get rc | selector --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
     "kubectl get rc " \
     "kubectl get rc --output=json " \
     "kubectl get rc --output=yaml " \
+    "kubectl edit rc " \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% pecoPipe" \
