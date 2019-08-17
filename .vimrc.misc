@@ -150,3 +150,7 @@ augroup END
 "" https://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
 "" Forcing vimdiff to wrap lines
 au VimEnter * if &diff | execute 'windo set wrap' | endif
+
+" nmap <leader><space> yiW:!xdg-open <c-r>" &<cr>
+nmap gx yiW:!open <C-r>" & <CR><CR>
+
