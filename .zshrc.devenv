@@ -1,7 +1,6 @@
 # python
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper_lazy.sh
+    export WORKON_HOME=$HOME/.virtualenvs source /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
 export PATH=~/.local/bin:$PATH
 source ~/.virtualenvs/python3.7/bin/activate
@@ -51,10 +50,10 @@ fi
 # export PATH=$PATH:${HOME}/.composer/vendor/bin
 
 # rbenv
-# [[ -d ~/.rbenv  ]] && \
-  # export RBENV_ROOT=/usr/local/var/rbenv
-  # export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  # eval "$(rbenv init -)"
+[[ -d ~/.rbenv  ]] && \
+  export RBENV_ROOT=/usr/local/var/rbenv
+  export PATH=${HOME}/.rbenv/bin:${PATH} && \
+  eval "$(rbenv init -)"
 
 # scalaenv
 # export PATH="${HOME}/.scalaenv/bin:${PATH}"
