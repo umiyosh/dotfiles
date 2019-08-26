@@ -1,6 +1,7 @@
 # python
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs source /usr/local/bin/virtualenvwrapper_lazy.sh
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
 export PATH=~/.local/bin:$PATH
 source ~/.virtualenvs/python3.7/bin/activate
