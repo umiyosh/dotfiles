@@ -2,20 +2,14 @@
 #概要： podに対してなにかする やつ
 self=$0
 
-function $self::_getIp() {
-  while read node;do
-    (kubectl get node --output=json $node | gron | fgrep 'status.addresses[0].address'|awk '{print $NF}'|perl -pe 's/[";]//g') &
-  done
-  wait
-}
-function $self::_convertPodToNode() {
+function $self::_convertPodToNodeIP() {
   while read pod ;do
-    (kubectl get po $pod -o wide | awk '{print $NF}' |egrep -v '^NODE$') &
+    (kubectl get po $pod -o custom-columns=IP:status.hostIP|egrep -v '^IP$') &
   done
   wait
 }
 function $self::nodeSsh() {
-  $self::_convertPodToNode | sort | uniq  | $self::_getIp | pecoAfterAction "pssh "
+  $self::_convertPodToNodeIP | sort | uniq | pecoAfterAction "pssh "
 }
 
 function $self::_k8sSh() {
