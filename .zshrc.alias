@@ -164,6 +164,7 @@ alias dl='docker ps -l -q'
 
 # kube関連
 alias swumidev='eval "$(kmachine env umidev)"'
+alias kk="kubectl"
 alias k="k9s_not_to_delete -n all"
 alias K="k9s -n all"
 
