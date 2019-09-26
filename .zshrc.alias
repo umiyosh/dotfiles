@@ -180,4 +180,8 @@ alias wrq='watchrun -q -c'
 
 # misc
 alias rr="pw perl -pe 's//> /g'"
+alias ip="curl ipinfo.io/ip"
+ips () {
+  ifconfig | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'
+}
 
