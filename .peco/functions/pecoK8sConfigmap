@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+#概要： cmに対してなにかする やつ
+self=$0
+
+kubectl get configmaps -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
+  pecoAfterAction \
+    "kubectl describe cm " \
+    "kubectl logs " \
+    "kubectl logs -f " \
+    "kubectl get cm " \
+    "kubectl get cm --output=json " \
+    "kubectl get cm --output=yaml " \
+    "kubectl edit cm " \
+    "%%STDIN%% cat" \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% paaPbCopy"
