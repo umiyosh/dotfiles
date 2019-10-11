@@ -41,6 +41,7 @@ find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | $sel
     'gunzip '\
     'chmod +x '\
     'open ' \
+    'kubectl apply -f ' \
     "%%STDIN%% cat" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny" \
