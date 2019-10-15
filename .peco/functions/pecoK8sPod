@@ -60,6 +60,20 @@ function $self::k8sGetPodIPToPbcopy() {
   echo $podIp | pbcopy
 }
 
+function $self::sternLogs() {
+  pods=("$@")
+  pods_regex=""
+  for pod in $pods; do
+    if [[ -z $pods_regex ]]; then
+      pods_regex=$pod
+    else
+      pods_regex="$pods_regex|$pod"
+    fi
+  done
+  echo stern $pods_regex
+  stern $pods_regex
+}
+
 kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
   pecoAfterAction \
     "kubectl describe pod " \
@@ -72,6 +86,7 @@ kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{pr
     "$self::k8sGetPodIP " \
     "$self::k8sPortForward " \
     "$self::k8sGetPodIPToPbcopy " \
+    "$self::sternLogs " \
     "%%STDIN%% $self::k8sSh" \
     "%%STDIN%% $self::k8sShContainer" \
     "%%STDIN%% $self::nodeSsh" \
