@@ -30,12 +30,20 @@ alias su="su -l"
 
 # vim
 alias man=manv
+
 alias vim='mvim -v'
 alias vi='mvim -v'
 alias vimdiff='mvim -dv'
 alias view='mvim -Rv'
 alias vif='vi +VimFilerBufferDir .'
 alias psvi='vi +"Unite process" +"only" +"set number"'
+
+# alias vim='nvim'
+# alias vi='nvim'
+# alias vimdiff='nvim -d'
+# alias view='nvim -R'
+# alias vif='nvim +VimFilerBufferDir .'
+# alias psvi='nvim +"Unite process" +"only" +"set number"'
 
 #make
 alias 'm'='make'
@@ -165,7 +173,7 @@ alias dl='docker ps -l -q'
 # kube関連
 alias swumidev='eval "$(kmachine env umidev)"'
 alias kk="kubectl"
-alias k="k9s_not_to_delete -n all"
+alias k="k9s --readonly -n all"
 alias K="k9s -n all"
 
 # safty rm
