@@ -192,4 +192,4 @@ alias ip="curl ipinfo.io/ip"
 ips () {
   ifconfig | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'
 }
-
+alias corona="curl 'https://corona-stats.online?top=35&source=2&minimal=true&emojis=true'"
