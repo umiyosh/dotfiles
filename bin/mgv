@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh -l
+
+# mvim wrapper for editing on chrome with karabiner elements
+
+set -x
+export LANG=ja_JP.UTF-8
+
+tempfile=$(mktemp /tmp/esa.XXXXXXXXXXXX)
+
+/usr/bin/pbpaste > $tempfile
+
+mvim -g -f $tempfile +'set ft=markdown'
+cat $tempfile | /usr/bin/pbcopy
+
