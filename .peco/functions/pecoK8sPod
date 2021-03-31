@@ -35,7 +35,7 @@ function $self::k8sPortForward() {
 	then
 		return 1
 	fi
-	local port=$(kubectl get pod --output=json $podName |gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g')
+	local port=$(kubectl get pod --output=json $podName |gron |grep -i containerport |perl -pe 's/.+=|;//g'|perl -pe 's/ //g'|tail -1)
 	echo kubectl port-forward $podName $port:$port
 	kubectl port-forward $podName $port:$port
 }
@@ -83,6 +83,7 @@ kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{pr
     "kubectl get pod --output=json " \
     "kubectl get pod --output=yaml " \
     "kubectl edit pod " \
+    "kubectl sniff " \
     "$self::k8sGetPodIP " \
     "$self::k8sPortForward " \
     "$self::k8sGetPodIPToPbcopy " \
