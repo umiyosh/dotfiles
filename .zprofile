@@ -3,6 +3,7 @@ export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/
 export PATH=$PATH:$HOME/local/bin:/usr/local/git/bin
 export PATH=$PATH:$HOME/dotfiles/bin
+export PATH=$PATH:$HOME/dotfiles_private/bin
 export PATH=$PATH:/sbin:/usr/local/bin
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=$PATH:${HOME}/.nodebrew/current/bin
@@ -13,3 +14,6 @@ if [[ -f $HOME/.gvm/scripts/gvm ]]; then
 fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+## local zshrc settings for macvim
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
