@@ -73,3 +73,6 @@ fi
 source "${HOME}/Dropbox/bin/google-cloud-sdk/path.zsh.inc"
 source "${HOME}/google-cloud-sdk/completion.zsh.inc"
 
+# kubernetes
+export PATH="${PATH}:${HOME}/.krew/bin"
+
