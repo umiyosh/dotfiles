@@ -522,6 +522,9 @@ let g:go_fmt_fail_silently = 1
 " https://github.com/fatih/vim-go/issues/31
 let g:go_disable_autoinstall = 1
 let g:go_loaded_gosnippets = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_gopls_options = ['-remote=auto']
 "------------------------------------
 " plasticboy/vim-markdown
 "------------------------------------
