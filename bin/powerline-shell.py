@@ -313,32 +313,29 @@ def add_set_term_title_segment(powerline):
 
 
 add_set_term_title_segment(powerline)
-import subprocess
-import re
+import os
+import yaml
 
+def config():
+    conf_yaml = os.path.expanduser('~/.kube/config')
+    with open(conf_yaml, 'r') as f:
+        return yaml.load(f, Loader=yaml.FullLoader)
 
-def add_gke_segment(powerline):
-    cluster_match = '.+cluster:.+'
-    namespace_match = '.+namespace:.+'
+def add_gke3_segment(powerline):
     cluster_name = None
     namespace_name = None
     if not py3:
         prompt_prefix = ' ⎈ : '.decode('utf-8')
     else:
         prompt_prefix = ' ⎈ : '
-    kube_cmd = [
-        'kubectl',
-        'config',
-        'view',
-        '--minify',
-    ]
-    cmd_result = subprocess.check_output(kube_cmd)
-    results = cmd_result.decode('utf-8').split('\n')
-    for result in results:
-        if re.match(cluster_match, result):
-            cluster_name = result.split()[1] + ' '
-        if re.match(namespace_match, result):
-            namespace_name = result.split()[1] + ' '
+
+    yamlfile = config()
+
+    cluster_name = yamlfile['current-context']
+    namespace_name = 'ERROR'
+    for yamlline in yamlfile['contexts']:
+        if yamlline['context']['cluster'] == cluster_name:
+            namespace_name = yamlline['context']['namespace']
 
     cluster_fore_ground = Color.GKE_FG
     cluster_back_ground = Color.GKE_BG
@@ -360,7 +357,7 @@ def add_gke_segment(powerline):
         return
 
 
-add_gke_segment(powerline)
+add_gke3_segment(powerline)
 import os
 
 def add_gcp_segment(powerline):
@@ -504,141 +501,6 @@ def add_git_segment(powerline):
 
 
 add_git_segment(powerline)
-import os
-import subprocess
-
-def get_hg_status():
-    has_modified_files = False
-    has_untracked_files = False
-    has_missing_files = False
-
-    p = subprocess.Popen(['hg', 'status'], stdout=subprocess.PIPE)
-    output = p.communicate()[0].decode("utf-8")
-
-    for line in output.split('\n'):
-        if line == '':
-            continue
-        elif line[0] == '?':
-            has_untracked_files = True
-        elif line[0] == '!':
-            has_missing_files = True
-        else:
-            has_modified_files = True
-    return has_modified_files, has_untracked_files, has_missing_files
-
-def add_hg_segment(powerline):
-    branch = os.popen('hg branch 2> /dev/null').read().rstrip()
-    if len(branch) == 0:
-        return False
-    bg = Color.REPO_CLEAN_BG
-    fg = Color.REPO_CLEAN_FG
-    has_modified_files, has_untracked_files, has_missing_files = get_hg_status()
-    if has_modified_files or has_untracked_files or has_missing_files:
-        bg = Color.REPO_DIRTY_BG
-        fg = Color.REPO_DIRTY_FG
-        extra = ''
-        if has_untracked_files:
-            extra += '+'
-        if has_missing_files:
-            extra += '!'
-        branch += (' ' + extra if extra != '' else '')
-    return powerline.append(' %s ' % branch, fg, bg)
-
-
-add_hg_segment(powerline)
-import subprocess
-
-
-def _add_svn_segment(powerline):
-    is_svn = subprocess.Popen(['svn', 'status'],
-                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    is_svn_output = is_svn.communicate()[1].decode("utf-8").strip()
-    if len(is_svn_output) != 0:
-        return
-
-    #"svn status | grep -c "^[ACDIMRX\\!\\~]"
-    p1 = subprocess.Popen(['svn', 'status'], stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-    p2 = subprocess.Popen(['grep', '-c', '^[ACDIMR\\!\\~]'],
-            stdin=p1.stdout, stdout=subprocess.PIPE)
-    output = p2.communicate()[0].decode("utf-8").strip()
-    if len(output) > 0 and int(output) > 0:
-        changes = output.strip()
-        powerline.append(' %s ' % changes, Color.SVN_CHANGES_FG, Color.SVN_CHANGES_BG)
-
-
-def add_svn_segment(powerline):
-    """Wraps _add_svn_segment in exception handling."""
-
-    # FIXME This function was added when introducing a testing framework,
-    # during which the 'powerline' object was passed into the
-    # `add_[segment]_segment` functions instead of being a global variable. At
-    # that time it was unclear whether the below exceptions could actually be
-    # thrown. It would be preferable to find out whether they ever will. If so,
-    # write a comment explaining when. Otherwise remove.
-
-    try:
-        _add_svn_segment(powerline)
-    except OSError:
-        pass
-    except subprocess.CalledProcessError:
-        pass
-
-
-add_svn_segment(powerline)
-import os
-import subprocess
-
-def get_fossil_status():
-    has_modified_files = False
-    has_untracked_files = False
-    has_missing_files = False
-    output = os.popen('fossil changes 2>/dev/null').read().strip()
-    has_untracked_files = True if os.popen("fossil extras 2>/dev/null").read().strip() else False
-    has_missing_files = 'MISSING' in output
-    has_modified_files = 'EDITED' in output
-
-    return has_modified_files, has_untracked_files, has_missing_files
-
-def _add_fossil_segment(powerline):
-    subprocess.Popen(['fossil'], stdout=subprocess.PIPE).communicate()[0]
-    branch = ''.join([i.replace('*','').strip() for i in os.popen("fossil branch 2> /dev/null").read().strip().split("\n") if i.startswith('*')])
-    if len(branch) == 0:
-        return
-
-    bg = Color.REPO_CLEAN_BG
-    fg = Color.REPO_CLEAN_FG
-    has_modified_files, has_untracked_files, has_missing_files = get_fossil_status()
-    if has_modified_files or has_untracked_files or has_missing_files:
-        bg = Color.REPO_DIRTY_BG
-        fg = Color.REPO_DIRTY_FG
-        extra = ''
-        if has_untracked_files:
-            extra += '+'
-        if has_missing_files:
-            extra += '!'
-        branch += (' ' + extra if extra != '' else '')
-    powerline.append(' %s ' % branch, fg, bg)
-
-def add_fossil_segment(powerline):
-    """Wraps _add_fossil_segment in exception handling."""
-
-    # FIXME This function was added when introducing a testing framework,
-    # during which the 'powerline' object was passed into the
-    # `add_[segment]_segment` functions instead of being a global variable. At
-    # that time it was unclear whether the below exceptions could actually be
-    # thrown. It would be preferable to find out whether they ever will. If so,
-    # write a comment explaining when. Otherwise remove.
-
-    try:
-        _add_fossil_segment(powerline)
-    except OSError:
-        pass
-    except subprocess.CalledProcessError:
-        pass
-
-
-add_fossil_segment(powerline)
 def add_newline_segment(powerline):
     powerline.append("\n", Color.RESET, Color.RESET, separator='')
 
