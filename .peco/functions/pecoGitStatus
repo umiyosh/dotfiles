@@ -7,7 +7,7 @@ cd "$gitRootDir"
 (git status --porcelain;git ls-files) | selector --prompt "[$0]"| perl -pe 's/^( ?(AM) )|( ?D )|( ?(UU) )|( ?(MM) )|( ?M )|( ?T )|( ?A )|(\?\? )//g' |perl -pe 's/^ +//g'|\
   pecoAfterAction "git add " \
     "git restore " \
-    "git restore --staged" \
+    "git restore --staged " \
     "git checkout " \
     "git reset HEAD " \
     "git diff " \
