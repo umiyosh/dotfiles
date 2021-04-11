@@ -54,7 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'zchee/deoplete-jedi'
-  Plug 'zchee/deoplete-go'
+  " Plug 'zchee/deoplete-go'
   Plug 'zchee/deoplete-zsh'
   Plug 'Shougo/neosnippet'
 " }}}
