@@ -1,10 +1,6 @@
 # python
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper_lazy.sh
-fi
 export PATH=~/.local/bin:$PATH
-source ~/.virtualenvs/python3.8/bin/activate
+source ~/python_v3.9.4/bin/activate
 
 # perlbrew
 if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
