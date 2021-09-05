@@ -21,7 +21,6 @@ function precmd() {
           echo $fg[green] "[INFO] $PRE_FULL_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
         else
           echo $fg[red] "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
-          #notif is Growl::Any command in my own way.
           notif "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
         fi
       fi
