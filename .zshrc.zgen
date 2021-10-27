@@ -10,6 +10,9 @@ fi
 
 zstyle ':completion:*' completer _oldlist _complete _prefix _list _history
 
+# keybindings for fzf-tab
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-s:toggle-down'
+
 # zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
 ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
