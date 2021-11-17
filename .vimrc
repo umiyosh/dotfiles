@@ -6,8 +6,6 @@ source ~/dotfiles/.vimrc.basic
 source ~/dotfiles/.vimrc.statusline
 "インデント設定
 source ~/dotfiles/.vimrc.indent
-"補完関連
-source ~/dotfiles/.vimrc.completion
 "Tags関連
 source ~/dotfiles/.vimrc.tags
 "検索関連
@@ -22,6 +20,8 @@ source ~/dotfiles/.vimrc.encoding
 source ~/dotfiles/.vimrc.misc
 "vunlde.vimで管理してるpluginを読み込む
 source ~/dotfiles/.vimrc.plug
+"補完関連
+source ~/dotfiles/.vimrc.completion
 "Color関連
 source ~/dotfiles/.vimrc.colors
 "terminal関連
