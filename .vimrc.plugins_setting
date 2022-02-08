@@ -296,22 +296,6 @@ let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputt
 silent! nmap <unique> <F6> <Plug>(quickrun)
 
 "------------------------------------
-" Ale
-"------------------------------------
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_sign_column_always = 1
-" let g:ale_lint_on_enter = 1
-" let g:ale_lint_on_insert_leave = 1
-" let g:ale_lint_on_text_changed = 0
-" let g:ale_lint_on_save = 1
-" let g:ale_lint_on_filetype_changed = "always"
-" for golang
-let g:ale_linters = {
-	\ 'go': ['gopls'],
-	\}
-
-"------------------------------------
 " fugitive.vim
 "------------------------------------
 nnoremap <Leader>gd :<C-u>Gdiff<CR>

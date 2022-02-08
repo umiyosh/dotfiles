@@ -49,14 +49,16 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Completion {{{
-  " Deoplete
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'zchee/deoplete-jedi'
-  " Plug 'zchee/deoplete-go'
-  Plug 'zchee/deoplete-zsh'
   Plug 'Shougo/neosnippet'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+  Plug 'prabirshrestha/asyncomplete-buffer.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'mattn/vim-lsp-icons'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ'
 " }}}
 
 " Searching/Moving{{{
@@ -137,8 +139,6 @@ call plug#begin('~/.vim/plugged')
 
   " coffee script
   Plug 'kchmck/vim-coffee-script'
-  " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
-  Plug 'w0rp/ale'
   " terraform and hcl
   " Plug 'fatih/vim-hclfmt'
   " html5.vim
