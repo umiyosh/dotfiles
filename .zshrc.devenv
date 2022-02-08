@@ -71,4 +71,4 @@ source "${HOME}/google-cloud-sdk/completion.zsh.inc"
 
 # kubernetes
 export PATH="${PATH}:${HOME}/.krew/bin"
-
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
