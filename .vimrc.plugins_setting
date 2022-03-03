@@ -509,6 +509,15 @@ let g:go_loaded_gosnippets = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_gopls_options = ['-remote=auto']
+
+"------------------------------------
+" vim-delve.vim
+"------------------------------------
+nmap <silent> <Leader>9 :DlvToggleBreakpoint<CR>
+nmap <silent> <Leader>8 :DlvClearAll<CR>
+nmap <silent> <Leader>5 :DlvDebug<CR>
+nmap <silent> <Leader>4 :DlvTest<CR>
+
 "------------------------------------
 " plasticboy/vim-markdown
 "------------------------------------
