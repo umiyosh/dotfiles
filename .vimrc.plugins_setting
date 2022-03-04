@@ -424,41 +424,11 @@ autocmd!
 autocmd FileType taskpaper call s:taskpaper_setup()
 augroup END
 
-
 "------------------------------------
-" vim-go.vim
+" vim-goimports
 "------------------------------------
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-au Syntax go set fdm=syntax
-let g:go_fold_enable = ['block',  'import',  'varconst']
-let g:go_fmt_experimental = 1
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>gr <Plug>(go-run)
-au FileType go nmap <leader>gt <Plug>(go-test)
-au FileType go nmap <Leader>gs <Plug>(go-implements)
-au FileType go nmap <Leader>gi <Plug>(go-info)
-au FileType go nmap <Leader>ge <Plug>(go-rename)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap gt <Plug>(go-def-pop)
-au FileType go nmap gk <Plug>(go-doc-browser)
-
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
-let g:go_version_warning = 0
-let g:go_fmt_fail_silently = 1
-" vim-go, do not mess with my neosnippet config!
-" https://github.com/fatih/vim-go/issues/31
-let g:go_disable_autoinstall = 1
-let g:go_loaded_gosnippets = 1
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_gopls_options = ['-remote=auto']
+let g:goimports_simplify = 1
+let g:goimports_show_loclist = 0
 
 "------------------------------------
 " vim-delve.vim
