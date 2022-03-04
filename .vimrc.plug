@@ -190,8 +190,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'LeafCage/foldCC'
   " repeat.vim
   Plug 'tpope/vim-repeat'
-  " ag.vim
-  Plug 'rking/ag.vim'
   " DirDiff.vim
   Plug 'vim-scripts/DirDiff.vim'
   "operator-camelize.vim benchvimrc-vim
@@ -206,19 +204,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
 " }}}
 
-" Unite {{{{
-  " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
-  Plug 'Shougo/unite.vim'
-  Plug 'tsukkee/unite-help'
-  Plug 'Shougo/unite-outline'
-  Plug 'basyura/unite-rails'
-  Plug 'thinca/vim-unite-history'
-  Plug 'tsukkee/unite-tag'
-  Plug 'choplin/unite-vim_hacks'
-  Plug 'tacroe/unite-mark'
-  Plug 'Shougo/neomru.vim'
-  Plug 'zoncoen/unite-autojump'
-  Plug 'umiyosh/unite-outline-terraform'
+" Fzf {{{{
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 " }}}
 call plug#end()
 
