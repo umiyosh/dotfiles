@@ -36,3 +36,9 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ 'completor': function('asyncomplete#sources#file#completor')
     \ }))
 
+" https://github.com/hiterm/asyncomplete-look
+au User asyncomplete_setup call asyncomplete#register_source({
+    \ 'name': 'look',
+    \ 'allowlist': ['text', 'markdown'],
+    \ 'completor': function('asyncomplete#sources#look#completor'),
+    \ })
