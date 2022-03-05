@@ -26,3 +26,13 @@ let g:lsp_hover_ui = 'preview'
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+
+" 'prabirshrestha/asyncomplete-file.vim'
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
