@@ -36,20 +36,6 @@ let g:NERDCustomDelimiters = {
 "------------------------------------
 nmap <silent> <leader><leader>d <Plug>DashSearch
 
-" ------------------------------------
-" grep.vim
-"------------------------------------
-" 検索外のディレクトリ、ファイルパターン
-let g:Grep_Skip_Dirs  = '.svn .git .hg'
-let g:Grep_Skip_Files = '*.bak *~'
-if has('mac')
-  if system('which gxargs')
-    let g:Grep_Xargs_Path     = 'gxargs'
-  else
-    let g:Grep_Find_Use_Xargs = 0
-  endif
-endif
-
 "------------------------------------
 " surround.vim
 "------------------------------------
@@ -108,17 +94,6 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
-
-"------------------------------------
-" Srcexp
-"------------------------------------
-" [Srcexpl] tagsを利用したソースコード閲覧・移動補助機能
-let g:SrcExpl_updateTagsCmd =  g:Ctags_Cmd . ' -R --sort=foldcase -a .'
-let g:SrcExpl_RefreshTime   = 10
-let g:SrcExpl_WinHeight     = 9   " プレビューウインドウの高さ
-let g:SrcExpl_UpdateTags    = 1
-" Source Explorerの機能ON/OFF
-nmap src :SrcExplToggle<CR>
 
 "------------------------------------
 " sumartword.vim
@@ -314,11 +289,6 @@ map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
 
 "------------------------------------
-" HybridText
-"------------------------------------
-autocmd BufEnter * if &filetype == "" || &filetype == "text"| setlocal ft=hybrid | endif
-
-"------------------------------------
 " matchit.vim
 "------------------------------------
 " 大文字小文字無視
@@ -346,15 +316,6 @@ map <Leader>vm <ESC>:<C-u>VoomToggle<CR>
 "------------------------------------
 let g:eregex_forward_delim  = 'M/'
 let g:eregex_backward_delim = 'M?'
-
-"------------------------------------
-" vim-tags
-"------------------------------------
-let g:vim_tags_auto_generate        = 0
-let g:vim_tags_directories          = [ '.' ]
-let g:vim_tags_gems_tags_command    = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY}  2>/dev/null'
-let g:vim_tags_project_tags_command = g:Ctags_Cmd . ' -R --sort=foldcase -a {DIRECTORY}  2>/dev/null'
-nmap  <Leader>t :TagsGenerate<CR>
 
 "------------------------------------
 " python

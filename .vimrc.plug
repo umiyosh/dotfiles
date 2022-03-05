@@ -44,8 +44,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'editorconfig/editorconfig-vim'
   " Ansible
   Plug 'pearofducks/ansible-vim'
-  " English
-  Plug 'ujihisa/neco-look'
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
   Plug 'mattn/vim-goimports'
   " https://twitter.com/mattn_jp/status/1214197559935156229
@@ -72,8 +70,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/camelcasemotion'
   " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
   Plug 'vim-scripts/matchit.zip'
-  " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
-  Plug 'vim-scripts/grep.vim'
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   Plug 'othree/eregex.vim'
   " vim-eqsymotion
@@ -96,24 +92,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'kh3phr3n/python-syntax'
   " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
   Plug 'thinca/vim-quickrun'
-  " vim-hier
-  Plug 'jceb/vim-hier'
-  " szw/vim-tags
-  Plug 'szw/vim-tags'
   " perldocやphpmanual等のリファレンスをvim上で見る
   Plug 'thinca/vim-ref'
   " SQLUtilities : SQL整形、生成ユーティリティ
   Plug 'vim-scripts/SQLUtilities'
-  " vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
-  Plug 'vim-scripts/ruby.vim'
-  " rails.vim : rails的なアレ
-  Plug 'tpope/vim-rails'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   Plug 'majutsushi/tagbar'
-  " Source code Explorer
-  Plug 'wesleyche/SrcExpl'
-  " Node.js用
-  Plug 'moll/vim-node'
   " godoctor : refactoring
   Plug 'godoctor/godoctor.vim'
   " vim-go-impl
@@ -122,10 +106,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'sebdah/vim-delve'
   " terraform
   Plug 'hashivim/vim-terraform'
-  " Scala
-  Plug 'derekwyatt/vim-scala'
-  " phpcomplete: phpのomni補完最新版
-  Plug 'shawncplus/phpcomplete.vim'
 " }}}
 
 " Syntax {{{
