@@ -4,10 +4,11 @@ set completeopt=menuone,noinsert
 " 補完表示時のEnterで改行をしない
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 nmap <silent> gd :LspDefinition<CR>
-nmap <silent> <Leader>R :LspRename<CR>
+nmap <silent> gR :LspRename<CR>
+nmap <silent> gr :LspReferences<CR>
+nmap <silent> gi :LspImplementation<CR>
 nmap <silent> <Leader>d :LspTypeDefinition<CR>
-nmap <silent> <Leader>r :LspReferences<CR>
-nmap <silent> <Leader>i :LspImplementation<CR>
+nmap <silent> <Leader>r :GoRun<CR>
 " nmap <silent> K :LspHover --ui=preview<CR>
 nmap <buffer> K <plug>(lsp-hover)
 

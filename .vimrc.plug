@@ -48,6 +48,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'ujihisa/neco-look'
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
   Plug 'mattn/vim-goimports'
+  " https://twitter.com/mattn_jp/status/1214197559935156229
+  Plug 'mattn/vim-gorun'
 " }}}
 
 " Completion {{{
