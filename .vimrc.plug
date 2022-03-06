@@ -97,6 +97,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'rhysd/vim-go-impl'
   " golang line debugger
   Plug 'sebdah/vim-delve'
+  " vim-test
+  Plug 'vim-test/vim-test'
+  Plug 'tpope/vim-dispatch'
   " terraform
   Plug 'hashivim/vim-terraform'
 " }}}

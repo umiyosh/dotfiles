@@ -193,6 +193,8 @@ nnoremap <silent> [fzf]n :<C-u>Snippets<CR>
 nnoremap <silent> [fzf]l :<C-u>BLines<CR>
 " line
 nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
+" Outline with coc.nvim
+nnoremap <silent> [fzf]o :<C-u>CocList outline<CR>
 
 "------------------------------------
 " quickrun.vim
@@ -422,3 +424,8 @@ augroup rainbow_lisp
   autocmd!
   autocmd BufEnter * RainbowParentheses
 augroup END
+
+"------------------------------------
+" 'vim-test/vim-test'
+"------------------------------------
+let g:test#strategy = 'dispatch'
