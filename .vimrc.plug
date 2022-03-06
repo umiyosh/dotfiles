@@ -77,8 +77,6 @@ call plug#begin('~/.vim/plugged')
 " Programming {{{
   " pythonの環境周り
   Plug 'jmcantrell/vim-virtualenv'
-  " pythonのomni補完 jedi.vim
-  Plug 'davidhalter/jedi-vim'
   " python formatter
   Plug 'mindriot101/vim-yapf'
   " pydocstring
