@@ -54,17 +54,8 @@ call plug#begin('~/.vim/plugged')
 
 " Completion {{{
   Plug 'Shougo/neosnippet'
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
-  Plug 'prabirshrestha/asyncomplete-buffer.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
-  Plug 'prabirshrestha/asyncomplete-file.vim'
-  Plug 'hiterm/asyncomplete-look'
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'mattn/vim-lsp-settings'
-  Plug 'mattn/vim-lsp-icons'
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'antoinemadec/coc-fzf'
 " }}}
 
 " Searching/Moving{{{

@@ -14,5 +14,5 @@ cnoremap <C-n> <Down>
 cnoremap <Down>  <C-n>
 
 source ~/dotfiles/.vimrc.completion.neosnippet
-source ~/dotfiles/.vimrc.completion.vimlsp
+source ~/dotfiles/.vimrc.completion.coc
 
