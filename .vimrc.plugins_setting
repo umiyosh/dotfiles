@@ -429,3 +429,11 @@ augroup END
 " 'vim-test/vim-test'
 "------------------------------------
 let g:test#strategy = 'dispatch'
+nmap <silent> <Leader>t :TestFile<CR>
+
+"------------------------------------
+" buoto/gotests-vim
+"------------------------------------
+nmap <silent> <Leader>ct :GoTests<CR>
+nmap <silent> <Leader>cT :GoTestsAll<CR>
+
