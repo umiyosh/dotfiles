@@ -146,6 +146,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/vimproc.vim'
   " vimfiler : vimのfiler
   Plug 'Shougo/vimfiler.vim'
+  Plug 'Shougo/unite.vim'
   " vimからGit操作する
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
@@ -157,7 +158,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'rgarver/Kwbd.vim'
   " 現在開いている以外のバッファを全部削除
   Plug 'duff/vim-bufonly'
-  " Use vim as a vinary editor
+  " Use vim as a binary editor
   Plug 'Shougo/vinarise'
   " トップっぽいところをカレントディレクトリに
   " http://blog.remora.cx/2012/08/syntax-check-with-syntastic-and-rooter.html
@@ -172,7 +173,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-repeat'
   " DirDiff.vim
   Plug 'vim-scripts/DirDiff.vim'
-  "operator-camelize.vim benchvimrc-vim
+  " benchvimrc-vim
   " Plug 'mattn/benchvimrc-vim'
   " dash.vim
   Plug 'rizzatti/dash.vim'
@@ -187,7 +188,6 @@ call plug#begin('~/.vim/plugged')
 " Fzf {{{{
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'Shougo/unite.vim'
 " }}}
 call plug#end()
 
