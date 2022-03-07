@@ -1,13 +1,12 @@
+" basic setting
 set statusline^=%{coc#status()}
-
-" basics
 autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=#ff0000
 autocmd ColorScheme * hi CocWarningHighlight ctermfg=Yellow  guifg=#ff0000
 
-" 補完表示時のEnterで改行をしない
+" Don't break line on Enter when displaying completion
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
-" GoTo code navigation.
+" coc keymap
 nmap <silent> gp <Plug>(coc-diagnostic-prev)
 nmap <silent> gb <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
@@ -31,6 +30,7 @@ function! s:show_documentation()
   endif
 endfunction
 
+" coc extentions
 let g:coc_global_extensions = [
     \'coc-spell-checker',
     \'coc-actions',
