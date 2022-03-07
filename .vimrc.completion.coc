@@ -1,5 +1,4 @@
 set statusline^=%{coc#status()}
-nmap <silent> gd <Plug>(coc-definition)
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
