@@ -1,5 +1,9 @@
 set statusline^=%{coc#status()}
 
+" basics
+autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=#ff0000
+autocmd ColorScheme * hi CocWarningHighlight ctermfg=Yellow  guifg=#ff0000
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
