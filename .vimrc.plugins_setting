@@ -195,6 +195,8 @@ nnoremap <silent> [fzf]l :<C-u>BLines<CR>
 nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
 " Outline with coc.nvim
 nnoremap <silent> [fzf]o :<C-u>CocList outline<CR>
+" Diagnostic with coc.nvim
+nnoremap <silent> [fzf]d :<C-u>CocList diagnostics<CR>
 
 "------------------------------------
 " quickrun.vim
