@@ -42,7 +42,6 @@ let g:coc_global_extensions = [
     \'coc-sh',
     \'coc-pyright',
     \'coc-perl',
-    \'coc-markdownlint',
     \'coc-json',
     \'coc-go'
 \]
