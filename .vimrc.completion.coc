@@ -2,6 +2,7 @@
 set statusline^=%{coc#status()}
 autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=#ff0000
 autocmd ColorScheme * hi CocWarningHighlight ctermfg=Yellow  guifg=#ff0000
+autocmd ColorScheme * hi CocInfoSign ctermfg=Green  guifg=#ff0000
 
 " Don't break line on Enter when displaying completion
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
