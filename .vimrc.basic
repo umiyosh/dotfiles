@@ -57,6 +57,13 @@ set helpfile=$VIMRUNTIME/doc/help.txt
 
 " ファイルタイプ判定をon
 filetype plugin on
+" default filetype setting
+function! s:NoneFileTypeSetMarkdown()
+  if len(&filetype) == 0
+    set filetype=markdown
+  endif
+endfunction
+autocmd BufEnter * call s:NoneFileTypeSetMarkdown()
 
 "crontab編集時はバックアップファイルを作成しない
 "http://d.hatena.ne.jp/yuyarin/20100225/1267084794
