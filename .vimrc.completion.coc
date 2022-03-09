@@ -1,5 +1,5 @@
 " basic setting
-set updatetime=300
+" set updatetime=300
 set statusline^=%{coc#status()}
 autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=#ff0000
 autocmd ColorScheme * hi CocWarningHighlight ctermfg=Yellow  guifg=#ff0000
