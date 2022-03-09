@@ -177,6 +177,8 @@ call plug#begin('~/.vim/plugged')
   " Plug 'mattn/benchvimrc-vim'
   " dash.vim
   Plug 'rizzatti/dash.vim'
+  " biosugar0/vim-popyank
+  Plug 'biosugar0/vim-popyank'
   "
 " }}}
 

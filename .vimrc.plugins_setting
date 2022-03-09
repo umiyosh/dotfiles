@@ -328,7 +328,7 @@ let g:eregex_backward_delim = 'M?'
 command! Pdb :!python -m pdb %
 " yapf
 let g:yapf_style = 'pep8'
-nnoremap <leader>y :call Yapf()<cr>
+nnoremap <leader>Y :call Yapf()<cr>
 " isort
 autocmd FileType python nnoremap <leader>i :!isort %<CR><CR>
 
@@ -439,3 +439,7 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>ct :GoTests<CR>
 nmap <silent> <Leader>cT :GoTestsAll<CR>
 
+"------------------------------------
+" biosugar0/vim-popyank
+"------------------------------------
+nmap <leader>y <Plug>(PopYank)
