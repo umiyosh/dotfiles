@@ -1,8 +1,13 @@
 " basic setting
+set updatetime=300
 set statusline^=%{coc#status()}
 autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=#ff0000
 autocmd ColorScheme * hi CocWarningHighlight ctermfg=Yellow  guifg=#ff0000
 autocmd ColorScheme * hi CocInfoSign ctermfg=Green  guifg=#ff0000
+
+" tile type setting
+autocmd FileType markdown let b:coc_suggest_disable = 1
+autocmd FileType text let b:coc_suggest_disable = 1
 
 " Don't break line on Enter when displaying completion
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
