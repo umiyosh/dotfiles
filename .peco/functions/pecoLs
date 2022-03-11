@@ -38,6 +38,7 @@ unbuffer ls -al $searchPath | $self::_replaceChar | \
     'vimdiff ' \
     'less +F '\
     'cat '\
+    'bat '\
     'zcat '\
     'gzcat '\
     'gunzip '\
