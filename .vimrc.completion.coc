@@ -1,4 +1,6 @@
 " basic setting
+
+let g:coc_config_home = '~/dotfiles_private/'
 " set updatetime=300
 set statusline^=%{coc#status()}
 autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=#ff0000
