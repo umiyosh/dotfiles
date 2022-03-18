@@ -8,6 +8,8 @@ function $self::_replaceChar() {
   # | tee > /tmp/debug.log
 }
 
+# TODO Doesnt work
+# $self::_interporatePath $searchPath
 function $self::_interporatePath() {
   perl -e 'while(<STDIN>){
     if (not $ARGV[0] =~ /\./) {
@@ -27,7 +29,8 @@ if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
 fi
 
 # find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | $self::_replaceChar | \
-unbuffer ls -al $searchPath | $self::_replaceChar | \
+# unbuffer ls -al $searchPath | $self::_replaceChar | \
+unbuffer exa --git -la --long --header $searchPath | $self::_replaceChar | \
   tail -r |selector --ansi --prompt "[$0]"| awk '{print $NF}' | $self::_interporatePath $searchPath | pecoAfterAction \
     "vi " \
     "gvim " \
