@@ -168,6 +168,40 @@ endfunction
 "------------------------------------
 " fzf.vim
 "------------------------------------
+" custom jumplist command
+" https://github.com/junegunn/fzf.vim/issues/865#issuecomment-955740371
+function GoTo(jumpline)
+  let values = split(a:jumpline, ":")
+  execute "e ".values[0]
+  call cursor(str2nr(values[1]), str2nr(values[2]))
+  execute "normal zvzz"
+endfunction
+
+function GetLine(bufnr, lnum)
+  let lines = getbufline(a:bufnr, a:lnum)
+  if len(lines)>0
+    return trim(lines[0])
+  else
+    return ''
+  endif
+endfunction
+
+function! Jumps()
+  " Get jumps with filename added
+  let jumps = map(reverse(copy(getjumplist()[0])),
+    \ { key, val -> extend(val, {'name': getbufinfo(val.bufnr)[0].name }) })
+
+  let jumptext = map(copy(jumps), { index, val ->
+      \ (val.name).':'.(val.lnum).':'.(val.col+1).': '.GetLine(val.bufnr, val.lnum) })
+
+  call fzf#run(fzf#vim#with_preview(fzf#wrap({
+        \ 'source': jumptext,
+        \ 'column': 1,
+        \ 'options': ['--delimiter', ':', '--bind', 'alt-a:select-all,alt-d:deselect-all', '--preview-window', '+{2}-/2'],
+        \ 'sink': function('GoTo')})))
+endfunction
+command! Jumps call Jumps()
+
 " The prefix key.
 nnoremap    [fzf]   <Nop>
 nmap    ss [fzf]
@@ -197,6 +231,8 @@ nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
 nnoremap <silent> [fzf]o :<C-u>CocList outline<CR>
 " Diagnostic with coc.nvim
 nnoremap <silent> [fzf]d :<C-u>CocList diagnostics<CR>
+" jumplist
+nnoremap <silent> [fzf]j :Jumps<cr>
 
 "------------------------------------
 " quickrun.vim
