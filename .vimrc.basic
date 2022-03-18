@@ -18,7 +18,7 @@ set browsedir=buffer                        " Exploreの初期ディレクトリ
 set whichwrap=b,s,h,l,<,>,[,]               " カーソルを行頭、行末で止まらないようにする
 set showcmd                                 " コマンドをステータス行に表示
 set showmode                                " 現在のモードを表示
-set viminfo='10000,<1000,s100,\"50          " viminfoファイルの設定
+set viminfo='10000,<1000,s100,\"10000       " viminfoファイルの設定
 set viminfo+=:10000                         " command line hisory size
 set viminfo+=/10000                         " serach pattern hisory size
 set modelines=0                             " モードラインは無効
@@ -26,7 +26,7 @@ set notitle                                 " 「VIMを使ってくれてあり�
 set autoread                                " 外部から変更あった場合は自動読み込みする
 set nowrapscan                              " 検索マッチ終端までいったらそこで止める。
 set noundofile                              " undofileは作らない
-set history=1000                            " コマンド・検索パターンの履歴数
+set history=10000                           " コマンド・検索パターンの履歴数
 set updatetime=500
 set ttimeoutlen=50
 set shortmess=a
