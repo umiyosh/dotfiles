@@ -135,6 +135,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'smerrill/vcl-vim-plugin'
   " tweekmonster/hl-goimport.vim
   Plug 'tweekmonster/hl-goimport.vim'
+  " RRethy/vim-illuminate
+  Plug 'RRethy/vim-illuminate'
 " }}}
 
 " Encording {{{
