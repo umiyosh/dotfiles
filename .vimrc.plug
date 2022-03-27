@@ -181,6 +181,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'rizzatti/dash.vim'
   " biosugar0/vim-popyank
   Plug 'biosugar0/vim-popyank'
+  " rickhowe/diffchar.vim
+  Plug 'rickhowe/diffchar.vim'
   "
 " }}}
 
