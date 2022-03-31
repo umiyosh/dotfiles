@@ -27,6 +27,12 @@ function deployDotfiles() {
      ln -s "$HOME/dotfiles/${directory}" "$HOME/${directory}"
     fi
   done
+
+ if [[ ! -d $HOME/.config/nvim/ ]]; then
+   mkdir -p $HOME/.config/nvim/
+ fi
+ ln -s "$HOME/dotfiles/init.vim" "$HOME/.config/nvim/"
+
 }
 
 function changeShell() {
