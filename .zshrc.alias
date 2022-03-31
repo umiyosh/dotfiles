@@ -31,10 +31,10 @@ alias su="su -l"
 # vim
 alias man=manv
 
-alias vim='mvim -v'
-alias vi='mvim -v'
-alias vimdiff='mvim -dv'
-alias view='mvim -Rv'
+alias vim='nvim'
+alias vi='nvim'
+alias vimdiff='nvim -d'
+alias view='nvim -R'
 alias vif='vi +VimFilerBufferDir .'
 alias psvi='vi +"Unite process" +"only" +"set number"'
 

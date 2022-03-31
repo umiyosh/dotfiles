@@ -8,7 +8,6 @@ set textwidth=0                             " 一行に長い文章を書いて�
 set nobackup                                " バックアップ取らない
 set autoread                                " 他で書き換えられたら自動で読み直す
 set noswapfile                              " スワップファイル作らない
-set nobackup                                " Do not create backup
 set nowritebackup                           " Do not create wirte backup"
 set hidden                                  " 編集中でも他のファイルを開けるようにする
 set backspace=indent,eol,start              " バックスペースでなんでも消せるように
@@ -42,7 +41,10 @@ augroup END
 " ターミナルでマウスを使用できるようにする
 set mouse=nv
 set guioptions+=nv
-set ttymouse=xterm2
+
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 "ヤンクした文字は、システムのクリップボードに入れる"
 set clipboard=unnamed

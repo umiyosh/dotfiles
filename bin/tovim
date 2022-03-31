@@ -11,6 +11,6 @@ TOVIMTMP=~/.tovim_tmp_`date +%Y-%m-%d_%H-%M-%S.txt`
 trap 'rm $TOVIMTMP' ERR
 
 cat > $TOVIMTMP
-mvim -v $VIMARG $TOVIMTMP < /dev/tty > /dev/tty
+nvim $VIMARG $TOVIMTMP < /dev/tty > /dev/tty
 cat $TOVIMTMP
 rm  $TOVIMTMP

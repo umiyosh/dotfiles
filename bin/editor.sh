@@ -2,4 +2,4 @@
 
 VIMARG=($@)
 
-mvim -v $VIMARG
+nvim $VIMARG
