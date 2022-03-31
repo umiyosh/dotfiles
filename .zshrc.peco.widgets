@@ -16,7 +16,7 @@ bindkey "^a^a" peco-select-gitadd
 
 # peco history
 function pecoHistory() {
-    history 0 | tail -r | perl -lane 'print "@F[1..$#F]"' |selector --prompt "[pecoHistory]"| \
+    history -n -r 0 |selector --prompt "[pecoHistory]"| \
       pecoAfterAction \
         "%%STDIN%% zleExecuteAsCommand" \
         "%%STDIN%% zlePasteBuffer" \
