@@ -455,15 +455,6 @@ let python_highlight_all = 1
 let g:terraform_fmt_on_save = 1
 
 "------------------------------------
-" junegunn/rainbow_parentheses.vim
-"------------------------------------
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{',  '}']]"
-augroup rainbow_lisp
-  autocmd!
-  autocmd BufEnter * RainbowParentheses
-augroup END
-
-"------------------------------------
 " 'vim-test/vim-test'
 "------------------------------------
 let g:test#strategy = 'dispatch'

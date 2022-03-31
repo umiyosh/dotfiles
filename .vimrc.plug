@@ -48,8 +48,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/vim-goimports'
   " https://twitter.com/mattn_jp/status/1214197559935156229
   Plug 'mattn/vim-gorun'
-  " Simpler Rainbow Parentheses
-  Plug 'junegunn/rainbow_parentheses.vim'
 " }}}
 
 " Completion {{{
@@ -61,8 +59,7 @@ call plug#begin('~/.vim/plugged')
 " Searching/Moving{{{
   " vim-smartword : 単語移動がスマートな感じで
   Plug 'kana/vim-smartword'
-  " camelcasemotion : CamelCaseやsnake_case単位でのワード移動
-  Plug 'vim-scripts/camelcasemotion'
+  " camelcasemotion : CamelCaseやsnake_case単位でのワード移動 Plug 'vim-scripts/camelcasemotion'
   " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
   Plug 'vim-scripts/matchit.zip'
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
@@ -109,6 +106,8 @@ call plug#begin('~/.vim/plugged')
 " Syntax {{{
   if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Rainbow Parentheses
+    Plug 'p00f/nvim-ts-rainbow'
   endif
   " haml"
   Plug 'vim-scripts/Haml'
