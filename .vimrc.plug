@@ -109,6 +109,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     " Rainbow Parentheses
     Plug 'p00f/nvim-ts-rainbow'
+  else
+    " Rainbow Parentheses
+    Plug 'junegunn/rainbow_parentheses.vim'
   endif
   " haml"
   Plug 'vim-scripts/Haml'
@@ -167,6 +170,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/vinarise'
   " トップっぽいところをカレントディレクトリに
   " http://blog.remora.cx/2012/08/syntax-check-with-syntastic-and-rooter.html
+  if !has('nvim')
+    Plug 'airblade/vim-rooter'
+  endif
   " Plug 'airblade/vim-rooter'
   " markdownのアウトライン表示
   Plug 'vim-voom/VOoM'
