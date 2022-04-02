@@ -85,7 +85,6 @@ function installAutojump() {
 }
 
 function installFzf() {
-  ## peco
   if ! hash fzf; then
     case "${OSTYPE}" in
     darwin*)
