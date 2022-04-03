@@ -209,6 +209,7 @@ vmap    ss [fzf]
 
 " ファイル一覧
 nnoremap <silent> [fzf]f  :<C-u>Files<CR>
+nnoremap <silent> [fzf]F  :<C-u>GitFiles<CR>
 " バッファ一覧
 nnoremap <silent> [fzf]b  :<C-u>Buffers<CR>
 " 常用セット
