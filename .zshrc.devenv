@@ -2,6 +2,10 @@
 export PATH=~/.local/bin:$PATH
 source ~/python_v3.9/bin/activate
 
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+
 # perlbrew
 if [[ -s $HOME/perl5/perlbrew/etc/bashrc ]]; then
   source $HOME/perl5/perlbrew/etc/bashrc
