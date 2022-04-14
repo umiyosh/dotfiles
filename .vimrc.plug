@@ -192,6 +192,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'biosugar0/vim-popyank'
   " rickhowe/diffchar.vim
   Plug 'rickhowe/diffchar.vim'
+  " haya14busa/vim-asterisk
+  Plug 'haya14busa/vim-asterisk'
   "
 " }}}
 

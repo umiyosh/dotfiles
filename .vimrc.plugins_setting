@@ -489,6 +489,11 @@ augroup illuminate_augroup
 augroup END
 
 "------------------------------------
+" haya14busa/vim-asterisk
+"------------------------------------
+map *  <Plug>(asterisk-z*)
+
+"------------------------------------
 " neovim plugin settings
 " 'nvim-treesitter/nvim-treesitter'
 " 'p00f/nvim-ts-rainbow'
@@ -512,4 +517,5 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 endif
+
 
