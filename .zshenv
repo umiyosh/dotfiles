@@ -2,3 +2,4 @@
 # zmodload zsh/zprof
 #
 export EDITOR='mvim'
+. "$HOME/.cargo/env"

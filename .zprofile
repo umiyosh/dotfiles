@@ -13,7 +13,6 @@ if [[ -f $HOME/.gvm/scripts/gvm ]]; then
   source $HOME/.gvm/scripts/gvm
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
 
 ## local zshrc settings for macvim
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
