@@ -12,7 +12,7 @@ endif
 filetype off
 call plug#begin('~/.vim/plugged')
 " Edit {{{
-  " NERD_commenter.vim :最強コメント処理 (<Leader>c<space>でコメントをトグル)
+  " NERD_commenter.vim
   Plug 'scrooloose/nerdcommenter'
   " visually indent guide
   Plug 'nathanaelkane/vim-indent-guides'
@@ -88,6 +88,7 @@ call plug#begin('~/.vim/plugged')
   " SQLUtilities : SQL整形、生成ユーティリティ
   Plug 'vim-scripts/SQLUtilities'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
+  Plug 'liuchengxu/vista.vim'
   Plug 'majutsushi/tagbar'
   " godoctor : refactoring
   Plug 'godoctor/godoctor.vim'

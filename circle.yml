@@ -8,20 +8,20 @@ jobs:
       - run:
           name: dependencies
           command: |
-             sudo add-apt-repository ppa:jonathonf/vim
-             sudo apt-get update
-             sudo apt-get install zsh
-             sudo apt-get install vim
+            sudo add-apt-repository ppa:jonathonf/vim
+            sudo apt-get update
+            sudo apt-get install zsh
+            sudo apt-get install vim
       - run:
           name: setup
           command: |
-             ./setup.sh
-             zsh -c 'exit'
+            ./setup.sh
+            zsh -c 'exit'
       - run:
           name: test
           command: |
-              zsh -c 'exit'
-              vim +qa
+            zsh -c 'exit'
+            vim +qa
 
 workflows:
   version: 2
