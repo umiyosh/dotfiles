@@ -35,15 +35,6 @@ alias vim='nvim'
 alias vi='nvim'
 alias vimdiff='nvim -d'
 alias view='nvim -R'
-alias vif='vi +VimFilerBufferDir .'
-alias psvi='vi +"Unite process" +"only" +"set number"'
-
-# alias vim='nvim'
-# alias vi='nvim'
-# alias vimdiff='nvim -d'
-# alias view='nvim -R'
-# alias vif='nvim +VimFilerBufferDir .'
-# alias psvi='nvim +"Unite process" +"only" +"set number"'
 
 #make
 alias 'm'='make'

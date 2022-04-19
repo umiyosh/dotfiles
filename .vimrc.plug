@@ -152,9 +152,12 @@ call plug#begin('~/.vim/plugged')
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
  Plug 'Shougo/vimproc.vim'
-  " vimfiler : vimのfiler
-  Plug 'Shougo/vimfiler.vim'
-  Plug 'Shougo/unite.vim'
+  " lambdalisue/fern.vim
+  Plug 'lambdalisue/fern.vim'
+  Plug 'lambdalisue/fern-git-status.vim'
+  Plug 'lambdalisue/nerdfont.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  Plug 'lambdalisue/glyph-palette.vim'
   " vimからGit操作する
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
