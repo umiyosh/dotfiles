@@ -55,45 +55,10 @@ let g:surround_{char2nr('[')} = "[\r]"
 nmap U :UndotreeToggle<cr>
 
 "------------------------------------
-" tagbar
+" vista.vim
 "------------------------------------
-" 関数一覧
-set tags=tags;
-"set tags+=~/.tags
-if has('mac')
-  let g:Ctags_Cmd = '/usr/local/bin/ctags'
-else
-  let g:Ctags_Cmd = 'ctags'
-endif
-let g:tagbar_ctags_bin = g:Ctags_Cmd
-map <silent> <leader>tl :TagbarToggle<CR>
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
+map <silent> <leader>tl :Vista coc<CR>
+let g:vista#renderer#enable_icon = 1
 
 "------------------------------------
 " sumartword.vim
@@ -208,7 +173,7 @@ nnoremap <silent> [fzf]l :<C-u>BLines<CR>
 " line
 nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
 " Outline with coc.nvim
-nnoremap <silent> [fzf]o :<C-u>CocList outline<CR>
+nnoremap <silent> [fzf]o :<C-u>Vista finder coc<CR>
 " Diagnostic with coc.nvim
 nnoremap <silent> [fzf]d :<C-u>CocList diagnostics<CR>
 " jumplist
