@@ -46,8 +46,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'pearofducks/ansible-vim'
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
   Plug 'mattn/vim-goimports'
-  " https://twitter.com/mattn_jp/status/1214197559935156229
-  Plug 'mattn/vim-gorun'
 " }}}
 
 " Completion {{{
