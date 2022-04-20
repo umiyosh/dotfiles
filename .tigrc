@@ -1,3 +1,4 @@
-bind main    R !git rebase -i %(commit)
-bind diff    R !git rebase -i %(commit)
+set line-graphics = utf-8
+bind main R !git rebase -i %(commit)
+bind diff R !git rebase -i %(commit)
 bind generic P @sh -c 'hub browse -- commit/%(commit)'
