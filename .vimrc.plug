@@ -15,8 +15,13 @@ call plug#begin('~/.vim/plugged')
   " NERD_commenter.vim
   Plug 'scrooloose/nerdcommenter'
   " visually indent guide
-  Plug 'nathanaelkane/vim-indent-guides'
-  " Plug 'Yggdroot/indentLine'
+  if has('nvim')
+    Plug 'lukas-reineke/indent-blankline.nvim'
+  else
+    Plug 'nathanaelkane/vim-indent-guides'
+  endif
+  " yioneko/nvim-yati
+  " Plug 'yioneko/nvim-yati'
   " vim-easy-align : 高機能整形・桁揃えプラグイン
   Plug 'junegunn/vim-easy-align'
   " undo履歴を追える (need python support)
@@ -105,7 +110,7 @@ call plug#begin('~/.vim/plugged')
 " Syntax {{{
   if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " Rainbow Parentheses
+    " " Rainbow Parentheses
     Plug 'p00f/nvim-ts-rainbow'
   else
     " Rainbow Parentheses
@@ -149,7 +154,7 @@ call plug#begin('~/.vim/plugged')
 
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
- Plug 'Shougo/vimproc.vim'
+  Plug 'Shougo/vimproc.vim'
   " lambdalisue/fern.vim
   Plug 'lambdalisue/fern.vim'
   Plug 'lambdalisue/fern-git-status.vim'

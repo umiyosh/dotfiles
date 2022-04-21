@@ -439,11 +439,22 @@ map *  <Plug>(asterisk-z*)
 
 "------------------------------------
 " neovim plugin settings
+" 'lukas-reineke/indent-blankline.nvim
 " 'nvim-treesitter/nvim-treesitter'
 " 'p00f/nvim-ts-rainbow'
 "------------------------------------
 if has('nvim')
 lua <<EOF
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+    char = "|",
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+}
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
   highlight = {
@@ -460,5 +471,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
 endif
 
