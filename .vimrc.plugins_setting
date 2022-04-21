@@ -174,8 +174,12 @@ nnoremap <silent> [fzf]l :<C-u>BLines<CR>
 nnoremap <silent> [fzf]t :<C-u>Filetypes<CR>
 " Outline with coc.nvim
 nnoremap <silent> [fzf]o :<C-u>Vista finder coc<CR>
+if has('nvim')
 " Diagnostic with coc.nvim
+nnoremap <silent> [fzf]d :<C-u>CocDiagnostics<CR>
+else
 nnoremap <silent> [fzf]d :<C-u>CocList diagnostics<CR>
+endif
 " jumplist
 nnoremap <silent> [fzf]j :Jumps<cr>
 

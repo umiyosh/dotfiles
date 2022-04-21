@@ -202,6 +202,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'haya14busa/vim-asterisk'
   " ryanoasis/vim-devicons
   Plug 'ryanoasis/vim-devicons'
+  if has('nvim')
+    " kevinhwang91/nvim-bqf
+    Plug 'kevinhwang91/nvim-bqf'
+  endif
   "
 " }}}
 
