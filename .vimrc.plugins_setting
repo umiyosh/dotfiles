@@ -427,10 +427,17 @@ nmap <leader>y <Plug>(PopYank)
 "------------------------------------
 " RRethy/vim-illuminate
 "------------------------------------
+if has('nvim')
+augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord cterm=underline,bold guibg=DarkBlue
+augroup END
+else
 augroup illuminate_augroup
     autocmd!
     autocmd VimEnter * hi illuminatedWord cterm=underline,bold gui=undercurl,bold ctermbg=19
 augroup END
+endif
 
 "------------------------------------
 " haya14busa/vim-asterisk
