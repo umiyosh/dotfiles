@@ -50,10 +50,9 @@ command! Sw :call BanTabIndentWrite()
 " TODO: jqに置き換え
 map <Leader>j !python -m json.tool<CR>
 
-" quickfixウィンドウではq/ESCで閉じる
-autocmd FileType qf nnoremap <buffer> q :ccl<CR>
-autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
-
+" quickfixウィンドウではESCで閉じる
+autocmd FileType qf nnoremap <buffer><silent> <esc> :lclose<CR>
+autocmd FileType qf highlight QuickFixLine ctermbg=none
 " cwでquickfixウィンドウの表示をtoggleするようにした
 function! s:toggle_qf_window()
   for l:bufnr in range(1,  winnr('$'))
