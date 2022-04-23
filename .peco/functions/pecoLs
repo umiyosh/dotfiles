@@ -47,6 +47,16 @@ unbuffer exa --icons --git -la --long --header $searchPath | $self::_replaceChar
     'gunzip '\
     'chmod +x '\
     'open ' \
+    "git add " \
+    "git restore " \
+    "git restore --staged " \
+    "git checkout " \
+    "git reset HEAD " \
+    "git diff " \
+    "git vdiff " \
+    "git diff --cached " \
+    "git vdiff --cached " \
+    "git rm " \
     'kubectl apply -f ' \
     "%%STDIN%% cat" \
     "%%STDIN%% paaSafeRm" \
