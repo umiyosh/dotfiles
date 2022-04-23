@@ -6,7 +6,7 @@ colo gruvbox
 set background=dark
 
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 " autocmd VimEnter,ColorScheme * : highlight CursorLine cterm=underline ctermbg=234
 autocmd VimEnter,ColorScheme * : highlight CursorLine ctermbg=235
