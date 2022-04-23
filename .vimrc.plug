@@ -23,9 +23,9 @@ call plug#begin('~/.vim/plugged')
   " yioneko/nvim-yati
   " Plug 'yioneko/nvim-yati'
   " vim-easy-align : 高機能整形・桁揃えプラグイン
-  Plug 'junegunn/vim-easy-align'
+  Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }
   " undo履歴を追える (need python support)
-  Plug 'mbbill/undotree'
+  Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
   " Plug 'sjl/gundo.vim'
   " surround.vim : テキストを括弧で囲む／削除する
   Plug 'tpope/vim-surround'
@@ -42,15 +42,15 @@ call plug#begin('~/.vim/plugged')
   " 括弧の入力
   Plug 'kana/vim-smartinput'
   " phpDocumento
-  Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'
+  Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', { 'for' : 'php' }
   " Emmet-vim
   Plug 'mattn/emmet-vim'
   " editorconfig
   Plug 'editorconfig/editorconfig-vim'
   " Ansible
-  Plug 'pearofducks/ansible-vim'
+  Plug 'pearofducks/ansible-vim', { 'for' : 'yaml.ansible' }
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
-  Plug 'mattn/vim-goimports'
+  Plug 'mattn/vim-goimports', { 'for' : 'go' }
 " }}}
 
 " Completion {{{
@@ -82,13 +82,13 @@ call plug#begin('~/.vim/plugged')
 
 " Programming {{{
   " pythonの環境周り
-  Plug 'jmcantrell/vim-virtualenv'
+  Plug 'jmcantrell/vim-virtualenv' , { 'for': 'python' }
   " python formatter
-  Plug 'mindriot101/vim-yapf'
+  Plug 'mindriot101/vim-yapf' , { 'for': 'python' }
   " pydocstring
-  Plug 'heavenshell/vim-pydocstring'
+  Plug 'heavenshell/vim-pydocstring' , { 'for': 'python' }
   " python
-  Plug 'kh3phr3n/python-syntax'
+  Plug 'kh3phr3n/python-syntax' , { 'for': 'python' }
   " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
   Plug 'thinca/vim-quickrun'
   " perldocやphpmanual等のリファレンスをvim上で見る
@@ -97,19 +97,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/SQLUtilities'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   Plug 'liuchengxu/vista.vim'
-  " godoctor : refactoring
-  Plug 'godoctor/godoctor.vim'
-  " vim-go-impl
-  Plug 'rhysd/vim-go-impl'
   " golang line debugger
-  Plug 'sebdah/vim-delve'
+  Plug 'sebdah/vim-delve', { 'for' : 'go' }
   " vim-test
   Plug 'vim-test/vim-test'
   Plug 'tpope/vim-dispatch'
   " gotests
-  Plug 'buoto/gotests-vim'
+  Plug 'buoto/gotests-vim', { 'for' : 'go' }
   " terraform
-  Plug 'hashivim/vim-terraform'
+  Plug 'hashivim/vim-terraform', { 'for' : 'terraform' }
 " }}}
 
 " Syntax {{{
@@ -130,11 +126,9 @@ call plug#begin('~/.vim/plugged')
   " nginx conf
   Plug 'vim-scripts/nginx.vim'
   " markdown
-  Plug 'tpope/vim-markdown'
-  Plug 'nelstrom/vim-markdown-folding'
+  Plug 'tpope/vim-markdown', { 'for' : 'markdown' }
+  Plug 'nelstrom/vim-markdown-folding', { 'for' : 'markdown' }
 
-  " coffee script
-  Plug 'kchmck/vim-coffee-script'
   " terraform and hcl
   " Plug 'fatih/vim-hclfmt'
   " html5.vim
@@ -142,13 +136,13 @@ call plug#begin('~/.vim/plugged')
   " css3 syntax
   Plug 'hail2u/vim-css3-syntax'
   " json.vim
-  Plug 'elzr/vim-json'
+  Plug 'elzr/vim-json', { 'for' : 'json' }
   " plantuml
   Plug 'aklt/plantuml-syntax'
   " vcl for varnish
   Plug 'smerrill/vcl-vim-plugin'
   " tweekmonster/hl-goimport.vim
-  Plug 'tweekmonster/hl-goimport.vim'
+  Plug 'tweekmonster/hl-goimport.vim', { 'for' : 'go' }
   " RRethy/vim-illuminate
   Plug 'RRethy/vim-illuminate'
 " }}}
@@ -156,7 +150,7 @@ call plug#begin('~/.vim/plugged')
 " Encording {{{
   Plug 'banyan/recognize_charcode.vim'
 " }}}
-
+"
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
   Plug 'Shougo/vimproc.vim'
