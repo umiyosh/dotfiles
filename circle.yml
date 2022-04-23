@@ -15,6 +15,8 @@ jobs:
             sudo apt-get install vim
             sudo apt-get install node
             sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
+            sudo apt-get install golang
+            go get github.com/rhysd/vim-startuptime
       - run:
           name: setup
           command: |
@@ -25,7 +27,7 @@ jobs:
           command: |
             zsh -c 'exit'
             vim +qa
-
+            vim-startuptime | egrep 'Total Average' |awk '{print $3}'
 workflows:
   version: 2
   build_and_deploy:
