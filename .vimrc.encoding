@@ -2,6 +2,7 @@
 " エンコーディング関連 Encoding
 "-------------------------------------------------------------------------------
 set fileformats=unix,dos,mac  " 改行文字
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set encoding=utf-8    " デフォルトエンコーディング
 scriptencoding utf-8
 

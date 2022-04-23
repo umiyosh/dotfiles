@@ -147,10 +147,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'RRethy/vim-illuminate'
 " }}}
 
-" Encording {{{
-  Plug 'banyan/recognize_charcode.vim'
-" }}}
-"
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
   Plug 'Shougo/vimproc.vim'
