@@ -29,7 +29,8 @@ jobs:
           command: |
             zsh -c 'exit'
             vim +qa
-            vim-startuptime | egrep 'Total Average' |awk '{print $3}'
+            echo vim:;vim-startuptime | egrep 'Total Average' |awk '{print $3}'
+            echo nvim:;vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
 workflows:
   version: 2
   build_and_deploy:
