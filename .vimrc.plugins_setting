@@ -319,7 +319,11 @@ let b:match_ignorecase = 1
 "------------------------------------
 let g:airline_powerline_fonts = 1
 let g:airline_theme="dark"
-let g:airline#extensions#tabline#enabled = 1
+if has('nvim')
+  let g:airline#extensions#tabline#enabled = 0
+else
+  let g:airline#extensions#tabline#enabled = 1
+endif
 let g:airline_highlighting_cache = 1
 "------------------------------------
 " VoOM (markdown outliner)
@@ -479,10 +483,10 @@ map *  <Plug>(asterisk-z*)
 "------------------------------------
 if has('nvim')
 lua <<EOF
+require'hop'.setup()
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
-require'hop'.setup()
 require("indent_blankline").setup {
     space_char_blankline = " ",
     show_current_context = true,
@@ -503,7 +507,28 @@ require'nvim-treesitter.configs'.setup {
     -- termcolors = {} -- table of colour name strings
   },
 }
-EOF
+require("bufferline").setup{
+  options = {
+    diagnostics = "coc",
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      local icon = level:match("error") and " " or " "
+      return " " .. icon .. count
+    end,
+    color_icons = true,
+    offsets = {
+      {
+        filetype = "fern",
+        text = function()
+          return vim.fn.getcwd()
+        end,
+        highlight = "Directory",
+        text_align = "left"
+      }
+    }
 
+  }
+}
+EOF
+nnoremap <silent> sB :BufferLinePick<CR>
 endif
 
