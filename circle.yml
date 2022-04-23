@@ -2,7 +2,8 @@
 version: 2.1
 jobs:
   build:
-    machine: true
+    machine:
+      image: ubuntu-2004:202010-01
     working_directory: ~/dotfiles
     steps:
       - checkout
@@ -15,7 +16,7 @@ jobs:
             sudo apt-get install zsh
             sudo apt-get install vim
             sudo apt-get install neovim
-            sudo apt-get install node
+            sudo apt-get install nodejs
             sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
             sudo apt-get install golang
             go get github.com/rhysd/vim-startuptime
