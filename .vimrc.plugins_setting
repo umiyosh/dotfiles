@@ -587,6 +587,7 @@ require("bufferline").setup{
 
   }
 }
+require('hlargs').setup()
 EOF
 " fzf selction like a easymotion
 nnoremap <silent> sB :BufferLinePick<CR>

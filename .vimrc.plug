@@ -113,6 +113,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     " " Rainbow Parentheses
     Plug 'p00f/nvim-ts-rainbow'
+    " m-demare/hlargs.nvim
+    Plug 'm-demare/hlargs.nvim'
   else
     " Rainbow Parentheses
     Plug 'junegunn/rainbow_parentheses.vim'
