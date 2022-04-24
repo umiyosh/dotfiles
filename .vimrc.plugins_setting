@@ -477,6 +477,62 @@ endif
 map *  <Plug>(asterisk-z*)
 
 "------------------------------------
+" wilder.vim
+"------------------------------------
+" enable Up/Down selection
+" https://github.com/gelguy/wilder.nvim/issues/122
+call wilder#setup({
+      \ 'modes': ['/', '?', ':'],
+      \ 'next_key': 0,
+      \ 'previous_key': 0,
+      \ 'reject_key': 0,
+      \ 'accept_key': 0,
+      \ 'enable_cmdline_enter': 0,
+      \ })
+cnoremap <expr> <Tab> <SID>in_context(0) ? <SID>start_wilder() : '<Tab>'
+" Reverse the directions if it suits your preference
+cnoremap <expr> <Down> <SID>in_context(1) ? wilder#next() : '<Down>'
+cnoremap <expr> <Up> <SID>in_context(1) ? wilder#previous() : '<Up>'
+let s:wilder_started = 0
+autocmd CmdlineLeave * let s:wilder_started = 0
+function! s:start_wilder() abort
+  let s:wilder_started = 1
+  return wilder#next()
+endfunction
+function! s:in_context(check_started) abort
+  if a:check_started && !s:wilder_started
+    return 0
+  endif
+  return wilder#in_context()
+endfunction
+" fuzzy match
+call wilder#set_option('pipeline', [
+      \   wilder#branch(
+      \     wilder#cmdline_pipeline({
+      \       'fuzzy': 1,
+      \       'set_pcre2_pattern': 1,
+      \     }),
+      \     wilder#python_search_pipeline({
+      \       'pattern': 'fuzzy',
+      \     }),
+      \   ),
+      \ ])
+let s:highlighters = [
+        \ wilder#pcre2_highlighter(),
+        \ wilder#basic_highlighter(),
+        \ ]
+" with glyph icon
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ 'left': [
+      \   ' ', wilder#popupmenu_devicons(),
+      \ ],
+      \ 'right': [
+      \   ' ', wilder#popupmenu_scrollbar(),
+      \ ],
+      \ }))
+
+"------------------------------------
 " neovim plugin settings
 " 'lukas-reineke/indent-blankline.nvim
 " 'nvim-treesitter/nvim-treesitter'
@@ -532,6 +588,7 @@ require("bufferline").setup{
   }
 }
 EOF
+" fzf selction like a easymotion
 nnoremap <silent> sB :BufferLinePick<CR>
 endif
 

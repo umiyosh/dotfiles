@@ -205,6 +205,12 @@ call plug#begin('~/.vim/plugged')
     " kevinhwang91/nvim-bqf
     Plug 'kevinhwang91/nvim-bqf'
   endif
+  function! UpdateRemotePlugins(...)
+    " Needed to refresh runtime files
+    let &rtp=&rtp
+    UpdateRemotePlugins
+  endfunction
+  Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   "
 " }}}
 
