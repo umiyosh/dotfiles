@@ -1,2 +1,3 @@
 #!/usr/bin/env zsh
+# translate with google-translate
 trans :en -no-autocorrect -b  $@
