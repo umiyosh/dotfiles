@@ -101,6 +101,16 @@ call smartinput#define_rule({
 "------------------------------------
 " lambdalisue/fern.vim
 "------------------------------------
+"" https://github.com/lambdalisue/fern.vim/wiki/Tips#how-to-customize-fern-buffer
+" disable s <Plug>(fern-action-open:select) keymap because I use s key for hop.vim and easymotion
+function! s:init_fern() abort
+  nmap <buffer> s s
+endfunction
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
 nnoremap <leader>e :Fern . -reveal=% -drawer -toggle -width=40<CR>
 augroup my-glyph-palette
   autocmd! *
