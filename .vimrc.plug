@@ -119,6 +119,8 @@ call plug#begin('~/.vim/plugged')
     " Rainbow Parentheses
     Plug 'junegunn/rainbow_parentheses.vim'
   endif
+  " helm
+  Plug 'towolf/vim-helm'
   " haml"
   Plug 'vim-scripts/Haml'
   " JavaScript
