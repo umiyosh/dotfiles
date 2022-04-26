@@ -61,5 +61,6 @@ let g:coc_global_extensions = [
     \'coc-perl',
     \'coc-json',
     \'coc-prettier',
+    \'coc-tsserver',
     \'coc-go'
 \]
