@@ -149,6 +149,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tweekmonster/hl-goimport.vim', { 'for' : 'go' }
   " RRethy/vim-illuminate
   Plug 'RRethy/vim-illuminate'
+  if has('nvim')
+    " 'norcalli/nvim-colorizer.lua'
+    Plug 'norcalli/nvim-colorizer.lua'
+  endif
 " }}}
 
 " Utility {{{
