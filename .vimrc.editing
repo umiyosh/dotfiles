@@ -45,11 +45,6 @@ function! BanTabIndentWrite()
 endfunction
 command! Sw :call BanTabIndentWrite()
 
-" <leader>j でJSONをformat
-" http://wozozo.hatenablog.com/entry/2012/02/08/121504
-" TODO: jqに置き換え
-map <Leader>j !python -m json.tool<CR>
-
 " quickfixウィンドウではESCで閉じる
 autocmd FileType qf nnoremap <buffer><silent> <esc> :lclose<CR>
 autocmd FileType qf highlight QuickFixLine ctermbg=none
