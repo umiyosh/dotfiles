@@ -20,6 +20,8 @@ jobs:
             sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
             sudo apt-get install golang
             go get github.com/rhysd/vim-startuptime
+            sudo apt-get install cpanminus
+            sudo cpanm App::St
       - run:
           name: setup
           command: |
@@ -32,6 +34,7 @@ jobs:
             vim +qa
             echo vim startup time[ms]:;vim-startuptime | egrep 'Total Average' |awk '{print $3}'
             echo nvim startup time[ms]:;vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
+            echo zsh startup time[sec];./bin/zshbench
 workflows:
   version: 2
   build_and_deploy:
