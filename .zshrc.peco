@@ -65,9 +65,8 @@ alias fgo='fp $GOPATH'
 alias fgd='fd $GOPATH/src'
 alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
 
-function kco() {
-  kubectx $(kubectx |sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g'|perl -pe 's/\x0f//g'| selector )
-}
+alias kco=kubectx
+
 function gco() {
   gcloud config configurations activate $(gcloud config configurations list |awk '{print $1}'|grep -v NAME|selector)
 }
