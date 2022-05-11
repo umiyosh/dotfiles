@@ -114,7 +114,7 @@ alias now-="date '+%Y-%m-%d_%H%M%S'"
 function ssh() {
     if [ -n "$TMUX" ]; then
       local window_name=$(tmux display -p '#{window_name}')
-      local_command='tmux rename-window $(echo "%r@%n:%p")'
+      local_command='tmux rename-window $(echo "%n"|perl -pe "s/\..+//g")'
       command -p ssh -o PermitLocalCommand=yes -o LocalCommand="${local_command}" "$@"
     else
       command ssh "$@"
