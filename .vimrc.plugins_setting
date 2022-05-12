@@ -487,6 +487,14 @@ endif
 map *  <Plug>(asterisk-z*)
 
 "------------------------------------
+" tyru/open-browser.vim
+"------------------------------------
+" My setting.
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+"------------------------------------
 " wilder.vim
 "------------------------------------
 " enable Up/Down selection
