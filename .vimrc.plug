@@ -184,9 +184,9 @@ call plug#begin('~/.vim/plugged')
   " トップっぽいところをカレントディレクトリに
   " http://blog.remora.cx/2012/08/syntax-check-with-syntastic-and-rooter.html
   if !has('nvim')
+    " Plug 'airblade/vim-rooter'
     Plug 'airblade/vim-rooter'
   endif
-  " Plug 'airblade/vim-rooter'
   " markdownのアウトライン表示
   Plug 'vim-voom/VOoM'
   " taskpaper.vim
@@ -218,6 +218,7 @@ call plug#begin('~/.vim/plugged')
     let &rtp=&rtp
     UpdateRemotePlugins
   endfunction
+  " gelguy/wilder.nvim
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   " tyru/open-browser.vim
   Plug 'tyru/open-browser.vim'
