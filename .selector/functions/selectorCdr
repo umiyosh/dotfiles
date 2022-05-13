@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# 概要：cdrをselector風味にやる
+dirs -l|perl -pe 's# /#\n /#g'| _selectorBeforeFilter |selector --prompt "[$0]"| \
+  selectorAfterAction \
+    "cd " \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% selectorPipe" \
+    "%%STDIN%% cat" \
+    "pbcopy "

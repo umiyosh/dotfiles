@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 kubectl get rc | selector --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
-  pecoAfterAction \
+  selectorAfterAction \
     "kubectl describe rc " \
     "kubectl get rc " \
     "kubectl get rc --output=json " \
@@ -9,5 +9,5 @@ kubectl get rc | selector --prompt "[$0]"| awk '{print $1}'|sort | uniq | \
     "kubectl edit rc " \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaPbCopy"

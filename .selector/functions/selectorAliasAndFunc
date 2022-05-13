@@ -75,10 +75,10 @@ function $self::execute() {
   echo $1 | paaExecuteAsCommand
 }
 
-# peco define
-(declare -f | perl -ne '/^[^\t\r\n]+\(.*\).*\{/&&print'|egrep -v '^ +' ; alias) | _pecoBeforeFilter | selector --prompt "[$0]"|
+# selector define
+(declare -f | perl -ne '/^[^\t\r\n]+\(.*\).*\{/&&print'|egrep -v '^ +' ; alias) | _selectorBeforeFilter | selector --prompt "[$0]"|
    $self::_extractFuncName | $self::_extractAliasName |
-    pecoAfterAction \
+    selectorAfterAction \
       "$self::define " \
       "$self::redefine " \
       "$self::execute " \
@@ -86,6 +86,6 @@ function $self::execute() {
       "%%STDIN%% cat" \
       "%%STDIN%% paaPbCopy" \
       "%%STDIN%% paaTovim" \
-      "%%STDIN%% pecoPipe" \
+      "%%STDIN%% selectorPipe" \
       "%%STDIN%% paaExecuteAsCommand"
 

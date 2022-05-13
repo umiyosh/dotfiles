@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-#概要：known_hostsなどからssh先をpecoして接続する
+#概要：known_hostsなどからssh先をselectorして接続する
 
 # source action define
 function $self::_sshSourceAction() {
@@ -34,11 +34,11 @@ function $self::_sshSourceAction() {
 candidates=($($self::_sshSourceAction))
 for candidate in $candidates; do
   echo $candidate
-done | selector --prompt "[$0]"| sort | uniq | pecoAfterAction "pssh " \
+done | selector --prompt "[$0]"| sort | uniq | selectorAfterAction "pssh " \
                               "tcmd sftp " \
                               "tcmd redis-stat " \
                               "%%STDIN%% cat" \
                               "%%STDIN%% paaTovim" \
-                              "%%STDIN%% pecoPipe" \
+                              "%%STDIN%% selectorPipe" \
                               "%%STDIN%% paaPbCopy"
 

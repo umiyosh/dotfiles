@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
 function selector() {
-  # peco --layout 'bottom-up' $@
-  # fzf-tmux -m -i \
  fzf -m -i \
     --exit-0 \
     --extended-exact \
@@ -14,14 +12,14 @@ function selector() {
     --bind ctrl-s:toggle-up $@
 }
 
-# peco after action define
+# selector after action define
 ActionsBuffer=()
 # %%STDIN%% command => Source | command
 # command           => tmux send-keys command Source
-function pecoAfterAction() {
+function selectorAfterAction() {
   Actions=($@)
   ActionsBuffer=($Actions)
-  Source=( ${(@f)"$(< /dev/stdin|_pecoAfterFilter)"} )
+  Source=( ${(@f)"$(< /dev/stdin|_selectorAfterFilter)"} )
   if [[ $#Actions -gt 1 ]]; then
     Action=$(for Action in $Actions ;do echo $Action;done|selector --prompt "SELECT ACTION >>"|head -1)
   else
@@ -117,7 +115,7 @@ function paaPbCopy() {
 }
 
 function paaTovim() {
-  tovim | pecoAfterAction $ActionsBuffer
+  tovim | selectorAfterAction $ActionsBuffer
 }
 
 function _executeTmuxBuffer() {
@@ -132,8 +130,8 @@ function _pasteTmuxBuffer() {
 }
 
 # input filter
-## peco前処理フィルター: pecoに渡す前の見栄えの調整
-function _pecoBeforeFilter() {
+## selector前処理フィルター: selectorに渡す前の見栄えの調整
+function _selectorBeforeFilter() {
   _removeColor | _trim
 }
 
@@ -148,7 +146,7 @@ function _trim() {
 }
 
 ## afteraction後処理フィルター
-function _pecoAfterFilter() {
+function _selectorAfterFilter() {
   Sources=( ${(@f)"$(< /dev/stdin)"} )
   for Source in $Sources
   do

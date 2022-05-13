@@ -1,9 +1,9 @@
 # Widgets
-## git add をpecoでする
+## git add をselectorでする
 ## http://petitviolet.hatenablog.com/entry/20140722/1406034439
-function peco-select-gitadd() {
+function selector-select-gitadd() {
     local SELECTED_FILE_TO_ADD="$(git status --porcelain | \
-                                  selector --prompt "[peco-select-gitadd]"| \
+                                  selector --prompt "[selector-select-gitadd]"| \
                                   awk -F ' ' '{print $NF}')"
     if [ -n "$SELECTED_FILE_TO_ADD" ]; then
       BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
@@ -11,36 +11,36 @@ function peco-select-gitadd() {
     fi
     zle accept-line
 }
-zle -N peco-select-gitadd
-bindkey "^a^a" peco-select-gitadd
+zle -N selector-select-gitadd
+bindkey "^a^a" selector-select-gitadd
 
-# peco history
-function pecoHistory() {
-    history -n -r 0 |selector --prompt "[pecoHistory]"| \
-      pecoAfterAction \
+# selector history
+function selectorHistory() {
+    history -n -r 0 |selector --prompt "[selectorHistory]"| \
+      selectorAfterAction \
         "%%STDIN%% zleExecuteAsCommand" \
         "%%STDIN%% zlePasteBuffer" \
         "%%STDIN%% paaTovim" \
         "%%STDIN%% pbcopy"
 }
-zle -N pecoHistory
-bindkey '^r' pecoHistory
+zle -N selectorHistory
+bindkey '^r' selectorHistory
 
-# peco autojump
-function pecoAutojump() {
+# selector autojump
+function selectorAutojump() {
     autojump --stat | perl -e '
       while(<>){push @line, $_}
       for $jumplist (reverse @line){
         @jumplist = split /\t/, $jumplist;
         print "$jumplist[1]"
-      }'|egrep -v '^[^/]' |selector --prompt "[pecoAutojump]"| \
-        pecoAfterAction \
+      }'|egrep -v '^[^/]' |selector --prompt "[selectorAutojump]"| \
+        selectorAfterAction \
           "%%STDIN%% zleExecuteAsCommand" \
           "%%STDIN%% zlePasteBuffer" \
           "%%STDIN%% paaTovim" \
           "%%STDIN%% pbcopy" \
           "cd "
 }
-zle -N pecoAutojump
-bindkey '^j' pecoAutojump
+zle -N selectorAutojump
+bindkey '^j' selectorAutojump
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# 概要： findしてpecoしてアクションする
+# 概要： findしてselectorしてアクションする
 
-find $@ | _pecoBeforeFilter| selector --prompt "[$0]"| pecoAfterAction "vi " \
+find $@ | _selectorBeforeFilter| selector --prompt "[$0]"| selectorAfterAction "vi " \
     "cd " \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz ' \
@@ -21,6 +21,6 @@ find $@ | _pecoBeforeFilter| selector --prompt "[$0]"| pecoAfterAction "vi " \
     "%%STDIN%% paaPbCopy" \
     "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaExecuteAsCommand"
 

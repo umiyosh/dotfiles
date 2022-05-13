@@ -2,12 +2,12 @@
 #概要： minion nodeに対してなにかする やつ
 kubectl get node | selector --prompt "[$0]"|egrep -v 'NAME.+STATUS.+AGE'| \
   awk '{print $1}'|sort | uniq | \
-    pecoAfterAction \
+    selectorAfterAction \
       "kubectl describe node " \
       "kubectl get node " \
       "kubectl get node --output=json " \
       "kubectl get node --output=yaml " \
       "%%STDIN%% cat" \
       "%%STDIN%% paaTovim" \
-      "%%STDIN%% pecoPipe" \
+      "%%STDIN%% selectorPipe" \
       "%%STDIN%% paaPbCopy"
