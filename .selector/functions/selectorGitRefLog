@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 #概要：git reflogにたいしていろいろやる
 git reflog | selector --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $1}'| \
-  pecoAfterAction "%%STDIN%% pbcopy" \
+  selectorAfterAction "%%STDIN%% pbcopy" \
     "git show " \
     "git checkout " \
     "git checkout " \
@@ -12,7 +12,7 @@ git reflog | selector --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $1}'| \
     "git reset --hard " \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaPbCopy" \
     "paaInputCommandAny"
 

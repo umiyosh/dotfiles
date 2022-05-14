@@ -7,7 +7,7 @@ function $self::getClusterIP() {
 }
 
 kubectl get svc --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|egrep -v 'NAME.+CLUSTER-IP'|sort | uniq | \
-  pecoAfterAction \
+  selectorAfterAction \
     "kubectl describe svc " \
     "kubectl get svc " \
     "kubectl get svc --output=json " \
@@ -16,5 +16,5 @@ kubectl get svc --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}
     "$self::getClusterIP " \
     "%%STDIN%% cat " \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaPbCopy"

@@ -2,7 +2,7 @@
 self=$0
 
 kubectl get deployment --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
-  pecoAfterAction \
+  selectorAfterAction \
     "kubectl describe deployment " \
     "kubectl get deployment " \
     "kubectl get deployment --output=json " \
@@ -10,5 +10,5 @@ kubectl get deployment --all-namespaces=true| selector --prompt "[$0]"| awk '{pr
     "kubectl edit deployment " \
     "%%STDIN%% cat " \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaPbCopy"

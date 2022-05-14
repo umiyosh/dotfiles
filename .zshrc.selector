@@ -1,0 +1,88 @@
+# sel
+
+FPATH="${HOME}/dotfiles/.selector/functions:${FPATH}"
+
+source ~/dotfiles/.zshrc.selectorLib
+source ~/dotfiles/.zshrc.selector.widgets
+
+# autoload sel functions
+autoload selectorPipe
+autoload selectorFu
+autoload selectorCdr
+autoload selectorKill
+autoload selectorAg
+autoload selectorRg
+autoload selectorAck
+autoload selectorLs
+autoload selectorFind
+autoload selectorLocate
+autoload selectorMdfind
+autoload selectorGitStatus
+autoload selectorGitBranch
+autoload selectorGitLog
+autoload selectorGitRefLog
+autoload selectorSsh
+autoload selectorK8sNode
+autoload selectorK8sPod
+autoload selectorK8sSvc
+autoload selectorK8sRc
+autoload selectorK8sConfigmap
+autoload selectorAliasAndFunc
+autoload selectorVenv
+autoload selectorK8sDep
+autoload selectorK8sIng
+
+# selector alias
+alias p="selectorPipe"
+alias fu="selectorFu"
+alias cdr="selectorCdr"
+alias pk="selectorKill"
+alias agv="selectorAg"
+alias rgv="selectorRg"
+alias ackv="selectorAck"
+alias l="selectorLs"
+alias fp="selectorFind"
+alias lpe="selectorLocate"
+alias mpe="selectorMdfind"
+alias gps="selectorGitStatus"
+alias gpb="selectorGitBranch"
+alias gpl="selectorGitLog"
+alias gpr="selectorGitRefLog"
+alias s="selectorSsh"
+alias kn="selectorK8sNode"
+alias kp="selectorK8sPod"
+alias ks="selectorK8sSvc"
+alias kr="selectorK8sRc"
+alias kd="selectorK8sDep"
+alias ki="selectorK8sIng"
+alias kc="selectorK8sConfigmap"
+alias vr="selectorVenv"
+alias help="selectorAliasAndFunc"
+alias afp="selectorAliasAndFunc"
+
+alias -g P='| p'
+alias fgo='fp $GOPATH'
+alias fgd='fd $GOPATH/src'
+alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
+
+alias kco=kubectx
+
+function gco() {
+  gcloud config configurations activate $(gcloud config configurations list |awk '{print $1}'|grep -v NAME|selector)
+}
+function up (){
+  current_dir=$(pwd)
+  target_dir_segment=$(echo $current_dir|perl -pe 's#/#\n#g'|sed '/^$/d' |selector)
+  target_dir=$(echo ${current_dir} |perl -pe "s#(/.+/${target_dir_segment})/.+#\1#g")
+  cd $target_dir
+}
+
+function f() {
+  target=${1:=.}
+  fp ${target} -name '.git' -prune -o -print
+}
+function fd() {
+  target=${1:=.}
+  fp ${target} -name '.git' -prune -o -type d
+}
+

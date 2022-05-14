@@ -23,8 +23,7 @@ source ~/dotfiles/.zshrc.path
 source ~/dotfiles/.zshrc.alias
 
 # Incremental search
-# Note: I have't use peco. So I'll change the filename in near future.
-source ~/dotfiles/.zshrc.peco
+source ~/dotfiles/.zshrc.selector
 
 # zshrc Setting per OSTYPE
 case "${OSTYPE}" in

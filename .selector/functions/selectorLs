@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 self=$0
 
-# 概要: lsしてpecoしてアクションする
+# 概要: lsしてselectorしてアクションする
 function $self::_replaceChar() {
   # adhocなやつ
   perl -pe 's{ \Domain Users}{\DomainUsers}g'
@@ -28,10 +28,10 @@ if [[ $searchPath != "." && ! $searchPath  =~ "/$" ]]; then
   searchPath=$searchPath/
 fi
 
-# find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _pecoBeforeFilter | $self::_replaceChar | \
+# find $searchPath -maxdepth 0 -print0 |xargs -0 ls -al | _selectorBeforeFilter | $self::_replaceChar | \
 # unbuffer ls -al $searchPath | $self::_replaceChar | \
 unbuffer exa --icons --git -la --long --header $searchPath | $self::_replaceChar | \
-  tail -r |selector --ansi --prompt "[$0]"| awk '{print $NF}' | $self::_interporatePath $searchPath | pecoAfterAction \
+  tail -r |selector --ansi --prompt "[$0]"| awk '{print $NF}' | $self::_interporatePath $searchPath | selectorAfterAction \
     "vi " \
     "gvim " \
     "cd " \
@@ -64,5 +64,5 @@ unbuffer exa --icons --git -la --long --header $searchPath | $self::_replaceChar
     "%%STDIN%% paaPbCopy" \
     "%%STDIN%% paaPbCopyFilename" \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaExecuteAsCommand"

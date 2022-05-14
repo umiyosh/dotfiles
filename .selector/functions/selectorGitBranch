@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 #概要：git branchにたいしていろいろする
-(git branch |perl -pe 's/^\* //g';git branch -r;git tag )|_pecoBeforeFilter| selector --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $NF}'| \
-  pecoAfterAction "git checkout " \
+(git branch |perl -pe 's/^\* //g';git branch -r;git tag )|_selectorBeforeFilter| selector --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $NF}'| \
+  selectorAfterAction "git checkout " \
     "git checkout -t " \
     "git branch -d " \
     "git branch -D " \
@@ -18,6 +18,6 @@
     "%%STDIN%% cat" \
     "%%STDIN%% paaPbCopy" \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "paaInputCommandAny"
 

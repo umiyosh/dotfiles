@@ -9,7 +9,7 @@ function $self::_convertPodToNodeIP() {
   wait
 }
 function $self::nodeSsh() {
-  $self::_convertPodToNodeIP | sort | uniq | pecoAfterAction "pssh "
+  $self::_convertPodToNodeIP | sort | uniq | selectorAfterAction "pssh "
 }
 
 function $self::_k8sSh() {
@@ -18,7 +18,7 @@ function $self::_k8sSh() {
 }
 
 function $self::k8sSh() {
-  pecoAfterAction "$self::_k8sSh "
+  selectorAfterAction "$self::_k8sSh "
 }
 
 function $self::_k8sShContainer() {
@@ -27,7 +27,7 @@ function $self::_k8sShContainer() {
 }
 
 function $self::k8sShContainer() {
-  pecoAfterAction "$self::_k8sShContainer "
+  selectorAfterAction "$self::_k8sShContainer "
 }
 function $self::k8sPortForward() {
 	local podName=$1
@@ -75,7 +75,7 @@ function $self::sternLogs() {
 }
 
 kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
-  pecoAfterAction \
+  selectorAfterAction \
     "kubectl describe pod " \
     "kubectl logs " \
     "kubectl logs -f " \
@@ -93,5 +93,5 @@ kubectl get po -o wide --all-namespaces=true| selector --prompt "[$0]"| awk '{pr
     "%%STDIN%% $self::nodeSsh" \
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaPbCopy"

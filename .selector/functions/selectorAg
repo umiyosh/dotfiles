@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+#概要：agしてselectorしてvimで開く
+ag $@ | _selectorBeforeFilter | selector --prompt "[$0]" | awk -F : '{print "-c " $2 " " $1}' | \
+  selectorAfterAction \
+    "vi " \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% selectorPipe" \
+    "%%STDIN%% cat" \
+    "pbcopy "

@@ -11,7 +11,7 @@ function $self::hubBrowse() {
 # git log --date=iso --pretty=format:'%h - <%an> %ce - %cd - %d %s ' --abbrev-commit \
 unbuffer git --no-pager log --date=iso --pretty=format:'%x09%C(yellow)%h%Creset - <%x09%C(cyan bold)%an%Creset> %ce - %cd - %C(magenta reverse)%d%Creset %s ' --abbrev-commit \
 | selector --ansi --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $1}'| \
-  pecoAfterAction "%%STDIN%% pbcopy" \
+  selectorAfterAction "%%STDIN%% pbcopy" \
     "git show " \
     "git checkout " \
     "git checkout " \
@@ -26,6 +26,6 @@ unbuffer git --no-pager log --date=iso --pretty=format:'%x09%C(yellow)%h%Creset 
     "%%STDIN%% cat" \
     "%%STDIN%% paaTovim" \
     "%%STDIN%% paaPbCopy" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "paaInputCommandAny"
 

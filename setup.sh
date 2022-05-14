@@ -2,7 +2,7 @@
 set -xe
 
 function deployDotfiles() {
-  DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.peco \
+  DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.selector \
               .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
               .ctags .gdbinit .gemrc .gitconfig .gitignore \
               .inputrc .irbrc .sbtconfig .vimrc \
@@ -10,7 +10,7 @@ function deployDotfiles() {
               .dir_colors .rdebugrc .perltidyrc .mackup.cfg \
               .zprofile .direnvrc
              )
-  DOT_DIRS=(.zsh .vim .peco )
+  DOT_DIRS=(.zsh .vim .selector )
 
   # dotfiles
   for file in "${DOT_FILES[@]}"

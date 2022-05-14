@@ -2,7 +2,7 @@
 self=$0
 
 kubectl get ingress --all-namespaces=true| selector --prompt "[$0]"| awk '{print $2}'|sort | uniq | \
-  pecoAfterAction \
+  selectorAfterAction \
     "kubectl describe ingress " \
     "kubectl get ingress " \
     "kubectl get ingress --output=json " \
@@ -10,5 +10,5 @@ kubectl get ingress --all-namespaces=true| selector --prompt "[$0]"| awk '{print
     "kubectl edit ingress " \
     "%%STDIN%% cat " \
     "%%STDIN%% paaTovim" \
-    "%%STDIN%% pecoPipe" \
+    "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaPbCopy"
