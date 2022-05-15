@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+self=$0
+
+func $self::removeAnsiColor() {
+    sed "s,$(printf '\033')\\[[0-9;]*[a-zA-Z],,g"
+}
+
+func $self::connectVpn () {
+    echo "Connecting VPN..."
+    gotunl -c $1
+    gotunl -l
+}
+
+func $self::closeVpn () {
+    echo "Clogin VPN..."
+    gotunl -d $1
+    gotunl -l
+}
+
+gotunl -l -o tsv | $self::removeAnsiColor |selector --prompt "[$0]"|awk '{print $1}' |selectorAfterAction \
+  "$self::connectVpn " \
+  '$self::closeVpn ' \
