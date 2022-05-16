@@ -23,6 +23,6 @@ func $self::closeVpn () {
     gotunl -l
 }
 
-gotunl -l -o tsv | $self::removeAnsiColor |selector --prompt "[$0]"|awk '{print $1}' |selectorAfterAction \
+gotunl -l -o tsv |egrep -v '^ +ID'| $self::removeAnsiColor |selector --prompt "[$0]"|awk '{print $1}' |selectorAfterAction \
   "%%STDIN%% $self::connectVpn " \
   "%%STDIN%% $self::closeVpn "
