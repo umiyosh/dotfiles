@@ -6,17 +6,23 @@ func $self::removeAnsiColor() {
 }
 
 func $self::connectVpn () {
-    echo "Connecting VPN..."
-    gotunl -c $1
+    VPNS=( ${(@f)"$(< /dev/stdin)"} )
+    for VPN in $VPNS; do
+        echo "Connecting VPN: $VPN"
+        gotunl -c $VPN
+    done
     gotunl -l
 }
 
 func $self::closeVpn () {
-    echo "Clogin VPN..."
-    gotunl -d $1
+    VPN=( ${(@f)"$(< /dev/stdin)"} )
+    for VPN in $VPN; do
+        echo "Closing VPN: $VPN"
+        gotunl -d $VPN
+    done
     gotunl -l
 }
 
 gotunl -l -o tsv | $self::removeAnsiColor |selector --prompt "[$0]"|awk '{print $1}' |selectorAfterAction \
-  "$self::connectVpn " \
-  '$self::closeVpn ' \
+  "%%STDIN%% $self::connectVpn " \
+  "%%STDIN%% $self::closeVpn "
