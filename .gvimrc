@@ -31,4 +31,4 @@ let $PATH = $HOME.'/.cabal/bin:'.$PATH
 
 set nowrapscan                   " 検索マッチ終端までいったらそこで止める。
 
-set guifont=Ricty\ for\ Powerline:h22
+set guifont=HackGen35Nerd\ Console:h22
