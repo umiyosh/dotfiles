@@ -228,6 +228,7 @@ call plug#begin('~/.vim/plugged')
 " ColorSchema{{{{
   " color schema 256
   Plug 'morhetz/gruvbox'
+  Plug 'sainnhe/gruvbox-material'
 " }}}
 
 " Fzf {{{{

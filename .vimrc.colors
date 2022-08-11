@@ -2,7 +2,7 @@ scriptencoding utf-8
 "-------------------------------------------------------------------------------
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
-colo gruvbox
+colo gruvbox-material
 set background=dark
 
 set cursorline
