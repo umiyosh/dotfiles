@@ -21,7 +21,21 @@ autocmd ColorScheme * hi CocInfoSign ctermfg=Green  guifg=Green
 autocmd FileType text let b:coc_suggest_disable = 1
 
 " Don't break line on Enter when displaying completion
-inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+" inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
+inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+inoremap <silent><expr> <down> coc#pum#visible() ? coc#pum#next(0) : "\<down>"
+inoremap <silent><expr> <up> coc#pum#visible() ? coc#pum#prev(0) : "\<up>"
+" inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+" let g:copilot_no_tab_map = v:true
+" inoremap <silent><expr> <TAB>
+      " \ coc#pum#visible() ? coc#pum#next(1):
+      " \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
+      " \ CheckBackSpace() ? "\<Tab>" :
+      " \ coc#refresh()
 
 " coc keymap
 nmap <silent> gp <Plug>(coc-diagnostic-prev)
