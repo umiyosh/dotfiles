@@ -218,8 +218,6 @@ call plug#begin('~/.vim/plugged')
     let &rtp=&rtp
     UpdateRemotePlugins
   endfunction
-  " gelguy/wilder.nvim
-  Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   " tyru/open-browser.vim
   Plug 'tyru/open-browser.vim'
   "
