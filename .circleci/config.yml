@@ -12,14 +12,14 @@ jobs:
           command: |
             sudo add-apt-repository ppa:jonathonf/vim
             sudo add-apt-repository ppa:neovim-ppa/unstable
-            sudo apt-get update
-            sudo apt-get install zsh
-            sudo apt-get install vim
-            sudo apt-get install neovim
-            sudo apt-get install nodejs
+            sudo apt update
+            sudo apt install zsh
+            sudo apt install vim
+            sudo apt install neovim
+            sudo apt install nodejs
             sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
-            sudo apt-get install golang
-            go get github.com/rhysd/vim-startuptime
+            sudo snap install --classic go
+            sudo go install github.com/rhysd/vim-startuptime@latest
             sudo apt-get install cpanminus
             sudo cpanm App::St
       - run:
@@ -32,8 +32,8 @@ jobs:
           command: |
             zsh -c 'exit'
             vim +qa
-            echo vim startup time[ms]:;vim-startuptime | egrep 'Total Average' |awk '{print $3}'
-            echo nvim startup time[ms]:;vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
+            echo vim startup time[ms]:;sudo /root/go/bin/vim-startuptime | egrep 'Total Average' |awk '{print $3}'
+            echo nvim startup time[ms]:;sudo /root/go/bin/vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
             echo zsh startup time[sec];./bin/zshbench
 workflows:
   version: 2
