@@ -35,3 +35,9 @@ source ~/dotfiles/.vimrc.plugins_setting
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
+
+" Load .vimrc.local if it exists.
+if filereadable(expand('~/dotfiles_private/.vimrc.local'))
+  source ~/dotfiles_private/.vimrc.local
+endif
+
