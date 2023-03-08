@@ -126,8 +126,6 @@ function ssh() {
     fi
 }
 
-alias terraform='~/dotfiles/bin/terraform'
-
 # python
 alias pdb="python -m pdb"
 
