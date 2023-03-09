@@ -220,6 +220,8 @@ call plug#begin('~/.vim/plugged')
   endfunction
   " tyru/open-browser.vim
   Plug 'tyru/open-browser.vim'
+  " itchyny/vim-cursorword
+  Plug 'itchyny/vim-cursorword'
   "
 " }}}
 
