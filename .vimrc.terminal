@@ -1,6 +1,11 @@
 
 " keymap
-nnoremap sh :belowright :terminal ++rows=10<CR>
-nnoremap <c-w>s :belowright :terminal ++rows=10<CR>
-tnoremap <c-w><Esc> <C-w>N
+nnoremap <silent> sh <cmd>belowright new<CR><cmd>terminal<CR>
+
+" ターミナルを開いたらに常にinsertモードに入る
+autocmd TermOpen * :startinsert
+
+" ターミナルモードで行番号を非表示
+autocmd TermOpen * setlocal norelativenumber
+autocmd TermOpen * setlocal nonumber
 
