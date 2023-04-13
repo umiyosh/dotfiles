@@ -424,8 +424,7 @@ augroup END
 "------------------------------------
 " vim-goimports
 "------------------------------------
-let g:goimports_simplify = 1
-let g:goimports_show_loclist = 0
+let g:goimports =  0
 
 "------------------------------------
 " vim-delve.vim
