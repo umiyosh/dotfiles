@@ -31,6 +31,7 @@ set ttimeoutlen=50
 set shortmess=a
 set cmdheight=2
 set mmp=5000
+set signcolumn=yes:2
 
 " autoreadの頻度を上げる
 augroup vimrc-checktime
