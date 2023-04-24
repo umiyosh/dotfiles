@@ -57,6 +57,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/neosnippet'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'antoinemadec/coc-fzf'
+  Plug 'github/copilot.vim'
 " }}}
 
 " Searching/Moving{{{
