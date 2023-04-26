@@ -184,12 +184,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'duff/vim-bufonly'
   " Use vim as a binary editor
   Plug 'Shougo/vinarise'
-  " トップっぽいところをカレントディレクトリに
-  " http://blog.remora.cx/2012/08/syntax-check-with-syntastic-and-rooter.html
-  if !has('nvim')
-    " Plug 'airblade/vim-rooter'
-    Plug 'airblade/vim-rooter'
-  endif
   " markdownのアウトライン表示
   Plug 'vim-voom/VOoM'
   " taskpaper.vim
