@@ -46,11 +46,9 @@ source ~/dotfiles/.zshrc.devenv
 
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
-# [Command Completion by Default · Issue \#345 · moovweb/gvm](https://github.com/moovweb/gvm/issues/345)
-[[ -s ~/.gvm/scripts/completion ]] && source ~/.gvm/scripts/completion
-
 # profiler
 # usage: modifie .zshenv and modifie this
 # if type zprof > /dev/null 2>&1; then
   # zprof | less
 # fi
+
