@@ -16,3 +16,5 @@ fi
 
 ## local zshrc settings for macvim
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
