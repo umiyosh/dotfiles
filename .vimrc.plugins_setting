@@ -495,6 +495,9 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+" copilot.vim enable to write markdown
+let g:copilot_filetypes = {'markdown': v:true}
+"
 "------------------------------------
 " neovim plugin settings
 " 'lukas-reineke/indent-blankline.nvim
