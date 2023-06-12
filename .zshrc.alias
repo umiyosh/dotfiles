@@ -185,5 +185,5 @@ ips () {
 alias corona="curl 'https://corona-stats.online?top=35&source=2&minimal=true&emojis=true'"
 
 alias ls="exa --icons --git -la --long --header"
-alias Tree=/usr/local/bin/tree
+alias Tree=/opt/homebrew/bin/tree
 alias tree="exa --tree --icons"
