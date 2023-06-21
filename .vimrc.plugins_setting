@@ -496,8 +496,12 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
-" copilot.vim enable to write markdown
-let g:copilot_filetypes = {'markdown': v:true}
+" copilot.vim enable to write markdown and gitcommit
+let g:copilot_filetypes = {
+\ 'markdown': v:true,
+\ 'gitcommit': v:true,
+\ }
+
 "
 "------------------------------------
 " neovim plugin settings
