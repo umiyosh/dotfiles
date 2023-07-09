@@ -468,13 +468,14 @@ nmap <silent> <Leader>cT :GoTestsAll<CR>
 "------------------------------------
 nmap <leader>y <Plug>(PopYank)
 
-"------------------------------------
+" ------------------------------------
 " RRethy/vim-illuminate
-"------------------------------------
+" ------------------------------------
+let g:Illuminate_useDeprecated = 1
 if has('nvim')
 augroup illuminate_augroup
     autocmd!
-    autocmd VimEnter * hi illuminatedWord cterm=underline,bold guibg=DarkBlue
+    autocmd VimEnter * hi illuminatedWord cterm=underline,bold guibg=DarkMagenta
 augroup END
 else
 augroup illuminate_augroup
