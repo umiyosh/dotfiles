@@ -118,6 +118,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'p00f/nvim-ts-rainbow'
     " m-demare/hlargs.nvim
     Plug 'm-demare/hlargs.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter-context'
   else
     " Rainbow Parentheses
     Plug 'junegunn/rainbow_parentheses.vim'
