@@ -322,12 +322,6 @@ map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
 
 "------------------------------------
-" matchit.vim
-"------------------------------------
-" 大文字小文字無視
-let b:match_ignorecase = 1
-
-"------------------------------------
 " vim-airline
 "------------------------------------
 let g:airline_powerline_fonts = 1
@@ -573,6 +567,14 @@ require("bufferline").setup{
 }
 require('hlargs').setup()
 require'colorizer'.setup()
+
+require'nvim-treesitter.configs'.setup {
+  matchup = {
+    enable = true,              -- mandatory, false will disable the whole extension
+    -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+    -- [options]
+  },
+}
 EOF
 " fzf selction like a easymotion
 nnoremap <silent> sB :BufferLinePick<CR>
