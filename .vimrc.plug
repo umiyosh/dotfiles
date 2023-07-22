@@ -103,6 +103,7 @@ call plug#begin('~/.vim/plugged')
   " vim-test
   Plug 'vim-test/vim-test'
   Plug 'tpope/vim-dispatch'
+  " TODO: remove "gotests-vim" because of not working
   " gotests
   Plug 'buoto/gotests-vim', { 'for' : 'go' }
   " terraform
@@ -199,8 +200,6 @@ call plug#begin('~/.vim/plugged')
   " Plug 'mattn/benchvimrc-vim'
   " dash.vim
   Plug 'rizzatti/dash.vim'
-  " biosugar0/vim-popyank
-  Plug 'biosugar0/vim-popyank'
   " rickhowe/diffchar.vim
   Plug 'rickhowe/diffchar.vim'
   " haya14busa/vim-asterisk

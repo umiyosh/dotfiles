@@ -457,10 +457,6 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>ct :GoTests<CR>
 nmap <silent> <Leader>cT :GoTestsAll<CR>
 
-"------------------------------------
-" biosugar0/vim-popyank
-"------------------------------------
-nmap <leader>y <Plug>(PopYank)
 
 " ------------------------------------
 " RRethy/vim-illuminate
