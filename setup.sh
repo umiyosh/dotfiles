@@ -28,6 +28,7 @@ function deployDotfiles() {
     fi
   done
 
+# TODO : ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
  if [[ ! -d $HOME/.config/nvim/ ]]; then
    mkdir -p $HOME/.config/nvim/
  fi
@@ -101,6 +102,7 @@ function installFzf() {
 function setupVimPlugins() {
   # vim
   ## vunndle and BundleInstall and make vimproc
+  ## TODO : SC2262 (warning): This alias can't be defined and used in the same parsing unit. Use a function instead.
   if [[ -e /usr/local/bin/mvim ]]; then
     alias vim='mvim -v'
   fi
