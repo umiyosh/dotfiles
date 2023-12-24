@@ -112,6 +112,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'hashivim/vim-terraform', { 'for' : 'terraform' }
   " yank yaml full path
   Plug 'cuducos/yaml.nvim'
+  " ai programming
+  Plug 'madox2/vim-ai'
 " }}}
 
 " Syntax {{{

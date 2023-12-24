@@ -474,6 +474,17 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+"------------------------------------
+" madox2/vim-ai
+"------------------------------------
+" let g:vim_ai_chat['options']['model'] = 'gpt-4'
+let g:vim_ai_chat = {
+\  "options": {
+\    "model": "gpt-4-1106-preview",
+\    "temperature": 0.2,
+\  },
+\}
+
 " copilot.vim enable to write markdown and gitcommit
 let g:copilot_filetypes = {
 \ 'markdown': v:true,
