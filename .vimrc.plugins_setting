@@ -160,6 +160,8 @@ nnoremap <silent> [fzf]m :<C-u>Marks<CR>
 nnoremap <silent> [fzf]h :<C-u>History:<CR>
 " search history一覧
 nnoremap <silent> [fzf]s :<C-u>History/<CR>
+" alll symbols
+nnoremap <silent> [fzf]a :<C-u>CocFzfList symbols<CR>
 " keymap
 nnoremap <silent> [fzf]k :<C-u>Maps<CR>
 " neosnippet
