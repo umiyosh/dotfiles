@@ -84,21 +84,6 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 "------------------------------------
-" vim smartinput
-"------------------------------------
-call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
-call smartinput#define_rule({
-  \   'at'    : '(\%#)',
-  \   'char'  : '<Space>',
-  \   'input' : '<Space><Space><Left>',
-  \   })
-call smartinput#define_rule({
-  \   'at'    : '( \%# )',
-  \   'char'  : '<BS>',
-  \   'input' : '<Del><BS>',
-  \   })
-
-"------------------------------------
 " lambdalisue/fern.vim
 "------------------------------------
 "" https://github.com/lambdalisue/fern.vim/wiki/Tips#how-to-customize-fern-buffer
