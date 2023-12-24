@@ -40,7 +40,9 @@ call plug#begin('~/.vim/plugged')
   " vim-textobj-indent : インデントされたものをtext-objectに
   Plug 'kana/vim-textobj-indent'
   " 括弧の入力
-  Plug 'kana/vim-smartinput'
+  " Plug 'kana/vim-smartinput'
+  " Plug 'cohama/lexima.vim'
+  " Plug 'windwp/nvim-autopairs'
   " phpDocumento
   Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', { 'for' : 'php' }
   " Emmet-vim
