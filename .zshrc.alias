@@ -187,3 +187,12 @@ alias corona="curl 'https://corona-stats.online?top=35&source=2&minimal=true&emo
 alias ls="exa --icons --git -la --long --header"
 alias Tree=/opt/homebrew/bin/tree
 alias tree="exa --tree --icons"
+
+function chkerr() {
+    rm "$(sgpt --list-chats|grep checkerror)"
+    (tee /dev/tty ; echo -e "\033[31m==========================診断結果です===============================\033[0m" > /dev/tty) | sgpt --chat checkerror "check logs, find errors, provide possible solutions, もしエラーが見つからない場合は問題は見つからなかったどだけ簡潔に伝えてください"
+}
+
+function chkerr_repl() {
+  sgpt --repl checkerror
+}
