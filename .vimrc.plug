@@ -53,6 +53,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'pearofducks/ansible-vim', { 'for' : 'yaml.ansible' }
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
   Plug 'mattn/vim-goimports', { 'for' : 'go' }
+  " migemo
+  Plug 'vim-denops/denops.vim'
+  Plug 'lambdalisue/kensaku.vim'
+  Plug 'lambdalisue/kensaku-search.vim'
 " }}}
 
 " Completion {{{
