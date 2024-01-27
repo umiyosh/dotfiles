@@ -6,4 +6,4 @@ url_encode() {
 current_time=$(date "+%H:%M")
 memo=$(url_encode "$*")
 
-open --background "obsidian://advanced-uri?vault=ObsidianVault&daily=true&mode=append&data=-%20${current_time}%20${memo}"
+open -g "obsidian://advanced-uri?vault=ObsidianVault&daily=true&mode=append&data=-%20${current_time}%20${memo}"
