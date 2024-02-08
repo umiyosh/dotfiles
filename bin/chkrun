@@ -5,4 +5,4 @@ function chkerr() {
     (tee /dev/tty ; echo -e "\033[31m==========================診断結果です===============================\033[0m" > /dev/tty) | sgpt --chat checkerror "check logs, find errors, provide possible solutions, もしエラーが見つからない場合は問題は「見つからなかった」とだけ簡潔に伝えてください"
 }
 
-{ eval "$1" 2>&1; echo "Exit status: $?" >&1; } | chkerr "$@"
+{ eval "$@" 2>&1; echo "Exit status: $?" >&1; } | chkerr
