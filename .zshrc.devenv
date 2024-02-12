@@ -1,6 +1,9 @@
 # python
 export PATH=~/.local/bin:$PATH
-source ~/python_v3.9/bin/activate
+# source ~/python_v3.9/bin/activate
+source ~/python_v3.11/bin/activate
+source "$HOME/.rye/env"
+
 
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
