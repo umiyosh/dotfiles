@@ -53,6 +53,9 @@ function! s:show_documentation()
   endif
 endfunction
 
+" 保存時にisort
+autocmd BufWritePre *.py :CocCommand python.sortImports
+
 " coc extentions
 let g:coc_global_extensions = [
     \'coc-spell-checker',
