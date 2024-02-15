@@ -76,8 +76,8 @@ call plug#begin('~/.vim/plugged')
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   Plug 'othree/eregex.vim'
   if has('nvim')
-    "'phaazon/hop.nvim'
-    Plug 'phaazon/hop.nvim'
+    " smoka7/hop.nvim
+    Plug 'smoka7/hop.nvim'
   else
     " 'easymotion/vim-easymotion'
     Plug 'easymotion/vim-easymotion'
