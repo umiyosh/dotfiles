@@ -99,12 +99,12 @@ nnoremap QQ :<C-u>Bufonly<CR>:<C-u>q!<CR>
 " <leader>fkのエイリアス。vimfilerで使う用。
 nnoremap QF :<C-u>Kwbd<CR>
 " かな(alt)＋Qで:q!
-" nnoremap <M-q> :q!<CR>
-nnoremap œ :q!<CR>
+nnoremap <M-q> :q!<CR>
+" nnoremap œ :q!<CR>
 
 " かな(alt)＋Sで上書き保存
-" nnoremap <M-s> :<C-u>w<CR>
-nnoremap ß :<C-u>w<CR>
+nnoremap <M-s> :<C-u>w<CR>
+" nnoremap ß :<C-u>w<CR>
 
 "libperl直接指定
 let $PERL_DLL = '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib'
