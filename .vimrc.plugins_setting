@@ -513,12 +513,6 @@ let g:rainbow_delimiters = {
     \ ],
 \ }
 
-" ------------------------------------
-" migemo
-" ------------------------------------
-"  keymap for kenaku-search
-cnoremap <CR> <Plug>(kensaku-search-replace)<CR>
-
 "------------------------------------
 " neovim plugin settings
 " 'lukas-reineke/indent-blankline.nvim
@@ -613,4 +607,5 @@ EOF
 " fzf selction like a easymotion
 nnoremap <silent> sB :BufferLinePick<CR>
 endif
+
 

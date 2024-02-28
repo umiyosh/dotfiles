@@ -55,8 +55,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/vim-goimports', { 'for' : 'go' }
   " migemo
   Plug 'vim-denops/denops.vim'
-  Plug 'lambdalisue/kensaku.vim'
-  Plug 'lambdalisue/kensaku-search.vim'
+  " Plug 'lambdalisue/kensaku.vim'
+  " Plug 'lambdalisue/kensaku-search.vim'
 " }}}
 
 " Completion {{{
