@@ -124,9 +124,15 @@
   generic = G move-last-line
   generic = ^F move-page-down
   generic = ^B move-page-up
-
+[diff]
+  ; tool = difftastic
+  external = difft
+; [difftool]
+  ; prompt = false
+; [difftool "difftastic"]
+  ; cmd = difft "$LOCAL" "$REMOTE"
 [pager]
-  diff =
+  difftool = true
 # p4fiff使いたい時はこっち使う
 ; [diff]
   ; external = p4diff
