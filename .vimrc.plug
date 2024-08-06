@@ -117,7 +117,15 @@ call plug#begin('~/.vim/plugged')
   " yank yaml full path
   Plug 'cuducos/yaml.nvim'
   " ai programming
-  Plug 'madox2/vim-ai'
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+  " Plug 'madox2/vim-ai'
+  Plug 'MunifTanjim/nui.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'folke/trouble.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'jackMort/ChatGPT.nvim'
+
 " }}}
 
 " Syntax {{{

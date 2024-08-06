@@ -2,6 +2,9 @@ scriptencoding utf-8
 "/-------------------------------------------------------------------------------
 " プラグインごとの設定 Plugins
 "-------------------------------------------------------------------------------
+ if has('termguicolors')
+   set termguicolors
+ endif
 
 "------------------------------------
 " operator-replace.vim
@@ -607,6 +610,21 @@ require'nvim-treesitter.configs'.setup {
     -- [options]
   },
 }
+
+require("chatgpt").setup({
+   openai_params = {
+     model = "gpt-4o",
+     frequency_penalty = 0,
+     presence_penalty = 0,
+     max_tokens = 4095,
+     temperature = 0.2,
+     top_p = 0.1,
+     n = 1,
+   },
+   actions_paths = {
+     "/Users/a14073/dotfiles/actions.json",
+   },
+  })
 EOF
 " fzf selction like a easymotion
 nnoremap <silent> sB :BufferLinePick<CR>
