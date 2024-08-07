@@ -13,6 +13,6 @@ cnoremap <Up>  <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down>  <C-n>
 
-source ~/dotfiles/.vimrc.completion.neosnippet
-source ~/dotfiles/.vimrc.completion.coc
+source ~/dotfiles/completion_neosnippet.vim
+source ~/dotfiles/completion_coc.vim
 
