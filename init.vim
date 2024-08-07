@@ -28,8 +28,8 @@ source ~/dotfiles/nvim_terminal.vim
 source ~/dotfiles/nvim_apperance.vim
 
 " 外に見せたくない環境変数など設定用
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
+if filereadable(expand('~/nvim_local.vim'))
+  source ~/nvim_local.vim
 endif
 
 " Load .vimrc.local if it exists.
@@ -40,7 +40,7 @@ endif
 " plugin settings
 if exists('g:vscode')
     " VSCode extension
-    " source ~/dotfiles/.vimrc.vscode.plugsetup
+    " source ~/dotfiles/nvim_plugsetup_vscode.vim
 else
     source ~/dotfiles/nvim_plugsetup_neovim.vim
 endif
