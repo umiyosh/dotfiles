@@ -221,18 +221,6 @@ nnoremap <Leader>gc :<C-u>Git commit<CR>
 nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
 nnoremap <Leader>gb :<C-u>Git blame<CR>
 
-if !has('nvim')
-  "------------------------------------
-  " vim-indent-guides
-  "------------------------------------
-  let g:indent_guides_enable_on_vim_startup = 1 " vim立ち上げ時に自動的にvim-indent-guidesをオンにする
-  let g:indent_guides_start_level           = 1 " 1インデント目からガイドする
-  let g:indent_guides_auto_colors           = 0 " 自動カラーを無効にして手動で設定する
-  let g:indent_guides_guide_size            = 1 " ガイドの幅
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=grey
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkgrey
-endif
-
 " let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
 
 if has('nvim')
@@ -353,11 +341,6 @@ autocmd FileType python nnoremap <leader>i :!isort %<CR><CR>
 "------------------------------------
 let g:pydocstring_enable_mapping = 0
 nmap <silent><Leader>l  <Plug>(pydocstring)
-
-"------------------------------------
-" Emmet-vim
-"------------------------------------
-let g:use_emmet_complete_tag = 1
 
 "------------------------------------
 " taskpaper.vim

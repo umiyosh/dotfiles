@@ -15,11 +15,7 @@ call plug#begin('~/.vim/plugged')
   " NERD_commenter.vim
   Plug 'scrooloose/nerdcommenter'
   " visually indent guide
-  if has('nvim')
-    Plug 'lukas-reineke/indent-blankline.nvim'
-  else
-    Plug 'nathanaelkane/vim-indent-guides'
-  endif
+  Plug 'lukas-reineke/indent-blankline.nvim'
   " yioneko/nvim-yati
   " Plug 'yioneko/nvim-yati'
   " vim-easy-align : 高機能整形・桁揃えプラグイン
@@ -39,24 +35,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-fold'
   " vim-textobj-indent : インデントされたものをtext-objectに
   Plug 'kana/vim-textobj-indent'
-  " 括弧の入力
-  " Plug 'kana/vim-smartinput'
-  " Plug 'cohama/lexima.vim'
-  " Plug 'windwp/nvim-autopairs'
-  " phpDocumento
-  Plug 'vim-scripts/PDV--phpDocumentor-for-Vim', { 'for' : 'php' }
-  " Emmet-vim
-  Plug 'mattn/emmet-vim'
   " editorconfig
   Plug 'editorconfig/editorconfig-vim'
-  " Ansible
-  Plug 'pearofducks/ansible-vim', { 'for' : 'yaml.ansible' }
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
   Plug 'mattn/vim-goimports', { 'for' : 'go' }
-  " migemo
-  " Plug 'vim-denops/denops.vim'
-  " Plug 'lambdalisue/kensaku.vim'
-  " Plug 'lambdalisue/kensaku-search.vim'
 " }}}
 
 " Completion {{{
@@ -67,8 +49,6 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Searching/Moving{{{
-  " vim-smartword : 単語移動がスマートな感じで
-  Plug 'kana/vim-smartword'
   " camelcasemotion : CamelCaseやsnake_case単位でのワード移動
   Plug 'vim-scripts/camelcasemotion'
   " 「%」による対応括弧へのカーソル移動機能を拡張
@@ -170,10 +150,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tweekmonster/hl-goimport.vim', { 'for' : 'go' }
   " RRethy/vim-illuminate
   Plug 'RRethy/vim-illuminate'
-  if has('nvim')
-    " 'norcalli/nvim-colorizer.lua'
-    Plug 'norcalli/nvim-colorizer.lua'
-  endif
+  Plug 'norcalli/nvim-colorizer.lua'
 " }}}
 
 " Utility {{{
