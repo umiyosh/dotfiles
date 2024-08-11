@@ -55,16 +55,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'andymass/vim-matchup'
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   Plug 'othree/eregex.vim'
-  if has('nvim')
-    " smoka7/hop.nvim
-    Plug 'smoka7/hop.nvim'
-  else
-    " 'easymotion/vim-easymotion'
-    Plug 'easymotion/vim-easymotion'
-  endif
-  " incremental search
-  Plug 'haya14busa/incsearch.vim'
-  Plug 'haya14busa/incsearch-easymotion.vim'
+  " smoka7/hop.nvim
+  Plug 'smoka7/hop.nvim'
 " }}}
 
 " Programming {{{
@@ -191,6 +183,7 @@ call plug#begin('~/.vim/plugged')
   " rickhowe/diffchar.vim
   Plug 'rickhowe/diffchar.vim'
   " haya14busa/vim-asterisk
+  " アスタリスク入力後にカーソルが移動しないのを防ぐ効果がある。
   Plug 'haya14busa/vim-asterisk'
   " ryanoasis/vim-devicons
   Plug 'ryanoasis/vim-devicons'
