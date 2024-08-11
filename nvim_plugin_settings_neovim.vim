@@ -472,13 +472,18 @@ let g:vim_ai_chat = {
 \  },
 \}
 
+"------------------------------------
 " copilot.vim enable to write markdown and gitcommit
+"------------------------------------
 let g:copilot_filetypes = {
 \ 'markdown': v:true,
 \ 'yaml': v:true,
 \ 'gitcommit': v:true,
 \ }
 
+"------------------------------------
+" 'hiphish/rainbow-delimiters.nvim'
+"------------------------------------
 let g:rainbow_delimiters = {
     \ 'strategy': {
         \ '': rainbow_delimiters#strategy.global,
@@ -498,7 +503,6 @@ let g:rainbow_delimiters = {
         \ 'RainbowDelimiterCyan',
     \ ],
 \ }
-
 "------------------------------------
 " neovim plugin settings
 " 'lukas-reineke/indent-blankline.nvim
