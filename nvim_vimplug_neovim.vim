@@ -109,17 +109,12 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Syntax {{{
-  if has('nvim')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " Rainbow Parentheses with treesitter
-    Plug 'hiphish/rainbow-delimiters.nvim'
-    " m-demare/hlargs.nvim
-    Plug 'm-demare/hlargs.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter-context'
-  else
-    " Rainbow Parentheses
-    Plug 'junegunn/rainbow_parentheses.vim'
-  endif
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Rainbow Parentheses with treesitter
+  Plug 'hiphish/rainbow-delimiters.nvim'
+  " m-demare/hlargs.nvim
+  Plug 'm-demare/hlargs.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter-context'
   " helm
   Plug 'towolf/vim-helm'
   " haml"
