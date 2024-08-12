@@ -201,7 +201,6 @@ nnoremap <Leader>gb :<C-u>Git blame<CR>
 "------------------------------------
 " smoka7/hop.nvim
 "------------------------------------
-" keymap for hop.nvim
 map  sb :HopWordBC<CR>
 vmap sb <cmd>HopWordBC<CR>
 map  sj :HopLineAC<CR>
