@@ -36,13 +36,18 @@ call plug#begin('~/.vim/plugged')
   " editorconfig
   Plug 'editorconfig/editorconfig-vim'
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
+  " 不足しているパッケージを挿入してくれるやつ。
   Plug 'mattn/vim-goimports', { 'for' : 'go' }
 " }}}
 
 " Completion {{{
+  " さまざまな言語のスニペットを使いやすく提供してくれるやつ
   Plug 'Shougo/neosnippet'
+  " LSP使った開発環境。補完、エラー検出など、いろいろやってくれるやつ
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " coc.nvimの組み込みファジーファインダーをfzfで置き換えるもの
   Plug 'antoinemadec/coc-fzf'
+  " LLMを使ってコードを提案してくれるやつ
   Plug 'github/copilot.vim'
 " }}}
 
