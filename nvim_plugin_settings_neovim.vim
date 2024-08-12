@@ -222,7 +222,7 @@ map  s/ :HopPattern<CR>
 vmap s/ <cmd>HopPattern<CR>
 
 "------------------------------------
-" Bundle 'haya14busa/incsearch.vim'
+" haya14busa/incsearch.vim
 "------------------------------------
 if has('nvim')
   " https://github.com/easymotion/vim-easymotion/issues/408
