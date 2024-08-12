@@ -79,8 +79,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'liuchengxu/vista.vim'
   " golang line debugger
   Plug 'sebdah/vim-delve', { 'for' : 'go' }
-  " vim-test
+  " vimからテストを実行するやつ
   Plug 'vim-test/vim-test'
+  " テストを非同期実行するために入れたやつ
   Plug 'tpope/vim-dispatch'
   " TODO: remove "gotests-vim" because of not working
   " gotests
