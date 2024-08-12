@@ -201,63 +201,26 @@ nnoremap <Leader>gb :<C-u>Git blame<CR>
 "------------------------------------
 " smoka7/hop.nvim
 "------------------------------------
-if has('nvim')
-  " keymap for hop.nvim
-  map  sb :HopWordBC<CR>
-  vmap sb <cmd>HopWordBC<CR>
-  map  sj :HopLineAC<CR>
-  vmap sj <cmd>HopLineAC<CR>
-  map  sk :HopLineBC<CR>
-  vmap sk <cmd>HopLineBC<CR>
-  map  se :HopWordAC<CR>
-  vmap se <cmd>HopWordAC<CR>
-  map  sw :HopWord<CR>
-  nmap sw :HopWord<CR>
-  vmap sw <cmd>HopWord<CR>
-  map  sl :HopLine<CR>
-  nmap sl :HopLine<CR>
-  vmap  sl <cmd>HopLine<CR>
-  map  sf :HopChar1<CR>
-  nmap sf :HopChar1<CR>
-  vmap st <cmd>HopChar1<CR>
-  map  s/ :HopPattern<CR>
-  vmap s/ <cmd>HopPattern<CR>
-else
-  "------------------------------------
-  " vim-easymotion
-  "------------------------------------
-  " Do not rely on default bidings.
-  let g:EasyMotion_do_mapping = 0
-  " Turn on case sensitive feature
-  let g:EasyMotion_smartcase = 1
-  " keep cursor column with `JK` motions
-  let g:EasyMotion_startofline = 0
-  " General Configuration
-  let g:EasyMotion_keys = 'HKLYUIOPNM.,QWERTASDGZXCVBJF'
-  " Show target key with upper case to improve readability
-  let g:EasyMotion_use_upper = 1
-  " Jump to first match with enter & space
-  let g:EasyMotion_enter_jump_first = 1
-  let g:EasyMotion_space_jump_first = 1
-  " custom for Colorscheme
-  hi EasyMotionTarget ctermbg=none ctermfg=green
-  " keymap for easymotion
-  map  sb <Plug>(easymotion-b)
-  map  sj <Plug>(easymotion-j)
-  map  sk <Plug>(easymotion-k)
-  map  se <Plug>(easymotion-e)
-  map  sE <Plug>(easymotion-E)
-  map  sw <Plug>(easymotion-bd-w)
-  nmap sw <Plug>(easymotion-overwin-w)
-  map  sl <Plug>(easymotion-bd-jk)
-  nmap sl <Plug>(easymotion-overwin-line)
-  map  sf <Plug>(easymotion-bd-f)
-  nmap sf <Plug>(easymotion-overwin-f)
-  vmap st <Plug>(easymotion-bd-f2)
-  nmap st <Plug>(easymotion-overwin-f2)
-  map  s/ <Plug>(incsearch-easymotion-/)
-  map  s? <Plug>(incsearch-easymotion-?)
-endif
+" keymap for hop.nvim
+map  sb :HopWordBC<CR>
+vmap sb <cmd>HopWordBC<CR>
+map  sj :HopLineAC<CR>
+vmap sj <cmd>HopLineAC<CR>
+map  sk :HopLineBC<CR>
+vmap sk <cmd>HopLineBC<CR>
+map  se :HopWordAC<CR>
+vmap se <cmd>HopWordAC<CR>
+map  sw :HopWord<CR>
+nmap sw :HopWord<CR>
+vmap sw <cmd>HopWord<CR>
+map  sl :HopLine<CR>
+nmap sl :HopLine<CR>
+vmap  sl <cmd>HopLine<CR>
+map  sf :HopChar1<CR>
+nmap sf :HopChar1<CR>
+vmap st <cmd>HopChar1<CR>
+map  s/ :HopPattern<CR>
+vmap s/ <cmd>HopPattern<CR>
 
 "------------------------------------
 " Bundle 'haya14busa/incsearch.vim'
