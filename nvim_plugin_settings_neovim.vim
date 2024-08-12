@@ -7,13 +7,12 @@ scriptencoding utf-8
  endif
 
 "------------------------------------
-" operator-replace.vim
+" kana/vim-operator-replace
 "------------------------------------
-" RwなどでYankしてるもので置き換える
 map _ <Plug>(operator-replace)
 
 "------------------------------------
-" Align
+" junegunn/vim-easy-align
 "------------------------------------
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -21,7 +20,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "------------------------------------
-" NERD_commenter.vim
+" scrooloose/nerdcommenter
 "------------------------------------
 " コメントの間にスペースを空ける
 let g:NERDSpaceDelims = 1
@@ -35,14 +34,13 @@ let g:NERDCustomDelimiters = {
     \ 'plantuml': { 'left': '''', 'leftAlt': 'FOO', 'rightAlt': 'BAR' }
 \ }
 "------------------------------------
-" dash.vim
+" rizzatti/dash.vim
 "------------------------------------
 nmap <silent> <leader><leader>d <Plug>DashSearch
 
 "------------------------------------
-" surround.vim
+" tpope/vim-surround
 "------------------------------------
-" s, ssで選択範囲を指定文字でくくる
 nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 let g:surround_{char2nr('e')} = "begin \r end"
@@ -58,23 +56,14 @@ let g:surround_{char2nr('[')} = "[\r]"
 nmap U :UndotreeToggle<cr>
 
 "------------------------------------
-" vista.vim
+" liuchengxu/vista.vim
 "------------------------------------
 map <silent> <leader>tl :Vista coc<CR>
 let g:vista#renderer#enable_icon = 1
 
 "------------------------------------
-" sumartword.vim
+" vim-scripts/camelcasemotion
 "------------------------------------
-map W  <Plug>(smartword-w)
-map B  <Plug>(smartword-b)
-map E  <Plug>(smartword-e)
-map ge  <Plug>(smartword-ge)
-
-"------------------------------------
-" camelcasemotion.vim
-"------------------------------------
-" <Shift-wbe>でCameCaseやsnake_case単位での単語移動
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
@@ -109,7 +98,7 @@ let g:fern#renderer = 'nerdfont'
 let g:fern_disable_startup_warnings = 1
 
 "------------------------------------
-" fzf.vim
+" junegunn/fzf.vim
 "------------------------------------
 " custom jumplist command
 " https://github.com/junegunn/fzf.vim/issues/865#issuecomment-955740371
@@ -185,7 +174,7 @@ endif
 nnoremap <silent> [fzf]j :Jumps<cr>
 
 "------------------------------------
-" quickrun.vim
+" thinca/vim-quickrun
 "------------------------------------
 if !exists('g:quickrun_config')
     let g:quickrun_config = {}
@@ -197,21 +186,7 @@ let g:quickrun_config._ = {'runner/vimproc/updatetime' : 40}
 let g:quickrun_config._ = {'split': 'rightbelow 15sp'}
 
 "------------------------------------
-" markdown prevew
-"------------------------------------
-" pandoc.css are described in the following gist.
-" https://gist.github.com/3663168
-let g:quickrun_config['markdown'] = {
-  \ 'type': 'markdown/pandoc',
-  \ 'outputter': 'browser',
-  \ 'cmdopt': '-s -S -i --self-contained --toc -c ~/apdat/other/pandoc.css'
-  \ }
-let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputter': 'browser' }
-
-silent! nmap <unique> <F6> <Plug>(quickrun)
-
-"------------------------------------
-" fugitive.vim
+" tpope/vim-fugitive
 "------------------------------------
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
@@ -223,6 +198,9 @@ nnoremap <Leader>gb :<C-u>Git blame<CR>
 
 " let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
 
+"------------------------------------
+" smoka7/hop.nvim
+"------------------------------------
 if has('nvim')
   " keymap for hop.nvim
   map  sb :HopWordBC<CR>
@@ -505,13 +483,13 @@ let g:rainbow_delimiters = {
 \ }
 "------------------------------------
 " neovim plugin settings
-" 'lukas-reineke/indent-blankline.nvim
-" 'nvim-treesitter/nvim-treesitter'
 " 'p00f/nvim-ts-rainbow'
-" 'phaazon/hop.nvim'
 "------------------------------------
 if has('nvim')
 lua <<EOF
+------------------------------------
+-- 'phaazon/hop.nvim'
+------------------------------------
 require'hop'.setup()
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
@@ -543,6 +521,9 @@ vim.g.indent_blankline_context_patterns = {
     "statement", "switch_body"
 }
 vim.g.rainbow_delimiters = { highlight = highlight }
+---------------------------------------
+-- 'lukas-reineke/indent-blankline.nvim
+---------------------------------------
 require("ibl").setup {
   indent = {
      char = "│",
@@ -558,6 +539,9 @@ require("ibl").setup {
 }
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 
+---------------------------------------
+-- 'nvim-treesitter/nvim-treesitter'
+---------------------------------------
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
   highlight = {
@@ -565,6 +549,9 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
 }
+---------------------------------------
+-- akinsho/bufferline.nvim
+---------------------------------------
 require("bufferline").setup{
   options = {
     diagnostics = "coc",
@@ -598,6 +585,9 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+---------------------------------------
+-- 'jackMort/ChatGPT.nvim'
+---------------------------------------
 require("chatgpt").setup({
    openai_params = {
      model = "gpt-4o",

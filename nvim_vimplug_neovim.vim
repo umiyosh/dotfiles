@@ -12,20 +12,18 @@ endif
 filetype off
 call plug#begin('~/.vim/plugged')
 " Edit {{{
-  " NERD_commenter.vim
+  " コメントアウトを簡単にするやつ
   Plug 'scrooloose/nerdcommenter'
-  " visually indent guide
+  " インデントガイド
   Plug 'lukas-reineke/indent-blankline.nvim'
-  " yioneko/nvim-yati
-  " Plug 'yioneko/nvim-yati'
-  " vim-easy-align : 高機能整形・桁揃えプラグイン
+  " 高機能整形・桁揃えプラグイン
   Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }
   " undo履歴を追える (need python support)
+  " TODO: git作業している間はほとんど使わないし、このプラグイン自体削除してもいいかも
   Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-  " Plug 'sjl/gundo.vim'
-  " surround.vim : テキストを括弧で囲む／削除する
+  " 選択範囲を指定文字で囲む
   Plug 'tpope/vim-surround'
-  " vim-operator-user : 簡単にoperatorを定義できるようにする
+  " 簡単にoperatorを定義できるようにする
   Plug 'kana/vim-operator-user'
   " operator-replace : yankしたものでreplaceする
   Plug 'kana/vim-operator-replace'
@@ -55,7 +53,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'andymass/vim-matchup'
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   Plug 'othree/eregex.vim'
-  " smoka7/hop.nvim
+  " hop.nvim : easymotion的な動作を提供してキーボードでの移動を効率化
   Plug 'smoka7/hop.nvim'
 " }}}
 
@@ -66,9 +64,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mindriot101/vim-yapf' , { 'for': 'python' }
   " pydocstring
   Plug 'heavenshell/vim-pydocstring' , { 'for': 'python' }
-  " python
-  Plug 'kh3phr3n/python-syntax' , { 'for': 'python' }
-  " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
+  " バッファ上のコードを実行してvimに送信するプラグイン。
   Plug 'thinca/vim-quickrun'
   " perldocやphpmanual等のリファレンスをvim上で見る
   Plug 'thinca/vim-ref'
@@ -121,10 +117,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-markdown', { 'for' : 'markdown' }
   Plug 'nelstrom/vim-markdown-folding', { 'for' : 'markdown' }
 
-  " terraform and hcl
-  " Plug 'fatih/vim-hclfmt'
-  " html5.vim
-  Plug 'othree/html5.vim'
   " css3 syntax
   Plug 'hail2u/vim-css3-syntax'
   " json.vim
@@ -143,7 +135,8 @@ call plug#begin('~/.vim/plugged')
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
   Plug 'Shougo/vimproc.vim'
-  " lambdalisue/fern.vim
+  " lambdalisue/fern.vim : 左ペインにファイル一覧を表示するプラグイン。
+  " TODO 別のプラグインに置き換えたい候補
   Plug 'lambdalisue/fern.vim'
   Plug 'lambdalisue/fern-git-status.vim'
   Plug 'lambdalisue/nerdfont.vim'
@@ -151,6 +144,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'lambdalisue/glyph-palette.vim'
   " vimからGit操作する
   Plug 'tpope/vim-fugitive'
+  " Github連携強化のプラグイン。GBrowseで開くとかのやつ
   Plug 'tpope/vim-rhubarb'
   " gitgutter
   Plug 'airblade/vim-gitgutter'
@@ -178,7 +172,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/DirDiff.vim'
   " benchvimrc-vim
   " Plug 'mattn/benchvimrc-vim'
-  " dash.vim
+  " カーソル下のワードをDashで検索する
   Plug 'rizzatti/dash.vim'
   " rickhowe/diffchar.vim
   Plug 'rickhowe/diffchar.vim'
@@ -208,7 +202,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'sainnhe/gruvbox-material'
 " }}}
 
-" Fzf {{{{
+" Incremental Search {{{{
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 " }}}
