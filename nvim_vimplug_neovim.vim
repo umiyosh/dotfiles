@@ -72,8 +72,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'heavenshell/vim-pydocstring' , { 'for': 'python' }
   " バッファ上のコードを実行してvimに送信するプラグイン。
   Plug 'thinca/vim-quickrun'
-  " SQLUtilities : SQL整形、生成ユーティリティ
-  Plug 'vim-scripts/SQLUtilities'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   Plug 'liuchengxu/vista.vim'
   " golang line debugger
