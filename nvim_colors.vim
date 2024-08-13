@@ -39,7 +39,7 @@ endif
 syntax enable
 hi Normal   ctermbg=none
 hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222
-hi Visual   term=reverse  cterm=reverse
+highlight Visual cterm=NONE ctermbg=189 ctermfg=NONE guibg=#DFDFFF guifg=NONE
 
 if has('nvim')
   set termguicolors
