@@ -64,7 +64,7 @@ call plug#begin('~/.vim/plugged')
 
 " Programming {{{
   " Pythonの仮想環境内でインストールされたパッケージをVimから利用できるようにするやつ
-  " TODO: このリポジトリはもうアーカイブされリードオンリーモードになっているので大体品を探した方が良い。
+  " TODO: このリポジトリはもうアーカイブされリードオンリーモードになっているので代替を探した方が良い。
   Plug 'jmcantrell/vim-virtualenv' , { 'for': 'python' }
   " python formatter
   Plug 'mindriot101/vim-yapf' , { 'for': 'python' }
