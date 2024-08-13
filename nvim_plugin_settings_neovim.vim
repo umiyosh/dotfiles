@@ -222,24 +222,6 @@ map  s/ :HopPattern<CR>
 vmap s/ <cmd>HopPattern<CR>
 
 "------------------------------------
-" haya14busa/incsearch.vim
-"------------------------------------
-if has('nvim')
-  " https://github.com/easymotion/vim-easymotion/issues/408
-  " https://github.com/haya14busa/incsearch.vim/issues/79
-  map <leader>/  <Plug>(incsearch-forward)
-  map <leader>?  <Plug>(incsearch-backward)
-else
-  map /   <Plug>(incsearch-forward)
-  map ?   <Plug>(incsearch-backward)
-endif
-
-map g/ <Plug>(incsearch-stay)
-map z/ <Plug>(incsearch-easymotion-/)
-map z? <Plug>(incsearch-easymotion-?)
-map zg/ <Plug>(incsearch-easymotion-stay)
-
-"------------------------------------
 " vim-airline
 "------------------------------------
 let g:airline_powerline_fonts = 1
