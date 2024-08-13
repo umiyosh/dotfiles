@@ -283,52 +283,6 @@ let g:pydocstring_enable_mapping = 0
 nmap <silent><Leader>l  <Plug>(pydocstring)
 
 "------------------------------------
-" taskpaper.vim
-"------------------------------------
-" 色調整
-syn match taskpaperDone		/^.*\s@done\(\(\s\|([^)]*)\).*\)\?$/
-syn match taskpaperCancelled	/^.*\s@cancelled\(\(\s\|([^)]*)\).*\)\?$/
-hi def link  taskpaperDone          Ignore
-hi def link  taskpaperCancelled     Ignore
-" キーマップとか追加した機能など
-function! s:taskpaper_setup()
-  " My Funtion : 一括toggle
-  function! Toggle_tag_eachline(tag) range
-    let l:startpos  = getpos('.')
-    call taskpaper#toggle_tag(a:tag,  '')
-    for l:line_cnt in range( a:firstline,  a:lastline )
-      call taskpaper#toggle_tag(a:tag,  '')
-      call cursor(l:line_cnt, 0)
-    endfor
-    call taskpaper#toggle_tag(a:tag,  '')
-    call cursor(l:startpos)
-  endfunction
-  " アーカイブ時にカーソルをその場の位置に固定
-  function! Archive_done_and_backpos()
-    let l:startpos  = getpos('.')
-    echo l:startpos
-    call taskpaper#archive_done()
-    call setpos('.', l:startpos)
-  endfunction
-  command! -range -nargs=1 MyToggletageachline <line1>,<line2>call Toggle_tag_eachline(<args>)
-  " My settings : キーマップ
-  nmap <buffer> <silent> <Leader>tD :<C-u>call Archive_done_and_backpos()<CR>
-  nmap <buffer> <silent> <Leader>tT <Plug>TaskPaperShowToday :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
-  nmap <buffer> <silent> <Leader>tX <Plug>TaskPaperShowCancelled :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
-  nnoremap <buffer> <silent> <Leader>tn :<C-u>call taskpaper#toggle_tag('now', '')<CR>
-  vmap <buffer> <silent> <Leader>tn :MyToggletageachline "now"   <CR>
-  vmap <buffer> <silent> <Leader>td :MyToggletageachline "done"  <CR>
-  vmap <buffer> <silent> <Leader>tt :MyToggletageachline "today" <CR>
-  vmap <buffer> <silent> <Leader>te :MyToggletageachline "evernote" <CR>
-  nmap <buffer> <silent> <Leader>tc :!echo task count: $( egrep '@today' % \|egrep -v '@done'\|wc -l  )<CR>
-  nmap <buffer> <silent> <Leader>tr :e %<CR>
-endfunction
-augroup vimrc-taskpaper
-autocmd!
-autocmd FileType taskpaper call s:taskpaper_setup()
-augroup END
-
-"------------------------------------
 " vim-goimports
 "------------------------------------
 let g:goimports_simplify = 1
@@ -342,16 +296,6 @@ nmap <silent> <Leader>9 :DlvToggleBreakpoint<CR>
 nmap <silent> <Leader>8 :DlvClearAll<CR>
 nmap <silent> <Leader>5 :DlvDebug<CR>
 nmap <silent> <Leader>4 :DlvTest<CR>
-
-"------------------------------------
-" plasticboy/vim-markdown
-"------------------------------------
-let g:markdown_fenced_languages = ['html', 'javascript' , 'python', 'bash=sh', 'go', 'ruby' , 'perl', 'php', 'vim', 'json', 'yaml', 'terraform', 'sql']
-
-"------------------------------------
-" kh3phr3n/python-syntax
-"------------------------------------
-let python_highlight_all = 1
 
 "------------------------------------
 " hashivim/vim-terraform
@@ -369,7 +313,6 @@ nmap <silent> <Leader>t :TestFile<CR>
 "------------------------------------
 nmap <silent> <Leader>ct :GoTests<CR>
 nmap <silent> <Leader>cT :GoTestsAll<CR>
-
 
 " ------------------------------------
 " RRethy/vim-illuminate

@@ -83,125 +83,105 @@ call plug#begin('~/.vim/plugged')
   " TODO: remove "gotests-vim" because of not working
   " gotests
   Plug 'buoto/gotests-vim', { 'for' : 'go' }
-  " terraform
+  " terraformのSyntax highlightとかのやつ
+  " TODO: ツリーシッターを使えばいらないんじゃないかって思った。
   Plug 'hashivim/vim-terraform', { 'for' : 'terraform' }
-  " yank yaml full path
+  " K8sのxplainを使うために、カーソル下のkeyをフルパスで取得するやつ
+  " TODO : インストールはされているが、設定が有効化されていない。
   Plug 'cuducos/yaml.nvim'
-  " ai programming
-  " Plug 'nvim-lua/plenary.nvim'
-  " Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
-  " Plug 'madox2/vim-ai'
-  Plug 'MunifTanjim/nui.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'folke/trouble.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'jackMort/ChatGPT.nvim'
+  " LLMとのチャットインターフェースを提供してくれるやつ {{{
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'folke/trouble.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'jackMort/ChatGPT.nvim'
+  " }}}
 
 " }}}
 
 " Syntax {{{
+  " Tree-sitterを使ってシンタックスハイライトを行うやつ
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " Rainbow Parentheses with treesitter
+  " 対応する括弧を色違いで表示してくれるやつ。
   Plug 'hiphish/rainbow-delimiters.nvim'
-  " m-demare/hlargs.nvim
+  " 引数をシンタックスハイライトしてくれるやつ。Tree-sitterを使っている。
   Plug 'm-demare/hlargs.nvim'
+  " 画面に収まりきらない関数定義部分を表示してくれるやつ。
   Plug 'nvim-treesitter/nvim-treesitter-context'
-  " helm
+  " helmのシンタックスハイライト
   Plug 'towolf/vim-helm'
-  " haml"
-  Plug 'vim-scripts/Haml'
-  " JavaScript
-  Plug 'vim-scripts/JavaScript-syntax'
-  " jQuery
-  Plug 'vim-scripts/jQuery'
-  " nginx conf
-  Plug 'vim-scripts/nginx.vim'
-  " markdown
-  Plug 'tpope/vim-markdown', { 'for' : 'markdown' }
-  Plug 'nelstrom/vim-markdown-folding', { 'for' : 'markdown' }
-
-  " css3 syntax
-  Plug 'hail2u/vim-css3-syntax'
-  " json.vim
+  " JSONファイルの視認性と編集体験を向上するやつ
   Plug 'elzr/vim-json', { 'for' : 'json' }
-  " plantuml
+  " plantuml シンタックスハイライト
   Plug 'aklt/plantuml-syntax'
-  " vcl for varnish
+  " varnish設定ファイルのシンタックスハイライト
   Plug 'smerrill/vcl-vim-plugin'
-  " tweekmonster/hl-goimport.vim
-  Plug 'tweekmonster/hl-goimport.vim', { 'for' : 'go' }
-  " RRethy/vim-illuminate
+  " カーソルの下の単語を自動ハイライトするやつ
   Plug 'RRethy/vim-illuminate'
+  " カラーコードを実際の色で表示してくれるやつ
   Plug 'norcalli/nvim-colorizer.lua'
 " }}}
 
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
   Plug 'Shougo/vimproc.vim'
-  " lambdalisue/fern.vim : 左ペインにファイル一覧を表示するプラグイン。
+  " 左ペインにファイル一覧を表示するやつ {{{
   " TODO 別のプラグインに置き換えたい候補
-  Plug 'lambdalisue/fern.vim'
-  Plug 'lambdalisue/fern-git-status.vim'
-  Plug 'lambdalisue/nerdfont.vim'
-  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-  Plug 'lambdalisue/glyph-palette.vim'
+    Plug 'lambdalisue/fern.vim'
+    Plug 'lambdalisue/fern-git-status.vim'
+    Plug 'lambdalisue/nerdfont.vim'
+    Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+    Plug 'lambdalisue/glyph-palette.vim'
+  " }}}
   " vimからGit操作する
   Plug 'tpope/vim-fugitive'
   " Github連携強化のプラグイン。GBrowseで開くとかのやつ
   Plug 'tpope/vim-rhubarb'
-  " gitgutter
+  " 編集した行のgit差分を左側に表示してくれるやつ
   Plug 'airblade/vim-gitgutter'
-  " ステータスラインをカッコよくする
+  " ステータスラインをカッコよくするやつ
   Plug 'vim-airline/vim-airline'
-  if has('nvim')
-    " 'akinsho/bufferline.nvim'
-    Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
-  endif
-  " 分割を維持してバッファ削除
+  " バッファーを上部に表示してくれるやつ
+  Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+  " Markdownの見出し単位の折りたたみを提供するやつ
+  Plug 'nelstrom/vim-markdown-folding', { 'for' : 'markdown' }
+  " 分割を維持してバッファ削除。複数のバッファを一つ狙い撃ちで消すときに特に使っているやつ
   Plug 'rgarver/Kwbd.vim'
-  " 現在開いている以外のバッファを全部削除
+  " 現在開いている以外のバッファを全部削除するやつ. BufOnlyコマンド
   Plug 'duff/vim-bufonly'
-  " Use vim as a binary editor
+  " バイナリエディターの機能を提供してくれるやつ
   Plug 'Shougo/vinarise'
   " markdownのアウトライン表示
   Plug 'vim-voom/VOoM'
-  " taskpaper.vim
-  Plug 'davidoc/taskpaper.vim'
-  " foldtextの見た目をよくする
+  " foldtextの情報量を増やして折り畳みの体験をよくするやつ
   Plug 'LeafCage/foldCC'
-  " repeat.vim
+  " .(ドット)で繰り返し操作を拡張してくれるやつ
   Plug 'tpope/vim-repeat'
-  " DirDiff.vim
+  " ディレクトリ間の再帰的なDiff表示してくれるやつ
   Plug 'vim-scripts/DirDiff.vim'
-  " benchvimrc-vim
-  " Plug 'mattn/benchvimrc-vim'
   " カーソル下のワードをDashで検索する
   Plug 'rizzatti/dash.vim'
   " rickhowe/diffchar.vim
   Plug 'rickhowe/diffchar.vim'
-  " haya14busa/vim-asterisk
   " アスタリスク入力後にカーソルが移動しないのを防ぐ効果がある。
   Plug 'haya14busa/vim-asterisk'
-  " ryanoasis/vim-devicons
+  " nerdfontのグリフを使ってファイルタイプを表示してくれるやつ
   Plug 'ryanoasis/vim-devicons'
-  if has('nvim')
-    " kevinhwang91/nvim-bqf
-    Plug 'kevinhwang91/nvim-bqf'
-  endif
+  " QuickFixWindowにプレビューを追加したり、見栄えを良くしてくれるやつ
+  Plug 'kevinhwang91/nvim-bqf'
   function! UpdateRemotePlugins(...)
     " Needed to refresh runtime files
     let &rtp=&rtp
     UpdateRemotePlugins
   endfunction
-  " tyru/open-browser.vim
+  " 編集ファイル内のURLをいい感じにブラウザで開いてくれるやつ
   Plug 'tyru/open-browser.vim'
-  " itchyny/vim-cursorword
-  Plug 'itchyny/vim-cursorword'
-  "
+  " benchvimrc-vim
+  " Plug 'mattn/benchvimrc-vim'
 " }}}
 
 " ColorSchema{{{{
-  " color schema 256
+  " color schema gruvbox
   Plug 'sainnhe/gruvbox-material'
 " }}}
 

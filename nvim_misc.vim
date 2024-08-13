@@ -96,8 +96,6 @@ nnoremap q/ q/a
 
 " QQですぐおわる(保存せず終了。保存して終了はZZ。)
 nnoremap QQ :<C-u>Bufonly<CR>:<C-u>q!<CR>
-" <leader>fkのエイリアス。vimfilerで使う用。
-nnoremap QF :<C-u>Kwbd<CR>
 " かな(alt)＋Qで:q!
 nnoremap <M-q> :q!<CR>
 " nnoremap œ :q!<CR>
