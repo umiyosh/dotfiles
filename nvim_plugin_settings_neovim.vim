@@ -2,15 +2,17 @@ scriptencoding utf-8
 "/-------------------------------------------------------------------------------
 " プラグインごとの設定 Plugins
 "-------------------------------------------------------------------------------
+ if has('termguicolors')
+   set termguicolors
+ endif
 
 "------------------------------------
-" operator-replace.vim
+" kana/vim-operator-replace
 "------------------------------------
-" RwなどでYankしてるもので置き換える
 map _ <Plug>(operator-replace)
 
 "------------------------------------
-" Align
+" junegunn/vim-easy-align
 "------------------------------------
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -18,7 +20,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "------------------------------------
-" NERD_commenter.vim
+" scrooloose/nerdcommenter
 "------------------------------------
 " コメントの間にスペースを空ける
 let g:NERDSpaceDelims = 1
@@ -32,14 +34,13 @@ let g:NERDCustomDelimiters = {
     \ 'plantuml': { 'left': '''', 'leftAlt': 'FOO', 'rightAlt': 'BAR' }
 \ }
 "------------------------------------
-" dash.vim
+" rizzatti/dash.vim
 "------------------------------------
 nmap <silent> <leader><leader>d <Plug>DashSearch
 
 "------------------------------------
-" surround.vim
+" tpope/vim-surround
 "------------------------------------
-" s, ssで選択範囲を指定文字でくくる
 nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 let g:surround_{char2nr('e')} = "begin \r end"
@@ -55,23 +56,14 @@ let g:surround_{char2nr('[')} = "[\r]"
 nmap U :UndotreeToggle<cr>
 
 "------------------------------------
-" vista.vim
+" liuchengxu/vista.vim
 "------------------------------------
 map <silent> <leader>tl :Vista coc<CR>
 let g:vista#renderer#enable_icon = 1
 
 "------------------------------------
-" sumartword.vim
+" vim-scripts/camelcasemotion
 "------------------------------------
-map W  <Plug>(smartword-w)
-map B  <Plug>(smartword-b)
-map E  <Plug>(smartword-e)
-map ge  <Plug>(smartword-ge)
-
-"------------------------------------
-" camelcasemotion.vim
-"------------------------------------
-" <Shift-wbe>でCameCaseやsnake_case単位での単語移動
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
@@ -106,7 +98,7 @@ let g:fern#renderer = 'nerdfont'
 let g:fern_disable_startup_warnings = 1
 
 "------------------------------------
-" fzf.vim
+" junegunn/fzf.vim
 "------------------------------------
 " custom jumplist command
 " https://github.com/junegunn/fzf.vim/issues/865#issuecomment-955740371
@@ -182,7 +174,7 @@ endif
 nnoremap <silent> [fzf]j :Jumps<cr>
 
 "------------------------------------
-" quickrun.vim
+" thinca/vim-quickrun
 "------------------------------------
 if !exists('g:quickrun_config')
     let g:quickrun_config = {}
@@ -194,21 +186,7 @@ let g:quickrun_config._ = {'runner/vimproc/updatetime' : 40}
 let g:quickrun_config._ = {'split': 'rightbelow 15sp'}
 
 "------------------------------------
-" markdown prevew
-"------------------------------------
-" pandoc.css are described in the following gist.
-" https://gist.github.com/3663168
-let g:quickrun_config['markdown'] = {
-  \ 'type': 'markdown/pandoc',
-  \ 'outputter': 'browser',
-  \ 'cmdopt': '-s -S -i --self-contained --toc -c ~/apdat/other/pandoc.css'
-  \ }
-let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputter': 'browser' }
-
-silent! nmap <unique> <F6> <Plug>(quickrun)
-
-"------------------------------------
-" fugitive.vim
+" tpope/vim-fugitive
 "------------------------------------
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
@@ -218,95 +196,30 @@ nnoremap <Leader>gc :<C-u>Git commit<CR>
 nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
 nnoremap <Leader>gb :<C-u>Git blame<CR>
 
-if !has('nvim')
-  "------------------------------------
-  " vim-indent-guides
-  "------------------------------------
-  let g:indent_guides_enable_on_vim_startup = 1 " vim立ち上げ時に自動的にvim-indent-guidesをオンにする
-  let g:indent_guides_start_level           = 1 " 1インデント目からガイドする
-  let g:indent_guides_auto_colors           = 0 " 自動カラーを無効にして手動で設定する
-  let g:indent_guides_guide_size            = 1 " ガイドの幅
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=grey
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey39   ctermbg=darkgrey
-endif
-
 " let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
 
-if has('nvim')
-  " keymap for hop.nvim
-  map  sb :HopWordBC<CR>
-  vmap sb <cmd>HopWordBC<CR>
-  map  sj :HopLineAC<CR>
-  vmap sj <cmd>HopLineAC<CR>
-  map  sk :HopLineBC<CR>
-  vmap sk <cmd>HopLineBC<CR>
-  map  se :HopWordAC<CR>
-  vmap se <cmd>HopWordAC<CR>
-  map  sw :HopWord<CR>
-  nmap sw :HopWord<CR>
-  vmap sw <cmd>HopWord<CR>
-  map  sl :HopLine<CR>
-  nmap sl :HopLine<CR>
-  vmap  sl <cmd>HopLine<CR>
-  map  sf :HopChar1<CR>
-  nmap sf :HopChar1<CR>
-  vmap st <cmd>HopChar1<CR>
-  map  s/ :HopPattern<CR>
-  vmap s/ <cmd>HopPattern<CR>
-else
-  "------------------------------------
-  " vim-easymotion
-  "------------------------------------
-  " Do not rely on default bidings.
-  let g:EasyMotion_do_mapping = 0
-  " Turn on case sensitive feature
-  let g:EasyMotion_smartcase = 1
-  " keep cursor column with `JK` motions
-  let g:EasyMotion_startofline = 0
-  " General Configuration
-  let g:EasyMotion_keys = 'HKLYUIOPNM.,QWERTASDGZXCVBJF'
-  " Show target key with upper case to improve readability
-  let g:EasyMotion_use_upper = 1
-  " Jump to first match with enter & space
-  let g:EasyMotion_enter_jump_first = 1
-  let g:EasyMotion_space_jump_first = 1
-  " custom for Colorscheme
-  hi EasyMotionTarget ctermbg=none ctermfg=green
-  " keymap for easymotion
-  map  sb <Plug>(easymotion-b)
-  map  sj <Plug>(easymotion-j)
-  map  sk <Plug>(easymotion-k)
-  map  se <Plug>(easymotion-e)
-  map  sE <Plug>(easymotion-E)
-  map  sw <Plug>(easymotion-bd-w)
-  nmap sw <Plug>(easymotion-overwin-w)
-  map  sl <Plug>(easymotion-bd-jk)
-  nmap sl <Plug>(easymotion-overwin-line)
-  map  sf <Plug>(easymotion-bd-f)
-  nmap sf <Plug>(easymotion-overwin-f)
-  vmap st <Plug>(easymotion-bd-f2)
-  nmap st <Plug>(easymotion-overwin-f2)
-  map  s/ <Plug>(incsearch-easymotion-/)
-  map  s? <Plug>(incsearch-easymotion-?)
-endif
-
 "------------------------------------
-" Bundle 'haya14busa/incsearch.vim'
+" smoka7/hop.nvim
 "------------------------------------
-if has('nvim')
-  " https://github.com/easymotion/vim-easymotion/issues/408
-  " https://github.com/haya14busa/incsearch.vim/issues/79
-  map <leader>/  <Plug>(incsearch-forward)
-  map <leader>?  <Plug>(incsearch-backward)
-else
-  map /   <Plug>(incsearch-forward)
-  map ?   <Plug>(incsearch-backward)
-endif
-
-map g/ <Plug>(incsearch-stay)
-map z/ <Plug>(incsearch-easymotion-/)
-map z? <Plug>(incsearch-easymotion-?)
-map zg/ <Plug>(incsearch-easymotion-stay)
+map  sb :HopWordBC<CR>
+vmap sb <cmd>HopWordBC<CR>
+map  sj :HopLineAC<CR>
+vmap sj <cmd>HopLineAC<CR>
+map  sk :HopLineBC<CR>
+vmap sk <cmd>HopLineBC<CR>
+map  se :HopWordAC<CR>
+vmap se <cmd>HopWordAC<CR>
+map  sw :HopWord<CR>
+nmap sw :HopWord<CR>
+vmap sw <cmd>HopWord<CR>
+map  sl :HopLine<CR>
+nmap sl :HopLine<CR>
+vmap  sl <cmd>HopLine<CR>
+map  sf :HopChar1<CR>
+nmap sf :HopChar1<CR>
+vmap st <cmd>HopChar1<CR>
+map  s/ :HopPattern<CR>
+vmap s/ <cmd>HopPattern<CR>
 
 "------------------------------------
 " vim-airline
@@ -352,57 +265,6 @@ let g:pydocstring_enable_mapping = 0
 nmap <silent><Leader>l  <Plug>(pydocstring)
 
 "------------------------------------
-" Emmet-vim
-"------------------------------------
-let g:use_emmet_complete_tag = 1
-
-"------------------------------------
-" taskpaper.vim
-"------------------------------------
-" 色調整
-syn match taskpaperDone		/^.*\s@done\(\(\s\|([^)]*)\).*\)\?$/
-syn match taskpaperCancelled	/^.*\s@cancelled\(\(\s\|([^)]*)\).*\)\?$/
-hi def link  taskpaperDone          Ignore
-hi def link  taskpaperCancelled     Ignore
-" キーマップとか追加した機能など
-function! s:taskpaper_setup()
-  " My Funtion : 一括toggle
-  function! Toggle_tag_eachline(tag) range
-    let l:startpos  = getpos('.')
-    call taskpaper#toggle_tag(a:tag,  '')
-    for l:line_cnt in range( a:firstline,  a:lastline )
-      call taskpaper#toggle_tag(a:tag,  '')
-      call cursor(l:line_cnt, 0)
-    endfor
-    call taskpaper#toggle_tag(a:tag,  '')
-    call cursor(l:startpos)
-  endfunction
-  " アーカイブ時にカーソルをその場の位置に固定
-  function! Archive_done_and_backpos()
-    let l:startpos  = getpos('.')
-    echo l:startpos
-    call taskpaper#archive_done()
-    call setpos('.', l:startpos)
-  endfunction
-  command! -range -nargs=1 MyToggletageachline <line1>,<line2>call Toggle_tag_eachline(<args>)
-  " My settings : キーマップ
-  nmap <buffer> <silent> <Leader>tD :<C-u>call Archive_done_and_backpos()<CR>
-  nmap <buffer> <silent> <Leader>tT <Plug>TaskPaperShowToday :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
-  nmap <buffer> <silent> <Leader>tX <Plug>TaskPaperShowCancelled :<C-u> set foldtext=FoldCCtext() <CR> :<C-u>set foldmethod=manual <CR>
-  nnoremap <buffer> <silent> <Leader>tn :<C-u>call taskpaper#toggle_tag('now', '')<CR>
-  vmap <buffer> <silent> <Leader>tn :MyToggletageachline "now"   <CR>
-  vmap <buffer> <silent> <Leader>td :MyToggletageachline "done"  <CR>
-  vmap <buffer> <silent> <Leader>tt :MyToggletageachline "today" <CR>
-  vmap <buffer> <silent> <Leader>te :MyToggletageachline "evernote" <CR>
-  nmap <buffer> <silent> <Leader>tc :!echo task count: $( egrep '@today' % \|egrep -v '@done'\|wc -l  )<CR>
-  nmap <buffer> <silent> <Leader>tr :e %<CR>
-endfunction
-augroup vimrc-taskpaper
-autocmd!
-autocmd FileType taskpaper call s:taskpaper_setup()
-augroup END
-
-"------------------------------------
 " vim-goimports
 "------------------------------------
 let g:goimports_simplify = 1
@@ -416,16 +278,6 @@ nmap <silent> <Leader>9 :DlvToggleBreakpoint<CR>
 nmap <silent> <Leader>8 :DlvClearAll<CR>
 nmap <silent> <Leader>5 :DlvDebug<CR>
 nmap <silent> <Leader>4 :DlvTest<CR>
-
-"------------------------------------
-" plasticboy/vim-markdown
-"------------------------------------
-let g:markdown_fenced_languages = ['html', 'javascript' , 'python', 'bash=sh', 'go', 'ruby' , 'perl', 'php', 'vim', 'json', 'yaml', 'terraform', 'sql']
-
-"------------------------------------
-" kh3phr3n/python-syntax
-"------------------------------------
-let python_highlight_all = 1
 
 "------------------------------------
 " hashivim/vim-terraform
@@ -444,7 +296,7 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>ct :GoTests<CR>
 nmap <silent> <Leader>cT :GoTestsAll<CR>
 
-
+highlight goImportedPkg ctermfg=1 guifg=#ff0000
 " ------------------------------------
 " RRethy/vim-illuminate
 " ------------------------------------
@@ -486,13 +338,18 @@ let g:vim_ai_chat = {
 \  },
 \}
 
+"------------------------------------
 " copilot.vim enable to write markdown and gitcommit
+"------------------------------------
 let g:copilot_filetypes = {
 \ 'markdown': v:true,
 \ 'yaml': v:true,
 \ 'gitcommit': v:true,
 \ }
 
+"------------------------------------
+" 'hiphish/rainbow-delimiters.nvim'
+"------------------------------------
 let g:rainbow_delimiters = {
     \ 'strategy': {
         \ '': rainbow_delimiters#strategy.global,
@@ -512,21 +369,23 @@ let g:rainbow_delimiters = {
         \ 'RainbowDelimiterCyan',
     \ ],
 \ }
-
 "------------------------------------
 " neovim plugin settings
-" 'lukas-reineke/indent-blankline.nvim
-" 'nvim-treesitter/nvim-treesitter'
 " 'p00f/nvim-ts-rainbow'
-" 'phaazon/hop.nvim'
 "------------------------------------
 if has('nvim')
 lua <<EOF
+------------------------------------
+-- 'phaazon/hop.nvim'
+------------------------------------
 require'hop'.setup()
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 
+---------------------------------------
+-- 'lukas-reineke/indent-blankline.nvim
+---------------------------------------
 local highlight = {
     "RainbowRed",
     "RainbowYellow",
@@ -568,6 +427,9 @@ require("ibl").setup {
 }
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 
+---------------------------------------
+-- 'nvim-treesitter/nvim-treesitter'
+---------------------------------------
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
   highlight = {
@@ -575,6 +437,9 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
 }
+---------------------------------------
+-- akinsho/bufferline.nvim
+---------------------------------------
 require("bufferline").setup{
   options = {
     diagnostics = "coc",
@@ -597,16 +462,34 @@ require("bufferline").setup{
 
   }
 }
+
+---------------------------------------
+-- m-demare/hlargs.nvim
+---------------------------------------
 require('hlargs').setup()
+
+---------------------------------------
+-- norcalli/nvim-colorizer.lua
+---------------------------------------
 require'colorizer'.setup()
 
-require'nvim-treesitter.configs'.setup {
-  matchup = {
-    enable = true,              -- mandatory, false will disable the whole extension
-    -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
-    -- [options]
+---------------------------------------
+-- 'jackMort/ChatGPT.nvim'
+---------------------------------------
+require("chatgpt").setup({
+   openai_params = {
+     model = "gpt-4o",
+     frequency_penalty = 0,
+     presence_penalty = 0,
+     max_tokens = 4095,
+     temperature = 0.2,
+     top_p = 0.1,
+     n = 1,
+   },
+  actions_paths = {
+    vim.fn.expand("$HOME/dotfiles/cgpt_actions.json"),
   },
-}
+  })
 EOF
 " fzf selction like a easymotion
 nnoremap <silent> sB :BufferLinePick<CR>
