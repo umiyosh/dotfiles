@@ -314,6 +314,7 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>ct :GoTests<CR>
 nmap <silent> <Leader>cT :GoTestsAll<CR>
 
+highlight goImportedPkg ctermfg=1 guifg=#ff0000
 " ------------------------------------
 " RRethy/vim-illuminate
 " ------------------------------------
@@ -400,6 +401,9 @@ vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 
+---------------------------------------
+-- 'lukas-reineke/indent-blankline.nvim
+---------------------------------------
 local highlight = {
     "RainbowRed",
     "RainbowYellow",
@@ -426,9 +430,6 @@ vim.g.indent_blankline_context_patterns = {
     "statement", "switch_body"
 }
 vim.g.rainbow_delimiters = { highlight = highlight }
----------------------------------------
--- 'lukas-reineke/indent-blankline.nvim
----------------------------------------
 require("ibl").setup {
   indent = {
      char = "│",
@@ -479,16 +480,16 @@ require("bufferline").setup{
 
   }
 }
-require('hlargs').setup()
-require'colorizer'.setup()
 
-require'nvim-treesitter.configs'.setup {
-  matchup = {
-    enable = true,              -- mandatory, false will disable the whole extension
-    -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
-    -- [options]
-  },
-}
+---------------------------------------
+-- m-demare/hlargs.nvim
+---------------------------------------
+require('hlargs').setup()
+
+---------------------------------------
+-- norcalli/nvim-colorizer.lua
+---------------------------------------
+require'colorizer'.setup()
 
 ---------------------------------------
 -- 'jackMort/ChatGPT.nvim'
