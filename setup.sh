@@ -109,7 +109,6 @@ function setupVimPlugins() {
   alias vim='mvim -v'
   if [[ ! -d $HOME/.vim/plugged ]]; then
     vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qa
-    vim +'set more!' +GoInstallBinaries +qa
     cd "$HOME/.vim/plugged/vimproc.vim/"
     case "${OSTYPE}" in
     darwin*)
