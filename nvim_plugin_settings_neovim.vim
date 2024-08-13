@@ -504,9 +504,9 @@ require("chatgpt").setup({
      top_p = 0.1,
      n = 1,
    },
-   actions_paths = {
-     "/Users/a14073/dotfiles/actions.json",
-   },
+  actions_paths = {
+    vim.fn.expand("$HOME/dotfiles/cgpt_actions.json"),
+  },
   })
 EOF
 " fzf selction like a easymotion
