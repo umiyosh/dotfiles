@@ -10,6 +10,8 @@ jobs:
       - run:
           name: dependencies
           command: |
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 868C56076B935C6E
             sudo add-apt-repository ppa:jonathonf/vim
             sudo add-apt-repository ppa:neovim-ppa/unstable
             sudo apt update
