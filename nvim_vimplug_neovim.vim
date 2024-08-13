@@ -124,7 +124,7 @@ call plug#begin('~/.vim/plugged')
 
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
-  Plug 'Shougo/vimproc.vim'
+  Plug 'Shougo/vimproc.vim', {'do' : 'make'}
   " 左ペインにファイル一覧を表示するやつ {{{
   " TODO 別のプラグインに置き換えたい候補
     Plug 'lambdalisue/fern.vim'
