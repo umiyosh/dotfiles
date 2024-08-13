@@ -40,7 +40,11 @@ endif
 " plugin settings
 if exists('g:vscode')
     " VSCode extension
+    " coc.nvimなどVS Codeの機能とバッティングしている機能を省くためにプラグインの読み込みを
+    " 分けようと考えていたが、今のところ困りごとが起こっていないので一旦共通にする。
+    " 将来困りごとが起こるとき、このファイルで対処しようと思う
     " source ~/dotfiles/nvim_plugsetup_vscode.vim
+    source ~/dotfiles/nvim_plugsetup_neovim.vim
 else
     source ~/dotfiles/nvim_plugsetup_neovim.vim
 endif
