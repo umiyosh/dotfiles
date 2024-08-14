@@ -108,7 +108,8 @@ function setupVimPlugins() {
   fi
   alias vim='mvim -v'
   if [[ ! -d $HOME/.vim/plugged ]]; then
-    vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qa
+    # TODO 将来VS Codeで出し分けする場合、直接ファイル指定している場所を適正化する必要がある
+    vim -Nu "$HOME/dotfiles/nvim_vimplug_neovim.vim" +PlugInstall! +qa
     cd "$HOME/.vim/plugged/vimproc.vim/"
     case "${OSTYPE}" in
     darwin*)
@@ -120,7 +121,8 @@ function setupVimPlugins() {
     esac
     cd "$HOME/dotfiles/"
   else
-    vim -Nu "$HOME/dotfiles/.vimrc.plug" +PlugInstall! +qa
+    # TODO 将来VS Codeで出し分けする場合、直接ファイル指定している場所を適正化する必要がある
+    vim -Nu "$HOME/dotfiles/nvim_vimplug_neovim.vim" +PlugInstall! +qa
   fi
 }
 
