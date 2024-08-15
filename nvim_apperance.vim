@@ -37,22 +37,3 @@ set foldlevel=5
 hi Folded gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey30 guifg=Grey80
 hi FoldColumn gui=bold term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey guifg=DarkBlue
 
-"" php 関数の折りたたみ
-" TODO: phpfolding.vimの導入
-" let php_folding=1
-au Syntax php set fdm=syntax
-
-" php 文字列中のSQLをハイライトする
-let g:php_sql_query=1
-" php 文字列中のHTMLをハイライトする
-let g:php_htmlInStrings=1
-" php ショートタグ (<?を無効にする→ハイライト除外にする)
-let g:php_noShortTags = 1
-
-" <? を無効にする→ハイライト除外にする
-let g:php_noShortTags = 1
-
-" ] や ) の対応エラーをハイライト
-let g:php_parent_error_close = 1
-let g:php_parent_error_open = 1
-" set listchars=eol:¬,tab:▸\
