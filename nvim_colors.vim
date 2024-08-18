@@ -41,10 +41,7 @@ hi Normal   ctermbg=none
 hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222
 highlight Visual cterm=NONE ctermbg=189 ctermfg=NONE guibg=#DFDFFF guifg=NONE
 
-if has('nvim')
-  set termguicolors
-  set pumblend=10
-  set winblend=10
-  hi! Normal ctermbg=NONE guibg=NONE
-endif
-
+set termguicolors
+set pumblend=10
+set winblend=10
+hi! Normal ctermbg=NONE guibg=NONE

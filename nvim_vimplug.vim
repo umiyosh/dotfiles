@@ -17,12 +17,12 @@ call plug#begin('~/.vim/plugged')
   if !exists('g:vscode')
     " インデントガイド
     Plug 'lukas-reineke/indent-blankline.nvim'
+    " undo履歴を追える (need python support)
+    " TODO: git作業している間はほとんど使わないし、このプラグイン自体削除してもいいかも
+    Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
   endif
   " 高機能整形・桁揃えプラグイン
   Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }
-  " undo履歴を追える (need python support)
-  " TODO: git作業している間はほとんど使わないし、このプラグイン自体削除してもいいかも
-  Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
   " 選択範囲を指定文字で囲む
   Plug 'tpope/vim-surround'
   " 簡単にoperatorを定義できるようにする
@@ -39,18 +39,22 @@ call plug#begin('~/.vim/plugged')
   Plug 'editorconfig/editorconfig-vim'
   " https://mattn.kaoriya.net/software/vim/20200106103137.htm
   " 不足しているパッケージを挿入してくれるやつ。
-  Plug 'mattn/vim-goimports', { 'for' : 'go' }
+  if !exists('g:vscode')
+    Plug 'mattn/vim-goimports', { 'for' : 'go' }
+  endif
 " }}}
 
 " Completion {{{
   " さまざまな言語のスニペットを使いやすく提供してくれるやつ
   Plug 'Shougo/neosnippet'
-  " LSP使った開発環境。補完、エラー検出など、いろいろやってくれるやつ
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " coc.nvimの組み込みファジーファインダーをfzfで置き換えるもの
-  Plug 'antoinemadec/coc-fzf'
-  " LLMを使ってコードを提案してくれるやつ
-  Plug 'github/copilot.vim'
+  if !exists('g:vscode')
+    " LSP使った開発環境。補完、エラー検出など、いろいろやってくれるやつ
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " coc.nvimの組み込みファジーファインダーをfzfで置き換えるもの
+    Plug 'antoinemadec/coc-fzf'
+    " LLMを使ってコードを提案してくれるやつ
+    Plug 'github/copilot.vim'
+  endif
 " }}}
 
 " Searching/Moving{{{
@@ -91,25 +95,29 @@ call plug#begin('~/.vim/plugged')
   " K8sのxplainを使うために、カーソル下のkeyをフルパスで取得するやつ
   " TODO : インストールはされているが、設定が有効化されていない。
   Plug 'cuducos/yaml.nvim'
+  if !exists('g:vscode')
   " LLMとのチャットインターフェースを提供してくれるやつ {{{
     Plug 'MunifTanjim/nui.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'folke/trouble.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'jackMort/ChatGPT.nvim'
+  endif
   " }}}
 
 " }}}
 
 " Syntax {{{
-  " Tree-sitterを使ってシンタックスハイライトを行うやつ
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " 対応する括弧を色違いで表示してくれるやつ。
-  Plug 'hiphish/rainbow-delimiters.nvim'
-  " 引数をシンタックスハイライトしてくれるやつ。Tree-sitterを使っている。
-  Plug 'm-demare/hlargs.nvim'
-  " 画面に収まりきらない関数定義部分を表示してくれるやつ。
-  Plug 'nvim-treesitter/nvim-treesitter-context'
+  if !exists('g:vscode')
+    " Tree-sitterを使ってシンタックスハイライトを行うやつ
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " 対応する括弧を色違いで表示してくれるやつ。
+    Plug 'hiphish/rainbow-delimiters.nvim'
+    " 引数をシンタックスハイライトしてくれるやつ。Tree-sitterを使っている。
+    Plug 'm-demare/hlargs.nvim'
+    " 画面に収まりきらない関数定義部分を表示してくれるやつ。
+    Plug 'nvim-treesitter/nvim-treesitter-context'
+  endif
   " helmのシンタックスハイライト
   Plug 'towolf/vim-helm'
   " JSONファイルの視認性と編集体験を向上するやつ
@@ -127,6 +135,7 @@ call plug#begin('~/.vim/plugged')
 " Utility {{{
   " vimproc : vimから非同期実行。vimshelleで必要
   Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+  if !exists('g:vscode')
   " 左ペインにファイル一覧を表示するやつ {{{
   " TODO 別のプラグインに置き換えたい候補
     Plug 'lambdalisue/fern.vim'
@@ -135,16 +144,19 @@ call plug#begin('~/.vim/plugged')
     Plug 'lambdalisue/fern-renderer-nerdfont.vim'
     Plug 'lambdalisue/glyph-palette.vim'
   " }}}
+  endif
   " vimからGit操作する
   Plug 'tpope/vim-fugitive'
   " Github連携強化のプラグイン。GBrowseで開くとかのやつ
   Plug 'tpope/vim-rhubarb'
-  " 編集した行のgit差分を左側に表示してくれるやつ
-  Plug 'airblade/vim-gitgutter'
-  " ステータスラインをカッコよくするやつ
-  Plug 'vim-airline/vim-airline'
-  " バッファーを上部に表示してくれるやつ
-  Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+  if !exists('g:vscode')
+    " 編集した行のgit差分を左側に表示してくれるやつ
+    Plug 'airblade/vim-gitgutter'
+    " ステータスラインをカッコよくするやつ
+    Plug 'vim-airline/vim-airline'
+    " バッファーを上部に表示してくれるやつ
+    Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+  endif
   " Markdownの見出し単位の折りたたみを提供するやつ
   Plug 'nelstrom/vim-markdown-folding', { 'for' : 'markdown' }
   " 分割を維持してバッファ削除。複数のバッファを一つ狙い撃ちで消すときに特に使っているやつ
@@ -167,8 +179,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'rickhowe/diffchar.vim'
   " アスタリスク入力後にカーソルが移動しないのを防ぐ効果がある。
   Plug 'haya14busa/vim-asterisk'
-  " nerdfontのグリフを使ってファイルタイプを表示してくれるやつ
-  Plug 'ryanoasis/vim-devicons'
+  if !exists('g:vscode')
+    " nerdfontのグリフを使ってファイルタイプを表示してくれるやつ
+    Plug 'ryanoasis/vim-devicons'
+  endif
   " QuickFixWindowにプレビューを追加したり、見栄えを良くしてくれるやつ
   Plug 'kevinhwang91/nvim-bqf'
   function! UpdateRemotePlugins(...)
@@ -188,8 +202,10 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Incremental Search {{{{
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+  if !exists('g:vscode')
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+  endif
 " }}}
 call plug#end()
 

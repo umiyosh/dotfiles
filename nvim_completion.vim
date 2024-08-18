@@ -14,5 +14,6 @@ cnoremap <C-n> <Down>
 cnoremap <Down>  <C-n>
 
 source ~/dotfiles/completion_neosnippet.vim
-source ~/dotfiles/completion_coc.vim
-
+if !exists('g:vscode')
+  source ~/dotfiles/completion_coc.vim
+endif
