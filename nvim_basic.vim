@@ -43,10 +43,6 @@ augroup END
 set mouse=nv
 set guioptions+=nv
 
-if !has('nvim')
-  set ttymouse=xterm2
-endif
-
 "ヤンクした文字は、システムのクリップボードに入れる"
 set clipboard=unnamed
 " 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
