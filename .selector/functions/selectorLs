@@ -33,7 +33,8 @@ fi
 unbuffer exa --no-user --icons --git -la --long --header $searchPath | $self::_replaceChar | \
   tail -r |selector --ansi --prompt "[$0]"| awk '{print $NF}' | $self::_interporatePath $searchPath | selectorAfterAction \
     "vi " \
-    "gvim " \
+    "code " \
+    "cursor " \
     "cd " \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz ' \
