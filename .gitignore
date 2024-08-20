@@ -24,3 +24,4 @@ samples
 .zsh/extention/
 .vim/view/
 .vim/coc-settings.json
+.aider*
