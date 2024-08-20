@@ -5,8 +5,7 @@ function deployDotfiles() {
   DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.selector \
               .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
               .ctags .gdbinit .gemrc .gitconfig .gitignore \
-              .inputrc .irbrc .sbtconfig \
-              .gvimrc .tmux.conf \
+              .inputrc .irbrc .gvimrc .tmux.conf \
               .dir_colors .rdebugrc .perltidyrc .mackup.cfg \
               .zprofile .direnvrc
              )
@@ -32,8 +31,13 @@ function deployDotfiles() {
  if [[ ! -d $HOME/.config/nvim/ ]]; then
    mkdir -p $HOME/.config/nvim/
  fi
- ln -s "$HOME/dotfiles/init.lua" "$HOME/.config/nvim/"
-
+ NVIM_CONFIG_DIR="$HOME/.config/nvim"
+ if [[ ! -L "$NVIM_CONFIG_DIR/init.lua" ]]; then
+   ln -s "$HOME/dotfiles/init.lua" "$NVIM_CONFIG_DIR/init.lua"
+ fi
+ if [[ ! -L "$NVIM_CONFIG_DIR/lua" ]]; then
+   ln -s "$HOME/dotfiles/lua" "$NVIM_CONFIG_DIR/lua"
+ fi
 }
 
 function changeShell() {
