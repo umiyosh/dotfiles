@@ -27,10 +27,10 @@ function deployDotfiles() {
   done
 
 # TODO : ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
- if [[ ! -d $HOME/.config/nvim/ ]]; then
-   mkdir -p $HOME/.config/nvim/
- fi
  NVIM_CONFIG_DIR="$HOME/.config/nvim"
+ if [[ ! -d "$NVIM_CONFIG_DIR" ]]; then
+   mkdir -p "$NVIM_CONFIG_DIR"
+ fi
  if [[ ! -L "$NVIM_CONFIG_DIR/init.lua" ]]; then
    ln -s "$HOME/dotfiles/init.lua" "$NVIM_CONFIG_DIR/init.lua"
  fi
