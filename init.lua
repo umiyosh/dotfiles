@@ -17,7 +17,7 @@ local function source_if_exists(file)
 end
 
 require('basic')
-source('~/dotfiles/nvim_indent.vim')
+require('indent')
 source('~/dotfiles/nvim_tags.vim')
 source('~/dotfiles/nvim_search.vim')
 source('~/dotfiles/nvim_moving.vim')
