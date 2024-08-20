@@ -16,13 +16,6 @@ local function source_if_exists(file)
     end
 end
 
--- 基本的な設定
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-vim.opt.runtimepath:prepend("~/.vim")
-vim.opt.runtimepath:append("~/.vim/after")
-vim.opt.packpath = vim.opt.runtimepath:get() -- 修正箇所
-
 require('basic')
 source('~/dotfiles/nvim_statusline.vim')
 source('~/dotfiles/nvim_indent.vim')
