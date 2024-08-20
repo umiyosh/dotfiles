@@ -20,7 +20,6 @@ vim.opt.viminfo:append(':10000')            -- command line history size
 vim.opt.viminfo:append('/10000')            -- search pattern history size
 vim.opt.modelines = 0                       -- モードラインは無効
 vim.opt.title = false                       -- 「VIMを使ってくれてありがとう」無し
-vim.opt.autoread = true                     -- 外部から変更あった場合は自動読み込みする
 vim.opt.wrapscan = false                    -- 検索マッチ終端までいったらそこで止める
 vim.opt.undofile = false                    -- undofileは作らない
 vim.opt.history = 10000                     -- コマンド・検索パターンの履歴数
