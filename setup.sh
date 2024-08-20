@@ -32,7 +32,7 @@ function deployDotfiles() {
  if [[ ! -d $HOME/.config/nvim/ ]]; then
    mkdir -p $HOME/.config/nvim/
  fi
- ln -s "$HOME/dotfiles/init.vim" "$HOME/.config/nvim/"
+ ln -s "$HOME/dotfiles/init.lua" "$HOME/.config/nvim/"
 
 }
 
