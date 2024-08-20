@@ -24,7 +24,7 @@ vim.opt.runtimepath:append("~/.vim/after")
 vim.opt.packpath = vim.opt.runtimepath:get() -- 修正箇所
 
 
-source('~/dotfiles/nvim_basic.vim')
+require('nvim_basic')
 source('~/dotfiles/nvim_statusline.vim')
 source('~/dotfiles/nvim_indent.vim')
 source('~/dotfiles/nvim_tags.vim')
