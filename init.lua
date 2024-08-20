@@ -1,44 +1,47 @@
-scriptencoding utf-8
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
+-- Vimscriptコマンドを実行するためのヘルパー関数
+local function cmd(command)
+    vim.cmd(command)
+end
 
-"基本設定
-source ~/dotfiles/nvim_basic.vim
-"StatusLine設定
-source ~/dotfiles/nvim_statusline.vim
-"インデント設定
-source ~/dotfiles/nvim_indent.vim
-"Tags関連
-source ~/dotfiles/nvim_tags.vim
-"検索関連
-source ~/dotfiles/nvim_search.vim
-"移動関連
-source ~/dotfiles/nvim_moving.vim
-"編集関連
-source ~/dotfiles/nvim_editing.vim
-"エンコーディング関連
-source ~/dotfiles/nvim_encoding.vim
-"その他
-source ~/dotfiles/nvim_misc.vim
-"補完関連
-source ~/dotfiles/nvim_completion.vim
-"terminal関連
-source ~/dotfiles/nvim_terminal.vim
-"表示関連
-source ~/dotfiles/nvim_apperance.vim
+-- 各設定ファイルの読み込み
+local function source(file)
+    cmd('source ' .. file)
+end
 
-" 外に見せたくない環境変数など設定用
-if filereadable(expand('~/nvim_local.vim'))
-  source ~/nvim_local.vim
-endif
+-- 条件付きファイル読み込み
+local function source_if_exists(file)
+    local expanded_file = vim.fn.expand(file)
+    if vim.fn.filereadable(expanded_file) == 1 then
+        source(expanded_file)
+    end
+end
 
-" Load .vimrc.local if it exists.
-if filereadable(expand('~/dotfiles_private/nvim_local.vim'))
-  source ~/dotfiles_private/nvim_local.vim
-endif
+-- 基本的な設定
+vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
+vim.opt.runtimepath:prepend("~/.vim")
+vim.opt.runtimepath:append("~/.vim/after")
+vim.opt.packpath = vim.opt.runtimepath:get() -- 修正箇所
 
-" plugin settings
-source ~/dotfiles/nvim_plugsetup.vim
 
-" カラースキーム
-source ~/dotfiles/nvim_colors.vim
+source('~/dotfiles/nvim_basic.vim')
+source('~/dotfiles/nvim_statusline.vim')
+source('~/dotfiles/nvim_indent.vim')
+source('~/dotfiles/nvim_tags.vim')
+source('~/dotfiles/nvim_search.vim')
+source('~/dotfiles/nvim_moving.vim')
+source('~/dotfiles/nvim_editing.vim')
+source('~/dotfiles/nvim_encoding.vim')
+source('~/dotfiles/nvim_misc.vim')
+source('~/dotfiles/nvim_completion.vim')
+source('~/dotfiles/nvim_terminal.vim')
+source('~/dotfiles/nvim_apperance.vim')
+
+source_if_exists('~/nvim_local.vim')
+source_if_exists('~/dotfiles_private/nvim_local.vim')
+
+-- プラグイン設定
+source('~/dotfiles/nvim_plugsetup.vim')
+
+-- カラースキーム
+source('~/dotfiles/nvim_colors.vim')
