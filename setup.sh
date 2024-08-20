@@ -4,8 +4,8 @@ set -xe
 function deployDotfiles() {
   DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.selector \
               .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
-              .ctags .gdbinit .gitconfig .gitignore \
-              .inputrc .tmux.conf .dir_colors .perltidyrc .mackup.cfg \
+              .gdbinit .gitconfig .gitignore \
+              .inputrc .tmux.conf .perltidyrc .mackup.cfg \
               .zprofile .direnvrc
              )
   DOT_DIRS=(.zsh .vim .selector )
