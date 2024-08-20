@@ -29,6 +29,8 @@ vim.opt.shortmess = 'a'
 vim.opt.cmdheight = 2
 vim.opt.mmp = 5000
 vim.opt.signcolumn = 'yes:2'
+vim.opt.laststatus = 2                      -- 常にステータスラインを表示
+vim.opt.ruler = true                        -- カーソルが何行目の何列目に置かれているかを表示する
 
 -- autoreadの頻度を上げる
 vim.api.nvim_create_augroup('vimrc-checktime', { clear = true })
@@ -53,4 +55,16 @@ vim.cmd('filetype plugin on')
 
 -- crontab編集時はバックアップファイルを作成しない
 vim.opt.backupskip:append('/tmp/*,/private/tmp/*')
+
+-- Quickfixコマンド後にQuickfixウィンドウを右下に表示
+vim.api.nvim_create_autocmd("QuickfixCmdPost", {
+  pattern = {"make", "grep", "grepadd", "vimgrep", "vimgrepadd"},
+  command = "botright cwin"
+})
+
+-- ローカルQuickfixコマンド後にローカルQuickfixウィンドウを右下に表示
+vim.api.nvim_create_autocmd("QuickfixCmdPost", {
+  pattern = {"lmake", "lgrep", "lgrepadd", "lvimgrep", "lvimgrepadd"},
+  command = "botright lwin"
+})
 

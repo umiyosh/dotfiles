@@ -17,7 +17,6 @@ local function source_if_exists(file)
 end
 
 require('basic')
-source('~/dotfiles/nvim_statusline.vim')
 source('~/dotfiles/nvim_indent.vim')
 source('~/dotfiles/nvim_tags.vim')
 source('~/dotfiles/nvim_search.vim')
