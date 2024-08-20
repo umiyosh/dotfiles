@@ -43,14 +43,10 @@ vim.opt.mouse = 'nv'
 -- ヤンクした文字は、システムのクリップボードに入れる
 vim.opt.clipboard = 'unnamed'
 
--- 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする
-vim.keymap.set('i', '<C-p>', '<ESC>"*pa', { noremap = true })
-
 -- Ev/Rvでvimrcの編集と反映
 vim.api.nvim_create_user_command('Ev', 'edit $MYVIMRC', {})
-vim.api.nvim_create_user_command('Rv', 'source $MYVIMRC', {})
-
-vim.opt.helpfile = vim.fn.expand('$VIMRUNTIME/doc/help.txt')
+-- TODO ./nvim_completion.vim以下をLuaに移植しないと動かない
+-- vim.api.nvim_create_user_command('Rv', 'source $MYVIMRC', {})
 
 -- ファイルタイプ判定をon
 vim.cmd('filetype plugin on')
@@ -58,6 +54,3 @@ vim.cmd('filetype plugin on')
 -- crontab編集時はバックアップファイルを作成しない
 vim.opt.backupskip:append('/tmp/*,/private/tmp/*')
 
--- 最後にヤンクしたテキストのペースト
-vim.keymap.set('n', '<C-p>', '"0p', { noremap = true })
-vim.keymap.set('n', '<C-P>', '"0P', { noremap = true })
