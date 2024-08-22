@@ -31,6 +31,7 @@ vim.opt.mmp = 5000
 vim.opt.signcolumn = 'yes:2'
 vim.opt.laststatus = 2                      -- 常にステータスラインを表示
 vim.opt.ruler = true                        -- カーソルが何行目の何列目に置かれているかを表示する
+vim.opt.autochdir = true                    -- カレントディレクトリを開いたファイルのあるディレクトリに変更する
 
 -- autoreadの頻度を上げる
 vim.api.nvim_create_augroup('vimrc-checktime', { clear = true })
