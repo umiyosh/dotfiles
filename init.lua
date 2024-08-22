@@ -18,7 +18,7 @@ end
 
 require('basic')
 require('indent')
-source('~/dotfiles/nvim_search.vim')
+require('search')
 source('~/dotfiles/nvim_moving.vim')
 source('~/dotfiles/nvim_editing.vim')
 source('~/dotfiles/nvim_encoding.vim')
