@@ -31,7 +31,8 @@ source_if_exists('~/nvim_local.vim')
 source_if_exists('~/dotfiles_private/nvim_local.vim')
 
 -- プラグイン設定
-source('~/dotfiles/nvim_plugsetup.vim')
+source('~/dotfiles/nvim_vimplug.vim')
+source('~/dotfiles/nvim_plugin_settings.vim')
 
 -- カラースキーム
 source('~/dotfiles/nvim_colors.vim')
