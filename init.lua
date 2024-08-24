@@ -19,6 +19,7 @@ end
 require('basic')
 require('indent')
 require('search')
+-- require('moving')
 source('~/dotfiles/nvim_moving.vim')
 source('~/dotfiles/nvim_editing.vim')
 source('~/dotfiles/nvim_encoding.vim')
@@ -29,7 +30,6 @@ source('~/dotfiles/nvim_apperance.vim')
 
 source_if_exists('~/nvim_local.vim')
 source_if_exists('~/dotfiles_private/nvim_local.vim')
-
 -- プラグイン設定
 source('~/dotfiles/nvim_vimplug.vim')
 source('~/dotfiles/nvim_plugin_settings.vim')

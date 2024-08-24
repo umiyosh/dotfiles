@@ -3,47 +3,11 @@ scriptencoding utf-8
 " 移動設定 Move
 "-------------------------------------------------------------------------------
 
-" カーソルを表示行で移動する。論理行移動は<C-n>,<C-p>
-nnoremap h <Left>
-nnoremap j gj
-nnoremap k gk
-nnoremap l <Right>
-nnoremap <Down> gj
-nnoremap <Up>   gk
-
 " insert mode での移動
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
 noremap  <C-e> $
 noremap  <C-a> ^
-
-" spで前のバッファ
-nmap sp <ESC>:bp<CR>
-" snで次のバッファ
-nmap sn <ESC>:bn<CR>
-" sdでバッファを削除する
-map sd <ESC>:bnext \| bdelete #<CR>
-command! Bw :bnext \| bdelete #
-
-"フレームサイズを怠惰に変更する
-map <kPlus> <C-W>+
-map <kMinus> <C-W>-
-
-" 前回終了したカーソル行に移動
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-
-" 最後に編集された位置に移動
-nnoremap gb '[
-nnoremap gp ']
-
-" 対応する括弧に移動
-nnoremap ( %
-nnoremap ) %
-
-" 最後に変更されたテキストを選択する
-nnoremap gc  `[v`]
-vnoremap gc <C-u>normal gc<Enter>
-onoremap gc <C-u>normal gc<Enter>
 
 " カーソル位置の単語をyankする
 nnoremap vy vawy
@@ -58,32 +22,7 @@ vnoremap v $h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-
-" git-diff-aware version of gf commands.
-" http://labs.timedia.co.jp/2011/04/git-diff-aware-gf-commands-for-vim.html
-nnoremap <expr> gf  <SID>do_git_diff_aware_gf('gf')
-nnoremap <expr> gF  <SID>do_git_diff_aware_gf('gF')
-nnoremap <expr> <C-w>f  <SID>do_git_diff_aware_gf('<C-w>f')
-nnoremap <expr> <C-w><C-f>  <SID>do_git_diff_aware_gf('<C-w><C-f>')
-nnoremap <expr> <C-w>F  <SID>do_git_diff_aware_gf('<C-w>F')
-nnoremap <expr> <C-w>gf  <SID>do_git_diff_aware_gf('<C-w>gf')
-nnoremap <expr> <C-w>gF  <SID>do_git_diff_aware_gf('<C-w>gF')
-
-function! s:do_git_diff_aware_gf(command)
-  let l:target_path = expand('<cfile>')
-  if l:target_path =~# '^[ab]/'  " with a peculiar prefix of git-diff(1)?
-    if filereadable(l:target_path) || isdirectory(l:target_path)
-      return a:command
-    else
-      " BUGS: Side effect - Cursor position is changed.
-      let [l:_, l:c] = searchpos('\f\+', 'cenW')
-      return l:c . '|' . 'v' . (len(l:target_path) - 2 - 1) . 'h' . a:command
-    endif
-  else
-    return a:command
-  endif
-endfunction
+nnoremap <C-h> <C-w>hk
 
 " バッファ操作関連
 nnoremap <Leader>kk      :bd<CR>
@@ -94,14 +33,15 @@ nnoremap <Leader>wk      :w<CR> :bd<CR>
 nnoremap <Leader>wK      :w<CR> :bd!<CR>
 nnoremap <Leader>cc      :new<CR>
 
+" バッファ読み込み時にマークを初期化
+autocmd BufReadPost * delmarks!
+
+nnoremap <silent>bp :bprevious<CR>
+nnoremap <silent>bn :bnext<CR>
+nnoremap <Leader>bb :b#<CR>
+
 " %で移動するペアの追加"<":">"
 set matchpairs=(:),{:},[:],<:>
-" インサートモード時移動(keyremapと組み合わせかな＋hjklで移動)
-nnoremap OA gi<Up>
-nnoremap OB gi<Down>
-nnoremap OC gi<Right>
-nnoremap OD gi<Left>
-nnoremap OO O
 
 " marks
 " http://saihoooooooo.hatenablog.com/entry/2013/04/30/001908
@@ -132,13 +72,7 @@ nnoremap [Mark]n ]`
 nnoremap [Mark]p [`
 
 " 一覧表示
-nnoremap [Mark]l :<C-u>marks<CR>
+nnoremap [Mark]l :<C-u>marks<CR
 
 " 前回開いてた場所に移動
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" バッファ読み込み時にマークを初期化
-autocmd BufReadPost * delmarks!
-
-nnoremap <silent>bp :bprevious<CR>
-nnoremap <silent>bn :bnext<CR>
-nnoremap <Leader>bb :b#<CR>
