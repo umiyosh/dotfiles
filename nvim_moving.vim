@@ -22,7 +22,7 @@ vnoremap v $h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>hk
+nnoremap <C-h> <C-w>h
 
 " バッファ操作関連
 nnoremap <Leader>kk      :bd<CR>
