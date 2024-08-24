@@ -72,7 +72,7 @@ nnoremap [Mark]n ]`
 nnoremap [Mark]p [`
 
 " 一覧表示
-nnoremap [Mark]l :<C-u>marks<CR
+nnoremap [Mark]l :<C-u>marks<CR>
 
 " 前回開いてた場所に移動
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
