@@ -4,10 +4,8 @@ set -xe
 function deployDotfiles() {
   DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.selector \
               .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
-              .ctags .gdbinit .gemrc .gitconfig .gitignore \
-              .inputrc .irbrc .sbtconfig \
-              .gvimrc .tmux.conf \
-              .dir_colors .rdebugrc .perltidyrc .mackup.cfg \
+              .gdbinit .gitconfig .gitignore \
+              .inputrc .tmux.conf .perltidyrc .mackup.cfg \
               .zprofile .direnvrc
              )
   DOT_DIRS=(.zsh .vim .selector )
@@ -29,11 +27,16 @@ function deployDotfiles() {
   done
 
 # TODO : ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
- if [[ ! -d $HOME/.config/nvim/ ]]; then
-   mkdir -p $HOME/.config/nvim/
+ NVIM_CONFIG_DIR="$HOME/.config/nvim"
+ if [[ ! -d "$NVIM_CONFIG_DIR" ]]; then
+   mkdir -p "$NVIM_CONFIG_DIR"
  fi
- ln -s "$HOME/dotfiles/init.vim" "$HOME/.config/nvim/"
-
+ if [[ ! -L "$NVIM_CONFIG_DIR/init.lua" ]]; then
+   ln -s "$HOME/dotfiles/init.lua" "$NVIM_CONFIG_DIR/init.lua"
+ fi
+ if [[ ! -L "$NVIM_CONFIG_DIR/lua" ]]; then
+   ln -s "$HOME/dotfiles/lua" "$NVIM_CONFIG_DIR/lua"
+ fi
 }
 
 function changeShell() {
