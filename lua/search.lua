@@ -1,15 +1,15 @@
--- Search settings
-vim.opt.wrapscan = true   -- Wrap search to beginning when reaching end
-vim.opt.ignorecase = true -- Ignore case in search patterns
-vim.opt.smartcase = true  -- Override ignorecase if search pattern contains uppercase
-vim.opt.incsearch = true  -- Show where the pattern matches as it is typed
-vim.opt.hlsearch = true   -- Highlight all matches of the search pattern
+-- 検索設定
+vim.opt.wrapscan = true   -- 最後まで検索したら先頭へ戻る
+vim.opt.ignorecase = true --  大文字小文字無視
+vim.opt.smartcase = true  -- 検索文字列に大文字が含まれている場合は区別して検索する
+vim.opt.incsearch = true  -- インクリメンタルサーチ
+vim.opt.hlsearch = true   -- 検索文字をハイライト
 
--- Clear search highlighting with double Escape
+-- Escの2回押しでハイライト消去
 vim.api.nvim_set_keymap('n', '<ESC><ESC>', ':nohlsearch<CR><ESC>', { noremap = true, silent = true })
 
--- Replace word under cursor
--- Look up help for word under cursor
+-- v/s:y選択した文字列を検索
+-- v/r:選択した文字列を置換
 vim.cmd([[
   vnoremap /s y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
   vnoremap /r "xy:%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
