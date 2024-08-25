@@ -10,6 +10,8 @@ scriptencoding utf-8
 " kana/vim-operator-replace
 "------------------------------------
 map _ <Plug>(operator-replace)
+vnoremap p <Plug>(operator-replace)
+
 
 "------------------------------------
 " junegunn/vim-easy-align
