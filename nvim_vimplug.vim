@@ -151,7 +151,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-rhubarb'
   if !exists('g:vscode')
     " 編集した行のgit差分を左側に表示してくれるやつ
-    Plug 'airblade/vim-gitgutter'
+    Plug 'lewis6991/gitsigns.nvim'
     " ステータスラインをカッコよくするやつ
     Plug 'vim-airline/vim-airline'
     " バッファーを上部に表示してくれるやつ

@@ -489,7 +489,21 @@ if not vim.g.vscode then
       vim.fn.expand("$HOME/dotfiles/cgpt_actions.json"),
     },
     })
+  ---------------------------------------
+  -- lewis6991/gitsigns.nvim
+  ---------------------------------------
+  require('gitsigns').setup({
+    signs = {
+      add = { text = "│" },
+      change = { text = "│" },
+      delete = { text = "_" },
+      topdelete = { text = "‾" },
+      changedelete = { text = "~" },
+      untracked = { text = "┆" },
+    }
+  })
 end
+
 
 ---------------------------------------
 -- norcalli/nvim-colorizer.lua
