@@ -19,7 +19,7 @@ inoremap , ,<Space>
 autocmd BufWritePre * :%s/\s\+$//ge
 
 " quickfixウィンドウではESCで閉じる
-autocmd FileType qf nnoremap <buffer><silent> <esc> :lclose<CR>
+autocmd FileType qf nnoremap <buffer><silent> <esc> :cclose<CR>
 autocmd FileType qf highlight QuickFixLine ctermbg=none
 " cwでquickfixウィンドウの表示をtoggleするようにした
 function! s:toggle_qf_window()
