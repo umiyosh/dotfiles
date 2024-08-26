@@ -22,57 +22,30 @@ endfunction"}}}
 "行番号つきののコピー
 vnoremap ssc <ESC>:%!cat -n\|perl -pe 's:^ +::g'<CR>gvyugv<ESC>
 
-"perlの野良ライブラリの読み込み
-autocmd FileType perl set isfname-=-
-autocmd FileType perl :setlocal path+=lib;/
+lua <<EOF
+-- Luaでの文字数カウント機能
+vim.api.nvim_set_keymap('v', '<leader>ii', ':lua Count_Char()<CR>', { noremap = true, silent = true })
 
-"perl整形
-map ,pt  <ESC>:%!     $HOME/perl5/perlbrew/perls/perl-5.14.2/bin/perltidy<CR>
-map ,ptv <ESC>:'<,'>! $HOME/perl5/perlbrew/perls/perl-5.14.2/bin/perltidy<CR>
-"perlデバッガ
-map <F5> <ESC>:! perl -d %:p<CR>
+function Count_Char()
+    -- 選択範囲を取得
+    local start_pos = vim.fn.getpos("'<")
+    local end_pos = vim.fn.getpos("'>")
+    local start_line_num = start_pos[2]
+    local end_line_num = end_pos[2]
+    local linenum = end_line_num - start_line_num + 1
 
-"Textile2markdown for OSX
-"needs pandoc command
-command! -nargs=0 Textile2markdown call <SID>Textile2markdown()
-noremap <Leader>tm :Textile2markdown<CR>
-function! s:Textile2markdown()
-  let l:result = system('$HOME/dotfiles/bin/textile2markdown.rb ' . shellescape(expand('%')) . '|pbcopy'  )
-endfunction
+    -- 選択範囲のテキストを取得
+    local lines = vim.fn.getline(start_line_num, end_line_num)
+    local str = table.concat(lines, "\n")
 
-"Markdown2textile fo OSX
-"needs pandoc command
-command! -nargs=0 Markdown2textile call <SID>Markdown2textile()
-noremap <Leader>mt :Markdown2textile<CR>
-function! s:Markdown2textile()
-  let l:result = system('pandoc -t textile ' . shellescape(expand('%')) . '|pbcopy'  )
-endfunction
+    -- 文字数をカウント
+    local gross_words = #str
 
-" 文字数カウント
-vnoremap <leader>ii :call Count_Char()<cr>
-function! Count_Char() range
-  silent normal gvy
-  let l:str = @@
-  normal `<
-  let l:start_line_num = line('.')
-  normal `>
-  let l:end_line_num = line('.')
-  let l:linenum = l:end_line_num - l:start_line_num + 1
-
-perl << EOF
-use strict;
-use warnings;
-use utf8;
-use Encode qw/decode/;
-
-my $str = decode('utf-8', VIM::Eval('str'));
-my $line_num = VIM::Eval('linenum');
-my $gross_words = length $str;
-
-VIM::Msg("選択範囲の行数は $line_num です");
-VIM::Msg("選択範囲の総文字数は $gross_words です");
+    -- メッセージを表示
+    vim.api.nvim_echo({{"選択範囲の行数は " .. linenum .. " です", "Normal"}}, false, {})
+    vim.api.nvim_echo({{"選択範囲の総文字数は " .. gross_words .. " です", "Normal"}}, false, {})
+end
 EOF
-endfunction
 
 " 矩形選択の挙動変更(行ビジュアルでもI, Aを使えるようにする)
 " http://labs.timedia.co.jp/2012/10/vim-more-useful-blockwise-insertion.html
