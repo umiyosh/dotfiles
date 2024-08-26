@@ -38,8 +38,8 @@ function Count_Char()
     local lines = vim.fn.getline(start_line_num, end_line_num)
     local str = table.concat(lines, "\n")
 
-    -- 文字数をカウント
-    local gross_words = #str
+    -- 選択範囲の文字数をカウント
+    local gross_words = vim.fn.strchars(str, true)
 
     -- メッセージを表示
     vim.api.nvim_echo({{"選択範囲の行数は " .. linenum .. " です", "Normal"}}, false, {})
