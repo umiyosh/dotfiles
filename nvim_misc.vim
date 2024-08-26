@@ -47,7 +47,7 @@ function Count_Char()
 end
 EOF
 
-" 矩形選択の挙動変更(行ビジュアルでもI, Aを使えるようにする)
+" 行選択や矩形選択でもビジュアルモード中IやAで文字を挿入できるようにする
 " http://labs.timedia.co.jp/2012/10/vim-more-useful-blockwise-insertion.html
 vnoremap <expr> I  <SID>force_blockwise_visual('I')
 vnoremap <expr> A  <SID>force_blockwise_visual('A')
@@ -62,13 +62,6 @@ function! s:force_blockwise_visual(next_key)
   endif
 endfunction
 
-" : / はデフォルトでcommand line windowを開くに変更
-" http://d.hatena.ne.jp/vimtaku/20121117/1353138802
-nnoremap q: q:a
-nnoremap q/ q/a
-
-" QQですぐおわる(保存せず終了。保存して終了はZZ。)
-nnoremap QQ :<C-u>Bufonly<CR>:<C-u>q!<CR>
 " かな(alt)＋Qで:q!
 nnoremap <M-q> :q!<CR>
 " nnoremap œ :q!<CR>
@@ -76,9 +69,6 @@ nnoremap <M-q> :q!<CR>
 " かな(alt)＋Sで上書き保存
 nnoremap <M-s> :<C-u>w<CR>
 " nnoremap ß :<C-u>w<CR>
-
-"libperl直接指定
-let $PERL_DLL = '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib'
 
 " Mac の辞書.appで開く {{{
 if has('mac')
