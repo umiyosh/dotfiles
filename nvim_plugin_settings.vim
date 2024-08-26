@@ -26,8 +26,9 @@ nmap ga <Plug>(EasyAlign)
 "------------------------------------
 " コメントの間にスペースを空ける
 let g:NERDSpaceDelims = 1
+let g:NERDCreateDefaultMappings = 0
 "<Leader>xでコメントをトグル(NERD_commenter.vim)
-map <Leader>x <Leader>c<space>
+map <Leader>x <Plug>NERDCommenterToggle
 ""未対応ファイルタイプのエラーメッセージを表示しない
 let g:NERDShutUp      = 1
 ""カスタムdelimiters
