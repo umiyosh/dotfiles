@@ -59,6 +59,7 @@ jobs:
           shell: /bin/zsh
           command: |
             source $HOME/.zshrc
+            export PATH=$HOME/go/bin:$PATH
             zsh -c 'exit'
             vim +qa
             echo "vim startup time[ms]:";vim-startuptime | egrep 'Total Average' |awk '{print $3}'
