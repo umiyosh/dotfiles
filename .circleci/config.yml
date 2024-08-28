@@ -1,41 +1,33 @@
 version: 2.1
 jobs:
   build:
-    machine:
-      image: ubuntu-2204:edge
-    working_directory: ~/dotfiles
+    docker:
+      - image: cimg/base:stable
     steps:
       - checkout
       - run:
-          name: Clean up conflicting repositories
-          command: |
-            sudo rm -f /etc/apt/sources.list.d/google.list
-            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+          name: Update package lists
+          command: sudo apt-get update
       - run:
-          name: Add GPG keys and repositories
+          name: Install required packages
           command: |
-            sudo apt-get update
             sudo apt-get install -y software-properties-common
             sudo add-apt-repository -y ppa:jonathonf/vim
-            curl https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
-            echo "deb https://cli-assets.heroku.com/apt ./" | sudo tee /etc/apt/sources.list.d/heroku.list
-      - run:
-          name: Update and install dependencies
-          command: |
             sudo apt-get update
-            sudo apt-get install -y zsh vim neovim nodejs heroku
+            sudo apt-get install -y zsh vim neovim nodejs
       - run:
           name: Install Rust
           command: |
             curl https://sh.rustup.rs -sSf | sh -s -- -y
+            echo 'source $HOME/.cargo/env' >> $BASH_ENV
       - run:
           name: Install Go
           command: |
-            sudo snap install --classic go
+            sudo apt-get install -y golang-go
       - run:
           name: Install other tools
           command: |
-            sudo go install github.com/rhysd/vim-startuptime@latest
+            go install github.com/rhysd/vim-startuptime@latest
             sudo apt-get install -y cpanminus
             sudo cpanm App::St
       - run:
@@ -48,12 +40,12 @@ jobs:
           command: |
             zsh -c 'exit'
             vim +qa
-            echo vim startup time[ms]:;sudo /root/go/bin/vim-startuptime | egrep 'Total Average' |awk '{print $3}'
-            echo nvim startup time[ms]:;sudo /root/go/bin/vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
+            echo vim startup time[ms]:;vim-startuptime | egrep 'Total Average' |awk '{print $3}'
+            echo nvim startup time[ms]:;vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
             echo zsh startup time[sec];./bin/zshbench
 
 workflows:
   version: 2
-  build_and_deploy:
+  build-and-test:
     jobs:
       - build
