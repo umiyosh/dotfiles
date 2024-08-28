@@ -9,17 +9,18 @@ jobs:
       - run:
           name: Add GPG keys and repositories
           command: |
-            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE88979FB9B30ACF2 | sudo gpg --dearmor -o /usr/share/keyrings/jonathonf-vim.gpg
-            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x868C56076B935C6E | sudo gpg --dearmor -o /usr/share/keyrings/heroku.gpg
-            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8CF63AD3F06FC659 | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/jonathonf_vim.gpg
-            echo "deb [signed-by=/etc/apt/trusted.gpg.d/jonathonf_vim.gpg] https://ppa.launchpadcontent.net/jonathonf/vim/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/jonathonf-vim-ubuntu-ppa-jammy.list
-            echo "deb [signed-by=/usr/share/keyrings/heroku.gpg] https://cli-assets.heroku.com/apt ./" | sudo tee /etc/apt/sources.list.d/heroku.list
+            sudo apt-get update
+            sudo apt-get install -y software-properties-common
+            sudo add-apt-repository -y ppa:jonathonf/vim
+            sudo add-apt-repository -y ppa:heroku/ubuntu
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 868C56076B935C6E
             sudo rm -f /etc/apt/sources.list.d/google.list
       - run:
           name: Update and install dependencies
           command: |
-            sudo apt update
-            sudo apt install zsh vim neovim nodejs
+            sudo apt-get update
+            sudo apt-get install -y zsh vim neovim nodejs
       - run:
           name: Install Rust
           command: |
@@ -32,7 +33,7 @@ jobs:
           name: Install other tools
           command: |
             sudo go install github.com/rhysd/vim-startuptime@latest
-            sudo apt-get install cpanminus
+            sudo apt-get install -y cpanminus
             sudo cpanm App::St
       - run:
           name: Setup
