@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://json.schemastore.org/circleciconfig.json
 version: 2.1
 jobs:
   build:
@@ -8,35 +7,48 @@ jobs:
     steps:
       - checkout
       - run:
-          name: dependencies
+          name: Add GPG keys
           command: |
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 868C56076B935C6E
-            sudo add-apt-repository ppa:jonathonf/vim
-            sudo add-apt-repository ppa:neovim-ppa/unstable
+            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE88979FB9B30ACF2 | sudo gpg --dearmor -o /usr/share/keyrings/jonathonf-vim.gpg
+            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x868C56076B935C6E | sudo gpg --dearmor -o /usr/share/keyrings/heroku.gpg
+      - run:
+          name: Add repositories
+          command: |
+            echo "deb [signed-by=/usr/share/keyrings/jonathonf-vim.gpg] https://ppa.launchpadcontent.net/jonathonf/vim/ubuntu/ jammy main" | sudo tee /etc/apt/sources.list.d/jonathonf-vim.list
+            echo "deb [signed-by=/usr/share/keyrings/heroku.gpg] https://cli-assets.heroku.com/apt ./" | sudo tee /etc/apt/sources.list.d/heroku.list
+      - run:
+          name: Update and install dependencies
+          command: |
             sudo apt update
-            sudo apt install zsh
-            sudo apt install vim
-            sudo apt install neovim
-            sudo apt install nodejs
-            sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
+            sudo apt install zsh vim neovim nodejs
+      - run:
+          name: Install Rust
+          command: |
+            curl https://sh.rustup.rs -sSf | sh -s -- -y
+      - run:
+          name: Install Go
+          command: |
             sudo snap install --classic go
+      - run:
+          name: Install other tools
+          command: |
             sudo go install github.com/rhysd/vim-startuptime@latest
             sudo apt-get install cpanminus
             sudo cpanm App::St
       - run:
-          name: setup
+          name: Setup
           command: |
             ./setup.sh
             zsh -c 'exit'
       - run:
-          name: test
+          name: Test
           command: |
             zsh -c 'exit'
             vim +qa
             echo vim startup time[ms]:;sudo /root/go/bin/vim-startuptime | egrep 'Total Average' |awk '{print $3}'
             echo nvim startup time[ms]:;sudo /root/go/bin/vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
             echo zsh startup time[sec];./bin/zshbench
+
 workflows:
   version: 2
   build_and_deploy:
