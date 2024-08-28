@@ -68,8 +68,10 @@ function deploySnippets() {
 
 function installZgen() {
   ## zgen
-  if [[ ! -d $HOME/.zsh/extention/zgen/ ]]; then
-   git clone https://github.com/tarjoilija/zgen.git "$HOME/.zsh/extention/zgen/"
+  local target_dir="$(readlink "$HOME/.zsh")/extention/zgen"
+  if [[ ! -d "$target_dir" ]]; then
+    mkdir -p "$target_dir"
+    git clone https://github.com/tarjoilija/zgen.git "$target_dir"
   fi
 }
 
