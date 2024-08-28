@@ -59,9 +59,10 @@ function deployLocalBin() {
 }
 
 function deploySnippets() {
-  if [[ ! -d $HOME/.vim/snippets ]]; then
-    mkdir -p "$HOME/.vim/snippets"
-    git clone https://github.com/umiyosh/snippets.git "$HOME/.vim/snippets/"
+  local target_dir="$(readlink "$HOME/.vim")/snippets"
+  if [[ ! -e "$target_dir" ]]; then
+    mkdir -p "$target_dir"
+    git clone https://github.com/umiyosh/snippets.git "$target_dir"
   fi
 }
 
