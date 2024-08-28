@@ -6,44 +6,59 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install and setup zsh
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y zsh
+            echo 'export SHELL=/bin/zsh' >> $HOME/.zshrc
+      - run:
           name: Update package lists
+          shell: /bin/zsh
           command: sudo apt-get update
       - run:
           name: Install required packages
+          shell: /bin/zsh
           command: |
             sudo apt-get install -y software-properties-common
             sudo add-apt-repository -y ppa:jonathonf/vim
             sudo apt-get update
-            sudo apt-get install -y zsh vim neovim nodejs
+            sudo apt-get install -y vim neovim nodejs
       - run:
           name: Install Rust
+          shell: /bin/zsh
           command: |
             curl https://sh.rustup.rs -sSf | sh -s -- -y
-            echo 'source $HOME/.cargo/env' >> $BASH_ENV
+            echo 'source $HOME/.cargo/env' >> $HOME/.zshrc
       - run:
           name: Install Go
+          shell: /bin/zsh
           command: |
             sudo apt-get install -y wget
             wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
             sudo rm -rf /usr/local/go
             sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
-            echo 'export PATH=$PATH:/usr/local/go/bin' >> $BASH_ENV
-            echo 'export GO111MODULE=on' >> $BASH_ENV
-            source $BASH_ENV
+            echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.zshrc
+            echo 'export GO111MODULE=on' >> $HOME/.zshrc
       - run:
           name: Install other tools
+          shell: /bin/zsh
           command: |
+            source $HOME/.zshrc
             go install github.com/rhysd/vim-startuptime@latest
             sudo apt-get install -y cpanminus
             sudo cpanm App::St
       - run:
           name: Setup
+          shell: /bin/zsh
           command: |
+            source $HOME/.zshrc
             ./setup.sh
             zsh -c 'exit'
       - run:
           name: Test
+          shell: /bin/zsh
           command: |
+            source $HOME/.zshrc
             zsh -c 'exit'
             vim +qa
             echo vim startup time[ms]:;vim-startuptime | egrep 'Total Average' |awk '{print $3}'
