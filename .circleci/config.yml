@@ -9,8 +9,8 @@ jobs:
       - run:
           name: Add GPG keys
           command: |
-            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE88979FB9B30ACF2 | sudo gpg --dearmor -o /usr/share/keyrings/jonathonf-vim.gpg
-            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x868C56076B935C6E | sudo gpg --dearmor -o /usr/share/keyrings/heroku.gpg
+            sudo curl -fsSL https://keyserver.pgp.com/pks/lookup?op=get&search=0xE88979FB9B30ACF2 | sudo gpg --dearmor -o /usr/share/keyrings/jonathonf-vim.gpg
+            sudo curl -fsSL https://keyserver.pgp.com/pks/lookup?op=get&search=0x868C56076B935C6E | sudo gpg --dearmor -o /usr/share/keyrings/heroku.gpg
       - run:
           name: Add repositories
           command: |
