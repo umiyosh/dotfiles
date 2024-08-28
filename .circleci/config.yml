@@ -7,20 +7,23 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Clean up conflicting repositories
+          command: |
+            sudo rm -f /etc/apt/sources.list.d/google.list
+            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+      - run:
           name: Add GPG keys and repositories
           command: |
             sudo apt-get update
             sudo apt-get install -y software-properties-common
             sudo add-apt-repository -y ppa:jonathonf/vim
-            sudo add-apt-repository -y ppa:heroku/ubuntu
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 868C56076B935C6E
-            sudo rm -f /etc/apt/sources.list.d/google.list
+            curl https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
+            echo "deb https://cli-assets.heroku.com/apt ./" | sudo tee /etc/apt/sources.list.d/heroku.list
       - run:
           name: Update and install dependencies
           command: |
             sudo apt-get update
-            sudo apt-get install -y zsh vim neovim nodejs
+            sudo apt-get install -y zsh vim neovim nodejs heroku
       - run:
           name: Install Rust
           command: |
