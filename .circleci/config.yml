@@ -9,12 +9,12 @@ jobs:
       - run:
           name: Add GPG keys and repositories
           command: |
-            sudo gpg --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2
-            sudo gpg --keyserver keyserver.ubuntu.com --recv-keys 868C56076B935C6E
-            sudo gpg --export E88979FB9B30ACF2 | sudo gpg --dearmor -o /usr/share/keyrings/jonathonf-vim.gpg
-            sudo gpg --export 868C56076B935C6E | sudo gpg --dearmor -o /usr/share/keyrings/heroku.gpg
-            echo "deb [signed-by=/usr/share/keyrings/jonathonf-vim.gpg] https://ppa.launchpadcontent.net/jonathonf/vim/ubuntu/ jammy main" | sudo tee /etc/apt/sources.list.d/jonathonf-vim.list
+            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE88979FB9B30ACF2 | sudo gpg --dearmor -o /usr/share/keyrings/jonathonf-vim.gpg
+            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x868C56076B935C6E | sudo gpg --dearmor -o /usr/share/keyrings/heroku.gpg
+            sudo curl -fsSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8CF63AD3F06FC659 | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/jonathonf_vim.gpg
+            echo "deb [signed-by=/etc/apt/trusted.gpg.d/jonathonf_vim.gpg] https://ppa.launchpadcontent.net/jonathonf/vim/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/jonathonf-vim-ubuntu-ppa-jammy.list
             echo "deb [signed-by=/usr/share/keyrings/heroku.gpg] https://cli-assets.heroku.com/apt ./" | sudo tee /etc/apt/sources.list.d/heroku.list
+            sudo rm -f /etc/apt/sources.list.d/google.list
       - run:
           name: Update and install dependencies
           command: |
