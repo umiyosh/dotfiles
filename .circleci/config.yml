@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Install Go
           command: |
-            sudo apt-get install -y golang-go
+            sudo snap install --classic go
       - run:
           name: Install other tools
           command: |
