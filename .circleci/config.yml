@@ -61,9 +61,9 @@ jobs:
             source $HOME/.zshrc
             zsh -c 'exit'
             vim +qa
-            echo vim startup time[ms]:;vim-startuptime | egrep 'Total Average' |awk '{print $3}'
-            echo nvim startup time[ms]:;vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
-            echo zsh startup time[sec];./bin/zshbench
+            echo "vim startup time[ms]:";vim-startuptime | egrep 'Total Average' |awk '{print $3}'
+            echo "nvim startup time[ms]:";vim-startuptime -vimpath nvim|egrep 'Total Average' |awk '{print $3}'
+            echo "zsh startup time[sec]";./bin/zshbench
 
 workflows:
   version: 2
