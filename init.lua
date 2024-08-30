@@ -23,8 +23,10 @@ require('moving')
 require('edit')
 require('encoding')
 require('misc')
-source('~/dotfiles/nvim_completion.vim')
-source('~/dotfiles/nvim_terminal.vim')
+if not vim.g.vscode then
+  source('~/dotfiles/nvim_completion.vim')
+  source('~/dotfiles/nvim_terminal.vim')
+end
 source('~/dotfiles/nvim_apperance.vim')
 
 source_if_exists('~/nvim_local.vim')
