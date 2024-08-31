@@ -24,7 +24,7 @@ require('edit')
 require('encoding')
 require('misc')
 if not vim.g.vscode then
-  source('~/dotfiles/nvim_completion.vim')
+  require('completion')
   source('~/dotfiles/completion_neosnippet.vim')
   source('~/dotfiles/completion_coc.vim')
   source('~/dotfiles/nvim_terminal.vim')
