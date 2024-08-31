@@ -13,7 +13,3 @@ cnoremap <Up>  <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down>  <C-n>
 
-source ~/dotfiles/completion_neosnippet.vim
-if !exists('g:vscode')
-  source ~/dotfiles/completion_coc.vim
-endif
