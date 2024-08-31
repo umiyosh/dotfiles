@@ -199,3 +199,4 @@ function chkerr() {
 function chkerr_repl() {
   sgpt --repl checkerror
 }
+alias ol='olog $(pbpaste | tovim)'
