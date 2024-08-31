@@ -45,9 +45,10 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Completion {{{
-  " さまざまな言語のスニペットを使いやすく提供してくれるやつ
-  Plug 'Shougo/neosnippet'
   if !exists('g:vscode')
+    " さまざまな言語のスニペットを使いやすく提供してくれるやつ
+    Plug 'Shougo/neosnippet'
+    Plug 'Shougo/neosnippet-snippets'
     " LSP使った開発環境。補完、エラー検出など、いろいろやってくれるやつ
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " coc.nvimの組み込みファジーファインダーをfzfで置き換えるもの

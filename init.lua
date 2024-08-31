@@ -23,12 +23,12 @@ require('moving')
 require('edit')
 require('encoding')
 require('misc')
+
 if not vim.g.vscode then
   require('completion')
-  source('~/dotfiles/completion_neosnippet.vim')
-  source('~/dotfiles/completion_coc.vim')
   source('~/dotfiles/nvim_terminal.vim')
 end
+
 source('~/dotfiles/nvim_apperance.vim')
 
 source_if_exists('~/nvim_local.vim')
@@ -36,6 +36,11 @@ source_if_exists('~/dotfiles_private/nvim_local.vim')
 -- プラグイン設定
 source('~/dotfiles/nvim_vimplug.vim')
 source('~/dotfiles/nvim_plugin_settings.vim')
+
+if not vim.g.vscode then
+  require('neosnippet')
+  source('~/dotfiles/completion_coc.vim')
+end
 
 -- カラースキーム
 source('~/dotfiles/nvim_colors.vim')
