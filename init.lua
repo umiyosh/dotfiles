@@ -29,8 +29,6 @@ if not vim.g.vscode then
   require('terminal')
 end
 
-source('~/dotfiles/nvim_apperance.vim')
-
 source_if_exists('~/nvim_local.vim')
 source_if_exists('~/dotfiles_private/nvim_local.vim')
 -- プラグイン設定
@@ -44,3 +42,6 @@ end
 
 -- カラースキーム
 source('~/dotfiles/nvim_colors.vim')
+
+require('apperance')
+

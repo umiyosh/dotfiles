@@ -62,7 +62,7 @@ call plug#begin('~/.vim/plugged')
   " camelcasemotion : CamelCaseやsnake_case単位でのワード移動
   Plug 'vim-scripts/camelcasemotion'
   " 「%」による対応括弧へのカーソル移動機能を拡張
-  " Plug 'andymass/vim-matchup'
+  Plug 'andymass/vim-matchup'
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   Plug 'othree/eregex.vim'
   " hop.nvim : easymotion的な動作を提供してキーボードでの移動を効率化
