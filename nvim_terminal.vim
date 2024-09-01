@@ -1,6 +1,6 @@
 
 " keymap
-nnoremap <silent> sh <cmd>belowright new<CR><cmd>terminal<CR>
+nnoremap <silent> sh <cmd>belowright 10split<CR><cmd>terminal<CR>
 
 " ターミナルを開いたらに常にinsertモードに入る
 autocmd TermOpen * :startinsert
