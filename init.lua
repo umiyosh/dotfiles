@@ -26,7 +26,7 @@ require('misc')
 
 if not vim.g.vscode then
   require('completion')
-  source('~/dotfiles/nvim_terminal.vim')
+  require('terminal')
 end
 
 source('~/dotfiles/nvim_apperance.vim')
