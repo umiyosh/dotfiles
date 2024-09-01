@@ -194,6 +194,7 @@ let g:quickrun_config._ = {'split': 'rightbelow 15sp'}
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
 nnoremap <Leader>gl :<C-u>Git log %<CR>
+nnoremap <Leader>gp :<C-u>Git push<CR>
 nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gc :<C-u>Git commit<CR>
 nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
@@ -217,7 +218,7 @@ nmap sw :HopWord<CR>
 vmap sw <cmd>HopWord<CR>
 map  sl :HopLine<CR>
 nmap sl :HopLine<CR>
-vmap  sl <cmd>HopLine<CR>
+vmap sl <cmd>HopLine<CR>
 map  sf :HopChar1<CR>
 nmap sf :HopChar1<CR>
 vmap st <cmd>HopChar1<CR>
