@@ -194,7 +194,7 @@ let g:quickrun_config._ = {'split': 'rightbelow 15sp'}
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
 nnoremap <Leader>gl :<C-u>Git log %<CR>
-nnoremap <Leader>gp :<C-u>Git push<CR>
+" nnoremap <Leader>gp :<C-u>Git push<CR>
 nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gc :<C-u>Git commit<CR>
 nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
