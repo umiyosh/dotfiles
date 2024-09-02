@@ -22,7 +22,7 @@ require('search')
 require('moving')
 require('edit')
 require('encoding')
-require('misc')
+require('hack')
 
 if not vim.g.vscode then
   require('completion')
