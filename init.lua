@@ -41,7 +41,7 @@ if not vim.g.vscode then
 end
 
 -- カラースキーム
-source('~/dotfiles/nvim_colors.vim')
+require('color')
 
 require('apperance')
 
