@@ -1,46 +1,38 @@
-" basic setting
+" coc.vim settings
 
+" coc.nvim config directory
 let g:coc_config_home = '~/dotfiles_private/'
 
-" set updatetime=300
+" coc status lineの設定
 set statusline^=%{coc#status()}
+" coc 色の設定
 autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=Red
 autocmd ColorScheme * hi CocWarningHighlight ctermfg=Yellow  guifg=Yellow
 autocmd ColorScheme * hi CocInfoSign ctermfg=Green  guifg=Green
 
-" tile type setting
-" autocmd FileType markdown let b:coc_suggest_disable = 1
+" 純粋なテキストファイルの場合には、CoCの間交互表示を無効化する。
 autocmd FileType text let b:coc_suggest_disable = 1
 
-" Don't break line on Enter when displaying completion
-" inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
-
+" 保管候補選択時の挙動のキーマップ設定
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
 				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
 inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
 inoremap <silent><expr> <down> coc#pum#visible() ? coc#pum#next(0) : "\<down>"
 inoremap <silent><expr> <up> coc#pum#visible() ? coc#pum#prev(0) : "\<up>"
-" inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
-" let g:copilot_no_tab_map = v:true
-" inoremap <silent><expr> <TAB>
-      " \ coc#pum#visible() ? coc#pum#next(1):
-      " \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
-      " \ CheckBackSpace() ? "\<Tab>" :
-      " \ coc#refresh()
 
-" coc keymap
-nmap <silent> gp <Plug>(coc-diagnostic-prev)
-nmap <silent> gb <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gR <plug>(coc-rename)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> <Leader>r :QuickRun<CR>
+" coc キーマップ設定
+nmap <silent> gp <Plug>(coc-diagnostic-prev)    " 前の診断に移動
+nmap <silent> gb <Plug>(coc-diagnostic-next)    " 次の診断に移動
+nmap <silent> gd <Plug>(coc-definition)         " 定義に移動
+nmap <silent> gy <Plug>(coc-type-definition)    " 型定義に移動
+nmap <silent> gi <Plug>(coc-implementation)     " 実装に移動
+nmap <silent> gR <plug>(coc-rename)             " リネーム
+nmap <silent> gr <Plug>(coc-references)         " 参照に移動
+nmap <silent> <Leader>r :QuickRun<CR>           " QuickRunを実行
+vmap <leader>d <Plug>(coc-codeaction-selected)  " コードアクションを実行( visual mode )
+nmap <leader>d <Plug>(coc-codeaction-selected)  " コードアクションを実行( normal mode )
 
-vmap <leader>d <Plug>(coc-codeaction-selected)
-nmap <leader>d <Plug>(coc-codeaction-selected)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -53,7 +45,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" 保存時にisort
+" 保存時にisortする
 autocmd BufWritePre *.py :CocCommand python.sortImports
 
 " coc extentions
