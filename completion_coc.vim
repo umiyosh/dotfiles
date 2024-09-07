@@ -22,16 +22,16 @@ inoremap <silent><expr> <down> coc#pum#visible() ? coc#pum#next(0) : "\<down>"
 inoremap <silent><expr> <up> coc#pum#visible() ? coc#pum#prev(0) : "\<up>"
 
 " coc キーマップ設定
-nmap <silent> gp <Plug>(coc-diagnostic-prev)    " 前の診断に移動
-nmap <silent> gb <Plug>(coc-diagnostic-next)    " 次の診断に移動
-nmap <silent> gd <Plug>(coc-definition)         " 定義に移動
-nmap <silent> gy <Plug>(coc-type-definition)    " 型定義に移動
-nmap <silent> gi <Plug>(coc-implementation)     " 実装に移動
-nmap <silent> gR <plug>(coc-rename)             " リネーム
-nmap <silent> gr <Plug>(coc-references)         " 参照に移動
-nmap <silent> <Leader>r :QuickRun<CR>           " QuickRunを実行
-vmap <leader>d <Plug>(coc-codeaction-selected)  " コードアクションを実行( visual mode )
-nmap <leader>d <Plug>(coc-codeaction-selected)  " コードアクションを実行( normal mode )
+nmap <silent> gp <Plug>(coc-diagnostic-prev)
+nmap <silent> gb <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gR <plug>(coc-rename)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <Leader>r :QuickRun<CR>
+vmap <leader>d <Plug>(coc-codeaction-selected)
+nmap <leader>d <Plug>(coc-codeaction-selected)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
