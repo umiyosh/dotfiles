@@ -200,3 +200,11 @@ function chkerr_repl() {
   sgpt --repl checkerror
 }
 alias ol='olog $(pbpaste | tovim)'
+
+alias sc='sgpt --code'
+alias sr='sgpt --repl'
+alias sg='sgpt'
+# command_not_found_handler
+# function command_not_found_handler() {
+  # sgpt "$@"
+# }
