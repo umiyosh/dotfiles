@@ -37,7 +37,7 @@ source('~/dotfiles/nvim_plugin_settings.vim')
 
 if not vim.g.vscode then
   require('neosnippet')
-  source('~/dotfiles/completion_coc.vim')
+  require('coc')
 end
 
 -- カラースキーム
