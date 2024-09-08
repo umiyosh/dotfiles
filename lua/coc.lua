@@ -1,7 +1,7 @@
 -- coc.nvim settings
 
 -- coc.nvim config directory
-vim.g.coc_config_home = '~/dotfiles_private/'
+vim.g.coc_config_home = '~/dotfiles/'
 
 -- coc status lineの設定
 vim.opt.statusline = vim.opt.statusline + '%{coc#status()}'
