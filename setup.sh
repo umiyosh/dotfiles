@@ -59,7 +59,8 @@ function deployLocalBin() {
 }
 
 function deploySnippets() {
-  local target_dir="$(readlink "$HOME/.vim")/snippets"
+  local target_dir
+  target_dir="$(readlink "$HOME/.vim")/snippets"
   if [[ ! -e "$target_dir" ]]; then
     mkdir -p "$target_dir"
     git clone https://github.com/umiyosh/snippets.git "$target_dir"
@@ -68,7 +69,8 @@ function deploySnippets() {
 
 function installZgen() {
   ## zgen
-  local target_dir="$(readlink "$HOME/.zsh")/extention/zgen"
+  local target_dir
+  target_dir="$(readlink "$HOME/.zsh")/extention/zgen"
   if [[ ! -d "$target_dir" ]]; then
     mkdir -p "$target_dir"
     git clone https://github.com/tarjoilija/zgen.git "$target_dir"
