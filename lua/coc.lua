@@ -8,9 +8,9 @@ vim.opt.statusline = vim.opt.statusline + '%{coc#status()}'
 
 -- coc 色の設定
 vim.cmd([[
-  autocmd ColorScheme * hi CocErrorHighlight ctermfg=Red  guifg=Red
-  autocmd ColorScheme * hi CocWarningHighlight ctermfg=Yellow  guifg=Yellow
-  autocmd ColorScheme * hi CocInfoSign ctermfg=Green  guifg=Green
+  autocmd ColorScheme * hi CocErrorHighlight ctermfg=White guifg=White ctermbg=Red guibg=Red
+  autocmd ColorScheme * hi CocWarningHighlight ctermfg=Black guifg=Black ctermbg=Yellow guibg=Yellow
+  autocmd ColorScheme * hi CocInfoSign ctermfg=White guifg=White ctermbg=Green guibg=Green
 ]])
 
 -- 純粋なテキストファイルの場合には、CoCの間、交互表示を無効化する。
