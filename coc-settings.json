@@ -15,19 +15,9 @@
   },
   "cSpell.enabledLanguageIds": ["markdown", "plaintext", "gitcommit"],
   "yaml.schemaStore.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "html",
-    "typescriptreact",
-    "typescript",
-    "javascriptreact",
-    "javascript",
-    "python",
-    "json",
-    "graphql",
-    "html",
-    "json"
-  ],
+  "[css][html][typescriptreact][typescript][javascriptreact][javascript][python][json][graphql][html][json]": {
+    "coc.preferences.formatOnSave": true
+  },
   "python.formatting.provider": "ruff",
   "python.analysis.diagnosticMode": "workspace",
   "python.analysis.autoImportCompletions": true,
