@@ -1,46 +1,4 @@
 scriptencoding utf-8
-"/-------------------------------------------------------------------------------
-" プラグインごとの設定 Plugins
-"-------------------------------------------------------------------------------
- if has('termguicolors')
-   set termguicolors
- endif
-
-"------------------------------------
-" kana/vim-operator-replace
-"------------------------------------
-map _ <Plug>(operator-replace)
-vnoremap p <Plug>(operator-replace)
-
-
-"------------------------------------
-" junegunn/vim-easy-align
-"------------------------------------
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-"------------------------------------
-" scrooloose/nerdcommenter
-"------------------------------------
-" コメントの間にスペースを空ける
-let g:NERDSpaceDelims = 1
-let g:NERDCreateDefaultMappings = 0
-"<Leader>xでコメントをトグル(NERD_commenter.vim)
-map <Leader>x <Plug>NERDCommenterToggle
-""未対応ファイルタイプのエラーメッセージを表示しない
-let g:NERDShutUp      = 1
-""カスタムdelimiters
-let g:NERDCustomDelimiters = {
-    \ 'terraform': { 'left': '#', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
-    \ 'plantuml': { 'left': '''', 'leftAlt': 'FOO', 'rightAlt': 'BAR' }
-\ }
-"------------------------------------
-" rizzatti/dash.vim
-"------------------------------------
-nmap <silent> <leader><leader>d <Plug>DashSearch
-
 "------------------------------------
 " tpope/vim-surround
 "------------------------------------

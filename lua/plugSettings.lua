@@ -1,3 +1,50 @@
+-- プラグインごとの設定 Plugins
+
+------------------------------------
+-- termguicolorsの設定
+------------------------------------
+if vim.fn.has('termguicolors') == 1 then
+  vim.opt.termguicolors = true
+end
+
+------------------------------------
+-- kana/vim-operator-replace
+------------------------------------
+vim.keymap.set('', '_', '<Plug>(operator-replace)')
+vim.keymap.set('v', 'p', '<Plug>(operator-replace)')
+
+------------------------------------
+-- junegunn/vim-easy-align
+------------------------------------
+-- Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vim.keymap.set('v', '<Enter>', '<Plug>(EasyAlign)')
+-- Start interactive EasyAlign for a motion/text object (e.g. gaip)
+vim.keymap.set('n', 'ga', '<Plug>(EasyAlign)')
+
+------------------------------------
+-- scrooloose/nerdcommenter
+------------------------------------
+-- コメントの間にスペースを空ける
+vim.g.NERDSpaceDelims = 1
+vim.g.NERDCreateDefaultMappings = 0
+-- <Leader>xでコメントをトグル(NERD_commenter.vim)
+vim.keymap.set('', '<Leader>x', '<Plug>NERDCommenterToggle')
+-- 未対応ファイルタイプのエラーメッセージを表示しない
+vim.g.NERDShutUp = 1
+
+------------------------------------
+-- カスタムdelimiters
+------------------------------------
+vim.g.NERDCustomDelimiters = {
+  terraform = { left = '#', leftAlt = 'FOO', rightAlt = 'BAR' },
+  plantuml = { left = "'''", leftAlt = 'FOO', rightAlt = 'BAR' }
+}
+
+------------------------------------
+-- rizzatti/dash.vim
+------------------------------------
+vim.keymap.set('n', '<leader><leader>d', '<Plug>DashSearch', { silent = true })
+
 ------------------------------------
 -- 'phaazon/hop.nvim'
 ------------------------------------
