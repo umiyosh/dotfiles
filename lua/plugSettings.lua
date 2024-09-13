@@ -45,6 +45,65 @@ vim.g.NERDCustomDelimiters = {
 ------------------------------------
 vim.keymap.set('n', '<leader><leader>d', '<Plug>DashSearch', { silent = true })
 
+------------------------------------
+-- tpope/vim-surround
+------------------------------------
+vim.api.nvim_set_keymap('n', 's', '<Plug>Ysurround', {})
+vim.api.nvim_set_keymap('n', 'ss', '<Plug>Yssurround', {})
+vim.g['surround_' .. string.byte('e')] = "begin \r end"
+vim.g['surround_' .. string.byte('m')] = "~~~ \r ~~~"
+vim.g['surround_' .. string.byte('-')] = ":\r"
+vim.g['surround_' .. string.byte('(')] = "(\r)"
+vim.g['surround_' .. string.byte('{')] = "{\r}"
+vim.g['surround_' .. string.byte('[')] = "[\r]"
+
+------------------------------------
+-- mbbill/undotree
+------------------------------------
+vim.api.nvim_set_keymap('n', 'U', ':UndotreeToggle<CR>', { noremap = true, silent = true })
+
+------------------------------------
+-- liuchengxu/vista.vim
+------------------------------------
+vim.api.nvim_set_keymap('n', '<leader>tl', ':Vista coc<CR>', { noremap = true, silent = true })
+vim.g.vista_renderer_enable_icon = 1
+
+------------------------------------
+-- vim-scripts/camelcasemotion
+------------------------------------
+local camelcase_maps = {'w', 'b', 'e'}
+for _, map in ipairs(camelcase_maps) do
+  vim.api.nvim_set_keymap('', map, '<Plug>CamelCaseMotion_' .. map, { silent = true })
+end
+
+local camelcase_text_objects = {'iw', 'ib', 'ie'}
+for _, obj in ipairs(camelcase_text_objects) do
+  vim.api.nvim_set_keymap('o', obj, '<Plug>CamelCaseMotion_' .. obj, { silent = true })
+  vim.api.nvim_set_keymap('x', obj, '<Plug>CamelCaseMotion_' .. obj, { silent = true })
+end
+
+------------------------------------
+-- lambdalisue/fern.vim
+------------------------------------
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "fern",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, 'n', 's', 's', {})
+  end
+})
+
+vim.api.nvim_set_keymap('n', '<leader>e', ':Fern . -reveal=% -drawer -toggle -width=40<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = {"fern", "nerdtree", "startify"},
+  callback = function()
+    vim.fn['glyph_palette#apply']()
+  end
+})
+
+vim.g.fern_renderer = 'nerdfont'
+vim.g.fern_disable_startup_warnings = 1
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
