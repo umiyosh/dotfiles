@@ -37,7 +37,7 @@ vim.g.NERDShutUp = 1
 ------------------------------------
 vim.g.NERDCustomDelimiters = {
   terraform = { left = '#', leftAlt = 'FOO', rightAlt = 'BAR' },
-  plantuml = { left = "'''", leftAlt = 'FOO', rightAlt = 'BAR' }
+  plantuml  = { left = "'''", leftAlt = 'FOO', rightAlt = 'BAR' }
 }
 
 ------------------------------------
@@ -45,6 +45,7 @@ vim.g.NERDCustomDelimiters = {
 ------------------------------------
 vim.keymap.set('n', '<leader><leader>d', '<Plug>DashSearch', { silent = true })
 
+------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
 ------------------------------------
