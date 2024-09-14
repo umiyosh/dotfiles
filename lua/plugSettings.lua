@@ -66,7 +66,7 @@ vim.api.nvim_set_keymap('n', 'U', ':UndotreeToggle<CR>', { noremap = true, silen
 -- liuchengxu/vista.vim
 ------------------------------------
 vim.api.nvim_set_keymap('n', '<leader>tl', ':Vista coc<CR>', { noremap = true, silent = true })
-vim.g.vista_renderer_enable_icon = 1
+vim.g['vista#renderer#enable_icon'] = 1
 
 ------------------------------------
 -- vim-scripts/camelcasemotion
@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
   end
 })
 
-vim.g.fern_renderer = 'nerdfont'
+vim.g['fern#renderer'] = 'nerdfont'
 vim.g.fern_disable_startup_warnings = 1
 
 ------ 以上はvimrcから移動 --------
