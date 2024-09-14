@@ -46,18 +46,6 @@ vim.g.NERDCustomDelimiters = {
 vim.keymap.set('n', '<leader><leader>d', '<Plug>DashSearch', { silent = true })
 
 ------------------------------------
--- tpope/vim-surround
-------------------------------------
-vim.api.nvim_set_keymap('n', 's', '<Plug>Ysurround', {})
-vim.api.nvim_set_keymap('n', 'ss', '<Plug>Yssurround', {})
-vim.g['surround_' .. string.byte('e')] = "begin \r end"
-vim.g['surround_' .. string.byte('m')] = "~~~ \r ~~~"
-vim.g['surround_' .. string.byte('-')] = ":\r"
-vim.g['surround_' .. string.byte('(')] = "(\r)"
-vim.g['surround_' .. string.byte('{')] = "{\r}"
-vim.g['surround_' .. string.byte('[')] = "[\r]"
-
-------------------------------------
 -- mbbill/undotree
 ------------------------------------
 vim.api.nvim_set_keymap('n', 'U', ':UndotreeToggle<CR>', { noremap = true, silent = true })
