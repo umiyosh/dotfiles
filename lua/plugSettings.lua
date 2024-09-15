@@ -92,6 +92,75 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.g['fern#renderer'] = 'nerdfont'
 vim.g.fern_disable_startup_warnings = 1
 
+-- junegunn/fzf.vim
+
+-- custom jumplist command
+-- https://github.com/junegunn/fzf.vim/issues/865#issuecomment-955740371
+-- FZFの設定
+local function go_to(jumpline)
+  local values = vim.split(jumpline, ":")
+  vim.cmd("e " .. values[1])
+  vim.api.nvim_win_set_cursor(0, {tonumber(values[2]), tonumber(values[3]) - 1})
+  vim.cmd("normal zvzz")
+end
+
+local function get_line(bufnr, lnum)
+  local lines = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)
+  if #lines > 0 then
+    return vim.trim(lines[1])
+  else
+    return ''
+  end
+end
+
+local function jumps()
+  -- Get jumps with filename added
+  local jump_list = vim.fn.getjumplist()[1]
+  local jumps_data = {}
+  for i = #jump_list, 1, -1 do
+    local jump = jump_list[i]
+    jump.name = vim.fn.bufname(jump.bufnr)
+    table.insert(jumps_data, jump)
+  end
+
+  local jumptext = {}
+  for _, val in ipairs(jumps_data) do
+    table.insert(jumptext, string.format("%s:%d:%d: %s", val.name, val.lnum, val.col + 1, get_line(val.bufnr, val.lnum)))
+  end
+
+  vim.fn['fzf#run'](vim.fn['fzf#vim#with_preview'](vim.fn['fzf#wrap']({
+    source = jumptext,
+    column = 1,
+    options = {'--delimiter', ':', '--bind', 'alt-a:select-all,alt-d:deselect-all', '--preview-window', '+{2}-/2'},
+    sink = go_to
+  })))
+end
+
+vim.api.nvim_create_user_command('Jumps', jumps, {})
+vim.api.nvim_create_user_command('Jumps', jumps, {})
+
+-- The prefix key
+vim.api.nvim_set_keymap('n', '[fzf]', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '[fzf]', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'ss', '[fzf]', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('v', 'ss', '[fzf]', { noremap = false, silent = false })
+
+-- Key mappings
+vim.api.nvim_set_keymap('n', '[fzf]f', '<cmd>Files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]F', '<cmd>GitFiles<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]b', '<cmd>Buffers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]u', '<cmd>History<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]m', '<cmd>Marks<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]h', '<cmd>History:<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]s', '<cmd>History/<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]a', '<cmd>CocFzfList symbols<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]k', '<cmd>Maps<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]n', '<cmd>Snippets<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]l', '<cmd>BLines<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]t', '<cmd>Filetypes<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]o', '<cmd>Vista finder coc<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]j', '<cmd>Jumps<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[fzf]d', '<cmd>CocDiagnostics<CR>', { noremap = true, silent = true })
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
