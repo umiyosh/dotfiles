@@ -1,17 +1,5 @@
 scriptencoding utf-8
 "------------------------------------
-" thinca/vim-quickrun
-"------------------------------------
-if !exists('g:quickrun_config')
-    let g:quickrun_config = {}
-endif
-"runnerをvimprocにする
-let g:quickrun_config._ = {'runner' : 'vimproc'}
-let g:quickrun_config._ = {'runner/vimproc/updatetime' : 40}
-"実行結果は右下に出す
-let g:quickrun_config._ = {'split': 'rightbelow 15sp'}
-
-"------------------------------------
 " tpope/vim-fugitive
 "------------------------------------
 nnoremap <Leader>gd :<C-u>Gdiff<CR>
