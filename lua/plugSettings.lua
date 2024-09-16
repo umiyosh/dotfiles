@@ -155,7 +155,6 @@ vim.api.nvim_set_keymap('n', '[fzf]h', '<cmd>History:<CR>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '[fzf]s', '<cmd>History/<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[fzf]a', '<cmd>CocFzfList symbols<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[fzf]k', '<cmd>Maps<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '[fzf]n', '<cmd>Snippets<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[fzf]l', '<cmd>BLines<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[fzf]t', '<cmd>Filetypes<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[fzf]o', '<cmd>Vista finder coc<CR>', { noremap = true, silent = true })
