@@ -1,42 +1,5 @@
 scriptencoding utf-8
 "------------------------------------
-" tpope/vim-fugitive
-"------------------------------------
-nnoremap <Leader>gd :<C-u>Gdiff<CR>
-nnoremap <Leader>gs :<C-u>Git<CR>
-nnoremap <Leader>gl :<C-u>Git log %<CR>
-" nnoremap <Leader>gp :<C-u>Git push<CR>
-nnoremap <Leader>ga :<C-u>Gwrite<CR>
-nnoremap <Leader>gc :<C-u>Git commit<CR>
-nnoremap <Leader>gC :<C-u>Git commit --amend<CR>
-nnoremap <Leader>gb :<C-u>Git blame<CR>
-
-" let g:indent_guides_guide_size = &tabstop     " ガイド幅をインデント幅に合わせる
-
-"------------------------------------
-" smoka7/hop.nvim
-"------------------------------------
-map  sb :HopWordBC<CR>
-vmap sb <cmd>HopWordBC<CR>
-map  sj :HopLineAC<CR>
-vmap sj <cmd>HopLineAC<CR>
-map  sk :HopLineBC<CR>
-vmap sk <cmd>HopLineBC<CR>
-map  se :HopWordAC<CR>
-vmap se <cmd>HopWordAC<CR>
-map  sw :HopWord<CR>
-nmap sw :HopWord<CR>
-vmap sw <cmd>HopWord<CR>
-map  sl :HopLine<CR>
-nmap sl :HopLine<CR>
-vmap sl <cmd>HopLine<CR>
-map  sf :HopChar1<CR>
-nmap sf :HopChar1<CR>
-vmap st <cmd>HopChar1<CR>
-map  s/ :HopPattern<CR>
-vmap s/ <cmd>HopPattern<CR>
-
-"------------------------------------
 " vim-airline
 "------------------------------------
 let g:airline_powerline_fonts = 1

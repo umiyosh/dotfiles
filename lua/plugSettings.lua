@@ -176,6 +176,28 @@ vim.g.quickrun_config['_'] = {
   split = 'rightbelow 15sp'
 }
 
+------------------------------------
+-- tpope/vim-fugitive
+------------------------------------
+vim.keymap.set('n', '<Leader>gd', ':Gdiff<CR>')
+vim.keymap.set('n', '<Leader>gs', ':Git<CR>')
+vim.keymap.set('n', '<Leader>gl', ':Git log %<CR>')
+vim.keymap.set('n', '<Leader>ga', ':Gwrite<CR>')
+vim.keymap.set('n', '<Leader>gc', ':Git commit<CR>')
+vim.keymap.set('n', '<Leader>gC', ':Git commit --amend<CR>')
+vim.keymap.set('n', '<Leader>gb', ':Git blame<CR>')
+
+------------------------------------
+-- smoka7/hop.nvim
+------------------------------------
+vim.keymap.set({'n', 'v'}, 'sb', ':HopWordBC<CR>')
+vim.keymap.set({'n', 'v'}, 'sj', ':HopLineAC<CR>')
+vim.keymap.set({'n', 'v'}, 'sk', ':HopLineBC<CR>')
+vim.keymap.set({'n', 'v'}, 'se', ':HopWordAC<CR>')
+vim.keymap.set({'n', 'v'}, 'sw', ':HopWord<CR>')
+vim.keymap.set({'n', 'v'}, 'sl', ':HopLine<CR>')
+vim.keymap.set({'n', 'v'}, 'sf', ':HopChar1<CR>')
+vim.keymap.set({'n', 'v'}, 's/', ':HopPattern<CR>')
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
