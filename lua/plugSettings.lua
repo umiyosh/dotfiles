@@ -165,16 +165,16 @@ vim.api.nvim_set_keymap('n', '[fzf]d', '<cmd>CocDiagnostics<CR>', { noremap = tr
 -- thinca/vim-quickrun
 ------------------------------------
 -- g:quickrun_config が存在しない場合は初期化
--- if vim.g.quickrun_config == nil then
-  -- vim.g.quickrun_config = {}
--- end
+if vim.g.quickrun_config == nil then
+  vim.g.quickrun_config = {}
+end
 
 -- runnerをvimprocに設定
--- vim.g.quickrun_config['_'] = {
-  -- runner = 'vimproc',
-  -- ['runner/vimproc/updatetime'] = 40,
-  -- split = 'rightbelow 15sp'
--- }
+vim.g.quickrun_config['_'] = {
+  runner = 'vimproc',
+  ['runner/vimproc/updatetime'] = 40,
+  split = 'rightbelow 15sp'
+}
 
 ------ 以上はvimrcから移動 --------
 ------------------------------------
