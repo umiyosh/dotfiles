@@ -48,7 +48,7 @@ vim.keymap.set('n', '<leader><leader>d', '<Plug>DashSearch', { silent = true })
 ------------------------------------
 -- mbbill/undotree
 ------------------------------------
-vim.api.nvim_set_keymap('n', 'U', ':UndotreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'U', ':UndotreeToggle<CR>', { silent = true })
 
 ------------------------------------
 -- liuchengxu/vista.vim
