@@ -53,7 +53,7 @@ vim.keymap.set('n', 'U', ':UndotreeToggle<CR>', { silent = true })
 ------------------------------------
 -- liuchengxu/vista.vim
 ------------------------------------
-vim.api.nvim_set_keymap('n', '<leader>tl', ':Vista coc<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tl', ':Vista coc<CR>', { silent = true })
 vim.g['vista#renderer#enable_icon'] = 1
 
 ------------------------------------
@@ -61,13 +61,12 @@ vim.g['vista#renderer#enable_icon'] = 1
 ------------------------------------
 local camelcase_maps = {'w', 'b', 'e'}
 for _, map in ipairs(camelcase_maps) do
-  vim.api.nvim_set_keymap('', map, '<Plug>CamelCaseMotion_' .. map, { silent = true })
+  vim.keymap.set('', map, '<Plug>CamelCaseMotion_' .. map, { silent = true })
 end
 
 local camelcase_text_objects = {'iw', 'ib', 'ie'}
 for _, obj in ipairs(camelcase_text_objects) do
-  vim.api.nvim_set_keymap('o', obj, '<Plug>CamelCaseMotion_' .. obj, { silent = true })
-  vim.api.nvim_set_keymap('x', obj, '<Plug>CamelCaseMotion_' .. obj, { silent = true })
+  vim.keymap.set({'o', 'x'}, obj, '<Plug>CamelCaseMotion_' .. obj, { silent = true })
 end
 
 ------------------------------------
@@ -80,7 +79,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
-vim.api.nvim_set_keymap('n', '<leader>e', ':Fern . -reveal=% -drawer -toggle -width=40<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', ':Fern . -reveal=% -drawer -toggle -width=40<CR>', { silent = true })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = {"fern", "nerdtree", "startify"},
