@@ -22,25 +22,24 @@ vim.cmd([[
 vim.cmd([[
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 ]])
-vim.api.nvim_set_keymap('i', '<C-n>', 'coc#pum#visible() ? coc#pum#next(1) : "\\<C-n>"', {expr = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-p>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-p>"', {expr = true, silent = true})
-vim.api.nvim_set_keymap('i', '<down>', 'coc#pum#visible() ? coc#pum#next(0) : "\\<down>"', {expr = true, silent = true})
-vim.api.nvim_set_keymap('i', '<up>', 'coc#pum#visible() ? coc#pum#prev(0) : "\\<up>"', {expr = true, silent = true})
+vim.keymap.set('i', '<C-n>', 'coc#pum#visible() ? coc#pum#next(1) : "\\<C-n>"',   { expr = true, silent = true})
+vim.keymap.set('i', '<C-p>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-p>"',   { expr = true, silent = true})
+vim.keymap.set('i', '<down>', 'coc#pum#visible() ? coc#pum#next(0) : "\\<down>"', { expr = true, silent = true})
+vim.keymap.set('i', '<up>', 'coc#pum#visible() ? coc#pum#prev(0) : "\\<up>"',     { expr = true, silent = true})
 
 -- coc キーマップ設定
-vim.api.nvim_set_keymap('n', 'gp', '<Plug>(coc-diagnostic-prev)',      {silent = true}) -- 前の診断に移動
-vim.api.nvim_set_keymap('n', 'gb', '<Plug>(coc-diagnostic-next)',      {silent = true}) -- 次の診断に移動
-vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)',           {silent = true}) -- 定義に移動
-vim.api.nvim_set_keymap('n', 'gy', '<Plug>(coc-type-definition)',      {silent = true}) -- 型定義に移動
-vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)',       {silent = true}) -- 実装に移動
-vim.api.nvim_set_keymap('n', 'gR', '<Plug>(coc-rename)',               {silent = true}) -- リネーム
-vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)',           {silent = true}) -- 参照に移動
-vim.api.nvim_set_keymap('n', '<Leader>r', ':QuickRun<CR>',             {silent = true}) -- クイックラン
-vim.api.nvim_set_keymap('v', '<leader>d', '<Plug>(coc-codeaction-selected)', {})         -- 選択範囲のコードアクション
-vim.api.nvim_set_keymap('n', '<leader>d', '<Plug>(coc-codeaction-selected)', {})         -- 選択範囲のコードアクション
+vim.keymap.set('n', 'gp', '<Plug>(coc-diagnostic-prev)',            { silent = true}) -- 前の診断に移動
+vim.keymap.set('n', 'gb', '<Plug>(coc-diagnostic-next)',            { silent = true}) -- 次の診断に移動
+vim.keymap.set('n', 'gd', '<Plug>(coc-definition)',                 { silent = true}) -- 定義に移動
+vim.keymap.set('n', 'gy', '<Plug>(coc-type-definition)',            { silent = true}) -- 型定義に移動
+vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)',             { silent = true}) -- 実装に移動
+vim.keymap.set('n', 'gR', '<Plug>(coc-rename)',                     { silent = true}) -- リネーム
+vim.keymap.set('n', 'gr', '<Plug>(coc-references)',                 { silent = true}) -- 参照に移動
+vim.keymap.set('n', '<Leader>r', ':QuickRun<CR>',                   { silent = true}) -- クイックラン
+vim.keymap.set({'v', 'n'}, '<leader>d', '<Plug>(coc-codeaction-selected)', { }) -- 選択範囲のコードアクション
 
 -- Use K to show documentation in preview window.
-vim.api.nvim_set_keymap('n', 'K', ':lua show_documentation()<CR>', {silent = true})
+vim.keymap.set('n', 'K', ':lua show_documentation()<CR>', {silent = true})
 
 function show_documentation()
   if vim.fn.index({'vim','help'}, vim.bo.filetype) >= 0 then
