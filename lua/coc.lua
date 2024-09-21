@@ -24,8 +24,8 @@ vim.cmd([[
 ]])
 vim.keymap.set('i', '<C-n>', 'coc#pum#visible() ? coc#pum#next(1) : "\\<C-n>"',   { expr = true, silent = true})
 vim.keymap.set('i', '<C-p>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-p>"',   { expr = true, silent = true})
-vim.keymap.set('i', '<down>', 'coc#pum#visible() ? coc#pum#next(0) : "\\<down>"', { expr = true, silent = true})
-vim.keymap.set('i', '<up>', 'coc#pum#visible() ? coc#pum#prev(0) : "\\<up>"',     { expr = true, silent = true})
+vim.api.nvim_set_keymap('i', '<down>', 'coc#pum#visible() ? coc#pum#next(0) : "\\<down>"', {expr = true, silent = true})
+vim.api.nvim_set_keymap('i', '<up>', 'coc#pum#visible() ? coc#pum#prev(0) : "\\<up>"', {expr = true, silent = true})
 
 -- coc キーマップ設定
 vim.keymap.set('n', 'gp', '<Plug>(coc-diagnostic-prev)',            { silent = true}) -- 前の診断に移動
