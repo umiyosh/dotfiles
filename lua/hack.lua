@@ -3,7 +3,7 @@
 -- ----------------------------------------------------------------------------
 
 -- 改行を含まず行末までヤンク
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
+vim.keymap.set('n', 'Y', 'y$')
 
 -- Open junk file
 vim.api.nvim_create_user_command('JunkFile', function()
@@ -19,10 +19,10 @@ vim.api.nvim_create_user_command('JunkFile', function()
 end, {})
 
 -- 行番号つきのコピー
-vim.api.nvim_set_keymap('v', 'ssc', '<ESC>:%!cat -n|perl -pe "s:^ +::g"<CR>gvyugv<ESC>', { noremap = true })-- {{{
+vim.keymap.set('v', 'ssc', '<ESC>:%!cat -n|perl -pe "s:^ +::g"<CR>gvyugv<ESC>')
 
 -- Luaでの文字数カウント機能
-vim.api.nvim_set_keymap('v', '<leader>ii', ':lua Count_Char()<CR>', { noremap = true, silent = true })-- }}}
+vim.keymap.set('v', '<leader>ii', ':lua Count_Char()<CR>', { silent = true })
 
 function Count_Char()
     local start_pos = vim.fn.getpos("'<")
@@ -62,16 +62,16 @@ vim.keymap.set('x', 'I', apply_blockwise_visual('I'), { noremap = true, desc = "
 vim.keymap.set('x', 'A', apply_blockwise_visual('A'), { noremap = true, desc = "Insert at end of visual block" })
 
 -- かな(alt)＋Qで:q!
-vim.api.nvim_set_keymap('n', '<M-q>', ':q!<CR>', { noremap = true })
+vim.keymap.set('n', '<M-q>', ':q!<CR>')
 -- かな(alt)＋Sで上書き保存
-vim.api.nvim_set_keymap('n', '<M-s>', ':<C-u>w<CR>', { noremap = true })
+vim.keymap.set('n', '<M-s>', ':<C-u>w<CR>')
 
 -- Mac の辞書.appで開く
 if vim.fn.has('mac') == 1 then
     vim.api.nvim_create_user_command('MacDictCWord', function()
         vim.fn.system('open ' .. vim.fn.shellescape('dict://' .. vim.fn.shellescape(vim.fn.expand('<cword>'))))
     end, {})
-    vim.api.nvim_set_keymap('n', '<Leader>j', ':<C-u>MacDictCWord<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<Leader>j', ':<C-u>MacDictCWord<CR>', { silent = true })
 end
 
 -- spell check
@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 })
 
 -- gx to open URL
-vim.api.nvim_set_keymap('n', 'gx', 'yiW:!open <C-r>" & <CR><CR>', { noremap = true })
+vim.keymap.set('n', 'gx', 'yiW:!open <C-r>" & <CR><CR>')
 
 -- github project rootでrgを実行する
 vim.api.nvim_create_user_command('Rg2', function(opts)
@@ -123,5 +123,5 @@ vim.api.nvim_create_user_command('Rg2', function(opts)
 end, { nargs = '*' })
 
 -- 現在開いているファイルPATHをcursorやvscodeで開く
-vim.api.nvim_set_keymap('n', '<leader>cu', ':!cursor %<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>co', ':!code %<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>cu', ':!cursor %<CR>')
+vim.keymap.set('n', '<leader>co', ':!code %<CR>')
