@@ -8,7 +8,7 @@ vim.opt.incsearch = true  -- インクリメンタルサーチ
 vim.opt.hlsearch = true   -- 検索文字をハイライト
 
 -- Escの2回押しでハイライト消去
-vim.api.nvim_set_keymap('n', '<ESC><ESC>', ':nohlsearch<CR><ESC>', { noremap = true, silent = true })
+vim.keymap.set('n', '<ESC><ESC>', ':nohlsearch<CR><ESC>', { silent = true })
 
 -- v/s:y選択した文字列を検索
 -- v/r:選択した文字列を置換

@@ -3,10 +3,10 @@
 -- ----------------------------------------------------------------------------
 
 -- insert mode での移動
-vim.api.nvim_set_keymap('i', '<C-e>', '<END>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-a>', '<HOME>', { noremap = true })
-vim.api.nvim_set_keymap('', '<C-e>', '$', { noremap = true })
-vim.api.nvim_set_keymap('', '<C-a>', '^', { noremap = true })
+vim.keymap.set('i', '<C-e>', '<END>')
+vim.keymap.set('i', '<C-a>', '<HOME>')
+vim.keymap.set('', '<C-e>', '$')
+vim.keymap.set('', '<C-a>', '^')
 
 -- カーソル位置の単語をyankする
 vim.api.nvim_set_keymap('n', 'vy', 'vawy', { noremap = true })
