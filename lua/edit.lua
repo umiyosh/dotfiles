@@ -27,21 +27,21 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
   callback = function()
-    vim.api.nvim_buf_set_keymap(0, 'n', '<esc>', ':cclose<CR>', {noremap = true, silent = true})
-    vim.cmd [[highlight QuickFixLine ctermbg=none]]
+    vim.api.nvim_buf_set_keymap(0, 'n', '<ESC><ESC>', '<cmd>cclose<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_hl(0, 'QuickFixLine', { ctermbg = 'none' })
   end
 })
 
 -- cwでquickfixウィンドウの表示をtoggle
-_G.toggle_qf_window = function()
-  for i = 1, vim.fn.winnr('$') do
-    local win_type = vim.fn.getwinvar(i, '&buftype')
-    if win_type == 'quickfix' then
-      vim.cmd('ccl')
+function toggle_qf_window()
+  local windows = vim.api.nvim_list_wins()
+  for _, win in ipairs(windows) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.api.nvim_buf_get_option(buf, 'buftype') == 'quickfix' then
+      vim.cmd('cclose')
       return
     end
   end
-  vim.cmd('botright cw')
+  vim.cmd('botright copen')
 end
-
-vim.api.nvim_set_keymap('n', 'cw', '<cmd>lua toggle_qf_window()<CR>', {noremap = true, silent = true})
+vim.keymap.set('n', 'cw', '<cmd>lua toggle_qf_window()<CR>', { silent = true })
