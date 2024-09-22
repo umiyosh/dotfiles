@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- cwでquickfixウィンドウの表示をtoggle
-function toggle_qf_window()
+function Toggle_qf_window()
   local windows = vim.api.nvim_list_wins()
   for _, win in ipairs(windows) do
     local buf = vim.api.nvim_win_get_buf(win)
@@ -44,4 +44,4 @@ function toggle_qf_window()
   end
   vim.cmd('botright copen')
 end
-vim.keymap.set('n', 'cw', '<cmd>lua toggle_qf_window()<CR>', { silent = true })
+vim.keymap.set('n', 'cw', '<cmd>lua Toggle_qf_window()<CR>', { silent = true })
