@@ -16,9 +16,9 @@ vim.cmd([[
 
 -- キーマッピング
 -- スニペット展開
-vim.api.nvim_set_keymap('i', '<C-k>', "<Plug>(neosnippet_expand_or_jump)", {silent = true})
-vim.api.nvim_set_keymap('s', '<C-k>', "<Plug>(neosnippet_expand_or_jump)", {silent = true})
-vim.api.nvim_set_keymap('x', '<C-k>', "<Plug>(neosnippet_expand_target)", {silent = true})
+vim.keymap.set('i', '<C-k>', "<Plug>(neosnippet_expand_or_jump)", {silent = true})
+vim.keymap.set('s', '<C-k>', "<Plug>(neosnippet_expand_or_jump)", {silent = true})
+vim.keymap.set('x', '<C-k>', "<Plug>(neosnippet_expand_target)", {silent = true})
 
 -- スニペット編集
-vim.api.nvim_set_keymap('n', 'sS', ":NeoSnippetEdit<CR>", {noremap = true, silent = true})
+vim.keymap.set('n', 'sS', ":NeoSnippetEdit<CR>", {silent = true})
