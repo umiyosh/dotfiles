@@ -9,32 +9,31 @@ vim.keymap.set('', '<C-e>', '$')
 vim.keymap.set('', '<C-a>', '^')
 
 -- カーソル位置の単語をyankする
-vim.api.nvim_set_keymap('n', 'vy', 'vawy', { noremap = true })
+vim.keymap.set('n', 'vy', 'vawy')
 
 -- 矩形選択で自由に移動する
 vim.opt.virtualedit:append('block')
 
 -- ビジュアルモード時vで行末まで選択
-vim.api.nvim_set_keymap('v', 'v', '$h', { noremap = true })
+vim.keymap.set('v', 'v', '$h')
 
 -- CTRL-hjklでウィンドウ移動
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
+vim.keymap.set('n', '<C-h>', '<C-w>h')
 
 -- バッファ操作関連
-vim.api.nvim_set_keymap('n', '<Leader>kk', ':bd<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>kK', ':bd!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>fk', ':Kwbd<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>bo', ':Bufonly<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>wk', ':w<CR> :bd<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>wK', ':w<CR> :bd!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>cc', ':new<CR>', { noremap = true })
-
-vim.api.nvim_set_keymap('n', 'bp', ':bprevious<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'bn', ':bnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>bb', ':b#<CR>', { noremap = true })
+vim.keymap.set('n', '<Leader>kk', ':bd<CR>')
+vim.keymap.set('n', '<Leader>kK', ':bd!<CR>')
+vim.keymap.set('n', '<Leader>fk', ':Kwbd<CR>')
+vim.keymap.set('n', '<Leader>bo', ':Bufonly<CR>')
+vim.keymap.set('n', '<Leader>wk', ':w<CR> :bd<CR>')
+vim.keymap.set('n', '<Leader>wK', ':w<CR> :bd!<CR>')
+vim.keymap.set('n', '<Leader>cc', ':new<CR>')
+vim.keymap.set('n', 'bp', ':bprevious<CR>', { silent = true })
+vim.keymap.set('n', 'bn', ':bnext<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>bb', ':b#<CR>')
 
 -- %で移動するペアの追加"<":">"
 vim.opt.matchpairs:append('<:>')
@@ -51,7 +50,7 @@ if not vim.g.markrement_char then
     }
 end
 
-vim.api.nvim_set_keymap('n', '[Mark]m', ':lua AutoMarkrement()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '[Mark]m', ':lua AutoMarkrement()<CR>', { silent = true })
 
 function _G.AutoMarkrement()
     if not vim.b.markrement_pos then
@@ -64,11 +63,11 @@ function _G.AutoMarkrement()
 end
 
 -- 次/前のマーク
-vim.api.nvim_set_keymap('n', '[Mark]n', ']`', { noremap = true })
-vim.api.nvim_set_keymap('n', '[Mark]p', '[`', { noremap = true })
+vim.keymap.set('n', '[Mark]n', ']`')
+vim.keymap.set('n', '[Mark]p', '[`')
 
 -- 一覧表示
-vim.api.nvim_set_keymap('n', '[Mark]l', ':marks<CR>', { noremap = true })
+vim.keymap.set('n', '[Mark]l', ':marks<CR>')
 
 -- 前回開いてたカーソル位置に移動
 vim.api.nvim_create_autocmd(
