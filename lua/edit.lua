@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 vim.opt.expandtab = true
 
 -- コンマの後に自動的にスペースを挿入
-vim.api.nvim_set_keymap('i', ',', ',<Space>', {noremap = true})
+vim.keymap.set('i', ',', ',<Space>')
 
 -- 保存時に行末の空白を除去する
 vim.api.nvim_create_autocmd("BufWritePre", {
