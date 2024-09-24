@@ -207,6 +207,16 @@ vim.g['airline_theme'] = 'dark'
 vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g['airline_highlighting_cache'] = 1
 
+------------------------------------
+-- VoOM (markdown outliner)
+------------------------------------
+vim.g.voom_tree_width = 60
+vim.g['voom_tree_placement'] = 'right'
+vim.g['voom_ft_modes'] = {markdown = 'markdown', pandoc = 'markdown'}
+vim.g['voom_user_command'] = "python3 import voom_addons"
+
+vim.keymap.set('n', '<Leader>vm', '<CMD>VoomToggle<CR>', {silent = true, noremap = true})
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'

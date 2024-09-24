@@ -1,25 +1,5 @@
 scriptencoding utf-8
 "------------------------------------
-" vim-airline
-"------------------------------------
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme="dark"
-" if has('nvim')
-  " let g:airline#extensions#tabline#enabled = 0
-" else
-  " let g:airline#extensions#tabline#enabled = 1
-" endif
-" let g:airline_highlighting_cache = 1
-"------------------------------------
-" VoOM (markdown outliner)
-"------------------------------------
-let g:voom_tree_width     = 60
-let g:voom_tree_placement = 'right'
-let g:voom_ft_modes       = {'markdown': 'markdown', 'pandoc': 'markdown'}
-let g:voom_user_command = "python3 import voom_addons"
-map <Leader>vm <ESC>:<C-u>VoomToggle<CR>
-
-"------------------------------------
 " eregex.vim
 "------------------------------------
 let g:eregex_forward_delim  = 'M/'
