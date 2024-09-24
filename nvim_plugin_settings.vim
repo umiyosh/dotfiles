@@ -2,14 +2,14 @@ scriptencoding utf-8
 "------------------------------------
 " vim-airline
 "------------------------------------
-let g:airline_powerline_fonts = 1
-let g:airline_theme="dark"
-if has('nvim')
-  let g:airline#extensions#tabline#enabled = 0
-else
-  let g:airline#extensions#tabline#enabled = 1
-endif
-let g:airline_highlighting_cache = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme="dark"
+" if has('nvim')
+  " let g:airline#extensions#tabline#enabled = 0
+" else
+  " let g:airline#extensions#tabline#enabled = 1
+" endif
+" let g:airline_highlighting_cache = 1
 "------------------------------------
 " VoOM (markdown outliner)
 "------------------------------------

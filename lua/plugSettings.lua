@@ -91,8 +91,9 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.g['fern#renderer'] = 'nerdfont'
 vim.g.fern_disable_startup_warnings = 1
 
+------------------------------------
 -- junegunn/fzf.vim
-
+------------------------------------
 -- custom jumplist command
 -- https://github.com/junegunn/fzf.vim/issues/865#issuecomment-955740371
 -- FZFの設定
@@ -197,6 +198,15 @@ vim.keymap.set({'n', 'v'}, 'sw', ':HopWord<CR>')
 vim.keymap.set({'n', 'v'}, 'sl', ':HopLine<CR>')
 vim.keymap.set({'n', 'v'}, 'sf', ':HopChar1<CR>')
 vim.keymap.set({'n', 'v'}, 's/', ':HopPattern<CR>')
+
+------------------------------------
+-- vim-airline settings
+------------------------------------
+vim.g['airline_powerline_fonts'] = 1
+vim.g['airline_theme'] = 'dark'
+vim.g['airline#extensions#tabline#enabled'] = 1
+vim.g['airline_highlighting_cache'] = 1
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
