@@ -48,12 +48,12 @@ vim.keymap.set('n', '<leader><leader>d', '<Plug>DashSearch', { silent = true })
 ------------------------------------
 -- mbbill/undotree
 ------------------------------------
-vim.keymap.set('n', 'U', ':UndotreeToggle<CR>', { silent = true })
+vim.keymap.set('n', 'U', '<cmd>UndotreeToggle<CR>', { silent = true })
 
 ------------------------------------
 -- liuchengxu/vista.vim
 ------------------------------------
-vim.keymap.set('n', '<leader>tl', ':Vista coc<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tl', '<cmd>Vista coc<CR>', { silent = true })
 vim.g['vista#renderer#enable_icon'] = 1
 
 ------------------------------------
@@ -79,7 +79,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
-vim.keymap.set('n', '<leader>e', ':Fern . -reveal=% -drawer -toggle -width=40<CR>', { silent = true })
+vim.keymap.set('n', '<leader>e', '<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>', { silent = true })
 
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = {"fern", "nerdtree", "startify"},
@@ -179,25 +179,25 @@ vim.g.quickrun_config['_'] = {
 ------------------------------------
 -- tpope/vim-fugitive
 ------------------------------------
-vim.keymap.set('n', '<Leader>gd', ':Gdiff<CR>')
-vim.keymap.set('n', '<Leader>gs', ':Git<CR>')
-vim.keymap.set('n', '<Leader>gl', ':Git log %<CR>')
-vim.keymap.set('n', '<Leader>ga', ':Gwrite<CR>')
-vim.keymap.set('n', '<Leader>gc', ':Git commit<CR>')
-vim.keymap.set('n', '<Leader>gC', ':Git commit --amend<CR>')
-vim.keymap.set('n', '<Leader>gb', ':Git blame<CR>')
+vim.keymap.set('n', '<Leader>gd', '<cmd>Gdiff<CR>')
+vim.keymap.set('n', '<Leader>gs', '<cmd>Git<CR>')
+vim.keymap.set('n', '<Leader>gl', '<cmd>Git log %<CR>')
+vim.keymap.set('n', '<Leader>ga', '<cmd>Gwrite<CR>')
+vim.keymap.set('n', '<Leader>gc', '<cmd>Git commit<CR>')
+vim.keymap.set('n', '<Leader>gC', '<cmd>Git commit --amend<CR>')
+vim.keymap.set('n', '<Leader>gb', '<cmd>Git blame<CR>')
 
 ------------------------------------
 -- smoka7/hop.nvim
 ------------------------------------
-vim.keymap.set({'n', 'v'}, 'sb', ':HopWordBC<CR>')
-vim.keymap.set({'n', 'v'}, 'sj', ':HopLineAC<CR>')
-vim.keymap.set({'n', 'v'}, 'sk', ':HopLineBC<CR>')
-vim.keymap.set({'n', 'v'}, 'se', ':HopWordAC<CR>')
-vim.keymap.set({'n', 'v'}, 'sw', ':HopWord<CR>')
-vim.keymap.set({'n', 'v'}, 'sl', ':HopLine<CR>')
-vim.keymap.set({'n', 'v'}, 'sf', ':HopChar1<CR>')
-vim.keymap.set({'n', 'v'}, 's/', ':HopPattern<CR>')
+vim.keymap.set({'n', 'v'}, 'sb', '<cmd>HopWordBC<CR>')
+vim.keymap.set({'n', 'v'}, 'sj', '<cmd>HopLineAC<CR>')
+vim.keymap.set({'n', 'v'}, 'sk', '<cmd>HopLineBC<CR>')
+vim.keymap.set({'n', 'v'}, 'se', '<cmd>HopWordAC<CR>')
+vim.keymap.set({'n', 'v'}, 'sw', '<cmd>HopWord<CR>')
+vim.keymap.set({'n', 'v'}, 'sl', '<cmd>HopLine<CR>')
+vim.keymap.set({'n', 'v'}, 'sf', '<cmd>HopChar1<CR>')
+vim.keymap.set({'n', 'v'}, 's/', '<cmd>HopPattern<CR>')
 
 ------------------------------------
 -- vim-airline settings
