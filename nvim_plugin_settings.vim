@@ -1,11 +1,5 @@
 scriptencoding utf-8
 "------------------------------------
-" eregex.vim
-"------------------------------------
-let g:eregex_forward_delim  = 'M/'
-let g:eregex_backward_delim = 'M?'
-
-"------------------------------------
 " python
 "------------------------------------
 " pdb起動

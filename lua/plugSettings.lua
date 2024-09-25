@@ -217,6 +217,12 @@ vim.g['voom_user_command'] = "python3 import voom_addons"
 
 vim.keymap.set('n', '<Leader>vm', '<CMD>VoomToggle<CR>', {silent = true, noremap = true})
 
+------------------------------------
+-- eregex.vim の設定
+------------------------------------
+vim.g['eregex_forward_delim'] = 'M/'
+vim.g['eregex_backward_delim'] = 'M?'
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
