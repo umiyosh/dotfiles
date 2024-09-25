@@ -223,6 +223,14 @@ vim.keymap.set('n', '<Leader>vm', '<CMD>VoomToggle<CR>', {silent = true, noremap
 vim.g['eregex_forward_delim'] = 'M/'
 vim.g['eregex_backward_delim'] = 'M?'
 
+------------------------------------
+-- heavenshell/vim-pydocstring
+------------------------------------
+vim.g['pydocstring_enable_mapping'] = 0
+-- you need to install doq before using this plugin. (pip install doq)
+vim.g['pydocstring_doq_path'] = vim.fn.expand("$VIRTUAL_ENV/bin/doq")
+vim.keymap.set('n', '<Leader>l', '<Plug>(pydocstring)', { noremap = false, silent = true })
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
