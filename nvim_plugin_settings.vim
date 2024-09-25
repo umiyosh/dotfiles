@@ -1,22 +1,5 @@
 scriptencoding utf-8
 "------------------------------------
-" python
-"------------------------------------
-" pdb起動
-command! Pdb :!python -m pdb %
-" yapf
-let g:yapf_style = 'pep8'
-nnoremap <leader>Y :call Yapf()<cr>
-" isort
-autocmd FileType python nnoremap <leader>i :!isort %<CR><CR>
-
-"------------------------------------
-" pydocstring
-"------------------------------------
-let g:pydocstring_enable_mapping = 0
-nmap <silent><Leader>l  <Plug>(pydocstring)
-
-"------------------------------------
 " vim-goimports
 "------------------------------------
 let g:goimports_simplify = 1
