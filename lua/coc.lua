@@ -55,6 +55,10 @@ end
 vim.cmd([[
   autocmd BufWritePre *.py :CocCommand python.sortImports
 ]])
+-- 保存時にgoimportsする
+vim.cmd([[
+  autocmd BufWritePre *.go :silent call CocAction('runCommand',  'editor.action.organizeImport')
+]])
 
 -- coc extentions
 vim.g.coc_global_extensions = {
@@ -73,3 +77,4 @@ vim.g.coc_global_extensions = {
     'coc-tsserver',
     'coc-go'
 }
+

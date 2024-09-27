@@ -37,11 +37,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-indent'
   " editorconfig
   Plug 'editorconfig/editorconfig-vim'
-  " https://mattn.kaoriya.net/software/vim/20200106103137.htm
-  " 不足しているパッケージを挿入してくれるやつ。
-  if !exists('g:vscode')
-    Plug 'mattn/vim-goimports', { 'for' : 'go' }
-  endif
 " }}}
 
 " Completion {{{

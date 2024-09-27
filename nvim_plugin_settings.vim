@@ -1,12 +1,5 @@
 scriptencoding utf-8
 "------------------------------------
-" vim-goimports
-"------------------------------------
-let g:goimports_simplify = 1
-let g:goimports_show_loclist = 0
-let g:goimports_simplify_cmd = 'gofumpt'
-
-"------------------------------------
 " vim-delve.vim
 "------------------------------------
 nmap <silent> <Leader>9 :DlvToggleBreakpoint<CR>
@@ -19,8 +12,7 @@ nmap <silent> <Leader>4 :DlvTest<CR>
 "------------------------------------
 let g:terraform_fmt_on_save = 1
 
-"------------------------------------
-" 'vim-test/vim-test'
+"------------------------------------ " 'vim-test/vim-test'
 "------------------------------------
 let g:test#strategy = 'dispatch'
 nmap <silent> <Leader>t :TestFile<CR>
