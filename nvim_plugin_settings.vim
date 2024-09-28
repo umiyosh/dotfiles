@@ -47,18 +47,6 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
 "------------------------------------
-" madox2/vim-ai
-"------------------------------------
-" let g:vim_ai_chat['options']['model'] = 'gpt-4'
-let g:vim_ai_chat = {
-\  "options": {
-\    "model": "gpt-4-0125-preview",
-\    "temperature": 0.2,
-\    "initial_prompt": "日本語で回答すること",
-\  },
-\}
-
-"------------------------------------
 " copilot.vim enable to write markdown and gitcommit
 "------------------------------------
 let g:copilot_filetypes = {
