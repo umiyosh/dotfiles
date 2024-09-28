@@ -16,7 +16,7 @@
   "Lua.diagnostics.globals": ["vim"],
   "cSpell.enabledLanguageIds": ["markdown", "plaintext", "gitcommit"],
   "yaml.schemaStore.enable": true,
-  "[css][html][typescriptreact][typescript][javascriptreact][javascript][python][json][graphql][html][json]": {
+  "[css][html][typescriptreact][typescript][javascriptreact][javascript][python][json][graphql][html][json][go]": {
     "coc.preferences.formatOnSave": true
   },
   "python.formatting.provider": "ruff",
