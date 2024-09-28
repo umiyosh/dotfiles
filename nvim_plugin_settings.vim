@@ -1,18 +1,11 @@
 scriptencoding utf-8
 "------------------------------------
-" vim-delve.vim
-"------------------------------------
-nmap <silent> <Leader>9 :DlvToggleBreakpoint<CR>
-nmap <silent> <Leader>8 :DlvClearAll<CR>
-nmap <silent> <Leader>5 :DlvDebug<CR>
-nmap <silent> <Leader>4 :DlvTest<CR>
-
-"------------------------------------
 " hashivim/vim-terraform
 "------------------------------------
 let g:terraform_fmt_on_save = 1
 
-"------------------------------------ " 'vim-test/vim-test'
+"------------------------------------ "
+"'vim-test/vim-test'
 "------------------------------------
 let g:test#strategy = 'dispatch'
 nmap <silent> <Leader>t :TestFile<CR>

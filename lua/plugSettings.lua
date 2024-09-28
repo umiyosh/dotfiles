@@ -231,6 +231,14 @@ vim.g['pydocstring_enable_mapping'] = 0
 vim.g['pydocstring_doq_path'] = vim.fn.expand("$VIRTUAL_ENV/bin/doq")
 vim.keymap.set('n', '<Leader>l', '<Plug>(pydocstring)', { noremap = false, silent = true })
 
+------------------------------------
+-- vim-delve.vim
+------------------------------------
+vim.keymap.set('n', '<Leader>9', '<cmd>DlvToggleBreakpoint<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>8', '<cmd>DlvClearAll<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>5', '<cmd>DlvDebug<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>4', '<cmd>DlvTest<CR>', { silent = true })
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
