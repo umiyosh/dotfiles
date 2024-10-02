@@ -239,6 +239,17 @@ vim.keymap.set('n', '<Leader>8', '<cmd>DlvClearAll<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>5', '<cmd>DlvDebug<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>4', '<cmd>DlvTest<CR>', { silent = true })
 
+------------------------------------
+-- hashivim/vim-terraform の設定
+------------------------------------
+vim.g.terraform_fmt_on_save = 1
+
+------------------------------------
+-- vim-test/vim-test
+-- ./../nvim_plugin_settings.vim:10
+------------------------------------
+vim.g['test#strategy'] = 'dispatch'
+vim.keymap.set('n', '<Leader>t', '<cmd>TestFile<CR>', { silent = true })
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'

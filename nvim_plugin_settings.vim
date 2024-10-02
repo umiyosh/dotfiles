@@ -1,16 +1,5 @@
 scriptencoding utf-8
 "------------------------------------
-" hashivim/vim-terraform
-"------------------------------------
-let g:terraform_fmt_on_save = 1
-
-"------------------------------------ "
-"'vim-test/vim-test'
-"------------------------------------
-let g:test#strategy = 'dispatch'
-nmap <silent> <Leader>t :TestFile<CR>
-
-"------------------------------------
 " buoto/gotests-vim
 "------------------------------------
 nmap <silent> <Leader>ct :GoTests<CR>
