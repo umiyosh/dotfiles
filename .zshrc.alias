@@ -185,8 +185,8 @@ ips () {
 alias corona="curl 'https://corona-stats.online?top=35&source=2&minimal=true&emojis=true'"
 
 alias Tree=/opt/homebrew/bin/tree
-alias tree="exa --tree --icons"
-alias ls="exa --no-user --icons --git -la --long --header"
+alias tree="eza --tree --icons"
+alias ls="eza --no-user --icons --git -la --long --header"
 
 # olog.shはObsidianのジャーナルログを取るためのスクリプト
 alias olog="olog.sh"

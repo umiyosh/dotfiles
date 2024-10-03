@@ -7,7 +7,7 @@ export LESSCHARSET=utf-8
 
 # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
 setopt auto_cd
-function chpwd() { exa --no-user --icons --git -la --long --header }
+function chpwd() { eza --no-user --icons --git -la --long --header }
 
 # cd でTabを押すとdir list を表示
 setopt auto_pushd
