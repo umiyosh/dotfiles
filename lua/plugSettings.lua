@@ -250,6 +250,27 @@ vim.g.terraform_fmt_on_save = 1
 ------------------------------------
 vim.g['test#strategy'] = 'dispatch'
 vim.keymap.set('n', '<Leader>t', '<cmd>TestFile<CR>', { silent = true })
+
+-- ------------------------------------
+-- RRethy/vim-illuminate
+-- ------------------------------------
+vim.g.Illuminate_useDeprecated = 1
+
+local illuminate_augroup = vim.api.nvim_create_augroup("illuminate_augroup", { clear = true })
+
+if vim.fn.has('nvim') == 1 then
+  vim.api.nvim_create_autocmd("VimEnter", {
+    group = illuminate_augroup,
+    pattern = "*",
+    command = "hi illuminatedWord cterm=underline,bold guibg=DarkMagenta",
+  })
+else
+  vim.api.nvim_create_autocmd("VimEnter", {
+    group = illuminate_augroup,
+    pattern = "*",
+    command = "hi illuminatedWord cterm=underline,bold gui=undercurl,bold ctermbg=19",
+  })
+end
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'

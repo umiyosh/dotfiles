@@ -6,21 +6,6 @@ nmap <silent> <Leader>ct :GoTests<CR>
 nmap <silent> <Leader>cT :GoTestsAll<CR>
 
 highlight goImportedPkg ctermfg=1 guifg=#ff0000
-" ------------------------------------
-" RRethy/vim-illuminate
-" ------------------------------------
-let g:Illuminate_useDeprecated = 1
-if has('nvim')
-augroup illuminate_augroup
-    autocmd!
-    autocmd VimEnter * hi illuminatedWord cterm=underline,bold guibg=DarkMagenta
-augroup END
-else
-augroup illuminate_augroup
-    autocmd!
-    autocmd VimEnter * hi illuminatedWord cterm=underline,bold gui=undercurl,bold ctermbg=19
-augroup END
-endif
 
 "------------------------------------
 " haya14busa/vim-asterisk
