@@ -8,11 +8,6 @@ nmap <silent> <Leader>cT :GoTestsAll<CR>
 highlight goImportedPkg ctermfg=1 guifg=#ff0000
 
 "------------------------------------
-" haya14busa/vim-asterisk
-"------------------------------------
-map *  <Plug>(asterisk-z*)
-
-"------------------------------------
 " copilot.vim enable to write markdown and gitcommit
 "------------------------------------
 let g:copilot_filetypes = {

@@ -279,8 +279,13 @@ end
 vim.g.netrw_nogx = 1
 
 -- Set key mappings for open-browser plugin
-vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-search)', { noremap = false, silent = true })
-vim.keymap.set('v', 'gx', '<Plug>(openbrowser-smart-search)', { noremap = false, silent = true })
+vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-search)', { silent = true })
+vim.keymap.set('v', 'gx', '<Plug>(openbrowser-smart-search)', { silent = true })
+
+------------------------------------
+-- haya14busa/vim-asterisk
+------------------------------------
+vim.keymap.set('', '*', '<Plug>(asterisk-z*)', { silent = true })
 
 ------ 以上はvimrcから移動 --------
 ------------------------------------
