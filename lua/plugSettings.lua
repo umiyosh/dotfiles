@@ -271,6 +271,17 @@ else
     command = "hi illuminatedWord cterm=underline,bold gui=undercurl,bold ctermbg=19",
   })
 end
+
+------------------------------------
+-- tyru/open-browser.vim
+------------------------------------
+-- Disable netrw's gx mapping
+vim.g.netrw_nogx = 1
+
+-- Set key mappings for open-browser plugin
+vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-search)', { noremap = false, silent = true })
+vim.keymap.set('v', 'gx', '<Plug>(openbrowser-smart-search)', { noremap = false, silent = true })
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
