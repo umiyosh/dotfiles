@@ -40,13 +40,3 @@ let g:rainbow_delimiters = {
     \ ],
 \ }
 end
-"------------------------------------
-" neovim plugin settings
-" 'p00f/nvim-ts-rainbow'
-"------------------------------------
-if has('nvim')
-" fzf selction like a easymotion
-nnoremap <silent> sB :BufferLinePick<CR>
-endif
-
-" nnoremap <silent> gR :call
