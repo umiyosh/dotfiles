@@ -287,6 +287,30 @@ vim.keymap.set('v', 'gx', '<Plug>(openbrowser-smart-search)', { silent = true })
 ------------------------------------
 vim.keymap.set('', '*', '<Plug>(asterisk-z*)', { silent = true })
 
+if not vim.g.vscode then
+  ------------------------------------
+  -- 'hiphish/rainbow-delimiters.nvim'
+  ------------------------------------
+  vim.g.rainbow_delimiters = {
+    strategy = {
+      [''] = 'rainbow_delimiters#strategy.global',
+      vim = 'rainbow_delimiters#strategy.local'
+    },
+    query = {
+      [''] = 'rainbow-delimiters',
+      lua = 'rainbow-blocks'
+    },
+    highlight = {
+      'RainbowDelimiterRed',
+      'RainbowDelimiterYellow',
+      'RainbowDelimiterBlue',
+      'RainbowDelimiterOrange',
+      'RainbowDelimiterGreen',
+      'RainbowDelimiterViolet',
+      'RainbowDelimiterCyan'
+    }
+  }
+end
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
