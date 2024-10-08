@@ -38,4 +38,4 @@ PROMPT=$(cat << 'EOF'
 - フッターのトークンにおいて BREAKING-CHANGE は BREAKING CHANGE と同じトークンとして解釈されなければならない (MUST)。
 EOF
 )
-pbpaste | sgpt --code "$PROMPT" | pbcopy
+sgpt --code "$PROMPT"

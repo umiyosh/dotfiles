@@ -20,4 +20,4 @@ PROMPT=$(cat << 'EOF'
 - ブランチ名以外の要素を出力しないこと。ブランチ名のみを出力してください。
 EOF
 )
-pbpaste | sgpt --code "$PROMPT" | pbcopy
+sgpt --code "$PROMPT"
