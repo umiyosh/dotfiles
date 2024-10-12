@@ -311,6 +311,17 @@ if not vim.g.vscode then
     }
   }
 end
+
+-- ------------------------------------
+-- copilot.vim
+-- mdとgitcommitの書き込み時にもcopilotを有効化する。
+-- ------------------------------------
+vim.g.copilot_filetypes = {
+  markdown = true,
+  yaml = true,
+  gitcommit = true,
+}
+
 ------ 以上はvimrcから移動 --------
 ------------------------------------
 -- 'phaazon/hop.nvim'
