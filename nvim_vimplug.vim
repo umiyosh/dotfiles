@@ -80,9 +80,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-test/vim-test'
   " テストを非同期実行するために入れたやつ
   Plug 'tpope/vim-dispatch'
-  " TODO: remove "gotests-vim" because of not working
-  " gotests
-  Plug 'buoto/gotests-vim', { 'for' : 'go' }
   " terraformのSyntax highlightとかのやつ
   " TODO: ツリーシッターを使えばいらないんじゃないかって思った。
   Plug 'hashivim/vim-terraform', { 'for' : 'terraform' }
