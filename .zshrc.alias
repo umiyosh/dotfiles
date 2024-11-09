@@ -204,6 +204,8 @@ alias ol='olog $(pbpaste | tovim)'
 alias sc='sgpt --code'
 alias sr='sgpt --repl'
 alias sg='sgpt'
+
+alias cs="ChatGptSearch.sh"
 # command_not_found_handler
 # function command_not_found_handler() {
   # sgpt "$@"
