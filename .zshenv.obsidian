@@ -1,0 +1,10 @@
+# Set shell and shell path for Obsidian shell command.
+export EDITOR='mvim'
+. "$HOME/.cargo/env"
+
+
+export PATH=~/.local/bin:$PATH
+source ~/python_v3.11/bin/activate
+export PATH=$PATH:${HOME}/.nodebrew/current/bin
+export GVM_ROOT=/Users/a14073/.gvm
+export PATH="$GVM_ROOT/bin:$PATH"
