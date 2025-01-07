@@ -86,14 +86,6 @@ call plug#begin('~/.vim/plugged')
   " K8sのxplainを使うために、カーソル下のkeyをフルパスで取得するやつ
   " TODO : インストールはされているが、設定が有効化されていない。
   Plug 'cuducos/yaml.nvim'
-  if !exists('g:vscode')
-  " LLMとのチャットインターフェースを提供してくれるやつ {{{
-    Plug 'MunifTanjim/nui.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'folke/trouble.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'jackMort/ChatGPT.nvim'
-  endif
   " }}}
 
 " }}}

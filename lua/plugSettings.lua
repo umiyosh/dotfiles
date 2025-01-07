@@ -411,28 +411,10 @@ if not vim.g.vscode then
 
     }
   }
-
   ---------------------------------------
   -- m-demare/hlargs.nvim
   ---------------------------------------
   require('hlargs').setup()
-  ---------------------------------------
-  -- 'jackMort/ChatGPT.nvim'
-  ---------------------------------------
-  require("chatgpt").setup({
-     openai_params = {
-       model = "gpt-4o",
-       frequency_penalty = 0,
-       presence_penalty = 0,
-       max_tokens = 4095,
-       temperature = 0.2,
-       top_p = 0.1,
-       n = 1,
-     },
-    actions_paths = {
-      vim.fn.expand("$HOME/dotfiles/cgpt_actions.json"),
-    },
-    })
   ---------------------------------------
   -- lewis6991/gitsigns.nvim
   ---------------------------------------
