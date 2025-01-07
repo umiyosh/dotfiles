@@ -91,6 +91,16 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.g['fern#renderer'] = 'nerdfont'
 vim.g.fern_disable_startup_warnings = 1
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("fern-custom", { clear = true }),
+  pattern = "fern",
+  callback = function()
+    -- Buffer-local keymaps
+    vim.keymap.set("n", "<C-h>", "<C-w>h", { buffer = true })
+    vim.keymap.set("n", "<C-l>", "<C-w>l", { buffer = true })
+  end,
+})
+
 ------------------------------------
 -- junegunn/fzf.vim
 ------------------------------------
