@@ -78,3 +78,8 @@ source "${HOME}/google-cloud-sdk/completion.zsh.inc"
 # kubernetes
 export PATH="${PATH}:${HOME}/.krew/bin"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# java
+# Java
+export JAVA_HOME=/opt/homebrew/opt/openjdk@11
+export PATH=$JAVA_HOME/bin:$PATH
