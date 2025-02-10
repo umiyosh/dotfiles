@@ -126,7 +126,7 @@
   generic = ^B move-page-up
 [diff]
   ; tool = difftastic
-  external = difft
+  external = difft --background=light
 ; [difftool]
   ; prompt = false
 ; [difftool "difftastic"]
