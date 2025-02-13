@@ -15,21 +15,21 @@ function precmd() {
   PRE_RESULT=$?
   if (( CALCTIME )) ; then
     typeset -gi ETIME=SECONDS-CMDSTARTTIME
-    if [ $ETIME -ge 7 ]; then
+    if [ $ETIME -ge 5 ]; then
       if [[ ! $PRE_CMD == vi* && ! $PRE_CMD == tig && ! $PRE_CMD == [ts]  && ! $PRE_CMD == ss && ! $PRE_CMD == git && ! $PRE_CMD == man ]]; then
         if [[ $PRE_RESULT -eq 0 ]]; then
           echo $fg[green] "[INFO] $PRE_FULL_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
-          # ビープ音を鳴らさないコマンドの定義
-          IGNORE_CMDS=(nvim k9s top less man view)
-          # 直前のコマンドがIGNORE_CMDSに含まれていない場合のみbeep
-          if [[ ! "${IGNORE_CMDS[*]}" =~ "${PRE_CMD}" ]]; then
+          # Define commands that don't trigger beep sound
+          IGNORE_CMDS_BEEP=(nvim k9s top less man view modd git k K gc tovim)
+          # Only beep if the previous command is not in IGNORE_CMDS_BEEP
+          if [[ ! "${IGNORE_CMDS_BEEP[*]}" =~ "${PRE_CMD}" ]]; then
             beep
           fi
         else
           echo $fg[red] "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
           notif "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
-          # 直前のコマンドがIGNORE_CMDSに含まれていない場合のみbeep
-          if [[ ! "${IGNORE_CMDS[*]}" =~ "${PRE_CMD}" ]]; then
+          # Only beep if the previous command is not in IGNORE_CMDS_BEEP
+          if [[ ! "${IGNORE_CMDS_BEEP[*]}" =~ "${PRE_CMD}" ]]; then
             beep
           fi
         fi
