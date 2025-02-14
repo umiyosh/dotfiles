@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+TERMINAL_APP="iTerm"
+
+t-rec -M -w $(t-rec -l | grep $TERMINAL_APP | awk '{print $NF}')
+
