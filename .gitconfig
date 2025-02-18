@@ -118,6 +118,7 @@
 
 [http]
   sslVerify = false
+	postBuffer = 524288000
 
 [tig "bind"]
   generic = g move-first-line
