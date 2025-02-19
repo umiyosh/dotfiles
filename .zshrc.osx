@@ -20,7 +20,11 @@ function precmd() {
         if [[ $PRE_RESULT -eq 0 ]]; then
           echo $fg[green] "[INFO] $PRE_FULL_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
           # Define commands that don't trigger beep sound
-          IGNORE_CMDS_BEEP=(nvim k9s top less man view modd git k K gc tovim)
+          IGNORE_CMDS_BEEP=(
+            nvim k9s top less man view modd git k K gc tovim p fu cdr pk
+            agv rgv ackv l fp lpe mpe gps gpb gpl gpr s kn kp ks kr kd ki
+            kc vr help afp pt
+          )
           # Only beep if the previous command is not in IGNORE_CMDS_BEEP
           if [[ ! "${IGNORE_CMDS_BEEP[*]}" =~ "${PRE_CMD}" ]]; then
             beep
