@@ -61,7 +61,6 @@ alias vr="selectorVenv"
 alias help="selectorAliasAndFunc"
 alias afp="selectorAliasAndFunc"
 alias pt="selectorPritnul"
-alias ptl="gotunl -l"
 
 alias -g P='| p'
 alias fgo='fp $GOPATH'
