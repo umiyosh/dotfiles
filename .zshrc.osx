@@ -25,7 +25,7 @@ function precmd() {
           help K k k9s kc kco ki kn kns kp \
           krkd ks l less lpe man modd mpe \
           nvim p ping pk pt rgv s top tovim \
-          tig vi vim nvim view vr)
+          tig vi vim nvim view vr mb)
 
       local token
       local beep_flag=1
