@@ -1,21 +1,12 @@
 #!/usr/bin/env zsh
 
 set -eu
-# クリップボードを空にする
-pbcopy < /dev/null
 
-# SuperWhisper を開いて、record モードにする
-open superwhisper://record
-
-# クリップボードが空の場合は、何か入力されるまで待機する
-while [ -z "$(pbpaste)" ]; do
-    sleep 0.5
-done
+record_with_whisper.sh
 
 # クリップボードの内容を tovim で加工し、生成AIでブランチ名を生成する。
 branch_name=$(pbpaste | tovim | mkb | sed 's/^\*//; s/\*$//')
 
 # ZLEは対話モードでしか使えないので、pyautoguiライブラリを使ってZshの入力バッファに無理やりタイピングする。
-python3 -c "import sys, time, pyautogui
-cmd = 'git checkout -b ' + sys.argv[1]
-pyautogui.typewrite(cmd)" "$branch_name"
+# python3 -c "import sys, time, pyautogui ;cmd = 'git checkout -b ' + sys.argv[1] ;pyautogui.typewrite(cmd)" "$branch_name"
+insert-cmd "git checkout -b $branch_name"

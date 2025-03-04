@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+import sys
+import time
+import pyautogui
+import pyperclip
+
+
+"""
+このスクリプトは、引数で渡されたコマンドをシェルの入力バッファに入力し、実行を待機するツールです。
+
+主な目的:
+- ZSHのZLE(Zsh Line Editor)の対話モードのような操作感を、通常スクリプトで再選するために作成された
+- コマンド実行前のユーザーによる確認・修正機会の提供
+- シェルヒストリへの実行結果の記録による再利用性・トレーサビリティの向上
+
+ユースケース:
+1. LLMなどで自動生成されたコマンドの事前チェックと修正
+2. 複雑なコマンドの実行前確認
+3. シェルヒストリを活用した作業記録の保持
+
+動作の特徴:
+- コマンドを自動的にシェルバッファに入力するが、実行は行わない
+- ユーザーは入力されたコマンドを確認・修正可能
+- 最終的な実行はユーザーのトリガーによって行われる
+- 実行結果がシェルヒストリに正しく記録される
+
+前提条件:
+- Python3がインストールされていること
+- pyautogui, pyperclip ライブラリがインストールされていること
+
+> pip install pyautogui pyperclip
+
+"""
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: {} <command-to-type>".format(sys.argv[0]), file=sys.stderr)
+        sys.exit(1)
+
+    # 実行前のクリップボードの内容を保存
+    original_clipboard = pyperclip.paste()
+
+    try:
+        # 引数を全て結合してコマンド文字列を作成（必要に応じて調整可能）
+        cmd = " ".join(sys.argv[1:])
+        # 少し待機してから入力（端末がアクティブであることを確認）
+        pyperclip.copy(cmd)
+        time.sleep(0.5)
+        # writeはキーボード入力イメージで遅いのでコメントアウト
+        # pyautogui.write(cmd)
+
+        # コマンドをペースト。遅いwriteの代替。
+        pyautogui.keyDown("command")
+        pyautogui.press("v")
+        pyautogui.keyUp("command")
+
+    finally:
+        # クリップボードの内容を元に戻す
+        pyperclip.copy(original_clipboard)
+
+
+if __name__ == "__main__":
+    main()
