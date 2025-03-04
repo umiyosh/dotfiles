@@ -51,10 +51,6 @@ function show_documentation()
   end
 end
 
--- 保存時にisortする
-vim.cmd([[
-  autocmd BufWritePre *.py :CocCommand python.sortImports
-]])
 -- 保存時にgoimportsする
 vim.cmd([[
   autocmd BufWritePre *.go :silent call CocAction('runCommand',  'editor.action.organizeImport')
