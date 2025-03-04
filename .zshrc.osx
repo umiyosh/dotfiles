@@ -12,37 +12,49 @@ function preexec() {
     PRE_CMD=$( basename ${1%% *}  )
 }
 function precmd() {
+  # 直前のコマンドの終了ステータスを保持
   PRE_RESULT=$?
-  if (( CALCTIME )) ; then
+
+  if (( CALCTIME )); then
+    # コマンド実行開始からの経過秒数を計算
     typeset -gi ETIME=SECONDS-CMDSTARTTIME
     if [ $ETIME -ge 5 ]; then
-      if [[ ! $PRE_CMD == vi* && ! $PRE_CMD == tig && ! $PRE_CMD == [ts]  && ! $PRE_CMD == ss && ! $PRE_CMD == git && ! $PRE_CMD == man ]]; then
-        if [[ $PRE_RESULT -eq 0 ]]; then
-          echo $fg[green] "[INFO] $PRE_FULL_CMD cmd \n nomal end \n elapse:$ETIME [sec]"
-          # Define commands that don't trigger beep sound
-          IGNORE_CMDS_BEEP=(
-            nvim k9s top less man view modd git k K gc tovim p fu cdr pk
-            agv rgv ackv l fp lpe mpe gps gpb gpl gpr s kn kp ks kr kd ki
-            kc vr help afp pt
-          )
-          # Only beep if the previous command is not in IGNORE_CMDS_BEEP
-          if [[ ! "${IGNORE_CMDS_BEEP[*]}" =~ "${PRE_CMD}" ]]; then
-            beep
-          fi
-        else
-          echo $fg[red] "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
-          notif "[ERROR] $PRE_FULL_CMD cmd \n fail:$? \n elapse:$ETIME [sec]"
-          # Only beep if the previous command is not in IGNORE_CMDS_BEEP
-          if [[ ! "${IGNORE_CMDS_BEEP[*]}" =~ "${PRE_CMD}" ]]; then
-            beep
-          fi
+      # ビープ音を抑制するコマンドのリストを配列で定義
+      local IGNORE_CMDS_BEEP=(ackv afp agv cdr f fd fp fu \
+          gc gco git gpb gping gpl gpr gps \
+          help K k k9s kc kco ki kn kns kp \
+          krkd ks l less lpe man modd mpe \
+          nvim p ping pk pt rgv s top tovim \
+          tig vi view vr)
+
+      local token
+      local beep_flag=1
+      # shellcheck disable=SC2296
+      for token in ${(z)PRE_FULL_CMD}; do
+        if (( ${IGNORE_CMDS_BEEP[(Ie)${token}]} )); then
+          beep_flag=0
+          break
         fi
+      done
+
+      # 結果の表示（成功の場合は緑、失敗の場合は赤）
+      if [ $PRE_RESULT -eq 0 ]; then
+        echo $fg[green] "[INFO] $PRE_FULL_CMD cmd \n normal end \n elapse: $ETIME [sec]"
+      else
+        echo $fg[red] "[ERROR] $PRE_FULL_CMD cmd \n fail: $PRE_RESULT \n elapse: $ETIME [sec]"
+        notif "[ERROR] $PRE_FULL_CMD cmd \n fail: $PRE_RESULT \n elapse: $ETIME [sec]"
+      fi
+
+      # ビープ音の実行（対象でなければ）
+      if (( beep_flag )); then
+        beep
       fi
     fi
   fi
+
+  # CALCTIME フラグをリセット
   typeset -gi CALCTIME=0
 }
-
 # automjump
 ## alternative "brew --prefix". Because it's too slow
 export BREW_PREFIX=${BREW_PREFIX:-$(dirname $(dirname $(which brew)))}
