@@ -3,6 +3,8 @@ local function cmd(command)
     vim.cmd(command)
 end
 
+vim.opt.termguicolors = true
+
 -- 各設定ファイルの読み込み
 local function source(file)
     cmd('source ' .. file)
@@ -34,6 +36,9 @@ source_if_exists('~/dotfiles_private/nvim_local.vim')
 -- プラグイン設定
 source('~/dotfiles/nvim_vimplug.vim')
 require('plugSettings')
+-- プラグイン設定
+-- require("config.lazy")
+
 
 if not vim.g.vscode then
   require('neosnippet')
