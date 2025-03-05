@@ -20,12 +20,14 @@ function precmd() {
     typeset -gi ETIME=SECONDS-CMDSTARTTIME
     if [ $ETIME -ge 5 ]; then
       # ビープ音を抑制するコマンドのリストを配列で定義
-      local IGNORE_CMDS_BEEP=(ackv afp agv cdr f fd fp fu \
+      local IGNORE_CMDS_BEEP=( \
+          ackv afp agv cdr f fd fp fu \
           gc gco git gpb gping gpl gpr gps \
           help K k k9s kc kco ki kn kns kp \
           krkd ks l less lpe man modd mpe \
           nvim p ping pk pt rgv s top tovim \
-          tig vi vim nvim view vr mb)
+          tig vi vim nvim view vr mb \
+        )
 
       local token
       local beep_flag=1
