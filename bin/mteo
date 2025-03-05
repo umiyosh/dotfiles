@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+set -eu
+
+record_with_whisper.sh
+pbpaste | tovim |teo | pbcopy
