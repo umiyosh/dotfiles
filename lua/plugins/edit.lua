@@ -127,10 +127,12 @@ return {
   -- vim-textobj-fold : 折りたたまれたアレをtext-objectに
   {
     "kana/vim-textobj-fold",
+    dependencies = { "kana/vim-textobj-user" },
   },
   -- vim-textobj-indent : インデントされたものをtext-objectに
   {
     "kana/vim-textobj-indent",
+    dependencies = { "kana/vim-textobj-user" },
   },
   -- editorconfig
   {
