@@ -19,14 +19,14 @@ return {
     -- LLMを使ってコードを提案してくれるやつ
     {
         "github/copilot.vim",
-        opts = {
+        config = function()
             -- コメントアウトとかmdとかgitcommitの書き込み時にもcopilotを有効化する。  
-            filetypes = {
+            vim.g.copilot_filetypes = {
                 markdown = true,
                 yaml = true,
                 gitcommit = true,
             }
-        }
+        end
     },
 }
 
