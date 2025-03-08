@@ -8,9 +8,9 @@ return {
   {
     "heavenshell/vim-pydocstring",
     ft = "python",
-    keys = {
-      { '<Leader>l', '<Plug>(pydocstring)', mode = 'n', silent = true },
-    },
+    config = function()
+      vim.keymap.set('n', '<Leader>l', '<Plug>(pydocstring)', { silent = true })
+    end,
     init = function()
       vim.g.pydocstring_enable_mapping = 0
       vim.g.pydocstring_doq_path = vim.fn.expand("$VIRTUAL_ENV/bin/doq")
@@ -36,9 +36,9 @@ return {
   -- ソースコード上のメソッド宣言、変数宣言の一覧を表示
   {
     "liuchengxu/vista.vim",
-    keys = {
-      { '<leader>tl', '<cmd>Vista coc<CR>', mode = 'n', silent = true },
-    },
+    config = function()
+      vim.keymap.set('n', '<leader>tl', '<cmd>Vista coc<CR>', { silent = true })
+    end,
     init = function()
       vim.g['vista#renderer#enable_icon'] = 1
     end,
@@ -47,19 +47,19 @@ return {
   {
     "sebdah/vim-delve",
     ft = "go",
-    keys = {
-      { '<Leader>9', '<cmd>DlvToggleBreakpoint<CR>', mode = 'n', silent = true },
-      { '<Leader>8', '<cmd>DlvClearAll<CR>', mode = 'n', silent = true },
-      { '<Leader>5', '<cmd>DlvDebug<CR>', mode = 'n', silent = true },
-      { '<Leader>4', '<cmd>DlvTest<CR>', mode = 'n', silent = true },
-    },
+    config = function()
+      vim.keymap.set('n', '<Leader>9', '<cmd>DlvToggleBreakpoint<CR>', { silent = true })
+      vim.keymap.set('n', '<Leader>8', '<cmd>DlvClearAll<CR>', { silent = true })
+      vim.keymap.set('n', '<Leader>5', '<cmd>DlvDebug<CR>', { silent = true })
+      vim.keymap.set('n', '<Leader>4', '<cmd>DlvTest<CR>', { silent = true })
+    end,
   },
   -- vimからテストを実行するやつ
   {
     "vim-test/vim-test",
-    keys = {
-      { '<Leader>t', '<cmd>TestFile<CR>', mode = 'n', silent = true },
-    },
+    config = function()
+      vim.keymap.set('n', '<Leader>t', '<cmd>TestFile<CR>', { silent = true })
+    end,
     init = function()
       vim.g['test#strategy'] = 'dispatch'
     end,
@@ -83,4 +83,4 @@ return {
     "cuducos/yaml.nvim",
     ft = "yaml",
   },
-} 
+}

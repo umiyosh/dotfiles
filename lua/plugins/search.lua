@@ -34,6 +34,16 @@ return {
         "smoka7/hop.nvim",
         config = function()
             require'hop'.setup()
+            -- キーマップ設定を追加
+            vim.keymap.set({'n', 'v'}, 'sb', '<cmd>HopWordBC<CR>', { silent = true })
+            vim.keymap.set({'n', 'v'}, 'sj', '<cmd>HopLineAC<CR>', { silent = true })
+            vim.keymap.set({'n', 'v'}, 'sk', '<cmd>HopLineBC<CR>', { silent = true })
+            vim.keymap.set({'n', 'v'}, 'se', '<cmd>HopWordAC<CR>', { silent = true })
+            vim.keymap.set({'n', 'v'}, 'sw', '<cmd>HopWord<CR>', { silent = true })
+            vim.keymap.set({'n', 'v'}, 'sl', '<cmd>HopLine<CR>', { silent = true })
+            vim.keymap.set({'n', 'v'}, 'sf', '<cmd>HopChar1<CR>', { silent = true })
+            vim.keymap.set({'n', 'v'}, 's/', '<cmd>HopPattern<CR>', { silent = true })
+
             vim.opt.list = true
             vim.opt.listchars:append("space:⋅")
             vim.opt.listchars:append("eol:↴")

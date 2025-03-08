@@ -2,9 +2,9 @@ return {
   {
     -- コメントアウトを簡単にするやつ
     "scrooloose/nerdcommenter",
-    keys = {
-      { '<Leader>x', '<Plug>NERDCommenterToggle', mode = '' }
-    },
+    config = function()
+      vim.keymap.set('', '<Leader>x', '<Plug>NERDCommenterToggle', { silent = true })
+    end,
     init = function()
       vim.g.NERDSpaceDelims = 1
       vim.g.NERDCreateDefaultMappings = 0
