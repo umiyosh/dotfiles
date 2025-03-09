@@ -84,7 +84,7 @@ return {
   {
     "RRethy/vim-illuminate",
     event = { "BufReadPost", "BufNewFile" },
-    config = function()
+    init = function()
       vim.g.Illuminate_useDeprecated = 1
       local illuminate_augroup = vim.api.nvim_create_augroup("illuminate_augroup", { clear = true })
       if vim.fn.has('nvim') == 1 then
@@ -110,4 +110,4 @@ return {
       require'colorizer'.setup()
     end,
   },
-} 
+}
