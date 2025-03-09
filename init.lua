@@ -36,12 +36,6 @@ source_if_exists('~/dotfiles_private/nvim_local.vim')
 -- プラグイン設定
 require("config.lazy")
 
-
-if not vim.g.vscode then
-  require('neosnippet')
-  require('coc')
-end
-
 -- カラースキーム
 require('color')
 
