@@ -34,10 +34,7 @@ end
 source_if_exists('~/nvim_local.vim')
 source_if_exists('~/dotfiles_private/nvim_local.vim')
 -- プラグイン設定
-source('~/dotfiles/nvim_vimplug.vim')
-require('plugSettings')
--- プラグイン設定
--- require("config.lazy")
+require("config.lazy")
 
 
 if not vim.g.vscode then
