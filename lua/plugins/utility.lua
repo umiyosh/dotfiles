@@ -14,13 +14,15 @@ return {
       "lambdalisue/fern-renderer-nerdfont.vim",
       "lambdalisue/glyph-palette.vim",
     },
+    cmd = "Fern",
+    keys = {
+      { "<leader>e", "<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>", mode = "n", silent = true },
+    },
     init = function()
       vim.g['fern#renderer'] = 'nerdfont'
       vim.g.fern_disable_startup_warnings = 1
     end,
     config = function()
-      vim.keymap.set('n', '<leader>e', '<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>', { silent = true })
-      
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "fern",
         callback = function()
@@ -49,24 +51,28 @@ return {
   -- vimからGit操作する
   {
     "tpope/vim-fugitive",
-    config = function()
-      vim.keymap.set('n', '<Leader>gd', '<cmd>Gdiff<CR>')
-      vim.keymap.set('n', '<Leader>gs', '<cmd>Git<CR>')
-      vim.keymap.set('n', '<Leader>gl', '<cmd>Git log %<CR>')
-      vim.keymap.set('n', '<Leader>ga', '<cmd>Gwrite<CR>')
-      vim.keymap.set('n', '<Leader>gc', '<cmd>Git commit<CR>')
-      vim.keymap.set('n', '<Leader>gC', '<cmd>Git commit --amend<CR>')
-      vim.keymap.set('n', '<Leader>gb', '<cmd>Git blame<CR>')
-    end,
+    cmd = { "Git", "Gdiff", "Gwrite", "Gcommit", "Gblame" },
+    keys = {
+      { "<Leader>gd", "<cmd>Gdiff<CR>", mode = "n" },
+      { "<Leader>gs", "<cmd>Git<CR>", mode = "n" },
+      { "<Leader>gl", "<cmd>Git log %<CR>", mode = "n" },
+      { "<Leader>ga", "<cmd>Gwrite<CR>", mode = "n" },
+      { "<Leader>gc", "<cmd>Git commit<CR>", mode = "n" },
+      { "<Leader>gC", "<cmd>Git commit --amend<CR>", mode = "n" },
+      { "<Leader>gb", "<cmd>Git blame<CR>", mode = "n" },
+    },
   },
   -- Github連携強化のプラグイン。GBrowseで開くとかのやつ
   {
     "tpope/vim-rhubarb",
+    cmd = "GBrowse",
+    dependencies = { "tpope/vim-fugitive" },
   },
   -- 編集した行のgit差分を左側に表示してくれるやつ
   {
     "lewis6991/gitsigns.nvim",
     cond = not vim.g.vscode,
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require('gitsigns').setup({
         signs = {
@@ -84,6 +90,7 @@ return {
   {
     "vim-airline/vim-airline",
     cond = not vim.g.vscode,
+    event = "VimEnter",
     init = function()
       vim.g['airline_powerline_fonts'] = 1
       vim.g['airline_theme'] = 'dark'
@@ -96,6 +103,7 @@ return {
     "akinsho/bufferline.nvim",
     cond = not vim.g.vscode,
     version = "*",
+    event = "VimEnter",
     config = function()
       require("bufferline").setup{
         options = {
@@ -128,21 +136,25 @@ return {
   -- 分割を維持してバッファ削除
   {
     "rgarver/Kwbd.vim",
+    cmd = "Kwbd",
   },
   -- 現在開いている以外のバッファを全部削除するやつ
   {
     "duff/vim-bufonly",
+    cmd = "BufOnly",
   },
   -- バイナリエディターの機能を提供してくれるやつ
   {
     "Shougo/vinarise",
+    cmd = "Vinarise",
   },
   -- markdownのアウトライン表示
   {
     "vim-voom/VOoM",
-    config = function()
-      vim.keymap.set('n', '<Leader>vm', '<CMD>VoomToggle<CR>', {silent = true, noremap = true})
-    end,
+    cmd = "VoomToggle",
+    keys = {
+      { "<Leader>vm", "<CMD>VoomToggle<CR>", mode = "n", silent = true, noremap = true },
+    },
     init = function()
       vim.g.voom_tree_width = 60
       vim.g['voom_tree_placement'] = 'right'
@@ -153,6 +165,7 @@ return {
   -- foldtextの情報量を増やして折り畳みの体験をよくするやつ
   {
     "LeafCage/foldCC",
+    event = { "BufReadPost", "BufNewFile" },
   },
   -- .(ドット)で繰り返し操作を拡張してくれるやつ
   {
@@ -161,41 +174,45 @@ return {
   -- ディレクトリ間の再帰的なDiff表示してくれるやつ
   {
     "vim-scripts/DirDiff.vim",
+    cmd = "DirDiff",
   },
   -- カーソル下のワードをDashで検索する
   {
     "rizzatti/dash.vim",
-    config = function()
-      vim.keymap.set('n', '<leader><leader>d', '<Plug>DashSearch', { silent = true })
-    end,
+    keys = {
+      { "<leader><leader>d", "<Plug>DashSearch", mode = "n", silent = true },
+    },
   },
   -- diffchar.vim
   {
     "rickhowe/diffchar.vim",
+    event = "BufReadPost",
   },
   -- アスタリスク入力後にカーソルが移動しないのを防ぐ効果がある
   {
     "haya14busa/vim-asterisk",
-    config = function()
-      vim.keymap.set('', '*', '<Plug>(asterisk-z*)', { silent = true })
-    end,
+    keys = {
+      { "*", "<Plug>(asterisk-z*)", mode = "", silent = true },
+    },
   },
   -- nerdfontのグリフを使ってファイルタイプを表示してくれるやつ
   {
     "ryanoasis/vim-devicons",
     cond = not vim.g.vscode,
+    lazy = true,  -- 他のプラグインの依存として必要時にロード
   },
   -- QuickFixWindowにプレビューを追加したり、見栄えを良くしてくれるやつ
   {
     "kevinhwang91/nvim-bqf",
+    ft = "qf",  -- QuickFixウィンドウが開かれた時にロード
   },
   -- 編集ファイル内のURLをいい感じにブラウザで開いてくれるやつ
   {
     "tyru/open-browser.vim",
-    config = function()
-      vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-search)', { silent = true })
-      vim.keymap.set('v', 'gx', '<Plug>(openbrowser-smart-search)', { silent = true })
-    end,
+    keys = {
+      { "gx", "<Plug>(openbrowser-smart-search)", mode = "n", silent = true },
+      { "gx", "<Plug>(openbrowser-smart-search)", mode = "v", silent = true },
+    },
     init = function()
       vim.g.netrw_nogx = 1
     end,

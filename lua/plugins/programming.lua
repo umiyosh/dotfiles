@@ -8,9 +8,9 @@ return {
   {
     "heavenshell/vim-pydocstring",
     ft = "python",
-    config = function()
-      vim.keymap.set('n', '<Leader>l', '<Plug>(pydocstring)', { silent = true })
-    end,
+    keys = {
+      { "<Leader>l", "<Plug>(pydocstring)", mode = "n", silent = true },
+    },
     init = function()
       vim.g.pydocstring_enable_mapping = 0
       vim.g.pydocstring_doq_path = vim.fn.expand("$VIRTUAL_ENV/bin/doq")
@@ -19,6 +19,7 @@ return {
   -- バッファ上のコードを実行してvimに送信するプラグイン
   {
     "thinca/vim-quickrun",
+    event = { "BufReadPost", "BufNewFile" },  -- ファイルを開いた時に読み込み
     config = function()
       -- g:quickrun_config が存在しない場合は初期化
       if vim.g.quickrun_config == nil then
@@ -36,9 +37,9 @@ return {
   -- ソースコード上のメソッド宣言、変数宣言の一覧を表示
   {
     "liuchengxu/vista.vim",
-    config = function()
-      vim.keymap.set('n', '<leader>tl', '<cmd>Vista coc<CR>', { silent = true })
-    end,
+    keys = {
+      { "<leader>tl", "<cmd>Vista coc<CR>", mode = "n", silent = true },
+    },
     init = function()
       vim.g['vista#renderer#enable_icon'] = 1
     end,
@@ -47,19 +48,20 @@ return {
   {
     "sebdah/vim-delve",
     ft = "go",
-    config = function()
-      vim.keymap.set('n', '<Leader>9', '<cmd>DlvToggleBreakpoint<CR>', { silent = true })
-      vim.keymap.set('n', '<Leader>8', '<cmd>DlvClearAll<CR>', { silent = true })
-      vim.keymap.set('n', '<Leader>5', '<cmd>DlvDebug<CR>', { silent = true })
-      vim.keymap.set('n', '<Leader>4', '<cmd>DlvTest<CR>', { silent = true })
-    end,
+    keys = {
+      { "<Leader>9", "<cmd>DlvToggleBreakpoint<CR>", mode = "n", silent = true },
+      { "<Leader>8", "<cmd>DlvClearAll<CR>", mode = "n", silent = true },
+      { "<Leader>5", "<cmd>DlvDebug<CR>", mode = "n", silent = true },
+      { "<Leader>4", "<cmd>DlvTest<CR>", mode = "n", silent = true },
+    },
   },
   -- vimからテストを実行するやつ
   {
     "vim-test/vim-test",
-    config = function()
-      vim.keymap.set('n', '<Leader>t', '<cmd>TestFile<CR>', { silent = true })
-    end,
+    keys = {
+      { "<Leader>t", "<cmd>TestFile<CR>", mode = "n", silent = true },
+    },
+    dependencies = { "tpope/vim-dispatch" },
     init = function()
       vim.g['test#strategy'] = 'dispatch'
     end,
@@ -67,6 +69,7 @@ return {
   -- テストを非同期実行するために入れたやつ
   {
     "tpope/vim-dispatch",
+    lazy = true,  -- vim-testの依存として必要な時のみロード
   },
   -- terraformのSyntax highlightとかのやつ
   -- TODO: ツリーシッターを使えばいらないんじゃないかって思った。

@@ -2,9 +2,9 @@ return {
   {
     -- コメントアウトを簡単にするやつ
     "scrooloose/nerdcommenter",
-    config = function()
-      vim.keymap.set('', '<Leader>x', '<Plug>NERDCommenterToggle', { silent = true })
-    end,
+    keys = {
+      { '<Leader>x', '<Plug>NERDCommenterToggle', mode = '', silent = true },
+    },
     init = function()
       vim.g.NERDSpaceDelims = 1
       vim.g.NERDCreateDefaultMappings = 0
@@ -128,15 +128,18 @@ return {
   {
     "kana/vim-textobj-fold",
     dependencies = { "kana/vim-textobj-user" },
+    event = { "BufReadPost", "BufNewFile" },
   },
   -- vim-textobj-indent : インデントされたものをtext-objectに
   {
     "kana/vim-textobj-indent",
     dependencies = { "kana/vim-textobj-user" },
+    event = { "BufReadPost", "BufNewFile" },
   },
   -- editorconfig
   {
     "editorconfig/editorconfig-vim",
+    event = { "BufReadPre", "BufNewFile" },
   },
 }
 

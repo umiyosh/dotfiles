@@ -3,28 +3,25 @@ return {
     -- camelcasemotion : CamelCaseやsnake_case単位でのワード移動
     {
         "vim-scripts/camelcasemotion",
-        config = function()
-            -- camelcasemotionの設定
-            local camelcase_maps = {'w', 'b', 'e'}
-            for _, map in ipairs(camelcase_maps) do
-                vim.keymap.set('', map, '<Plug>CamelCaseMotion_' .. map, { silent = true })
-            end
-
-            local camelcase_text_objects = {'iw', 'ib', 'ie'}
-            for _, obj in ipairs(camelcase_text_objects) do
-                vim.keymap.set({'o', 'x'}, obj, '<Plug>CamelCaseMotion_' .. obj, { silent = true })
-            end
-        end,
+        keys = {
+            { "w", "<Plug>CamelCaseMotion_w", mode = "", silent = true },
+            { "b", "<Plug>CamelCaseMotion_b", mode = "", silent = true },
+            { "e", "<Plug>CamelCaseMotion_e", mode = "", silent = true },
+            { "iw", "<Plug>CamelCaseMotion_iw", mode = { "o", "x" }, silent = true },
+            { "ib", "<Plug>CamelCaseMotion_ib", mode = { "o", "x" }, silent = true },
+            { "ie", "<Plug>CamelCaseMotion_ie", mode = { "o", "x" }, silent = true },
+        },
     },
     -- 「%」による対応括弧へのカーソル移動機能を拡張
     {
         "andymass/vim-matchup",
+        event = { "BufReadPost", "BufNewFile" },
     },
     -- eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
     {
         "othree/eregex.vim",
-        config = function()
-            -- eregex.vim の設定
+        cmd = { "S", "M" },
+        init = function()
             vim.g['eregex_forward_delim'] = 'M/'
             vim.g['eregex_backward_delim'] = 'M?'
         end,
@@ -32,34 +29,31 @@ return {
     -- hop.nvim : easymotion的な動作を提供してキーボードでの移動を効率化
     {
         "smoka7/hop.nvim",
+        keys = {
+            { "sb", "<cmd>HopWordBC<CR>", mode = { "n", "v" }, silent = true },
+            { "sj", "<cmd>HopLineAC<CR>", mode = { "n", "v" }, silent = true },
+            { "sk", "<cmd>HopLineBC<CR>", mode = { "n", "v" }, silent = true },
+            { "se", "<cmd>HopWordAC<CR>", mode = { "n", "v" }, silent = true },
+            { "sw", "<cmd>HopWord<CR>", mode = { "n", "v" }, silent = true },
+            { "sl", "<cmd>HopLine<CR>", mode = { "n", "v" }, silent = true },
+            { "sf", "<cmd>HopChar1<CR>", mode = { "n", "v" }, silent = true },
+            { "s/", "<cmd>HopPattern<CR>", mode = { "n", "v" }, silent = true },
+        },
         config = function()
             require'hop'.setup()
-            -- キーマップ設定を追加
-            vim.keymap.set({'n', 'v'}, 'sb', '<cmd>HopWordBC<CR>', { silent = true })
-            vim.keymap.set({'n', 'v'}, 'sj', '<cmd>HopLineAC<CR>', { silent = true })
-            vim.keymap.set({'n', 'v'}, 'sk', '<cmd>HopLineBC<CR>', { silent = true })
-            vim.keymap.set({'n', 'v'}, 'se', '<cmd>HopWordAC<CR>', { silent = true })
-            vim.keymap.set({'n', 'v'}, 'sw', '<cmd>HopWord<CR>', { silent = true })
-            vim.keymap.set({'n', 'v'}, 'sl', '<cmd>HopLine<CR>', { silent = true })
-            vim.keymap.set({'n', 'v'}, 'sf', '<cmd>HopChar1<CR>', { silent = true })
-            vim.keymap.set({'n', 'v'}, 's/', '<cmd>HopPattern<CR>', { silent = true })
-
             vim.opt.list = true
             vim.opt.listchars:append("space:⋅")
             vim.opt.listchars:append("eol:↴")
         end,
     },
     {
-        "junegunn/fzf",
-        cond = not vim.g.vscode,
-        build = function()
-            vim.fn['fzf#install']()
-        end,
-    },
-    {
         "junegunn/fzf.vim",
         cond = not vim.g.vscode,
         dependencies = { "junegunn/fzf" },
+        cmd = {
+            "Files", "GitFiles", "Buffers", "History", "Marks",
+            "Maps", "BLines", "Filetypes", "Jumps", "CocDiagnostics"
+        },
         keys = {
             { "ssf", "<cmd>Files<CR>", desc = "FZF Files" },
             { "ssF", "<cmd>GitFiles<CR>", desc = "FZF Git Files" },
