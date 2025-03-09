@@ -52,7 +52,7 @@ return {
         dependencies = { "junegunn/fzf" },
         cmd = {
             "Files", "GitFiles", "Buffers", "History", "Marks",
-            "Maps", "BLines", "Filetypes", "Jumps", "CocDiagnostics"
+            "Maps", "BLines", "Filetypes", "Jumps"
         },
         keys = {
             { "ssf", "<cmd>Files<CR>", desc = "FZF Files" },
