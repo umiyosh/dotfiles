@@ -105,9 +105,6 @@ return {
   -- 選択範囲を指定文字で囲む
   {
     "tpope/vim-surround",
-    keys = {
-      { 'ys', '<Plug>Surround', mode = 'v', desc = 'Surround with' },
-    },
   },
   -- 簡単にoperatorを定義できるようにする
   {
