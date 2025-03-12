@@ -1,47 +1,26 @@
 return {
   {
-    -- Tree-sitterを使ってシンタックスハイライトを行うやつ
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-treesitter/nvim-treesitter',
     cond = not vim.g.vscode,
-    build = ":TSUpdate",
+    build = ':TSUpdate',
     event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = "all",
-        highlight = {
-          enable = true,
-          disable = {},
-        },
-      }
-    end,
+    main = 'nvim-treesitter.configs',
+    opts = {
+      ensure_installed = "all",
+      highlight = {
+        enable = true,
+        disable = {},
+      },
+    },
   },
   {
-    -- 対応する括弧を色違いで表示してくれるやつ
-    "hiphish/rainbow-delimiters.nvim",
+    'HiPhish/rainbow-delimiters.nvim',
     cond = not vim.g.vscode,
+    lazy = false,
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      vim.g.rainbow_delimiters = {
-        strategy = {
-          [''] = 'rainbow_delimiters#strategy.global',
-          vim = 'rainbow_delimiters#strategy.local'
-        },
-        query = {
-          [''] = 'rainbow-delimiters',
-          lua = 'rainbow-blocks'
-        },
-        highlight = {
-          'RainbowDelimiterRed',
-          'RainbowDelimiterYellow',
-          'RainbowDelimiterBlue',
-          'RainbowDelimiterOrange',
-          'RainbowDelimiterGreen',
-          'RainbowDelimiterViolet',
-          'RainbowDelimiterCyan'
-        }
-      }
-    end,
+    main = 'rainbow-delimiters.setup',
+    opts = {},
   },
   {
     -- 引数をシンタックスハイライトしてくれるやつ。Tree-sitterを使っている。
