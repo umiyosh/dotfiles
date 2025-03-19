@@ -102,7 +102,6 @@ return {
 
             -- coc extentions
             vim.g.coc_global_extensions = {
-                'coc-spell-checker',
                 'coc-actions',
                 'coc-dictionary',
                 'coc-word',
@@ -133,7 +132,7 @@ return {
             "BufReadPre",    -- バッファ読み込み時に初期化
         },
         config = function()
-            -- コメントアウトとかmdとかgitcommitの書き込み時にもcopilotを有効化する。  
+            -- コメントアウトとかmdとかgitcommitの書き込み時にもcopilotを有効化する。
             vim.g.copilot_filetypes = {
                 markdown = true,
                 yaml = true,
