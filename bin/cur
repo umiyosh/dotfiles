@@ -2,15 +2,26 @@
 
 # 引数の絶対パス（Obsidianノート）
 FILE_PATH="$1"
+LINE_NUMBER="$2"
 
 # Gitのルートディレクトリを取得
 REPO_ROOT=$(git -C "$(dirname "$FILE_PATH")" rev-parse --show-toplevel 2>/dev/null)
 
 # Gitリポジトリ内の場合
 if [ -n "$REPO_ROOT" ]; then
-  # Cursorでリポジトリルートを開きつつ、指定のファイルも開く
-  /usr/local/bin/cursor  "$REPO_ROOT" "$FILE_PATH"
+    if [ -n "$LINE_NUMBER" ]; then
+        # 行番号指定がある場合
+        /usr/local/bin/cursor -g "$FILE_PATH:$LINE_NUMBER" "$REPO_ROOT"
+    else
+        # 行番号指定がない場合
+        /usr/local/bin/cursor "$REPO_ROOT" "$FILE_PATH"
+    fi
 else
-  # Git管理されていない場合はファイルだけをCursorで開く
-  /usr/local/bin/cursor  "$FILE_PATH"
+    if [ -n "$LINE_NUMBER" ]; then
+        # 行番号指定がある場合
+        /usr/local/bin/cursor -g "$FILE_PATH:$LINE_NUMBER"
+    else
+        # 行番号指定がない場合
+        /usr/local/bin/cursor "$FILE_PATH"
+    fi
 fi
