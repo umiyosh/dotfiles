@@ -25,3 +25,5 @@ samples
 .vim/view/
 .vim/coc-settings.json
 .aider*
+.cursor/rules/*
+directorystructure.md
