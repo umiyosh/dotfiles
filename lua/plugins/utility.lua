@@ -18,6 +18,7 @@ return {
     keys = {
       { "<leader>e", "<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>", mode = "n", silent = true },
     },
+
     init = function()
       vim.g['fern#renderer'] = 'nerdfont'
       vim.g.fern_disable_startup_warnings = 1
@@ -44,6 +45,18 @@ return {
           -- Buffer-local keymaps
           vim.keymap.set("n", "<C-h>", "<C-w>h", { buffer = true })
           vim.keymap.set("n", "<C-l>", "<C-w>l", { buffer = true })
+        end,
+      })
+      -- vim-fernの設定
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "fern",
+        callback = function()
+          -- <C-S-u>を親ディレクトリに移動するアクションにマッピング
+          vim.keymap.set("n", "<C-h>", "<Plug>(fern-action-leave)<CR>", {
+            buffer = true,
+            silent = true,
+            noremap = false
+          })
         end,
       })
     end,
@@ -217,4 +230,4 @@ return {
       vim.g.netrw_nogx = 1
     end,
   },
-} 
+}
