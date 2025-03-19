@@ -75,30 +75,30 @@ if vim.fn.has('mac') == 1 then
 end
 
 -- spell check
-vim.opt.spelllang = 'en,cjk'
-vim.opt.spellfile = vim.fn.expand('~/dotfiles_private/.vim/spell/en.utf-8.add')
+-- vim.opt.spelllang = 'en,cjk'
+-- vim.opt.spellfile = vim.fn.expand('~/dotfiles_private/.vim/spell/en.utf-8.add')
 
-local function spell_conf()
-    local syntax = vim.api.nvim_exec('syntax', true)
+-- local function spell_conf()
+    -- local syntax = vim.api.nvim_exec('syntax', true)
 
-    vim.opt.spell = true
+    -- vim.opt.spell = true
 
-    if string.match(syntax, '/<comment>') then
-        vim.cmd('syntax spell default')
-        vim.cmd('syntax match SpellMaybeCode /\\<\\h\\l*[_A-Z]\\h\\{-}\\>/ contains=@NoSpell transparent containedin=Comment contained')
-    else
-        vim.cmd('syntax spell toplevel')
-        vim.cmd('syntax match SpellMaybeCode /\\<\\h\\l*[_A-Z]\\h\\{-}\\>/ contains=@NoSpell transparent')
-    end
+    -- if string.match(syntax, '/<comment>') then
+        -- vim.cmd('syntax spell default')
+        -- vim.cmd('syntax match SpellMaybeCode /\\<\\h\\l*[_A-Z]\\h\\{- }\\>/ contains=@NoSpell transparent containedin=Comment contained')
+    -- else
+        -- vim.cmd('syntax spell toplevel')
+        -- vim.cmd('syntax match SpellMaybeCode /\\<\\h\\l*[_A-Z]\\h\\{- }\\>/ contains=@NoSpell transparent')
+    -- end
 
-    vim.cmd('syntax cluster Spell add=SpellNotAscii,SpellMaybeCode')
-end
+    -- vim.cmd('syntax cluster Spell add=SpellNotAscii,SpellMaybeCode')
+-- end
 
-vim.api.nvim_create_augroup('spell_check', { clear = true })
-vim.api.nvim_create_autocmd({'BufReadPost', 'BufNewFile', 'Syntax'}, {
-    group = 'spell_check',
-    callback = spell_conf
-})
+-- vim.api.nvim_create_augroup('spell_check', { clear = true })
+-- vim.api.nvim_create_autocmd({'BufReadPost', 'BufNewFile', 'Syntax'}, {
+    -- group = 'spell_check',
+    -- callback = spell_conf
+-- })
 
 -- for vimdiff
 vim.api.nvim_create_autocmd('VimEnter', {
