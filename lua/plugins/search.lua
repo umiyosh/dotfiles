@@ -47,6 +47,10 @@ return {
         end,
     },
     {
+        "junegunn/fzf",
+        cond = not vim.g.vscode,
+    },
+    {
         "junegunn/fzf.vim",
         cond = not vim.g.vscode,
         dependencies = { "junegunn/fzf" },
