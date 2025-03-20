@@ -20,17 +20,13 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     { import = "plugins" },
-    -- { import = "plugins.colorschema" },
-    -- { import = "plugins.search" },
-    -- { import = "plugins.edit" },
-    -- { import = "plugins.programming" },
-    -- { import = "plugins.completion" },
-    -- { import = "plugins.syntax" },
-    -- { import = "plugins.utility" },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "gruvbox-material" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = false },
+  change_detection = {
+    notify = false,
+  },
 })
