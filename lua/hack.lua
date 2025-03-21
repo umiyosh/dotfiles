@@ -123,5 +123,11 @@ vim.api.nvim_create_user_command('Rg2', function(opts)
 end, { nargs = '*' })
 
 -- 現在開いているファイルPATHをcursorやvscodeで開く
-vim.keymap.set('n', '<leader>cu', ':!cursor %<CR>')
+-- vim.keymap.set('n', '<leader>cu', ':!cursor %<CR>')
+vim.keymap.set('n', '<leader>cu', function()
+    local file_path = vim.fn.expand('%:p')
+    local line_number = vim.fn.line('.')
+    vim.cmd(string.format('!cur %s %s', file_path, line_number))
+end, { noremap = true, silent = false })
+
 vim.keymap.set('n', '<leader>co', ':!code %<CR>')
