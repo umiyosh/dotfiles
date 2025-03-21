@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 #概要：git branchにたいしていろいろする
-(git branch |perl -pe 's/^\* //g';git branch -r;git tag )|_selectorBeforeFilter| selector --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $NF}'| \
+(git branch |perl -pe 's/^\* //g';git branch -r;git tag )|_selectorBeforeFilter| perl -pe 's/^(origin.*)/\e[90m$1\e[0m/g' | selector --ansi --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $NF}'| \
   selectorAfterAction "git checkout " \
     "git checkout -t " \
     "git branch -d " \
