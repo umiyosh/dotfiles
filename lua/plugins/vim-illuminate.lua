@@ -1,5 +1,6 @@
 return {
   {
+    -- カーソルの下の単語を自動ハイライトするやつ
     "RRethy/vim-illuminate",
     event = { "BufReadPost", "BufNewFile" },
     init = function()

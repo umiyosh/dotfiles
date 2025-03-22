@@ -1,5 +1,6 @@
 return {
   {
+    -- golang line debugger
     "sebdah/vim-delve",
     ft = "go",
     keys = {

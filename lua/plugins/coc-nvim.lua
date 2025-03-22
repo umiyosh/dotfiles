@@ -1,5 +1,6 @@
 return {
     {
+        -- LSP使った開発環境。補完、エラー検出など、いろいろやってくれるやつ
         "neoclide/coc.nvim",
         cond = not vim.g.vscode,
         branch = "release",

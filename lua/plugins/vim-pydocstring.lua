@@ -1,5 +1,6 @@
 return {
   {
+    -- pydocstring: Pythonのdocstring自動生成プラグイン
     "heavenshell/vim-pydocstring",
     ft = "python",
     keys = {

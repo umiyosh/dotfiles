@@ -1,5 +1,6 @@
 return {
   {
+    -- operator-replace : yankしたものでreplaceする
     "kana/vim-operator-replace",
     keys = {
       { '_', '<Plug>(operator-replace)', mode = '', desc = 'Replace with operator' },

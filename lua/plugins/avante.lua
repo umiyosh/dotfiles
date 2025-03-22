@@ -1,5 +1,6 @@
 return {
   {
+    -- AIアシスタントのプラグイン
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false,

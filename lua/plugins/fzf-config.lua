@@ -1,9 +1,11 @@
 return {
     {
+        -- ファジーファインダーの基本機能
         "junegunn/fzf",
         cond = not vim.g.vscode,
     },
     {
+        -- fzfのVim統合プラグイン
         "junegunn/fzf.vim",
         cond = not vim.g.vscode,
         dependencies = { "junegunn/fzf" },

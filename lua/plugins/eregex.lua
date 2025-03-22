@@ -1,5 +1,6 @@
 return {
     {
+        -- eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
         "othree/eregex.vim",
         cmd = { "S", "M" },
         init = function()

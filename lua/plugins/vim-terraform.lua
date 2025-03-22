@@ -1,5 +1,6 @@
 return {
   {
+    -- terraformのSyntax highlightとかのやつ
     "hashivim/vim-terraform",
     ft = "terraform",
     init = function()

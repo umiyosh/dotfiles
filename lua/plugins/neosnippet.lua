@@ -1,5 +1,6 @@
 return {
     {
+        -- さまざまな言語のスニペットを使いやすく提供してくれるやつ
         "Shougo/neosnippet",
         cond = not vim.g.vscode,
         event = "InsertEnter",

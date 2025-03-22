@@ -1,5 +1,6 @@
 return {
   {
+    -- ステータスラインをカッコよくするやつ
     "vim-airline/vim-airline",
     cond = not vim.g.vscode,
     event = {

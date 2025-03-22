@@ -1,5 +1,6 @@
 return {
   {
+    -- バッファーを上部に表示してくれるやつ
     "akinsho/bufferline.nvim",
     cond = not vim.g.vscode,
     version = "*",

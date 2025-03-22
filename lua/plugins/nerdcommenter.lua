@@ -1,5 +1,6 @@
 return {
   {
+    -- コメントアウトを簡単にするやつ
     "scrooloose/nerdcommenter",
     keys = {
       { '<Leader>x', '<Plug>NERDCommenterToggle', mode = '', silent = true },

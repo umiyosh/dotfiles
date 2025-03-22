@@ -1,5 +1,6 @@
 return {
     {
+        -- LLMを使ってコードを提案してくれるやつ
         "github/copilot.vim",
         event = {
             "InsertEnter",

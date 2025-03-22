@@ -1,5 +1,6 @@
 return {
   {
+    -- vimからGit操作する
     "tpope/vim-fugitive",
     cmd = { "Git", "Gdiff", "Gwrite", "Gcommit", "Gblame" },
     keys = {

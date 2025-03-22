@@ -1,5 +1,6 @@
 return {
   {
+    -- インデントガイド
     "lukas-reineke/indent-blankline.nvim",
     lazy = true,
     cond = not vim.g.vscode,

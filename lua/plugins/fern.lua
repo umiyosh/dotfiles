@@ -1,5 +1,6 @@
 return {
   {
+    -- 左ペインにファイル一覧を表示するやつ
     "lambdalisue/fern.vim",
     cond = not vim.g.vscode,
     dependencies = {
@@ -10,6 +11,7 @@ return {
     },
     cmd = "Fern",
     keys = {
+      -- ファイルツリーの表示/非表示を切り替え
       { "<leader>e", "<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>", mode = "n", silent = true },
     },
 

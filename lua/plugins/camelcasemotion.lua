@@ -1,5 +1,6 @@
 return {
     {
+        -- camelcasemotion : CamelCaseやsnake_case単位でのワード移動
         "vim-scripts/camelcasemotion",
         keys = {
             { "w", "<Plug>CamelCaseMotion_w", mode = "", silent = true },

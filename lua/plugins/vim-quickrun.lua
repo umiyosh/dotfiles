@@ -1,5 +1,6 @@
 return {
   {
+    -- バッファ上のコードを実行してvimに送信するプラグイン
     "thinca/vim-quickrun",
     event = { "BufReadPost", "BufNewFile" },  -- ファイルを開いた時に読み込み
     config = function()

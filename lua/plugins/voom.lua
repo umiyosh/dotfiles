@@ -1,5 +1,6 @@
 return {
   {
+    -- markdownのアウトライン表示
     "vim-voom/VOoM",
     cmd = "VoomToggle",
     keys = {

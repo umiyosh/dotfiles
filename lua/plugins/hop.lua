@@ -1,5 +1,6 @@
 return {
     {
+        -- hop.nvim : easymotionのな動作を提供してキーボードでの移動を効率化
         "smoka7/hop.nvim",
         keys = {
             { "sb", "<cmd>HopWordBC<CR>", mode = { "n", "v" }, silent = true },

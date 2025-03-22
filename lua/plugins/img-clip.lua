@@ -1,5 +1,6 @@
 return {
   {
+    -- 画像のペースト機能を提供するプラグイン
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",
     opts = {
