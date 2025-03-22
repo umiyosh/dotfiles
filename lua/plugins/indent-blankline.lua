@@ -1,21 +1,5 @@
 return {
   {
-    -- コメントアウトを簡単にするやつ
-    "scrooloose/nerdcommenter",
-    keys = {
-      { '<Leader>x', '<Plug>NERDCommenterToggle', mode = '', silent = true },
-    },
-    init = function()
-      vim.g.NERDSpaceDelims = 1
-      vim.g.NERDCreateDefaultMappings = 0
-      vim.g.NERDShutUp = 1
-      vim.g.NERDCustomDelimiters = {
-        terraform = { left = '#', leftAlt = 'FOO', rightAlt = 'BAR' },
-        plantuml  = { left = "'''", leftAlt = 'FOO', rightAlt = 'BAR' }
-      }
-    end
-  },
-  {
     -- インデントガイド
     "lukas-reineke/indent-blankline.nvim",
     lazy = true,
@@ -86,58 +70,4 @@ return {
       vim.opt.listchars:append("eol:↴")
     end
   },
-  -- undo履歴を追える (need python support)
-  {
-    "mbbill/undotree",
-    cmd = "UndotreeToggle",
-    keys = {
-      { '<Leader>u', '<cmd>UndotreeToggle<CR>', mode = '' }
-    },
-  },
-  -- 高機能整形・桁揃えプラグイン
-  {
-    "junegunn/vim-easy-align",
-    keys = {
-      { '<Enter>', '<Plug>(EasyAlign)', mode = 'v', desc = 'Start interactive EasyAlign in visual mode' },
-      { 'ga', '<Plug>(EasyAlign)', mode = 'n', desc = 'Start interactive EasyAlign for a motion/text object' },
-    },
-  },
-  -- 選択範囲を指定文字で囲む
-  {
-    "tpope/vim-surround",
-  },
-  -- 簡単にoperatorを定義できるようにする
-  {
-    "kana/vim-operator-user",
-  },
-  -- operator-replace : yankしたものでreplaceする
-  {
-    "kana/vim-operator-replace",
-    keys = {
-      { '_', '<Plug>(operator-replace)', mode = '', desc = 'Replace with operator' },
-      { 'p', '<Plug>(operator-replace)', mode = 'v', desc = 'Replace with yanked text' },
-    },
-  },
-  -- textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
-  {
-    "kana/vim-textobj-user",
-  },
-  -- vim-textobj-fold : 折りたたまれたアレをtext-objectに
-  {
-    "kana/vim-textobj-fold",
-    dependencies = { "kana/vim-textobj-user" },
-    event = { "BufReadPost", "BufNewFile" },
-  },
-  -- vim-textobj-indent : インデントされたものをtext-objectに
-  {
-    "kana/vim-textobj-indent",
-    dependencies = { "kana/vim-textobj-user" },
-    event = { "BufReadPost", "BufNewFile" },
-  },
-  -- editorconfig
-  {
-    "editorconfig/editorconfig-vim",
-    event = { "BufReadPre", "BufNewFile" },
-  },
 }
-

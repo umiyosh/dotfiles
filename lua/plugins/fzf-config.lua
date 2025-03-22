@@ -1,56 +1,11 @@
--- Searching/Moving{{{
 return {
-    -- camelcasemotion : CamelCaseやsnake_case単位でのワード移動
     {
-        "vim-scripts/camelcasemotion",
-        keys = {
-            { "w", "<Plug>CamelCaseMotion_w", mode = "", silent = true },
-            { "b", "<Plug>CamelCaseMotion_b", mode = "", silent = true },
-            { "e", "<Plug>CamelCaseMotion_e", mode = "", silent = true },
-            { "iw", "<Plug>CamelCaseMotion_iw", mode = { "o", "x" }, silent = true },
-            { "ib", "<Plug>CamelCaseMotion_ib", mode = { "o", "x" }, silent = true },
-            { "ie", "<Plug>CamelCaseMotion_ie", mode = { "o", "x" }, silent = true },
-        },
-    },
-    -- 「%」による対応括弧へのカーソル移動機能を拡張
-    {
-        "andymass/vim-matchup",
-        event = { "BufReadPost", "BufNewFile" },
-    },
-    -- eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
-    {
-        "othree/eregex.vim",
-        cmd = { "S", "M" },
-        init = function()
-            vim.g['eregex_forward_delim'] = 'M/'
-            vim.g['eregex_backward_delim'] = 'M?'
-        end,
-    },
-    -- hop.nvim : easymotion的な動作を提供してキーボードでの移動を効率化
-    {
-        "smoka7/hop.nvim",
-        keys = {
-            { "sb", "<cmd>HopWordBC<CR>", mode = { "n", "v" }, silent = true },
-            { "sj", "<cmd>HopLineAC<CR>", mode = { "n", "v" }, silent = true },
-            { "sk", "<cmd>HopLineBC<CR>", mode = { "n", "v" }, silent = true },
-            { "se", "<cmd>HopWordAC<CR>", mode = { "n", "v" }, silent = true },
-            { "sw", "<cmd>HopWord<CR>", mode = { "n", "v" }, silent = true },
-            { "sl", "<cmd>HopLine<CR>", mode = { "n", "v" }, silent = true },
-            { "sf", "<cmd>HopChar1<CR>", mode = { "n", "v" }, silent = true },
-            { "s/", "<cmd>HopPattern<CR>", mode = { "n", "v" }, silent = true },
-        },
-        config = function()
-            require'hop'.setup()
-            vim.opt.list = true
-            vim.opt.listchars:append("space:⋅")
-            vim.opt.listchars:append("eol:↴")
-        end,
-    },
-    {
+        -- ファジーファインダーの基本機能
         "junegunn/fzf",
         cond = not vim.g.vscode,
     },
     {
+        -- fzfのVim統合プラグイン
         "junegunn/fzf.vim",
         cond = not vim.g.vscode,
         dependencies = { "junegunn/fzf" },
@@ -121,5 +76,3 @@ return {
         end,
     },
 }
-
--- }}}
