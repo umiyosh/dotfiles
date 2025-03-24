@@ -9,10 +9,11 @@ return {
             "CmdlineEnter",  -- コマンドライン補完のため
             "BufReadPre",    -- エラー検出のため
         },
-        config = function()
+        init = function ()
             -- coc.nvim config directory
             vim.g.coc_config_home = '~/dotfiles/'
-
+        end,
+        config = function()
             -- coc status lineの設定
             vim.opt.statusline = vim.opt.statusline + '%{coc#status()}'
 
