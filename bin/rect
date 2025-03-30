@@ -1,6 +1,8 @@
-#!/usr/bin/env bash
+device=$(ffmpeg -f avfoundation -list_devices true -i "" 2>&1 \
+  | grep "Capture screen" \
+  | fzf \
+  | sed -E 's/.*\[([0-9]+)\].*/\1/') &&
 
-TERMINAL_APP="iTerm"
-
-t-rec -M -w $(t-rec -l | grep $TERMINAL_APP | awk '{print $NF}')
-
+# 録画ファイルを保存
+ffmpeg -f avfoundation -i "$device" -r 30 -preset ultrafast -pix_fmt yuv420p -ac 2 \
+  ./sc_record_$(date +%Y%m%d_%H%M%S).mp4
