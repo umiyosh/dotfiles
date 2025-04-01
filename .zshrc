@@ -81,3 +81,11 @@ fi
 zle -N _sgpt_zsh
 bindkey '^x' _sgpt_zsh
 # Shell-GPT integration ZSH v0.2
+
+# pnpm
+export PNPM_HOME="/Users/a14073/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
