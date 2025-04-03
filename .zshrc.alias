@@ -138,7 +138,8 @@ alias geeknote="python ~/local/bin/geeknote/geeknote.py"
 alias weather="while :;do curl -4 wttr.in/Tokyo;sleep 60;clear ;done"
 
 function da() {
-  open dash://$@
+  local query="${(j:%20:)@}"  # 引数をスペースの代わりに%20で結合
+  open "dash://$query"
 }
 
 # Finderで開いているディレクトリに移動
