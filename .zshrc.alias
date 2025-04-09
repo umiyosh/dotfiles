@@ -216,3 +216,11 @@ alias cs="ChatGptSearch.sh"
 # https://zenn.dev/magicmoment/articles/play-sound-command-20241205
 alias beep='afplay /System/Library/Sounds/Submarine.aiff'
 alias beeep='for i in {1..3}; do afplay /System/Library/Sounds/Submarine.aiff; done'
+
+function syek() {
+    local repo_root=$(git rev-parse --show-toplevel)
+    local tmp_file=$(mktemp)
+    yek "$repo_root" > "$tmp_file"
+    cupsfilter "$tmp_file" > ./yek.pdf
+    rm -f "$tmp_file"
+}
