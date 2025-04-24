@@ -9,6 +9,7 @@ return {
 		vim.o.foldlevel = 99 -- 初期状態ですべての折りたたみを開く
 		vim.o.foldlevelstart = 99
 		vim.o.foldenable = true
+    vim.o.foldmethod = "manual"
 		vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 		vim.keymap.set("n", "zp", require("ufo").peekFoldedLinesUnderCursor)
 
@@ -21,9 +22,6 @@ return {
 		})
 		-- UFOの設定
 		require("ufo").setup({
-			provider_selector = function(bufnr, filetype, buftype)
-				return { "treesitter", "indent" }
-			end,
-		})
+      })
 	end,
 }
