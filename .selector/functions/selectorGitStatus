@@ -4,7 +4,18 @@
 workDir=$(pwd)
 gitRootDir=$(git rev-parse --show-toplevel)
 cd "$gitRootDir"
-(git status --porcelain;git ls-files) | selector --prompt "[$0]"| perl -pe 's/^( ?(AM) )|( ?D )|( ?(UU) )|( ?(MM) )|( ?M )|( ?T )|( ?A )|(\?\? )//g' |perl -pe 's/^ +//g'|\
+
+# git status --porcelainとgit ls-filesの出力を結合
+(git status --porcelain; git ls-files) | selector --prompt "[$0]" | \
+  # すべてのgit statusコードパターンを処理
+  # 2文字のステータスコードとその後のスペース1つを削除
+  perl -pe 's/^([MADRCUT ])([MADRCUT ]) //g' | \
+  # ??（未追跡）と!!（無視）の特殊パターンを処理
+  perl -pe 's/^(\?\?|!!) //g' | \
+  # リネームやコピーの場合の矢印表記を処理（例: "R  old -> new"）
+  perl -pe 's/ -> .+$//g' | \
+  # 行頭の余分な空白を削除（ただしファイル名内の空白は保持）
+  perl -pe 's/^ +//g' | \
   selectorAfterAction "git add " \
     "git restore " \
     "git restore --staged " \
@@ -27,5 +38,5 @@ cd "$gitRootDir"
     "%%STDIN%% selectorPipe" \
     "%%STDIN%% paaSafeRm" \
     "paaInputCommandAny"
-_executeTmuxBuffer "cd '$workDir'"
 
+_executeTmuxBuffer "cd '$workDir'"
