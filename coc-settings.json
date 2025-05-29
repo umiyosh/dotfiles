@@ -24,6 +24,9 @@
   "javascript.suggest.autoImports": true,
   "typescript.suggest.autoImports": true,
   "diagnostic.refreshOnInsertMode": false,
+  "go": {
+    "goroot": "/Users/a14073/.gvm/gos/go1.24.1"
+  },
   "suggest.noselect": false,
   "diagnostic.infoSign": "i",
   "diagnostic.warningSign": " ",
@@ -54,5 +57,5 @@
     "reference": "\uf87a",
     "typeParameter": "\uf278",
     "default": "\uf29c"
-  },
+  }
 }
