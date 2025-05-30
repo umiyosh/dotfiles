@@ -21,7 +21,8 @@ function selectorHistory() {
         "%%STDIN%% zleExecuteAsCommand" \
         "%%STDIN%% zlePasteBuffer" \
         "%%STDIN%% paaTovim" \
-        "%%STDIN%% pbcopy"
+        "%%STDIN%% pbcopy" \
+        "pet new "
 }
 zle -N selectorHistory
 bindkey '^r' selectorHistory
