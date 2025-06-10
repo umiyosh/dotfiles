@@ -58,7 +58,7 @@ alias kd="selectorK8sDep"
 alias ki="selectorK8sIng"
 alias kc="selectorK8sConfigmap"
 alias vr="selectorVenv"
-alias help="selectorAliasAndFunc"
+alias af="selectorAliasAndFunc"
 alias afp="selectorAliasAndFunc"
 alias pt="selectorPritnul"
 

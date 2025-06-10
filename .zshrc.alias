@@ -231,3 +231,10 @@ function prev() {
 }
 
 alias pn='pet new'
+
+function help() {
+  local result=$(pet search "$@")
+  if [[ -n "$result" ]]; then
+    insert-cmd "$result"
+  fi
+}
