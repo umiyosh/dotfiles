@@ -7,7 +7,6 @@ source ~/dotfiles/.zshrc.selector.widgets
 
 # autoload sel functions
 autoload selectorPipe
-autoload selectorFu
 autoload selectorCdr
 autoload selectorKill
 autoload selectorAg
@@ -35,7 +34,6 @@ autoload selectorPritnul
 
 # selector alias
 alias p="selectorPipe"
-alias fu="selectorFu"
 alias cdr="selectorCdr"
 alias pk="selectorKill"
 alias agv="selectorAg"
