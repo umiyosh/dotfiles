@@ -238,3 +238,5 @@ function help() {
     insert-cmd "$result"
   fi
 }
+alias cl='claude'
+alias clc='claude --continue'
