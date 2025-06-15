@@ -18,8 +18,13 @@ vim.api.nvim_create_user_command('JunkFile', function()
   end
 end, {})
 
--- 行番号つきのコピー
-vim.keymap.set('v', 'ssc', '<ESC>:%!cat -n|perl -pe "s:^ +::g"<CR>gvyugv<ESC>')
+-- ファイル相対パス+行番号つきのコピー for AI
+vim.keymap.set('v', 'ssc', function()
+  local git_root = vim.fn.system('git rev-parse --show-toplevel 2>/dev/null'):gsub('\n', '')
+  local file_path = vim.fn.expand('%:p')
+  local relative_path = file_path:gsub('^' .. git_root .. '/?', './')
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<ESC>:%!cat -n | perl -pe "s:^ +::g; s:^:' .. relative_path .. '\\: :"<CR>gvyugv<ESC>', true, false, true), 'n', true)
+end)
 
 -- Luaでの文字数カウント機能
 vim.keymap.set('v', '<leader>ii', ':lua Count_Char()<CR>', { silent = true })
