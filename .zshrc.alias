@@ -240,3 +240,4 @@ function help() {
 }
 alias cl='claude'
 alias clc='claude --continue'
+alias yolo='claude --dangerously-skip-permissions'
