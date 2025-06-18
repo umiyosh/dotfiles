@@ -1,8 +1,16 @@
-device=$(ffmpeg -f avfoundation -list_devices true -i "" 2>&1 \
-  | grep "Capture screen" \
-  | fzf \
-  | sed -E 's/.*\[([0-9]+)\].*/\1/') &&
+# デバイス一覧を取得
+devices=$(ffmpeg -f avfoundation -list_devices true -i "" 2>&1)
 
-# 録画ファイルを保存
-ffmpeg -f avfoundation -i "$device" -r 30 -preset ultrafast -pix_fmt yuv420p -ac 2 \
+# 映像デバイスを選択
+video_device=$(echo "$devices" | grep "video devices:" -A 10 | grep -E "^\[.*\]" \
+  | fzf --prompt="映像デバイスを選んでください：" \
+  | sed -E 's/.*\[(.*)\].*/\1/')
+
+# 音声デバイスを選択
+audio_device=$(echo "$devices" | grep "audio devices:" -A 10 | grep -E "^\[.*\]" \
+  | fzf --prompt="音声デバイスを選んでください：" \
+  | sed -E 's/.*\[(.*)\].*/\1/')
+
+# 録画コマンド
+ffmpeg -f avfoundation -i "${video_device}:${audio_device}" -r 30 -preset ultrafast -pix_fmt yuv420p -ac 2 \
   ./sc_record_$(date +%Y%m%d_%H%M%S).mp4
