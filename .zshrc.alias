@@ -19,6 +19,13 @@ function cwaf() {
 # ls
 alias ll="ls -la"
 
+# Powerline prompt toggle commands
+# These are also defined as functions in .zshrc.prompt
+# Adding aliases for convenience
+alias k8s-info='k8s-toggle'
+alias gcp-info='gcp-toggle'
+alias prompt-info='prompt-toggle'
+
 # process
 alias 'ps?'='pgrep -l -f'
 

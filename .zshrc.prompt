@@ -1,5 +1,33 @@
 function powerline_precmd() {
-    PS1="$(powerline-shell.py $? --shell zsh 2> /dev/null)"
+    local powerline_output="$(powerline-shell.py $? --shell zsh 2> /dev/null)"
+    
+    # K8S情報のフィルタリング
+    if [[ -n "$POWERLINE_K8S_HIDE" ]]; then
+        # K8Sセグメント（⎈マークを含む行）を除外し、最初の改行も調整
+        local lines=()
+        local skip_next_newline=0
+        while IFS= read -r line; do
+            if [[ "$line" == *"⎈"* ]]; then
+                skip_next_newline=1
+                continue
+            fi
+            if [[ $skip_next_newline -eq 1 && -z "$line" ]]; then
+                skip_next_newline=0
+                continue
+            fi
+            lines+=("$line")
+        done <<< "$powerline_output"
+        powerline_output=$(printf '%s\n' "${lines[@]}")
+    fi
+    
+    # GCP情報のフィルタリング
+    if [[ -n "$POWERLINE_GCP_HIDE" ]]; then
+        # GCPセグメント（GCP:を含む部分）を除外
+        # sedの正規表現を修正して、GCPセグメントのみを削除
+        powerline_output=$(echo "$powerline_output" | sed -E 's/%\{[^}]*\}%\{[^}]*\} GCP: [^%]* %\{[^}]*\}%\{[^}]*\}//g')
+    fi
+    
+    PS1="$powerline_output"
 }
 
 function install_powerline_precmd() {
@@ -14,4 +42,39 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
+
+# Kubernetes情報の表示/非表示を切り替える関数
+function k8s-toggle() {
+    if [[ -n "$POWERLINE_K8S_HIDE" ]]; then
+        unset POWERLINE_K8S_HIDE
+        echo "Kubernetes情報を表示します"
+    else
+        export POWERLINE_K8S_HIDE=1
+        echo "Kubernetes情報を非表示にします"
+    fi
+}
+
+# GCP情報の表示/非表示を切り替える関数
+function gcp-toggle() {
+    if [[ -n "$POWERLINE_GCP_HIDE" ]]; then
+        unset POWERLINE_GCP_HIDE
+        echo "GCP情報を表示します"
+    else
+        export POWERLINE_GCP_HIDE=1
+        echo "GCP情報を非表示にします"
+    fi
+}
+
+# 両方同時に切り替える関数
+function prompt-toggle() {
+    if [[ -n "$POWERLINE_K8S_HIDE" || -n "$POWERLINE_GCP_HIDE" ]]; then
+        unset POWERLINE_K8S_HIDE
+        unset POWERLINE_GCP_HIDE
+        echo "Kubernetes/GCP情報を表示します"
+    else
+        export POWERLINE_K8S_HIDE=1
+        export POWERLINE_GCP_HIDE=1
+        echo "Kubernetes/GCP情報を非表示にします"
+    fi
+}
 
