@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
+
 if type vim-startuptime >/dev/null 2>&1; then
-  # reqirement : go get github.com/rhysd/vim-startuptime
-  vim-startuptime
+  # 引数があればそのまま、なければデフォルトで実行
+  if [ "$#" -gt 0 ]; then
+    vim-startuptime "$@"
+  else
+    vim-startuptime
+  fi
 else
-  vim --startuptime /tmp/time.log +q
+  LOGFILE="/tmp/time.log"
+  # 1つめの引数がファイル名っぽければログファイル名として使う
+  if [ "$#" -gt 0 ] && [[ "$1" != -* ]]; then
+    LOGFILE="$1"
+    shift
+  fi
+  nvim --startuptime "$LOGFILE" "$@" +q
+  echo "Startuptime log: $LOGFILE"
 fi
