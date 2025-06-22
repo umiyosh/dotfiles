@@ -1,6 +1,6 @@
 return {
   {
-    -- K8sのxplainを使うために、カーソル下のkeyをフルパスで取得するやつ
+    -- K8sのexplainを使うために、カーソル下のkeyをフルパスで取得するやつ
     "cuducos/yaml.nvim",
     ft = "yaml",
     config = function()
@@ -51,9 +51,29 @@ return {
               local full_path = kind .. "." .. cleaned_path
               local cmd = "kubectl explain " .. full_path
               vim.notify("Running: " .. cmd, vim.log.levels.INFO)
-              vim.cmd("split")
-              vim.cmd("terminal " .. cmd)
-              vim.cmd("startinsert")
+              
+              -- kubectl explainコマンドを実行して結果を取得
+              local result = vim.fn.system(cmd)
+              
+              -- 新しい垂直分割ウィンドウを開く
+              vim.cmd("vsplit")
+              
+              -- 新しい編集可能なバッファを作成（ファイルに紐付かない）
+              local buf = vim.api.nvim_create_buf(false, true)
+              vim.api.nvim_win_set_buf(0, buf)
+              
+              -- バッファにコマンドの実行結果を設定
+              local lines = vim.split(result, "\n")
+              vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+              
+              -- 可読性向上のためfiletypeをmanに設定
+              vim.api.nvim_buf_set_option(buf, "filetype", "man")
+              
+              -- バッファ名にコマンドを設定（参照用）
+              vim.api.nvim_buf_set_name(buf, "kubectl explain " .. full_path)
+              
+              -- カーソルをバッファの先頭に移動
+              vim.api.nvim_win_set_cursor(0, {1, 0})
             else
               vim.notify("YAML key path not found", vim.log.levels.WARN)
             end
