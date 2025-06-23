@@ -18,8 +18,6 @@ return {
     -- === コンテキスト追加 ===
     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },      -- 現在のバッファを追加
     { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" }, -- 選択テキストを送信（ビジュアルモード）
-    { "<leader>aB", "<cmd>ClaudeCodeAdd %<cr><cmd>ClaudeCodeFocus<cr>", desc = "Add buffer & focus" }, -- バッファ追加後にフォーカス
-    { "<leader>aS", "<cmd>ClaudeCodeAdd %<cr><cmd>ClaudeCodeFocus<cr>", desc = "Add buffer & focus" }, -- バッファ追加後にフォーカス
     {
       "<leader>as",
       "<cmd>ClaudeCodeTreeAdd<cr>",
