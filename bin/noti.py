@@ -4,6 +4,6 @@
 import os
 import sys
 
-message = sys.argv[1]
+message = ' '.join(sys.argv[1:])
 notification_command = 'osascript -e \'display notification \"%s\"\'' % message
 os.system(notification_command)
