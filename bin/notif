@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [[ $0 == "-bash" ]]
+then
+  app="/usr/sbin/bash_terminal"
+else
+  app=$0
+fi
+
+if [[ ! -z $1 ]]
+then
+  message="$*"
+  message="${message} by $(basename ${app})"
+else
+  message=END
+  message="${message} by $(basename ${app})"
+fi
+
+#送信処理
+~/dotfiles/bin/noti.py ${message}
+afplay /System/Library/Sounds/Submarine.aiff
+
