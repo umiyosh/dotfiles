@@ -43,7 +43,14 @@ source ~/dotfiles/.zshrc.devenv
 ## local zshrc settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+if [[ -z "$TMUX" && -n "$PS1" ]]; then      # tmux外 & 対話シェルの場合
+  # $SSH_CLIENT変数が存在するかどうかで、SSH経由の接続かを判断
+  if [[ -n "$SSH_CLIENT" ]]; then # SSH経由の接続 (Termiusなど)
+    exec tmux new-session -A -s "claude"   # attach or create
+  else # Mac本体のターミナルなど、ローカルでの接続
+    tmux
+  fi
+fi
 
 # profiler
 # usage: modifie .zshenv and modifie this
