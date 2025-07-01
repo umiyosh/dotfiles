@@ -5,7 +5,7 @@ return {
     version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       -- add any opts here
-      -- for example
+      -- claude
       provider = "claude",
       providers = {
         claude = {
@@ -18,6 +18,17 @@ return {
           },
         },
       },
+      -- openai
+        -- provider = "openai",
+        -- providers = {
+            -- openai = {
+                -- endpoint = "https://api.openai.com/v1",
+                -- model = "gpt-4o",
+                -- extra_request_body = {
+                    -- temperature = 0.3,
+                -- },
+            -- },
+        -- },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
