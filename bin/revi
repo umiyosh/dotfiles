@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ORIGINAL_TOOL=""
+
+cleanup() {
+  if [ -n "$ORIGINAL_TOOL" ]; then
+    echo "✅ Restoring global Git diff.external setting..."
+    git config --global diff.external "$ORIGINAL_TOOL"
+  fi
+}
+
+trap cleanup EXIT INT TERM
+
+echo "🔎 Checking current global Git diff tool setting..."
+
+ORIGINAL_TOOL=$(git config --global --get diff.external 2>/dev/null)
+
+if [ -n "$ORIGINAL_TOOL" ]; then
+  echo "Temporarily disabling global external diff tool: ($ORIGINAL_TOOL)"
+  git config --global --unset diff.external
+else
+  echo "No external diff tool is configured."
+fi
+
+echo -e "\n🚀 Launching reviewit...\n"
+
+npx reviewit "$@"
