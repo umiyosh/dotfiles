@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# PIDファイルのパス
+PID_FILE="/tmp/reviewit.pid"
+
+# PIDファイルの存在確認
+if [ ! -f "$PID_FILE" ]; then
+    echo "No reviewit process found (PID file not exists)"
+    exit 1
+fi
+
+# PIDを読み取り
+PID=$(cat "$PID_FILE")
+
+# プロセスの存在確認
+if ! ps -p "$PID" > /dev/null 2>&1; then
+    echo "Process $PID not found. Cleaning up PID file."
+    rm -f "$PID_FILE"
+    exit 1
+fi
+
+# プロセスを終了
+echo "Stopping reviewit (PID: $PID)..."
+kill "$PID"
+
+# 終了を待つ（最大5秒）
+COUNTER=0
+while ps -p "$PID" > /dev/null 2>&1; do
+    if [ $COUNTER -ge 5 ]; then
+        echo "Process didn't stop gracefully. Force killing..."
+        kill -9 "$PID"
+        break
+    fi
+    sleep 1
+    COUNTER=$((COUNTER + 1))
+done
+
+# PIDファイルを削除
+rm -f "$PID_FILE"
+
+echo "reviewit stopped successfully"

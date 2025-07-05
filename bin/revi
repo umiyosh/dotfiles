@@ -1,27 +1,28 @@
 #!/bin/bash
 
-ORIGINAL_TOOL=""
+# PIDファイルのパス
+PID_FILE="/tmp/reviewit.pid"
 
-cleanup() {
-  if [ -n "$ORIGINAL_TOOL" ]; then
-    echo "✅ Restoring global Git diff.external setting..."
-    git config --global diff.external "$ORIGINAL_TOOL"
-  fi
-}
-
-trap cleanup EXIT INT TERM
-
-echo "🔎 Checking current global Git diff tool setting..."
-
-ORIGINAL_TOOL=$(git config --global --get diff.external 2>/dev/null)
-
-if [ -n "$ORIGINAL_TOOL" ]; then
-  echo "Temporarily disabling global external diff tool: ($ORIGINAL_TOOL)"
-  git config --global --unset diff.external
-else
-  echo "No external diff tool is configured."
+# 既存のプロセスをチェック
+if [ -f "$PID_FILE" ]; then
+    OLD_PID=$(cat "$PID_FILE")
+    if ps -p "$OLD_PID" > /dev/null 2>&1; then
+        echo "reviewit is already running with PID: $OLD_PID"
+        echo "To stop it, run: kill $OLD_PID"
+        exit 1
+    else
+        rm -f "$PID_FILE"
+    fi
 fi
 
-echo -e "\n🚀 Launching reviewit...\n"
+# バックグラウンドで実行
+npx reviewit "$@" --host 0.0.0.0 &
+PID=$!
 
-npx reviewit "$@"
+# PIDを記録
+echo $PID > "$PID_FILE"
+
+echo "reviewit started in background with PID: $PID"
+echo "PID saved to: $PID_FILE"
+echo "To stop: kill $PID or kill \$(cat $PID_FILE)"
+
