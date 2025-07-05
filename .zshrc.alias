@@ -245,6 +245,7 @@ function help() {
     insert-cmd "$result"
   fi
 }
-alias cl='claude'
-alias clc='claude --continue'
-alias yolo='claude --dangerously-skip-permissions'
+alias cl='ENABLE_BACKGROUND_TASKS=1 claude'
+alias clc='ENABLE_BACKGROUND_TASKS=1 claude --continue'
+alias clr='ENABLE_BACKGROUND_TASKS=1 claude --rejume'
+alias yolo='ENABLE_BACKGROUND_TASKS=1 claude --dangerously-skip-permissions'
