@@ -115,6 +115,7 @@
   chpk = cherry-pick # チンピク
   iss = issue # my extended command
   delete-merged-branches=!git branch --merged | grep -v \\* | xargs -I % git branch -d %
+	default-branch=!git remote show origin | grep 'HEAD branch' | awk '{print }'
 
 [http]
   sslVerify = false
