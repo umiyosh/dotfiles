@@ -175,9 +175,6 @@ alias ke="kubectl explain"
 alias k="k9s --readonly -n all"
 alias K="k9s -n all"
 
-# safty rm
-alias rm='trash-wrapper.sh'
-
 # watchrun
 alias wr='watchrun -c'
 alias wrq='watchrun -q -c'
