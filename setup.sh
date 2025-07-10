@@ -111,29 +111,14 @@ function installFzf() {
   fi
 }
 
-function setupVimPlugins() {
-  # vim
-  ## vunndle and BundleInstall and make vimproc
-  ## TODO : SC2262 (warning): This alias can't be defined and used in the same parsing unit. Use a function instead.
-  if [[ -e /usr/local/bin/mvim ]]; then
-    alias vim='mvim -v'
-  fi
-  alias vim='mvim -v'
-  if [[ ! -d $HOME/.vim/plugged ]]; then
-    vim -Nu "$HOME/dotfiles/nvim_vimplug.vim" +PlugInstall! +qa
-    cd "$HOME/.vim/plugged/vimproc.vim/"
-    case "${OSTYPE}" in
-    darwin*)
-      make -f make_mac.mak
-      ;;
-    linux*)
-      make -f make_unix.mak
-      ;;
-    esac
-    cd "$HOME/dotfiles/"
+function setupNeovimPlugins() {
+  # Neovim with Lazy.nvim
+  # Lazy.nvimのブートストラップとプラグインインストール
+  if command -v nvim >/dev/null 2>&1; then
+    echo "Installing Neovim plugins with Lazy.nvim..."
+    nvim --headless "+Lazy! sync" +qa
   else
-    # TODO 将来VS Codeで出し分けする場合、直接ファイル指定している場所を適正化する必要がある
-    vim -Nu "$HOME/dotfiles/nvim_vimplug.vim" +PlugInstall! +qa
+    echo "Neovim not found, skipping plugin installation"
   fi
 }
 
@@ -145,5 +130,5 @@ function setupVimPlugins() {
   installZgen
   installAutojump
   installFzf
-  setupVimPlugins
+  setupNeovimPlugins
 }
