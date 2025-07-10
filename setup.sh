@@ -4,7 +4,7 @@ set -xe
 function deployDotfiles() {
   DOT_FILES=( .tigrc .ideavimrc .agignore .zshrc .zshrc.selector \
               .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
-              .gdbinit .gitconfig .gitignore \
+              .gitconfig .gitignore \
               .tmux.conf .perltidyrc .mackup.cfg \
               .zprofile .direnvrc
              )
@@ -13,7 +13,7 @@ function deployDotfiles() {
   # dotfiles
   for file in "${DOT_FILES[@]}"
   do
-    if [[ ! -f $HOME/$file ]]; then
+    if [[ ! -e $HOME/$file ]] && [[ ! -L $HOME/$file ]]; then
       ln -s "$HOME/dotfiles/$file" "$HOME/$file"
     fi
   done
@@ -36,6 +36,9 @@ function deployDotfiles() {
  fi
  if [[ ! -L "$NVIM_CONFIG_DIR/lua" ]]; then
    ln -s "$HOME/dotfiles/lua" "$NVIM_CONFIG_DIR/lua"
+ fi
+ if [[ ! -L "$NVIM_CONFIG_DIR/ginit.vim" ]]; then
+   ln -s "$HOME/dotfiles/ginit.vim" "$NVIM_CONFIG_DIR/ginit.vim"
  fi
 }
 
