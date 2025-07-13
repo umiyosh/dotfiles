@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# notif_rich - マークダウン形式のメッセージをSlack mrkdwn形式に変換して通知
+#
+# 使用方法:
+# 1. /tmp/claude_notif_message_md.txt にマークダウン形式のメッセージを書き込む
+# 2. notif_rich コマンドを実行
+# 3. 自動的にmrkdwn形式に変換して通知される
+#
+# Claude Codeのパイプ許可設定問題を回避するため、
+# mrkdwn変換処理を内部に組み込んだバージョン
+
+# マークダウンメッセージファイルのパス
+MD_MESSAGE_FILE="/tmp/claude_notif_message_md.txt"
+# 変換後のメッセージファイルのパス
+MESSAGE_FILE="/tmp/claude_notif_message.txt"
+
+# マークダウンファイルが存在しない場合はエラー
+if [[ ! -f "$MD_MESSAGE_FILE" ]]; then
+  echo "Error: Markdown message file not found at $MD_MESSAGE_FILE" >&2
+  exit 1
+fi
+
+# mrkdwnコマンドで変換
+if ! cat "$MD_MESSAGE_FILE" | mrkdwn > "$MESSAGE_FILE"; then
+  echo "Error: Failed to convert markdown to mrkdwn format" >&2
+  exit 1
+fi
+
+# ファイルからメッセージを読み取り
+message=$(cat "$MESSAGE_FILE")
+
+# ファイルを削除（読み取り後はクリーンアップ）
+rm -f "$MD_MESSAGE_FILE"
+rm -f "$MESSAGE_FILE"
+
+if [[ -z "$message" ]]; then
+  message="END"
+fi
+
+# アプリケーション名を追加
+if [[ $0 == "-bash" ]]; then
+  app="/usr/sbin/bash_terminal"
+else
+  app=$0
+fi
+
+message="${message} by $(basename ${app})"
+
+# 送信処理
+~/dotfiles_private/bin/noti_slack "${message}"
+afplay /System/Library/Sounds/Submarine.aiff
