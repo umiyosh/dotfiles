@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# notif_file - ファイル経由で通知を送信するコマンド
+#
+# 作成背景:
+# Claude Code (claude.ai/code) の通知機能で、引数に空白やマルチバイト文字を含む
+# メッセージを送信する際に問題が発生していた。
+# 
+# 問題点:
+# 1. `notif 'メッセージ'` のような直接引数を渡す方式では、Claude Codeが毎回
+#    実行確認プロンプトを表示してしまう
+# 2. settings.jsonでパイプを含むコマンド（例: echo * | notif_stdin）の許可設定が
+#    正しく機能しない
+# 3. 空白やマルチバイト文字を含む引数の処理で問題が発生する可能性がある
+#
+# 解決策:
+# ファイル経由でメッセージを渡す方式を採用。これにより：
+# - 引数が固定化され、settings.jsonでの許可設定がシンプルになる
+# - 空白やマルチバイト文字の問題を回避できる
+# - Claude Codeは Write(/tmp/claude_notif_message.txt) と Bash(notif_file) の
+#   2つのコマンドで通知を送信できる
+#
+# 使用方法:
+# 1. /tmp/claude_notif_message.txt にメッセージを書き込む
+# 2. notif_file コマンドを実行
+# 3. ファイルは自動的に削除される
+#
+# 関連Issue: https://github.com/umiyosh/backlog/issues/7
+
+# メッセージファイルのパス
+MESSAGE_FILE="/tmp/claude_notif_message.txt"
+
+# ファイルが存在しない場合はエラー
+if [[ ! -f "$MESSAGE_FILE" ]]; then
+  echo "Error: Message file not found at $MESSAGE_FILE" >&2
+  exit 1
+fi
+
+# ファイルからメッセージを読み取り
+message=$(cat "$MESSAGE_FILE")
+
+# ファイルを削除（読み取り後はクリーンアップ）
+rm -f "$MESSAGE_FILE"
+
+if [[ -z "$message" ]]; then
+  message="END"
+fi
+
+# アプリケーション名を追加
+if [[ $0 == "-bash" ]]; then
+  app="/usr/sbin/bash_terminal"
+else
+  app=$0
+fi
+
+message="${message} by $(basename ${app})"
+
+# 送信処理
+~/dotfiles_private/bin/noti_slack "${message}"
+afplay /System/Library/Sounds/Submarine.aiff
