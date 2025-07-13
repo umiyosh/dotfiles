@@ -244,5 +244,5 @@ function help() {
 }
 alias cl='ENABLE_BACKGROUND_TASKS=1 claude'
 alias clc='ENABLE_BACKGROUND_TASKS=1 claude --continue'
-alias clr='ENABLE_BACKGROUND_TASKS=1 claude --rejume'
+alias clr='ENABLE_BACKGROUND_TASKS=1 claude --resume'
 alias yolo='ENABLE_BACKGROUND_TASKS=1 claude --dangerously-skip-permissions'
