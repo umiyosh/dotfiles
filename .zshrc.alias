@@ -242,7 +242,7 @@ function help() {
     insert-cmd "$result"
   fi
 }
-alias cl='ENABLE_BACKGROUND_TASKS=1 claude'
-alias clc='ENABLE_BACKGROUND_TASKS=1 claude --continue'
-alias clr='ENABLE_BACKGROUND_TASKS=1 claude --resume'
+# alias cl='ENABLE_BACKGROUND_TASKS=1 claude'
+# alias clc='ENABLE_BACKGROUND_TASKS=1 claude --continue'
+# alias clr='ENABLE_BACKGROUND_TASKS=1 claude --resume'
 alias yolo='ENABLE_BACKGROUND_TASKS=1 claude --dangerously-skip-permissions'
