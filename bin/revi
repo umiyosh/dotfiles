@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # PIDファイルのパス
-PID_FILE="/tmp/reviewit.pid"
+PID_FILE="/tmp/difit.pid"
 
 # 既存のプロセスをチェック
 if [ -f "$PID_FILE" ]; then
     OLD_PID=$(cat "$PID_FILE")
     if ps -p "$OLD_PID" > /dev/null 2>&1; then
-        echo "reviewit is already running with PID: $OLD_PID"
+        echo "difit is already running with PID: $OLD_PID"
         echo "To stop it, run: kill $OLD_PID"
         exit 1
     else
@@ -16,13 +16,13 @@ if [ -f "$PID_FILE" ]; then
 fi
 
 # バックグラウンドで実行
-npx reviewit "$@" --host 0.0.0.0 &
+npx difit "$@" --host 0.0.0.0 > /tmp/difit.log 2>&1 &
 PID=$!
 
 # PIDを記録
 echo $PID > "$PID_FILE"
 
-echo "reviewit started in background with PID: $PID"
+echo "difit started in background with PID: $PID"
 echo "PID saved to: $PID_FILE"
 echo "To stop: kill $PID or kill \$(cat $PID_FILE)"
 
