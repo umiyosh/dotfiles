@@ -27,6 +27,7 @@ function precmd() {
           krkd ks l less lpe man modd mpe \
           nvim p ping pk pt rgv s top tovim \
           tig vi vim nvim view vr mb \
+          cl clc clw clr \
         )
 
       local token
