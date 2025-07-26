@@ -16,7 +16,7 @@ if [ -f "$PID_FILE" ]; then
 fi
 
 # バックグラウンドで実行
-npx difit "$@" --host 0.0.0.0 > /tmp/difit.log 2>&1 &
+nohup npx difit "$@" --host 0.0.0.0 > /tmp/difit.log 2>&1 &
 PID=$!
 
 # PIDを記録

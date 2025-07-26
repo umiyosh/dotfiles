@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # PIDファイルのパス
-PID_FILE="/tmp/reviewit.pid"
+PID_FILE="/tmp/difit.pid"
 
 # PIDファイルの存在確認
 if [ ! -f "$PID_FILE" ]; then
