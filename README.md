@@ -1,5 +1,5 @@
 [![Circle CI](https://circleci.com/gh/umiyosh/dotfiles.svg?style=svg)](https://circleci.com/gh/umiyosh/dotfiles)
-
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/umiyosh/dotfiles)
 
 ## Clone from github and setup.sh and zsh
 
