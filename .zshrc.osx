@@ -25,7 +25,7 @@ function precmd() {
           gc gco git gpb gping gpl gpr gps \
           help K k k9s kc kco ki kn kns kp \
           krkd ks l less lpe man modd mpe \
-          nvim p ping pk pt rgv s top tovim \
+          nvim p ping pk pt psql rgv s top tovim \
           tig vi vim nvim view vr mb \
           cl clc clw clr \
         )
