@@ -71,6 +71,18 @@
           "background": "#f1502f",
           "type": "git",
           "style": "diamond"
+        },
+        {
+          "trailing_diamond": "\ue0b4",
+          "template": " {{ if not .Env.OMP_MINIMAL }}{{ .Output }}{{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#f1502f",
+          "type": "command",
+          "style": "diamond",
+          "properties": {
+            "shell": "bash",
+            "command": "(git rev-parse --is-inside-work-tree >/dev/null 2>&1) || exit 0; git -c color.status=false status --porcelain=2 --branch --untracked-files=normal 2>/dev/null | awk '$1==\"#\"{ if ($2==\"branch.ab\"){ ahead=substr($3,2); behind=substr($4,2) } next } $1==\"?\"{ u++; next } $1==\"u\"{ c++; next } ($1==\"1\" || $1==\"2\"){ xy=$2; x=substr(xy,1,1); y=substr(xy,2,1); if (y!=\".\") ns++; if (x!=\".\") s++; next } END{ out=\"\"; if(ahead+0>0){ out=out ((ahead+0>1)?ahead:\"\") \" ↑ \" } if(behind+0>0){ out=out ((behind+0>1)?behind:\"\") \" ↓ \" } if(s>0){ out=out ((s>1)?s:\"\") \" ✔ \" } if(ns>0){ out=out ((ns>1)?ns:\"\") \" ✎ \" } if(u>0){ out=out ((u>1)?u:\"\") \" ❓ \" } if(c>0){ out=out ((c>1)?c:\"\") \" ✼ \" } print out }'"
+          }
         }
       ],
       "newline": true
