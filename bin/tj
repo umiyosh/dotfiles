@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source ~/lib/env.sh
-
 # translate with deepl
 # deepl-translate-cli https://github.com/Omochice/deepl-translate-cli
 # language code https://developers.google.com/admin-sdk/directory/v1/languages
