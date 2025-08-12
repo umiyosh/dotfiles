@@ -132,8 +132,21 @@ function deployTmuxPowerline() {
   fi
 
   # Link config directory
-  if [[ -d "$TP_DEST_DIR" || -L "$TP_DEST_DIR" ]]; then
-    :
+  if [[ -L "$TP_DEST_DIR" ]]; then
+    # If it's a symlink but points elsewhere, replace it
+    local current_target
+    current_target="$(readlink "$TP_DEST_DIR")"
+    if [[ "$current_target" != "$TP_SRC_DIR" ]]; then
+      rm -f "$TP_DEST_DIR"
+      ln -s "$TP_SRC_DIR" "$TP_DEST_DIR"
+    fi
+  elif [[ -d "$TP_DEST_DIR" ]]; then
+    # Backup existing dir then link
+    local backup_dir
+    backup_dir="${TP_DEST_DIR}.bak-$(date +%Y%m%d%H%M%S)"
+    mv "$TP_DEST_DIR" "$backup_dir"
+    ln -s "$TP_SRC_DIR" "$TP_DEST_DIR"
+    echo "Backed up existing $TP_DEST_DIR to $backup_dir and created symlink."
   else
     ln -s "$TP_SRC_DIR" "$TP_DEST_DIR"
   fi
