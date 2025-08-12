@@ -1,8 +1,8 @@
 # python
 export PATH=~/.local/bin:$PATH
 # source ~/python_v3.9/bin/activate
-source ~/python_v3.11/bin/activate
-source "$HOME/.rye/env"
+source ~/python_v3.13/bin/activate
+# source "$HOME/.rye/env"
 eval "$(direnv hook zsh)"
 
 # export PYENV_ROOT="$HOME/.pyenv"
