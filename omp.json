@@ -8,10 +8,10 @@
         {
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "\ue0b0",
-          "template": " {{ if not .Env.OMP_MINIMAL }}\uf308 : {{ .Context }}{{ end }} ",
+          "template": " {{ if and (not .Env.OMP_MINIMAL) (not .Env.OMP_HIDE_K8S) }}⎈ {{ .Context }}{{ end }} ",
           "foreground": "#ffffff",
-          "background": "#2496ED",
-          "type": "docker",
+          "background": "#326DE6",
+          "type": "kubectl",
           "style": "diamond"
         },
         {
