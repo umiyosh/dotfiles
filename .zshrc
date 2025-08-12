@@ -1,7 +1,7 @@
 ## basic configuration
 source ~/dotfiles/.zshrc.basic
 
-## Prompt Setting
+## Prompt Setting (Oh My Posh -> fallback to powerline)
 source ~/dotfiles/.zshrc.prompt
 
 ## Complition Setting

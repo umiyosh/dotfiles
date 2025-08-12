@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if not .Env.OMP_MINIMAL }}\uf308 : {{ .Context }}{{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#2496ED",
+          "type": "docker",
+          "style": "diamond"
+        },
+        {
+          "trailing_diamond": "\ue0b0",
+          "template": "{{ if and (not .Env.OMP_MINIMAL) (not .Env.OMP_HIDE_K8S) }} {{ .Namespace }} {{ end }}",
+          "foreground": "#ffffff",
+          "background": "#7C4DFF",
+          "type": "kubectl",
+          "style": "diamond"
+        },
+        {
+          "trailing_diamond": "\ue0b4",
+          "template": "{{ if and (not .Env.OMP_MINIMAL) (not .Env.OMP_HIDE_GCP) }} GCP: {{ .Project }} {{ end }}",
+          "foreground": "#ffffff",
+          "background": "#0F9D58",
+          "type": "gcp",
+          "style": "diamond"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if not .Env.OMP_MINIMAL }}\ue235 {{ .Output }}{{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#3776AB",
+          "type": "command",
+          "style": "diamond",
+          "properties": {
+            "shell": "bash",
+            "command": "([ -n \"$VIRTUAL_ENV\" ] && basename \"$VIRTUAL_ENV\") || ([ -f .python-version ] && sed -n 1p .python-version)"
+          }
+        },
+        {
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if not .Env.OMP_MINIMAL }}\ue626 {{ .Output }}{{ end }} ",
+          "foreground": "#000000",
+          "background": "#BFD8D2",
+          "type": "command",
+          "style": "diamond",
+          "properties": {
+            "shell": "bash",
+            "command": "gvm-prompt || (go version 2>/dev/null | awk '{print $3}')"
+          }
+        },
+        {
+          "properties": {
+            "fetch_status": true
+          },
+          "trailing_diamond": "\ue0b4",
+          "template": " {{ if not .Env.OMP_MINIMAL }}{{ .HEAD }}{{ if .UpstreamURL }}{{ if gt .Ahead 0 }} \uf062 {{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} \uf063 {{ .Behind }}{{ end }}{{ end }}{{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#f1502f",
+          "type": "git",
+          "style": "diamond"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "style": "full"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if not .Env.OMP_MINIMAL }}\uf07c {{ .Path }}{{ end }} ",
+          "foreground": "#000000",
+          "background": "#FFD54F",
+          "type": "path",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "style": "folder"
+          },
+          "trailing_diamond": "\ue0b4",
+          "template": " {{ if not .Env.OMP_MINIMAL }}{{ .Path }}{{ end }} ",
+          "foreground": "#000000",
+          "background": "#FFB300",
+          "type": "path",
+          "style": "diamond"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": " {{ if not .Env.OMP_MINIMAL }}{{ .CurrentDate | date .Format }}{{ end }} ",
+          "foreground": "#000000",
+          "background": "#ffffff",
+          "type": "time",
+          "style": "diamond"
+        },
+        {
+          "template": "{{ if .Env.OMP_MINIMAL }}% {{ end }}",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": " {{ if not .Env.OMP_MINIMAL }}❯{{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#0077c2",
+          "type": "text",
+          "style": "diamond"
+        }
+      ]
+    }
+  ],
+  "version": 3
+}
