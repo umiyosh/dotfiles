@@ -122,6 +122,23 @@ function setupNeovimPlugins() {
   fi
 }
 
+function deployTmuxPowerline() {
+  # Ensure XDG config dir exists
+  local TP_SRC_DIR="$HOME/dotfiles/.config/tmux-powerline"
+  local TP_DEST_DIR="$HOME/.config/tmux-powerline"
+
+  if [[ ! -d "$HOME/.config" ]]; then
+    mkdir -p "$HOME/.config"
+  fi
+
+  # Link config directory
+  if [[ -d "$TP_DEST_DIR" || -L "$TP_DEST_DIR" ]]; then
+    :
+  else
+    ln -s "$TP_SRC_DIR" "$TP_DEST_DIR"
+  fi
+}
+
 : "install" && {
   deployDotfiles
   changeShell
@@ -131,4 +148,5 @@ function setupNeovimPlugins() {
   installAutojump
   installFzf
   setupNeovimPlugins
+  deployTmuxPowerline
 }
