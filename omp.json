@@ -126,11 +126,20 @@
             "time_format": "15:04:05"
           },
           "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "template": " {{ if not .Env.OMP_MINIMAL }}{{ .CurrentDate | date .Format }}{{ end }} ",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if not .Env.OMP_MINIMAL }} {{ .CurrentDate | date .Format }} {{ end }} ",
           "foreground": "#000000",
           "background": "#ffffff",
           "type": "time",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": "",
+          "trailing_diamond": "\ue0b4",
+          "template": " {{ if not .Env.OMP_MINIMAL }} ❯ {{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#0077c2",
+          "type": "text",
           "style": "diamond"
         },
         {
@@ -140,21 +149,6 @@
         }
       ],
       "newline": true
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "template": " {{ if not .Env.OMP_MINIMAL }}❯{{ end }} ",
-          "foreground": "#ffffff",
-          "background": "#0077c2",
-          "type": "text",
-          "style": "diamond"
-        }
-      ]
     }
   ],
   "version": 3
