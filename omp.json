@@ -26,7 +26,7 @@
           "trailing_diamond": "\ue0b4",
           "template": "{{ if and (not .Env.OMP_MINIMAL) (not .Env.OMP_HIDE_GCP) }}  {{ .Project }} {{ end }}",
           "foreground": "#ffffff",
-          "background": "#0F9D58",
+          "background": "#1565C0",
           "type": "gcp",
           "style": "diamond"
         }
