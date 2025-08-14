@@ -38,6 +38,7 @@
 	export TMUX_POWERLINE_STATUS_RIGHT_LENGTH="90"
 
 	# The separator to use between windows on the status bar.
+	# Empty: we draw brackets inside each window format to color-match backgrounds.
 	export TMUX_POWERLINE_WINDOW_STATUS_SEPARATOR=""
 
 	# Uncomment these if you want to enable tmux bindings for muting (hiding) one of the status bars.

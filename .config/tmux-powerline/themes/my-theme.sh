@@ -16,7 +16,7 @@ else
 fi
 
 # See Color formatting section below for details on what colors can be used here.
-TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR:-'235'}
+TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR:-'237'}
 TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR:-'255'}
 # shellcheck disable=SC2034
 TMUX_POWERLINE_SEG_AIR_COLOR=$(tp_air_color)
@@ -29,32 +29,28 @@ TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=${TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SE
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_CURRENT" ]; then
-	TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
-		"#[$(tp_format inverse)]"
-		"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
-		" #I#F "
-		"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
-		" #W "
-		"#[$(tp_format regular)]"
-		"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
-	)
+    TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
+        "#{?window_start_flag,#[fg=colour67],}#[default]"
+        "#[fg=colour255,bg=colour67] #I#F  #W #[default]"
+        "#[fg=colour67]#[default]"
+    )
 fi
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_STYLE" ]; then
-	TMUX_POWERLINE_WINDOW_STATUS_STYLE=(
-		"$(tp_format regular)"
-	)
+    # Inactive windows: dark gray background with light text for contrast
+    TMUX_POWERLINE_WINDOW_STATUS_STYLE=(
+        "fg=colour250,bg=colour237"
+    )
 fi
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_FORMAT" ]; then
-	TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
-		"#[$(tp_format regular)]"
-		"  #I#{?window_flags,#F, } "
-		"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
-		" #W "
-	)
+    TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
+        "#{?window_start_flag,#[fg=colour237],}#[default]"
+        "#[fg=colour250,bg=colour237]  #I#{?window_flags,#F, }  #W #[default]"
+        "#[fg=colour237]#[default]"
+    )
 fi
 
 # Format: segment_name [background_color|default_bg_color] [foreground_color|default_fg_color] [non_default_separator|default_separator] [separator_background_color|no_sep_bg_color]
