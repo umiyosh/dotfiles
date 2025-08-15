@@ -1,6 +1,6 @@
 #!/bin/bash
-#  このスクリプトはObsidian Tasksで付与したハイプライオリティの文字列を削除し、タスクをクリーンアップするためのスクリプトです。
-#  Obsidian Shell Command プラグインからします。
+#  このスクリプトはObsidian Tasksで付与した飛行機アイコンと日付（例: 🛫 2025-08-14）を削除し、タスクをクリーンアップするためのスクリプトです。
+#  Obsidian Shell Command プラグインから実行します。
 # 引数チェック
 if [ $# -ne 1 ]; then
     echo "使用方法: $0 <ファイルのフルパス>"
@@ -40,23 +40,24 @@ fi
 
 echo "バックアップを作成しました: $BACKUP_FILE"
 
-# sedコマンドで🔺を削除（インプレース編集）
+# sedコマンドで🛫と日付パターンを削除（インプレース編集）
+# パターン: 🛫[任意のスペース]YYYY-MM-DD形式の日付
 # macOSとLinuxの両方で動作するよう、-iオプションの後に空文字列を指定
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOSの場合
-    sed -i '' 's/🔺//g' "$FILE_PATH"
+    sed -i '' 's/🛫[[:space:]]*[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}//g' "$FILE_PATH"
 else
     # Linuxの場合
-    sed -i 's/🔺//g' "$FILE_PATH"
+    sed -i 's/🛫[[:space:]]*[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}//g' "$FILE_PATH"
 fi
 
 # sedの実行結果を確認
 if [ $? -eq 0 ]; then
-    echo "成功: 🔺を削除しました"
+    echo "成功: 🛫と日付を削除しました"
 
     # 変更があったか確認
     if diff -q "$FILE_PATH" "$BACKUP_FILE" > /dev/null; then
-        echo "情報: ファイルに🔺は含まれていませんでした"
+        echo "情報: ファイルに🛫と日付パターンは含まれていませんでした"
         # バックアップを削除（変更がない場合）
         rm "$BACKUP_FILE"
         echo "バックアップファイルを削除しました（変更なし）"
@@ -66,7 +67,7 @@ if [ $? -eq 0 ]; then
         echo "バックアップファイルを削除しました(変更あり)"
     fi
 else
-    echo "エラー: 🔺の削除に失敗しました"
+    echo "エラー: 🛫と日付の削除に失敗しました"
     # エラーの場合、バックアップから復元
     mv "$BACKUP_FILE" "$FILE_PATH"
     echo "バックアップから復元しました"
