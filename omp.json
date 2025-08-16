@@ -30,6 +30,9 @@
           "template": "{{ if and (not .Env.OMP_MINIMAL) (not .Env.OMP_HIDE_GCP) }}  {{ .Project }} {{ end }}",
           "foreground": "#ffffff",
           "background": "#1565C0",
+          "background_templates": [
+            "{{ if contains \"prd\" .Project }}#d32f2f{{ end }}"
+          ],
           "type": "gcp",
           "style": "diamond"
         }
