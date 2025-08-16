@@ -11,6 +11,9 @@
           "template": " {{ if and (not .Env.OMP_MINIMAL) (not .Env.OMP_HIDE_K8S) }}⎈ {{ .Context }}{{ end }} ",
           "foreground": "#ffffff",
           "background": "#326DE6",
+          "background_templates": [
+            "{{ if contains \"prd\" .Context }}#d32f2f{{ end }}"
+          ],
           "type": "kubectl",
           "style": "diamond"
         },
