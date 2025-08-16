@@ -68,7 +68,10 @@
           "trailing_diamond": "\ue0b4",
           "template": " {{ if not .Env.OMP_MINIMAL }}{{ .HEAD }}{{ if .UpstreamURL }}{{ if gt .Ahead 0 }} \uf062 {{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} \uf063 {{ .Behind }}{{ end }}{{ end }}{{ end }} ",
           "foreground": "#ffffff",
-          "background": "#f1502f",
+          "background": "#2d7a2d",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#c94a7a{{ end }}"
+          ],
           "type": "git",
           "style": "diamond"
         },
@@ -76,7 +79,10 @@
           "trailing_diamond": "\ue0b4",
           "template": " {{ if not .Env.OMP_MINIMAL }}{{ .Output }}{{ end }} ",
           "foreground": "#ffffff",
-          "background": "#f1502f",
+          "background": "#2d7a2d",
+          "background_templates": [
+            "{{ if .Output }}#c94a7a{{ end }}"
+          ],
           "type": "command",
           "style": "diamond",
           "properties": {
