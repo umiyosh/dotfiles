@@ -196,9 +196,9 @@
         {
           "leading_diamond": "",
           "trailing_diamond": "\ue0b4",
-          "template": " {{ if not .Env.OMP_MINIMAL }}<#2E2E2E>(</> ❯ <#2E2E2E>)</> {{ end }}",
+          "template": " {{ if not .Env.OMP_MINIMAL }}<#2E2E2E></> ❯ <#2E2E2E></> {{ end }}",
           "foreground": "#D0D0D0",
-          "background": "#2E2E2E",
+          "background": "#3E3E3E",
           "type": "text",
           "style": "diamond"
         },
