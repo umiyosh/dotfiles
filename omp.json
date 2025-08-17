@@ -68,6 +68,30 @@
           }
         },
         {
+          "type": "rust",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if not .Env.OMP_MINIMAL }}\ue68b rust_{{ .Full }}{{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#ce422b",
+          "properties": {
+            "display_mode": "always",
+            "home_enabled": true
+          }
+        },
+        {
+          "type": "node",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if not .Env.OMP_MINIMAL }}\ue718 node_{{ .Full }}{{ end }} ",
+          "foreground": "#ffffff",
+          "background": "#6CA35E",
+          "properties": {
+            "display_mode": "always",
+            "home_enabled": true
+          }
+        },
+        {
           "properties": {
             "fetch_status": true
           },
