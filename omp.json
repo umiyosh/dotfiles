@@ -86,9 +86,7 @@
           "template": " {{ if not .Env.OMP_MINIMAL }}{{ .Output }}{{ end }} ",
           "foreground": "#ffffff",
           "background": "#2d7a2d",
-          "background_templates": [
-            "{{ if .Output }}#c94a7a{{ end }}"
-          ],
+          "background_templates": ["{{ if .Output }}#c94a7a{{ end }}"],
           "type": "command",
           "style": "diamond",
           "properties": {
@@ -144,6 +142,32 @@
           "background": "#3A3A3A",
           "type": "time",
           "style": "diamond"
+        },
+        {
+          "type": "status",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#2ecc71",
+          "background_templates": ["{{ if gt .Code 0 }}#e74c3c{{ end }}"],
+          "template": " {{ if eq .Code 0 }}✓{{ else }}✗ {{ .Code }}{{ end }} ",
+          "properties": {
+            "always_enabled": true
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#8800dd",
+          "template": " {{ if gt .Ms 100 }}⏱ {{ .FormattedMs }}{{ end }} ",
+          "properties": {
+            "threshold": 500,
+            "style": "austin"
+          }
         },
         {
           "leading_diamond": "",
