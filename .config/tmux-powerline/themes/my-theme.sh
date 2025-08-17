@@ -115,6 +115,8 @@ if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
         "hostname 33 0"
         "load 237 167"
         #"tmux_mem_cpu_load 234 136"
+        # "vpn 137 127"
+        "mode_indicator 137 127"
         # "battery 137 127"
         #"air ${TMUX_POWERLINE_SEG_AIR_COLOR} 255"
         # 天気（東京）
