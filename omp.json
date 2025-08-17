@@ -175,7 +175,7 @@
           "foreground": "#ffffff",
           "background": "#2ecc71",
           "background_templates": ["{{ if gt .Code 0 }}#e74c3c{{ end }}"],
-          "template": " {{ if eq .Code 0 }}✓{{ else }}✗ {{ .Code }}{{ end }} ",
+          "template": " {{ if not .Env.OMP_MINIMAL }}{{ if eq .Code 0 }}✓{{ else }}✗ {{ .Code }}{{ end }}{{ end }} ",
           "properties": {
             "always_enabled": true
           }
@@ -187,7 +187,7 @@
           "trailing_diamond": "\ue0b0",
           "foreground": "#ffffff",
           "background": "#8800dd",
-          "template": " {{ if gt .Ms 100 }}⏱ {{ .FormattedMs }}{{ end }} ",
+          "template": " {{ if not .Env.OMP_MINIMAL }}{{ if gt .Ms 500 }}⏱ {{ .FormattedMs }}{{ end }}{{ end }} ",
           "properties": {
             "threshold": 500,
             "style": "austin"
