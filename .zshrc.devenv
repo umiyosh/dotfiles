@@ -19,10 +19,9 @@ export PATH=$PATH:${HOME}/.nodebrew/current/bin
 source ${HOME}/dotfiles/.zshrc.complition.npm
 
 # golang
-lazy_source () {
-    eval "$1 () { [ -f $2 ] && source $2 && $1 \$@ }"
-}
-if [[ -f $HOME/.gvm/scripts/gvm ]] ; then
+
+# GVM環境変数の設定（cdフックなし版）
+if [[ -f $HOME/.gvm/scripts/env/gvm ]] ; then
   export GVM_ROOT=/Users/a14073/.gvm
   unset GOROOT
   unset GOARCH
@@ -33,7 +32,7 @@ if [[ -f $HOME/.gvm/scripts/gvm ]] ; then
   unset gvm_go_name
   unset gvm_pkgset_name
 
-  if [[ -f "$GVM_ROOT/logs" ]]; then
+  if [[ ! -d "$GVM_ROOT/logs" ]]; then
     mkdir -p "$GVM_ROOT/logs" > /dev/null 2>&1
     mkdir -p "$GVM_ROOT/gos" > /dev/null 2>&1
     mkdir -p "$GVM_ROOT/archive" > /dev/null 2>&1
@@ -45,13 +44,19 @@ if [[ -f $HOME/.gvm/scripts/gvm ]] ; then
   export PATH="$GVM_ROOT/bin:$PATH"
   export GVM_PATH_BACKUP="$PATH"
   [ -f "$GVM_ROOT/environments/default" ] && . "$GVM_ROOT/environments/default"
-  lazy_source gvm "$GVM_ROOT/scripts/env/gvm"
 
-  # source $HOME/.gvm/scripts/gvm
+  # --- gvm lazy shim: env/gvm のみを読み、scripts/gvm は読まない ---
+  gvm() {
+    # 初回実行時だけ本体を読み込んで差し替え
+    unset -f gvm 2>/dev/null
+    # shellcheck source=/dev/null
+    . "$HOME/.gvm/scripts/env/gvm"
+    gvm "$@"  # 以後は本物のgvm関数が呼ばれる
+  }
 fi
 
-# gvmのcd自動切り替えを無効化（GitHubのissue #479の解決策）
-unset -f cd
+# cdは常にビルトインを使用（gvmのcd関数オーバーライドを完全無効化）
+alias cd='builtin cd'
 
 # composer
 # export PATH=$PATH:${HOME}/.composer/vendor/bin
