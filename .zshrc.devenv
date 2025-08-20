@@ -50,6 +50,9 @@ if [[ -f $HOME/.gvm/scripts/gvm ]] ; then
   # source $HOME/.gvm/scripts/gvm
 fi
 
+# gvmのcd自動切り替えを無効化（GitHubのissue #479の解決策）
+unset -f cd
+
 # composer
 # export PATH=$PATH:${HOME}/.composer/vendor/bin
 
