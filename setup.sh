@@ -6,7 +6,7 @@ function deployDotfiles() {
               .zshrc.alias .zshrc.linux .zshrc.osx .zshenv \
               .gitconfig .gitignore \
               .tmux.conf .perltidyrc .mackup.cfg \
-              .zprofile .direnvrc .bashrc
+              .zprofile .direnvrc
              )
   DOT_DIRS=(.zsh .vim .selector )
 
