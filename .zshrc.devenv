@@ -56,7 +56,8 @@ if [[ -f $HOME/.gvm/scripts/env/gvm ]] ; then
 fi
 
 # cdは常にビルトインを使用（gvmのcd関数オーバーライドを完全無効化）
-alias cd='builtin cd'
+unset -f cd
+# alias cd='builtin cd'
 
 # composer
 # export PATH=$PATH:${HOME}/.composer/vendor/bin
