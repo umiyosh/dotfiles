@@ -1,0 +1,203 @@
+#!/bin/bash
+
+# VPN Status Detection Script - tmux-powerline inspired version
+# Simple, reliable detection based on tunnel interfaces with IP addresses
+
+# Configuration
+VPN_NICS="${VPN_NICS:-^u?tun[0-9]+$}"  # Default: matches tun0, utun0, etc.
+VPN_DISPLAY_MODE="${VPN_DISPLAY_MODE:-name}"  # "name", "ip", "both", or "detailed"
+VPN_SHOW_LOCATION="${VPN_SHOW_LOCATION:-false}"  # Show connection location for WARP
+
+detect_vpn() {
+    local display_nic_name=""
+    local display_nic_ip=""
+    local current_nic=""
+    
+    # Parse configured interface patterns
+    IFS=' ' read -r -a nics <<< "$VPN_NICS"
+    
+    # Different handling for macOS/BSD vs Linux
+    if [[ "$OSTYPE" == "darwin"* ]] || [[ "$OSTYPE" == *"bsd"* ]]; then
+        # macOS/BSD: Parse ifconfig output
+        while IFS= read -r line; do
+            # Check if line is an interface definition
+            if [[ "$line" =~ ^([a-zA-Z0-9_-]+):\ flags= ]]; then
+                # Extract interface name
+                current_nic="${BASH_REMATCH[1]}"
+                
+                # Check if this interface matches our patterns
+                local matches=false
+                for pattern in "${nics[@]}"; do
+                    if [[ "$current_nic" =~ $pattern ]]; then
+                        matches=true
+                        break
+                    fi
+                done
+                
+                # If it doesn't match, reset current_nic
+                if [[ "$matches" == false ]]; then
+                    current_nic=""
+                fi
+            fi
+            
+            # If we're in a matching interface section and find an IPv4 address
+            if [[ -n "$current_nic" ]] && [[ "$line" =~ inet\ ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+) ]]; then
+                display_nic_name="$current_nic"
+                display_nic_ip="${BASH_REMATCH[1]}"
+                # We found a VPN interface with an IP, stop searching
+                break
+            fi
+        done < <(ifconfig 2>/dev/null)
+        
+    else
+        # Linux: Parse ip command output
+        while IFS= read -r line; do
+            # Check if line is an interface definition
+            if [[ "$line" =~ ^[0-9]+:\ ([^:]+): ]]; then
+                current_nic="${BASH_REMATCH[1]}"
+                
+                # Check if this interface matches our patterns
+                local matches=false
+                for pattern in "${nics[@]}"; do
+                    if [[ "$current_nic" =~ $pattern ]]; then
+                        matches=true
+                        break
+                    fi
+                done
+                
+                # If it doesn't match, reset current_nic
+                if [[ "$matches" == false ]]; then
+                    current_nic=""
+                fi
+            fi
+            
+            # If we're in a matching interface section and find an IPv4 address
+            if [[ -n "$current_nic" ]] && [[ "$line" =~ inet\ ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)/[0-9]+ ]]; then
+                display_nic_name="$current_nic"
+                display_nic_ip="${BASH_REMATCH[1]}"
+                # We found a VPN interface with an IP, stop searching
+                break
+            fi
+        done < <(ip addr 2>/dev/null)
+    fi
+    
+    # Output based on display mode
+    if [[ -n "$display_nic_name" ]] && [[ -n "$display_nic_ip" ]]; then
+        case "$VPN_DISPLAY_MODE" in
+            "ip")
+                echo "$display_nic_ip"
+                ;;
+            "both")
+                echo "${display_nic_name}:${display_nic_ip}"
+                ;;
+            "detailed")
+                # Detailed mode: show VPN type with additional info
+                local vpn_name=""
+                case "$display_nic_ip" in
+                    100.96.*)
+                        # WARP with location and mode
+                        vpn_name="WARP"
+                        local colo=$(curl -s --max-time 1 https://cloudflare.com/cdn-cgi/trace 2>/dev/null | grep "colo=" | cut -d= -f2)
+                        [[ -n "$colo" ]] && vpn_name="${vpn_name}-${colo}"
+                        ;;
+                    100.100.100.*)
+                        vpn_name="Tailscale"
+                        ;;
+                    172.16.*|172.17.*|172.18.*|172.19.*|172.2*|172.30.*|172.31.*|10.*)
+                        vpn_name="VPN:${display_nic_ip}"
+                        ;;
+                    *)
+                        vpn_name="${display_nic_name}:${display_nic_ip}"
+                        ;;
+                esac
+                echo "$vpn_name"
+                ;;
+            "name"|*)
+                # For oh-my-posh, try to identify VPN type based on IP range or interface name
+                case "$display_nic_ip" in
+                    100.64.*|100.65.*|100.66.*|100.67.*|100.68.*|100.69.*|100.70.*|100.71.*|100.72.*|100.73.*|100.74.*|100.75.*|100.76.*|100.77.*|100.78.*|100.79.*|100.80.*|100.81.*|100.82.*|100.83.*|100.84.*|100.85.*|100.86.*|100.87.*|100.88.*|100.89.*|100.90.*|100.91.*|100.92.*|100.93.*|100.94.*|100.95.*|100.96.*|100.97.*|100.98.*|100.99.*|100.100.*|100.101.*|100.102.*|100.103.*|100.104.*|100.105.*|100.106.*|100.107.*|100.108.*|100.109.*|100.110.*|100.111.*|100.112.*|100.113.*|100.114.*|100.115.*|100.116.*|100.117.*|100.118.*|100.119.*|100.120.*|100.121.*|100.122.*|100.123.*|100.124.*|100.125.*|100.126.*|100.127.*)
+                        # Tailscale IP range (100.64.0.0/10)
+                        if [[ "$display_nic_ip" == 100.100.100.* ]]; then
+                            echo "Tailscale"
+                        elif [[ "$display_nic_ip" == 100.96.* ]]; then
+                            # Cloudflare WARP uses 100.96.0.0/12
+                            if [[ "$VPN_DISPLAY_MODE" == "detailed" ]] || [[ "$VPN_SHOW_LOCATION" == "true" ]]; then
+                                # Get WARP connection details
+                                local warp_info="WARP"
+                                
+                                # Try to get location from Cloudflare trace
+                                local colo=$(curl -s --max-time 1 https://cloudflare.com/cdn-cgi/trace 2>/dev/null | grep "colo=" | cut -d= -f2)
+                                if [[ -n "$colo" ]]; then
+                                    warp_info="WARP-${colo}"
+                                fi
+                                
+                                # Try to get mode from warp-cli
+                                local warp_mode=$(warp-cli settings list 2>/dev/null | grep "Mode:" | sed -E 's/.*Mode: //' | head -1)
+                                case "$warp_mode" in
+                                    *Warp*)
+                                        # Standard WARP mode
+                                        ;;
+                                    *Gateway*)
+                                        warp_info="${warp_info}[GW]"
+                                        ;;
+                                    *Proxy*)
+                                        warp_info="${warp_info}[Proxy]"
+                                        ;;
+                                esac
+                                
+                                echo "$warp_info"
+                            else
+                                echo "WARP"
+                            fi
+                        else
+                            # Check processes for more specific identification
+                            if pgrep -f "io.tailscale" &>/dev/null; then
+                                echo "Tailscale"
+                            else
+                                echo "VPN"
+                            fi
+                        fi
+                        ;;
+                    172.16.*|172.17.*|172.18.*|172.19.*|172.2*|172.30.*|172.31.*)
+                        # Common corporate VPN range
+                        if pgrep -f "FortiClient" &>/dev/null; then
+                            echo "Fortinet"
+                        else
+                            echo "VPN"
+                        fi
+                        ;;
+                    10.*)
+                        # Another common VPN range
+                        echo "VPN"
+                        ;;
+                    *)
+                        # Unknown IP range, try to identify by process
+                        if pgrep -f "warp-svc" &>/dev/null; then
+                            if [[ "$VPN_DISPLAY_MODE" == "detailed" ]] || [[ "$VPN_SHOW_LOCATION" == "true" ]]; then
+                                # Get WARP connection details even for unknown IP
+                                local warp_info="WARP"
+                                local colo=$(curl -s --max-time 1 https://cloudflare.com/cdn-cgi/trace 2>/dev/null | grep "colo=" | cut -d= -f2)
+                                if [[ -n "$colo" ]]; then
+                                    warp_info="WARP-${colo}"
+                                fi
+                                echo "$warp_info"
+                            else
+                                echo "WARP"
+                            fi
+                        elif pgrep -f "io.tailscale" &>/dev/null; then
+                            echo "Tailscale"
+                        elif pgrep -f "FortiClient" &>/dev/null; then
+                            echo "Fortinet"
+                        else
+                            echo "VPN"
+                        fi
+                        ;;
+                esac
+                ;;
+        esac
+    fi
+    # Return nothing if no VPN detected
+}
+
+# Main execution
+detect_vpn

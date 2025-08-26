@@ -35,6 +35,27 @@
           ],
           "type": "gcp",
           "style": "diamond"
+        },
+        {
+          "type": "command",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "template": "{{ if and (not .Env.OMP_MINIMAL) (not .Env.OMP_HIDE_VPN) .Output }} 🔐 {{ .Output }} {{ end }}",
+          "foreground": "#ffffff",
+          "background": "#00C853",
+          "background_templates": [
+            "{{ if contains \"Tailscale\" .Output }}#1976D2{{ end }}",
+            "{{ if contains \"WARP\" .Output }}#FF6F00{{ end }}",
+            "{{ if contains \"Fortinet\" .Output }}#d32f2f{{ end }}",
+            "{{ if contains \"Pritunl\" .Output }}#7B1FA2{{ end }}",
+            "{{ if contains \"OpenVPN\" .Output }}#FF5722{{ end }}",
+            "{{ if contains \"WireGuard\" .Output }}#88D498{{ end }}",
+            "{{ if contains \"Multi\" .Output }}#9C27B0{{ end }}"
+          ],
+          "properties": {
+            "shell": "bash",
+            "command": "VPN_DISPLAY_MODE=detailed ~/dotfiles/bin/vpn-status"
+          }
         }
       ]
     },
