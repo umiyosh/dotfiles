@@ -51,12 +51,14 @@ if [[ -f $HOME/.gvm/scripts/env/gvm ]] ; then
     unset -f gvm 2>/dev/null
     # shellcheck source=/dev/null
     . "$HOME/.gvm/scripts/env/gvm"
+    # gvmのcdフックを即座に無効化
+    unset -f cd 2>/dev/null
     gvm "$@"  # 以後は本物のgvm関数が呼ばれる
   }
 fi
 
 # cdは常にビルトインを使用（gvmのcd関数オーバーライドを完全無効化）
-unset -f cd
+unset -f cd 2>/dev/null
 # alias cd='builtin cd'
 
 # composer
@@ -92,3 +94,9 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # Java
 export JAVA_HOME=/opt/homebrew/opt/openjdk@11
 export PATH=$JAVA_HOME/bin:$PATH
+
+# Claude Code環境でgvmのcdフックを確実に無効化
+# （最後に再度実行して確実に無効化）
+if [[ -n "$CLAUDE_CODE_ENV" ]] || [[ $(which cd 2>/dev/null | head -n1) =~ "gvm" ]]; then
+  unset -f cd 2>/dev/null
+fi

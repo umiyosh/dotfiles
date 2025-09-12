@@ -97,3 +97,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 . "/Users/a14073/.deno/env"
+
+# gvmのcdフックを最終的に無効化（Claude Code環境対策）
+# この行は絶対に.zshrcの最後に置くこと
+unset -f cd 2>/dev/null
