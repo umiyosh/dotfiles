@@ -90,13 +90,13 @@ bindkey '^x' _sgpt_zsh
 # Shell-GPT integration ZSH v0.2
 
 # pnpm
-export PNPM_HOME="/Users/a14073/Library/pnpm"
+export PNPM_HOME="${HOME}/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-. "/Users/a14073/.deno/env"
+. "${HOME}/.deno/env"
 
 # gvmのcdフックを最終的に無効化（Claude Code環境対策）
 # この行は絶対に.zshrcの最後に置くこと
