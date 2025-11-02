@@ -25,7 +25,7 @@
   "typescript.suggest.autoImports": true,
   "diagnostic.refreshOnInsertMode": false,
   "go": {
-    "goroot": "/Users/a14073/.gvm/gos/go1.24.1"
+    "goroot": "/Users/yoshikazu.umino/.gvm/gos/go1.24.1"
   },
   "suggest.noselect": false,
   "diagnostic.infoSign": "i",
