@@ -21,7 +21,7 @@ source ${HOME}/dotfiles/.zshrc.complition.npm
 
 # GVM環境変数の設定（cdフックなし版）
 if [[ -f $HOME/.gvm/scripts/env/gvm ]] ; then
-  export GVM_ROOT=/Users/a14073/.gvm
+  export GVM_ROOT=/Users/yoshikazu.umino/.gvm
   unset GOROOT
   unset GOARCH
   unset GOOS
