@@ -1,5 +1,5 @@
 url_encode() {
-  python -c 'import sys, urllib.parse; print(urllib.parse.quote(urllib.parse.quote(sys.argv[1])))' "$*"
+  python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(urllib.parse.quote(sys.argv[1])))' "$*"
 }
 
 current_time=$(date "+%H:%M:%S")
