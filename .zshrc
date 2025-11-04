@@ -101,3 +101,5 @@ esac
 # gvmのcdフックを最終的に無効化（Claude Code環境対策）
 # この行は絶対に.zshrcの最後に置くこと
 unset -f cd 2>/dev/null
+
+[[ -s ~/.gvm/scripts/gvm ]] && source ~/.gvm/scripts/gvm
