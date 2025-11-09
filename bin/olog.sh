@@ -1,3 +1,19 @@
+#!/usr/bin/env zsh
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title olog
+# @raycast.mode silent
+
+# Optional parameters:
+# @raycast.icon 📝
+# @raycast.packageName Obsidian
+# 引数を1つ（テキスト）受け取る。Raycast側でエンコードしない想定なので percentEncoded は false 推奨
+# @raycast.argument1 {"type":"text","placeholder":"memo (query)","optional":false}
+
+# Documentation:
+# @raycast.author umiyosh
+# @raycast.description Append a line to Obsidian Daily note via Advanced URI
+
 url_encode() {
   python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(urllib.parse.quote(sys.argv[1])))' "$*"
 }
