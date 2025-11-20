@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Translate Clipboard (Robust)
+# @raycast.mode silent
+
+# Optional parameters:
+# @raycast.icon 🌐
+# @raycast.packageName Plamo Tools
+
+# Documentation:
+# @raycast.author umiyosh
+# @raycast.description Open Plamo Translation app and paste clipboard content
+
+# ==========================================
+# 設定: アプリ名
+# ※保存したファイル名に合わせてください (例: "Plamo翻訳" / "Plamo" 等)
+APP_NAME="Plamo翻訳"
+# 判定用キーワード (アプリ名の一部でOK。プロセス検索に使います)
+PROCESS_KEYWORD="Plamo"
+# ターゲットURL
+TARGET_URL="https://translate.preferredai.jp/"
+# ==========================================
+
+# 1. クリップボードへの準備
+if [ -n "$1" ]; then
+  echo "$1" | pbcopy
+fi
+
+# 2. プロセスチェック (pgrepを使用)
+# -f: フルコマンドラインで検索 (PWAの実体パスにヒットさせるため)
+# -i: 大文字小文字を区別しない
+if pgrep -f -i "$PROCESS_KEYWORD" > /dev/null; then
+  # 【起動中の場合】
+  # URLを指定せずにアプリ名だけで activate する
+  # これなら新しいタブは開かず、既存ウィンドウが手前に来るだけです
+  open -a "$APP_NAME"
+else
+  # 【未起動の場合】
+  # URLを指定して起動する
+  open -a "$APP_NAME" "$TARGET_URL"
+fi
+
+# 3. アプリが前面に来るのを待つ
+sleep 0.5
+
+# 4. Command + V (ペースト) を送信
+osascript -e 'tell application "System Events" to keystroke "v" using command down'
