@@ -31,6 +31,7 @@ autoload selectorVenv
 autoload selectorK8sDep
 autoload selectorK8sIng
 autoload selectorPritnul
+autoload selectorGitFind
 
 # selector alias
 alias p="selectorPipe"
@@ -59,6 +60,7 @@ alias vr="selectorVenv"
 alias af="selectorAliasAndFunc"
 alias afp="selectorAliasAndFunc"
 alias pt="selectorPritnul"
+alias fgi="selectorGitFind"
 
 alias -g P='| p'
 alias fgo='fp $GOPATH'

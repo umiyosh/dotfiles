@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+
+# 概要：Gitプロジェクトルートから再帰的にファイル・ディレクトリを検索してselectorしてアクションする
+
+# Gitリポジトリのルートを取得（Gitリポジトリでない場合はカレントディレクトリ）
+git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+if [[ -z $git_root ]]; then
+  echo "Not a git repository. Using current directory." >&2
+  git_root="."
+fi
+
+# 引数がある場合は検索パターンとして使用
+search_pattern=$@
+
+if [[ -n $search_pattern ]]; then
+  find "$git_root" -name '.git' -prune -o -name "$search_pattern" -print 2>/dev/null
+else
+  find "$git_root" -name '.git' -prune -o -print 2>/dev/null
+fi | _selectorBeforeFilter | selector --prompt "[$0]" | selectorAfterAction "vi " \
+    "code " \
+    "cursor " \
+    "cd " \
+    'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
+    'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz ' \
+    'tar xvfz ' \
+    'vimdiff ' \
+    'less +F '\
+    'cat '\
+    'bat '\
+    'zcat '\
+    'gzcat '\
+    'gunzip '\
+    'chmod +x '\
+    'open ' \
+    "git add " \
+    "git restore " \
+    "git restore --staged " \
+    "git checkout " \
+    "git reset HEAD " \
+    "git diff " \
+    "git vdiff " \
+    "git diff --cached " \
+    "git vdiff --cached " \
+    "git rm " \
+    "%%STDIN%% cat" \
+    "%%STDIN%% paaSafeRm" \
+    "paaInputCommandAny" \
+    "%%STDIN%% paaPbCopy" \
+    "%%STDIN%% paaPbCopyFilename" \
+    "%%STDIN%% paaTovim" \
+    "%%STDIN%% selectorPipe" \
+    "%%STDIN%% paaExecuteAsCommand"
