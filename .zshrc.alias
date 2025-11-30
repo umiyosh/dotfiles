@@ -246,3 +246,22 @@ function help() {
 # alias clc='ENABLE_BACKGROUND_TASKS=1 claude --continue'
 # alias clr='ENABLE_BACKGROUND_TASKS=1 claude --resume'
 alias yolo='ENABLE_BACKGROUND_TASKS=1 claude --dangerously-skip-permissions'
+
+
+setopt autonamedirs
+setopt CDABLE_VARS
+function name_dir() # dir, name
+{
+  local dir=$1
+  local name=$2
+
+  if [ -d $dir ]; then
+    hash -d $name=$dir
+    return 0
+  else
+    return 1
+  fi
+}
+
+name_dir ~/dotfiles/ d
+name_dir ~/dvlp/ dv
