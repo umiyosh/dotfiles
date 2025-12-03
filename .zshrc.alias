@@ -265,3 +265,8 @@ function name_dir() # dir, name
 
 name_dir ~/dotfiles/ d
 name_dir ~/dvlp/ dv
+
+#  Alias to search for the pull request containing a commit hash
+gh alias set --clobber --shell openpr \
+'gh api "repos/{owner}/{repo}/commits/$1/pulls" --jq ".[0].number" | xargs -r gh pr view --web'
+
