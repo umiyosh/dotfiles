@@ -122,6 +122,14 @@ function setupNeovimPlugins() {
   fi
 }
 
+function setupGhAliases() {
+  if command -v gh >/dev/null 2>&1; then
+    echo "Setting up GitHub CLI aliases..."
+    gh alias set --clobber --shell openpr \
+      'gh api "repos/{owner}/{repo}/commits/$1/pulls" --jq ".[0].number" | xargs -r gh pr view --web'
+  fi
+}
+
 function deployTmuxPowerline() {
   # Ensure XDG config dir exists
   local TP_SRC_DIR="$HOME/dotfiles/.config/tmux-powerline"
@@ -162,4 +170,5 @@ function deployTmuxPowerline() {
   installFzf
   setupNeovimPlugins
   deployTmuxPowerline
+  setupGhAliases
 }
