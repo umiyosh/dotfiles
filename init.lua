@@ -41,3 +41,13 @@ require('color')
 
 require('apperance')
 
+-- gh openpr: カレント行のblameからPRを開く
+local ok, gh_openpr = pcall(require, "gh_openpr")
+if ok then
+  vim.keymap.set(
+    "n",
+    "<leader>gp",
+    gh_openpr.open_pr_from_current_line,
+    { desc = "Open PR for current line via gh openpr", silent = true }
+  )
+end
