@@ -6,6 +6,9 @@ return {
       line_opacity = 0.15,
       set_cursor = true,
       set_cursorline = true,
+      colors = {
+        visual = "#ead3f0",
+      },
     })
 
     -- modes.nvim が作った gutter 用ハイライトを自前で戻す
