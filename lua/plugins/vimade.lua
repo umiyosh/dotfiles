@@ -2,7 +2,7 @@ return {
   {
     "tadaa/vimade",
     opts = {
-      recipe = {"paradox", {animate = true}},
+      recipe = {"minimalist", {animate = true}},
       fadelevel = 0.4,
     }
   }
