@@ -81,7 +81,7 @@ if [[ -n "$BUFFER" ]]; then
     _sgpt_prev_cmd=$BUFFER
     BUFFER+="⌛"
     zle -I && zle redisplay
-    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd" --no-interaction)
+    BUFFER=$(sgpt --shell --model gpt-5.2-2025-12-11 <<< "$_sgpt_prev_cmd" --no-interaction)
     zle end-of-line
 fi
 }
@@ -90,7 +90,7 @@ bindkey '^x' _sgpt_zsh
 # Shell-GPT integration ZSH v0.2
 
 # pnpm
-export PNPM_HOME="${HOME}/Library/pnpm"
+export PNPM_HOME=~/Library/pnpm
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

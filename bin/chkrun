@@ -1,7 +1,7 @@
 #!/bin/bash
 # require installing https://github.com/TheR1D/shell_gpt
 function chkerr() {
-    rm "$(sgpt --list-chats|grep checkerror)"
+    rm "$(sgpt --list-chats --model gpt-5.2-2025-12-11|grep checkerror)"
     (tee /dev/tty ; echo -e "\033[31m==========================診断結果です===============================\033[0m" > /dev/tty) | sgpt --chat checkerror "check logs, find errors, provide possible solutions, もしエラーが見つからない場合は問題は「見つからなかった」とだけ簡潔に伝えてください"
 }
 
