@@ -1,76 +1,48 @@
-local function claude_toggle(args)
-  local term = require('claudecode.terminal')
-  term.simple_toggle({}, args)
-end
-
-local function claude_focus(args)
-  local term = require('claudecode.terminal')
-  term.focus_toggle({}, args)
-end
-
-local function add_current_buffer()
-  local path = vim.fn.expand('%:p')
-  require('claudecode').send_at_mention(path, nil, nil, 'Keymap:ClaudeCodeAdd')
-end
-
-local function send_visual_selection()
-  local selection = require('claudecode.selection')
-  selection.send_at_mention_for_visual_selection()
-  pcall(function()
-    local esc = vim.api.nvim_replace_termcodes('<Esc>', true, false, true)
-    vim.api.nvim_feedkeys(esc, 'n', false)
-  end)
-end
-
-local function tree_add_selected()
-  local integrations = require('claudecode.integrations')
-  local files = integrations.get_selected_files_from_tree()
-  if not files or #files == 0 then
-    return
-  end
-  for _, path in ipairs(files) do
-    require('claudecode').send_at_mention(path, nil, nil, 'Keymap:ClaudeCodeTreeAdd')
-  end
-end
-
-local function diff_accept()
-  require('claudecode.diff').accept_current_diff()
-end
-
-local function diff_deny()
-  require('claudecode.diff').deny_current_diff()
-end
-
 return {
   {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
-    config = true,
+    opts = {
+      -- デバッグ用（問題解決後はinfoに戻す）
+      log_level = "debug",
+      -- Claude CLI起動に時間がかかるため、キュータイムアウトを延長
+      -- デフォルト5秒では"Skipped expired @ mention"になる
+      queue_timeout = 30000, -- 30秒
+    },
     keys = {
       -- === メイングループ ===
       { "<leader>a", nil, desc = "AI/Claude Code" },
 
       -- === 基本操作 ===
-      { "<leader>ac", function() claude_toggle() end, desc = "Toggle Claude" },         -- Claudeウィンドウの開閉
-      { "<leader>af", function() claude_focus() end, desc = "Focus Claude" },           -- Claudeウィンドウにフォーカス
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
 
       -- === セッション管理 ===
-      { "<leader>ar", function() claude_toggle("--resume") end, desc = "Resume Claude" },     -- 前回のセッションを再開
-      { "<leader>aC", function() claude_toggle("--continue") end, desc = "Continue Claude" }, -- 応答の続きを生成
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
 
       -- === コンテキスト追加 ===
-      { "<leader>ab", add_current_buffer, desc = "Add current buffer" },
-      { "<leader>as", send_visual_selection, mode = "v", desc = "Send to Claude" }, -- 選択テキストを送信（ビジュアルモード）
+      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      -- ビジュアルモードでClaudeに選択範囲を送信
       {
         "<leader>as",
-        tree_add_selected,
+        ":'<,'>ClaudeCodeSend<CR>",
+        mode = "v",
+        desc = "Send to Claude",
+      },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
         desc = "Add file",
-        ft = { "NvimTree", "neo-tree", "oil" },  -- ファイルツリー内でのみ有効
+        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
       },
 
       -- === 差分管理 ===
-      { "<leader>aa", diff_accept, desc = "Accept diff" },  -- 提案された変更を承認
-      { "<leader>ad", diff_deny, desc = "Deny diff" },      -- 提案された変更を拒否
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+
+      -- === モデル選択 ===
+      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
     },
   },
 }
