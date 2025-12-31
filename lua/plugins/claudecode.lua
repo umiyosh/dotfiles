@@ -8,6 +8,52 @@ return {
       -- Claude CLI起動に時間がかかるため、キュータイムアウトを延長
       -- デフォルト5秒では"Skipped expired @ mention"になる
       queue_timeout = 30000, -- 30秒
+      -- ターミナル設定
+      terminal = {
+        snacks_win_opts = {
+          -- Claude Codeターミナル専用のキーマップ
+          -- 通常のターミナルには影響しない
+          -- 注意: snacks.nvimは文字列rhsを"action"として解釈するため、関数で渡す
+          keys = {
+            nav_left = {
+              "<C-h>",
+              function()
+                vim.cmd("stopinsert")
+                vim.cmd("wincmd h")
+              end,
+              mode = "t",
+              desc = "Move to left window",
+            },
+            nav_down = {
+              "<C-j>",
+              function()
+                vim.cmd("stopinsert")
+                vim.cmd("wincmd j")
+              end,
+              mode = "t",
+              desc = "Move to window below",
+            },
+            nav_up = {
+              "<C-k>",
+              function()
+                vim.cmd("stopinsert")
+                vim.cmd("wincmd k")
+              end,
+              mode = "t",
+              desc = "Move to window above",
+            },
+            nav_right = {
+              "<C-l>",
+              function()
+                vim.cmd("stopinsert")
+                vim.cmd("wincmd l")
+              end,
+              mode = "t",
+              desc = "Move to right window",
+            },
+          },
+        },
+      },
     },
     keys = {
       -- === メイングループ ===
