@@ -73,3 +73,5 @@ else
     export EDITOR='vim'
 fi
 
+# for zoxide initialization
+eval "$(zoxide init zsh)"
