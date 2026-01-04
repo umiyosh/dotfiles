@@ -3,8 +3,8 @@ return {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
     opts = {
-      -- デバッグ用（問題解決後はinfoに戻す）
-      log_level = "debug",
+      -- info, debug など
+      log_level = "info",
       -- Claude CLI起動に時間がかかるため、キュータイムアウトを延長
       -- デフォルト5秒では"Skipped expired @ mention"になる
       queue_timeout = 30000, -- 30秒
