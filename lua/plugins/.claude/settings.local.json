@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git rev-parse:*)",
+      "mcp__filesystem__read_text_file"
+    ]
+  }
+}
