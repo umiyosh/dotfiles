@@ -27,21 +27,11 @@ function selectorHistory() {
 zle -N selectorHistory
 bindkey '^r' selectorHistory
 
-# selector autojump
-function selectorAutojump() {
-    autojump --stat | perl -e '
-      while(<>){push @line, $_}
-      for $jumplist (reverse @line){
-        @jumplist = split /\t/, $jumplist;
-        print "$jumplist[1]"
-      }'|egrep -v '^[^/]' |selector --prompt "[selectorAutojump]"| \
-        selectorAfterAction \
-          "%%STDIN%% zleExecuteAsCommand" \
-          "%%STDIN%% zlePasteBuffer" \
-          "%%STDIN%% paaTovim" \
-          "%%STDIN%% pbcopy" \
-          "cd "
+# select jumplist
+function SelectorJumplist() {
+    zi </dev/tty
+    zle reset-prompt
 }
-zle -N selectorAutojump
-bindkey '^j' selectorAutojump
+zle -N SelectorJumplist
+bindkey '^j' SelectorJumplist
 
