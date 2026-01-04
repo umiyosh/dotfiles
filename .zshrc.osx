@@ -27,7 +27,7 @@ function precmd() {
           krkd ks l less lpe man modd mpe \
           nvim p ping pk pt psql rgv s top tovim \
           tig vi vim nvim view vr mb \
-          cl clc clw clr \
+          cl clc clw clr zi \
         )
 
       local token
@@ -74,4 +74,5 @@ else
 fi
 
 # for zoxide initialization
+export _ZO_MAXAGE=100000
 eval "$(zoxide init zsh)"
