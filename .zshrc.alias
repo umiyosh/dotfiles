@@ -16,6 +16,9 @@ function cwaf() {
   LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 
+# cd to zoxide
+alias cd=z
+
 # ls
 alias ll="ls -la"
 
