@@ -80,23 +80,6 @@ function installZgen() {
   fi
 }
 
-function installAutojump() {
-## zsh-autojump
-  if ! autojump --stat 1>/dev/null 2>&1; then
-    case "${OSTYPE}" in
-    darwin*)
-      brew install autojump
-      ;;
-    linux*)
-      git clone https://github.com/joelthelion/autojump.git "$HOME/.zsh/extention/autojump"
-      cd "$HOME/.zsh/extention/autojump/"
-      ./install.py
-      cd "$HOME/dotfiles/"
-      ;;
-    esac
-  fi
-}
-
 function installFzf() {
   if ! hash fzf; then
     case "${OSTYPE}" in
