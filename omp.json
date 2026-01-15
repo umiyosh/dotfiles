@@ -159,14 +159,11 @@
           "style": "diamond"
         },
         {
-          "properties": {
-            "style": "folder"
-          },
           "trailing_diamond": "\ue0b4",
-          "template": " {{ if not .Env.OMP_MINIMAL }}{{ .Path }}{{ end }} ",
+          "template": " {{ if and (not .Env.OMP_MINIMAL) .Segments.Git.RepoName }}{{ .Segments.Git.RepoName }}{{ end }} ",
           "foreground": "#000000",
           "background": "#FFB300",
-          "type": "path",
+          "type": "text",
           "style": "diamond"
         }
       ],
