@@ -81,6 +81,7 @@ return {
                 'coc-json',
                 'coc-prettier',
                 'coc-tsserver',
+                'coc-lua',
                 'coc-go'
             }
         end,
