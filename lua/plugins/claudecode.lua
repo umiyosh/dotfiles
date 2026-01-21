@@ -68,7 +68,21 @@ return {
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
 
       -- === コンテキスト追加 ===
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      {
+        "<leader>ab",
+        function()
+          local filepath = vim.fn.expand("%:p")
+          -- ClaudeCodeAddコマンドはスペースで引数を分割するバグがあるため
+          -- send_at_mention APIを直接呼び出す
+          local ok, claudecode = pcall(require, "claudecode")
+          if ok then
+            claudecode.send_at_mention(filepath, nil, nil, "keymap")
+          else
+            vim.notify("claudecode.nvim is not loaded", vim.log.levels.ERROR)
+          end
+        end,
+        desc = "Add current buffer",
+      },
       -- ビジュアルモードでClaudeに選択範囲を送信
       {
         "<leader>as",
