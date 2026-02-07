@@ -6,29 +6,28 @@ return {
     opts = {
       -- add any opts here
       -- claude
-      provider = "claude",
+      -- provider = "claude",
+      -- providers = {
+      --   claude = {
+      --     endpoint = "https://api.anthropic.com",
+      --     model = "claude-sonnet-4-20250514",
+      --     extra_request_body = {
+      --       temperature = 0,
+      --       max_tokens = 4096,
+      --     },
+      --   },
+      -- },
+      -- openai
+      provider = "openai",
       providers = {
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-sonnet-4-20250514",
-          -- model = "claude-3-7-sonnet-20250219",
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-5.2-2025-12-11",
           extra_request_body = {
-            temperature = 0,
-            max_tokens = 4096,
+            temperature = 0.3,
           },
         },
       },
-      -- openai
-        -- provider = "openai",
-        -- providers = {
-            -- openai = {
-                -- endpoint = "https://api.openai.com/v1",
-                -- model = "gpt-4o",
-                -- extra_request_body = {
-                    -- temperature = 0.3,
-                -- },
-            -- },
-        -- },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
