@@ -15,6 +15,8 @@ selector() {
 
   if [[ -n "${IN_TMUX_POPUP-}" ]]; then
     fzf "${fzf_opts[@]}" "$@"
+  elif [[ -n "${SELECTOR_POPUP_SIZE-}" ]]; then
+    fzf-tmux -p "${SELECTOR_POPUP_SIZE}" "${fzf_opts[@]}" "$@"
   else
     fzf-tmux -p "${fzf_opts[@]}" "$@"
   fi

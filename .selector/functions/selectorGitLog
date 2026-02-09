@@ -7,10 +7,16 @@ function $self::hubBrowse() {
 }
 
 #概要：git log を１行で表示していろいろする
-#
-# git log --date=iso --pretty=format:'%h - <%an> %ce - %cd - %d %s ' --abbrev-commit \
-git --no-pager log  --color=always --date=iso --pretty=format:'%x09%C(yellow)%h%Creset - <%x09%C(cyan bold)%an%Creset> %ce - %cd - %C(magenta reverse)%d%Creset %s ' --abbrev-commit \
-| selector --ansi --prompt "[$0]"| awk 'BEGIN{FS= " "}{print $1}'| \
+# フォーマット: メッセージ 日時 メール (refs) <TAB> ハッシュ
+SELECTOR_POPUP_SIZE="90%,80%"
+git --no-pager log --color=always --date=format:'%Y-%m-%d %H:%M' \
+  --pretty=format:'%s %C(dim)%cd %ce%Creset%C(magenta bold)%d%Creset%x09%C(yellow)%h%Creset' \
+  --abbrev-commit \
+| selector --ansi --prompt "[$0]" \
+  --preview 'git show --stat --color=always {-1}' \
+  --preview-window 'down:40%:wrap' \
+  --bind '?:toggle-preview' \
+| awk -F'\t' '{print $NF}' | \
   selectorAfterAction "%%STDIN%% pbcopy" \
     "git show " \
     "git checkout " \
@@ -29,4 +35,4 @@ git --no-pager log  --color=always --date=iso --pretty=format:'%x09%C(yellow)%h%
     "%%STDIN%% paaPbCopy" \
     "%%STDIN%% selectorPipe" \
     "paaInputCommandAny"
-
+unset SELECTOR_POPUP_SIZE
