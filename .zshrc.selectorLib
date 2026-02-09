@@ -1,23 +1,15 @@
 #!/usr/bin/env zsh
 
-selector() {
-  local -a fzf_opts=(
-    -m -i
-    --exit-0
-    --extended-exact
-    --no-sort
-    --cycle
-    --color 'fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229'
-    --color 'info:150,prompt:110,spinner:150,pointer:167,marker:10'
-    --bind 'ctrl-a:toggle-all'
-    --bind 'ctrl-s:toggle-up'
-  )
-
-  if [[ -n "${IN_TMUX_POPUP-}" ]]; then
-    fzf "${fzf_opts[@]}" "$@"
-  else
-    fzf-tmux -p "${fzf_opts[@]}" "$@"
-  fi
+function selector() {
+ fzf -m -i \
+    --exit-0 \
+    --extended-exact \
+    --no-sort \
+    --cycle \
+    --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 \
+    --color info:150,prompt:110,spinner:150,pointer:167,marker:10 \
+    --bind ctrl-a:toggle-all \
+    --bind ctrl-s:toggle-up $@
 }
 
 # selector after action define
