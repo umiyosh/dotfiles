@@ -7,10 +7,10 @@ function $self::hubBrowse() {
 }
 
 #概要：git log を１行で表示していろいろする
-# フォーマット: メッセージ 日時 メール (refs) <TAB> ハッシュ
+# フォーマット: 日時 メール メッセージ (refs) <TAB> ハッシュ
 SELECTOR_POPUP_SIZE="90%,80%"
 git --no-pager log --color=always --date=format:'%Y-%m-%d %H:%M' \
-  --pretty=format:'%s %C(dim)%cd %ce%Creset%C(magenta bold)%d%Creset%x09%C(yellow)%h%Creset' \
+  --pretty=format:'%C(dim)%cd%Creset %C(cyan)%ce%Creset %s%C(magenta bold)%d%Creset%x09%C(yellow)%h%Creset' \
   --abbrev-commit \
 | selector --ansi --prompt "[$0]" \
   --preview 'git show --stat --color=always {-1}' \
