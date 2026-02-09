@@ -149,7 +149,6 @@ function deployTmuxPowerline() {
   deployLocalBin
   deploySnippets
   installZgen
-  installAutojump
   installFzf
   setupNeovimPlugins
   deployTmuxPowerline
