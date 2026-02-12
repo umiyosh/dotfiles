@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(notif \"CLAUDE: テスト完了\")"
+      "Bash(notif \"CLAUDE: テスト完了\")",
+      "mcp__twilog-mcp__get_twitter_posts"
     ]
   }
 }
