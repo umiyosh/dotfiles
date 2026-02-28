@@ -20,6 +20,7 @@ fi | _selectorBeforeFilter | selector --prompt "[$0]" | selectorAfterAction "vi 
     "code " \
     "cursor " \
     "cd " \
+    "yazi " \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
     'tar cvfz ./archive.$(date +%Y%m%d%H%M%S).tar.gz ' \
     'tar xvfz ' \
