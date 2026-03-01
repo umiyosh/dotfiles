@@ -16,6 +16,9 @@ presets:
       - "$HOME/.claude.json.backup"
       - "$HOME/.codex"
       - "$HOME/.config/gcloud/"
+      # MCP サーバー
+      - "$HOME/.mcp-auth"  # OAuth tokens (Sentry, Honeycomb, Notion)
+      - "$HOME/.npm"       # npx cache (Context7, Playwright)
       # pty/tty デバイス
       # 開発ディレクトリは "." (cwd) でカバー
       # 一時ファイル（macOS: /tmp -> /private/tmp）
