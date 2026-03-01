@@ -20,7 +20,10 @@ presets:
       - "$HOME/.mcp-auth"  # OAuth tokens (Sentry, Honeycomb, Notion)
       - "$HOME/.npm"       # npx cache (Context7, Playwright)
       - "$HOME/Library/Mobile Documents/iCloud~md~obsidian"  # Obsidian Vault (iCloud)
-      # pty/tty デバイス
+      - "/opt/homebrew"  # Homebrew (Cellar, bin, etc.)
+      - "$HOME/Library/Logs/Homebrew"  # Homebrew logs
+      # デバイス (pty/tty, /dev/null, etc.)
+      - "/dev"
       # 開発ディレクトリは "." (cwd) でカバー
       # 一時ファイル（macOS: /tmp -> /private/tmp）
 
