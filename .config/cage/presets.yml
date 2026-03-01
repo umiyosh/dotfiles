@@ -1,11 +1,12 @@
 presets:
-  claude:
+  base:
     allow:
       # カレントディレクトリ（作業ディレクトリ）
       - "."
       - "$HOME/.cache"
       - "$HOME/.local/share"
       - "/private/tmp" # macos tmp directory
+      - "/tmp"
       - "/var/folders" # macos mktemp
       - "/Library/Caches" # macos app caches
       - "$HOME/Library/Caches" # macos app caches
@@ -14,15 +15,23 @@ presets:
       - "$HOME/.claude.json"
       - "$HOME/.claude.json.backup"
       - "$HOME/.codex"
+      - "$HOME/.config/gcloud/"
       # pty/tty デバイス
       # 開発ディレクトリは "." (cwd) でカバー
       # 一時ファイル（macOS: /tmp -> /private/tmp）
-      - path: "/tmp"
-        eval-symlinks: true
-    allow-git: true
-    allow-keychain: false
 
+  git-enabled:
+    allow-git: true
+    allow-keychain: true # macOS only
+
+  claude-code:
+    allow:
+      - "$CLAUDE_CONFIG_DIR"
+      - "$HOME/.serena"
+      - ".serena"
 auto-presets:
   - command: claude
     presets:
-      - claude
+      - base
+      - git-enabled
+      - claude-code
