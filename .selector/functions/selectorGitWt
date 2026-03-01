@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+#概要：git wt のworktreeを選択していろいろする
+git wt | tail -n +2 | _selectorBeforeFilter | \
+  selector --prompt "[$0]" | \
+  awk '{if ($1 == "*") print $2; else print $1}' | \
+  selectorAfterAction \
+    "cd " \
+    "git wt -d " \
+    "git wt -D " \
+    "%%STDIN%% cat" \
+    "%%STDIN%% paaPbCopy" \
+    "%%STDIN%% selectorPipe" \
+    "paaInputCommandAny"
