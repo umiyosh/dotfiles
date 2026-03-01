@@ -25,6 +25,8 @@ presets:
       # デバイス (pty/tty, /dev/null, etc.)
       - "/dev"
       # 開発ディレクトリは "." (cwd) でカバー
+      - "$HOME/dotfiles"  # dotfiles (symlinked to ~/dotfiles)
+      - "$HOME/dotfiles_private"  # private dotfiles (symlinked to ~/dotfiles_private)
       # 一時ファイル（macOS: /tmp -> /private/tmp）
 
   git-enabled:
