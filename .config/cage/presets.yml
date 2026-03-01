@@ -9,12 +9,12 @@ presets:
       - "/var/folders" # macos mktemp
       - "/Library/Caches" # macos app caches
       - "$HOME/Library/Caches" # macos app caches
-      # Claude Code / Codex 設定
-      # - "$HOME/.claude"
-      # - "$HOME/.codex"
-      # dotfiles
-      # - "$HOME/dotfiles"
-      # - "$HOME/dotfiles_private"
+      # Claude Code 設定
+      - "$HOME/.claude"
+      - "$HOME/.claude.json"
+      - "$HOME/.claude.json.backup"
+      - "$HOME/.codex"
+      # pty/tty デバイス
       # 開発ディレクトリは "." (cwd) でカバー
       # 一時ファイル（macOS: /tmp -> /private/tmp）
       - path: "/tmp"
