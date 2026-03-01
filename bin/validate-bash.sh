@@ -70,6 +70,8 @@ fi
 if echo "$command" | grep -qE '\bgh\s+(pr|issue|release|repo)\s+(create|close|comment|edit|delete|merge|review)\b'; then
   if ! is_umiyosh_repo; then
     deny "'gh' write commands are allowed only for umiyosh repositories."
+  else
+    ask "'gh' write commands require human approval."
   fi
 fi
 
