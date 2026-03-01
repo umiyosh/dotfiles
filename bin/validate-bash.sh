@@ -61,6 +61,8 @@ is_umiyosh_repo() {
 if echo "$command" | grep -qE '\bgit\s+push\b'; then
   if ! is_umiyosh_repo; then
     deny "'git push' is allowed only for umiyosh repositories."
+  else
+    ask "'git push' requires human approval."
   fi
 fi
 
