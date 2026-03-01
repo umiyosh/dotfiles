@@ -143,32 +143,6 @@ function deployTmuxPowerline() {
   fi
 }
 
-function deployCageConfig() {
-  local CAGE_SRC_DIR="$HOME/dotfiles/.config/cage"
-  local CAGE_DEST_DIR="$HOME/.config/cage"
-
-  if [[ ! -d "$HOME/.config" ]]; then
-    mkdir -p "$HOME/.config"
-  fi
-
-  if [[ -L "$CAGE_DEST_DIR" ]]; then
-    local current_target
-    current_target="$(readlink "$CAGE_DEST_DIR")"
-    if [[ "$current_target" != "$CAGE_SRC_DIR" ]]; then
-      rm -f "$CAGE_DEST_DIR"
-      ln -s "$CAGE_SRC_DIR" "$CAGE_DEST_DIR"
-    fi
-  elif [[ -d "$CAGE_DEST_DIR" ]]; then
-    local backup_dir
-    backup_dir="${CAGE_DEST_DIR}.bak-$(date +%Y%m%d%H%M%S)"
-    mv "$CAGE_DEST_DIR" "$backup_dir"
-    ln -s "$CAGE_SRC_DIR" "$CAGE_DEST_DIR"
-    echo "Backed up existing $CAGE_DEST_DIR to $backup_dir and created symlink."
-  else
-    ln -s "$CAGE_SRC_DIR" "$CAGE_DEST_DIR"
-  fi
-}
-
 : "install" && {
   deployDotfiles
   changeShell
@@ -178,6 +152,5 @@ function deployCageConfig() {
   installFzf
   setupNeovimPlugins
   deployTmuxPowerline
-  deployCageConfig
   setupGhAliases
 }
