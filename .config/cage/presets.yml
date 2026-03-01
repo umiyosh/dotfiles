@@ -1,0 +1,28 @@
+presets:
+  claude:
+    allow:
+      # カレントディレクトリ（作業ディレクトリ）
+      - "."
+      - "$HOME/.cache"
+      - "$HOME/.local/share"
+      - "/private/tmp" # macos tmp directory
+      - "/var/folders" # macos mktemp
+      - "/Library/Caches" # macos app caches
+      - "$HOME/Library/Caches" # macos app caches
+      # Claude Code / Codex 設定
+      # - "$HOME/.claude"
+      # - "$HOME/.codex"
+      # dotfiles
+      # - "$HOME/dotfiles"
+      # - "$HOME/dotfiles_private"
+      # 開発ディレクトリは "." (cwd) でカバー
+      # 一時ファイル（macOS: /tmp -> /private/tmp）
+      - path: "/tmp"
+        eval-symlinks: true
+    allow-git: true
+    allow-keychain: false
+
+auto-presets:
+  - command: claude
+    presets:
+      - claude
