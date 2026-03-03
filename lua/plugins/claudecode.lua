@@ -3,6 +3,8 @@ return {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
     opts = {
+      -- GUI Neovim(nvim-qt等)はシェルPATHを継承しないためフルパス指定
+      terminal_cmd = vim.env.HOME .. "/.local/bin/claude",
       -- info, debug など
       log_level = "info",
       -- Claude CLI起動に時間がかかるため、キュータイムアウトを延長
