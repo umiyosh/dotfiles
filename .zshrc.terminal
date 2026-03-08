@@ -28,3 +28,21 @@ dumb)
   echo "Welcome Emacs Shell"
   ;;
 esac
+
+## OSC 133 prompt markers (tmux prompt navigation / previous-prompt -o 用)
+# tmux 3.4+ の previous-prompt/next-prompt で「直前コマンド出力」にジャンプするために必要
+autoload -Uz add-zsh-hook
+
+function _osc133_preexec() {
+  printf '\033]133;B\007'
+  printf '\033]133;C\007'
+}
+
+function _osc133_precmd() {
+  local exit_status=$?
+  printf '\033]133;D;%d\007' "$exit_status"
+  printf '\033]133;A\007'
+}
+
+add-zsh-hook preexec _osc133_preexec
+add-zsh-hook precmd _osc133_precmd
