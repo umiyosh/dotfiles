@@ -11,6 +11,28 @@
 set -euo pipefail
 export PATH="/opt/homebrew/bin:$PATH"
 
+# crontab では go-keyring 経由の認証が効かないため GH_TOKEN を明示設定
+# fallback: Keychain → トークンファイル
+# セットアップ: gh auth token > ~/.config/gh/pr-tidy-token && chmod 600 ~/.config/gh/pr-tidy-token
+if [[ -z "${GH_TOKEN:-}" ]]; then
+  raw=$(security find-generic-password -s "gh:github.com" -w 2>/dev/null) && \
+    GH_TOKEN=$(echo "$raw" | sed 's/^go-keyring-base64://' | base64 -d) || true
+fi
+if [[ -z "${GH_TOKEN:-}" ]]; then
+  token_file="${XDG_CONFIG_HOME:-$HOME/.config}/gh/pr-tidy-token"
+  if [[ -f "$token_file" ]]; then
+    GH_TOKEN=$(<"$token_file")
+  else
+    echo "ERROR: gh auth unavailable. Run: gh auth token > $token_file && chmod 600 $token_file" >&2
+    exit 1
+  fi
+fi
+export GH_TOKEN
+
+# pre-flight: 認証確認
+# gh auth status は keyring の default アカウント失敗で exit 1 になるため API で確認
+gh api user --jq '.login' >/dev/null 2>&1 || { echo "ERROR: gh auth failed" >&2; exit 1; }
+
 DONE_IDS="${XDG_CACHE_HOME:-$HOME/.cache}/pr-tidy-done.txt"
 mkdir -p "$(dirname "$DONE_IDS")"
 touch "$DONE_IDS"
