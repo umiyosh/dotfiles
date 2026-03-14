@@ -49,4 +49,4 @@ message="${message} by $(basename ${app})"
 
 # 送信処理
 ~/dotfiles_private/bin/noti_slack "${message}"
-afplay /System/Library/Sounds/Submarine.aiff
+nohup afplay /System/Library/Sounds/Submarine.aiff >/dev/null 2>&1 &
