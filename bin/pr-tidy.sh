@@ -65,7 +65,7 @@ gh api "notifications?all=true&since=$since" --paginate \
 
       # 処理済み かつ updated_at 変化なし → スキップ
       # updated_at が変わっていれば再アクティベーションされたので再処理
-      cached_ts=$(grep "^$tid " "$DONE_IDS" | awk '{print $2}')
+      cached_ts=$(grep "^$tid " "$DONE_IDS" | awk '{print $2}' || true)
       if [[ -n "$cached_ts" && "$cached_ts" == "$updated_at" ]]; then
         continue
       fi
