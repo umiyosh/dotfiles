@@ -38,15 +38,20 @@ mkdir -p "$(dirname "$DONE_IDS")"
 touch "$DONE_IDS"
 
 # since(2週間)より古いエントリを削除（肥大化防止）
+# 形式: tid updated_at (ISO 8601) — 文字列比較で日付フィルタ可能
 tmpfile=$(mktemp)
-awk -v cutoff="$(date -u -v-14d +%Y-%m-%d)" '$2 >= cutoff' "$DONE_IDS" > "$tmpfile"
+cutoff="$(date -u -v-14d +%Y-%m-%dT00:00:00Z)"
+awk -v cutoff="$cutoff" '$2 >= cutoff' "$DONE_IDS" > "$tmpfile"
 mv "$tmpfile" "$DONE_IDS"
 
 mark_done() {
-  local tid=$1 reason=$2
+  local tid=$1 reason=$2 updated_at=$3
   echo "DONE ($reason): thread=$tid"
   gh api --method DELETE "/notifications/threads/$tid" >/dev/null
-  echo "$tid $(date -u +%Y-%m-%d)" >> "$DONE_IDS"
+  # 既存エントリを除去してから追記（updated_at 更新）
+  grep -v "^$tid " "$DONE_IDS" > "$DONE_IDS.tmp" || true
+  mv "$DONE_IDS.tmp" "$DONE_IDS"
+  echo "$tid $updated_at" >> "$DONE_IDS"
 }
 
 since=$(date -u -v-14d +%Y-%m-%dT%H:%M:%SZ)
@@ -56,15 +61,18 @@ gh api "notifications?all=true&since=$since" --paginate \
       obj="$(echo "$row" | base64 --decode)"
       tid="$(echo "$obj" | jq -r '.id')"
       pr_url="$(echo "$obj" | jq -r '.subject.url')"
+      updated_at="$(echo "$obj" | jq -r '.updated_at')"
 
-      # 処理済みスキップ
-      if grep -q "^$tid " "$DONE_IDS"; then
+      # 処理済み かつ updated_at 変化なし → スキップ
+      # updated_at が変わっていれば再アクティベーションされたので再処理
+      cached_ts=$(grep "^$tid " "$DONE_IDS" | awk '{print $2}')
+      if [[ -n "$cached_ts" && "$cached_ts" == "$updated_at" ]]; then
         continue
       fi
 
       # PR情報取得失敗（削除済み等） → Done
       pr_info="$(gh api "$pr_url" --jq '{state: .state, merged_at: (.merged_at // "")}'  2>/dev/null)" || {
-        mark_done "$tid" "deleted"
+        mark_done "$tid" "deleted" "$updated_at"
         continue
       }
       state="$(echo "$pr_info" | jq -r '.state')"
@@ -72,14 +80,14 @@ gh api "notifications?all=true&since=$since" --paginate \
 
       # マージ済み or クローズ済み → Done
       if [[ "$state" == "closed" ]]; then
-        [[ -n "$merged_at" ]] && mark_done "$tid" "merged" || mark_done "$tid" "closed"
+        [[ -n "$merged_at" ]] && mark_done "$tid" "merged" "$updated_at" || mark_done "$tid" "closed" "$updated_at"
         continue
       fi
 
       # オープンPRで誰かがapprove済み → Done
       approved="$(gh api "${pr_url}/reviews" --jq '[.[] | select(.state=="APPROVED")] | length' 2>/dev/null)" || approved=0
       if [[ "$approved" -gt 0 ]]; then
-        mark_done "$tid" "approved"
+        mark_done "$tid" "approved" "$updated_at"
         continue
       fi
 
