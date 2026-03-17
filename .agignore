@@ -12,8 +12,50 @@ jquery-*.js
 bootstrap*.css
 bootstrap*.js
 jquery.js
-node_modules
-*.egg
-*.egg-info
 tags
 .wt
+
+# --- Go ---
+vendor
+bin
+dist
+coverage.out
+cover.out
+*.coverprofile
+
+# --- Node / TypeScript ---
+node_modules
+dist
+build
+coverage
+.nyc_output
+*.tsbuildinfo
+.turbo
+.next
+.nuxt
+.svelte-kit
+.parcel-cache
+storybook-static
+
+# --- Rust ---
+target
+
+# --- Python ---
+__pycache__
+*.py[cod]
+.venv
+venv
+env
+.mypy_cache
+.pytest_cache
+.ruff_cache
+.tox
+.nox
+.coverage
+htmlcov
+dist
+build
+site
+.ipynb_checkpoints
+*.egg
+*.egg-info
