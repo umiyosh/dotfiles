@@ -55,6 +55,9 @@ alias pi='ping -c 4'
 
 alias cp='nocorrect cp -irp'
 
+# ag
+alias ag='ag --hidden'
+
 # git
 alias g='git'
 alias gi='git'
