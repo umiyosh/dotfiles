@@ -16,3 +16,4 @@ node_modules
 *.egg
 *.egg-info
 tags
+.wt
