@@ -65,9 +65,9 @@ alias pt="selectorPritnul"
 alias fgi="selectorGitFind"
 
 alias -g P='| p'
-alias fgo='fp $GOPATH'
-alias fgd='fd $GOPATH/src'
-alias r="fp  ~/bin/ ~/dotfiles/bin/ ~/local/bin/  -name '.git' -prune -o -type f"
+alias fgo='fp "" $GOPATH'
+alias fgd='fd "" $GOPATH/src'
+alias r="fp --type f '' ~/bin/ ~/dotfiles/bin/ ~/local/bin/"
 
 alias kco=kubectx
 
@@ -83,10 +83,10 @@ function up (){
 
 function f() {
   target=${1:=.}
-  fp ${target} -name '.git' -prune -o -print
+  fp '' ${target}
 }
 function fd() {
   target=${1:=.}
-  fp ${target} -name '.git' -prune -o -type d
+  fp --type d '' ${target}
 }
 

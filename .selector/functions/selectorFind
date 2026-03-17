@@ -1,8 +1,9 @@
 #!/usr/bin/env zsh
 
-# 概要： findしてselectorしてアクションする
+# 概要： fd(fd-find)でファイル検索してselectorしてアクションする
+# .gitignore と .agignore のパターンを尊重する
 
-find $@ | _selectorBeforeFilter| selector --prompt "[$0]"| selectorAfterAction "vi " \
+command fd --hidden --ignore-file ${HOME}/.agignore $@ | _selectorBeforeFilter| selector --prompt "[$0]"| selectorAfterAction "vi " \
     "cd " \
     "yazi " \
     'zip -e ./archive.$(date +%Y%m%d%H%M%S).zip ' \
