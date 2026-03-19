@@ -22,7 +22,7 @@ return {
       providers = {
         openai = {
           endpoint = "https://api.openai.com/v1",
-          model = "gpt-5.2-2025-12-11",
+          model = "gpt-5.4",
           extra_request_body = {
             temperature = 0.3,
           },
