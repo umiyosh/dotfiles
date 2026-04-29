@@ -5,6 +5,16 @@
 #
 bindkey -e
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+edit-command-line-with-nvim() {
+  local VISUAL=nvim
+  local EDITOR=nvim
+  zle edit-command-line
+}
+zle -N edit-command-line-with-nvim
+bindkey '^G' edit-command-line-with-nvim
+
 ## Backspace key
 #
 bindkey "^?" backward-delete-char
