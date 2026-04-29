@@ -99,3 +99,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 if [[ -n "$CLAUDE_CODE_ENV" ]] || [[ $(which cd 2>/dev/null | head -n1) =~ "gvm" ]]; then
   unset -f cd 2>/dev/null
 fi
+
+# Claude Code MCP health-check: skip HTTP probe for OAuth-managed servers
+# (Notion uses OAuth tokens managed by Claude Code's MCP client, not config headers)
+export ECC_MCP_HEALTH_SKIP_SERVERS="notion"
