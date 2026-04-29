@@ -30,9 +30,11 @@
 ### ディレクトリ構造
 - `/bin/` - カスタムシェルスクリプトとユーティリティ
 - `/lua/` - Neovim Lua設定
+  - `/lua/*.lua` - Neovimコア設定モジュール（basic, indent, search, moving, edit, encoding, color, apperance等）
   - `/lua/config/` - Neovimのコアセットアップとlazy.nvim設定
-  - `/lua/plugins/` - 個別のプラグイン設定
-- `.zshrc.*` ファイル - モジュール化されたZsh設定（basic、prompt、completion、keybindなど）
+  - `/lua/plugins/` - 個別のプラグイン設定（80+ファイル）
+- `/ftplugin/` - ファイルタイプ別設定
+- `.zshrc.*` ファイル - モジュール化されたZsh設定（basic, alias, path, devenv, selector, terminal, zgen, prompt, completion, keybind, osx/linux）
 - `init.lua` - Neovimのメインエントリーポイント
 
 ### 主要な設計原則
@@ -48,7 +50,8 @@
 
 ### AI統合
 このリポジトリにはAI活用ツールが含まれています：
-- Claude Sonnet 4を使用するように設定されたAvante.nvimプラグイン
+- OpenAI GPTシリーズを使用するように設定されたAvante.nvimプラグイン
+- claudecode.nvim — Claude Code Neovimプラグイン統合
 - コマンドラインAIアシスタントのためのShell-GPT統合
 - `bin/ChatGPTSearch.sh`でのChatGPT検索機能
 - `bin/mkc`でのAIによるコミットメッセージ生成
