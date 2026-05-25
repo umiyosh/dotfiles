@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# yek-snapshot — copy a directory to /tmp/worktree, make it a git snapshot,
+# then dump the codebase via yek into /tmp/yek-YYYYmmddHHMMSS.md.
+#
+# Usage: yek-snapshot <path/to/source>
+
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  printf 'Usage: %s <path/to/source>\n' "$(basename "$0")" >&2
+  exit 1
+fi
+
+src="$1"
+if [[ ! -d "$src" ]]; then
+  printf 'Error: not a directory: %s\n' "$src" >&2
+  exit 1
+fi
+
+command -v yek >/dev/null 2>&1 || { echo 'Error: yek not found in PATH' >&2; exit 1; }
+command -v git >/dev/null 2>&1 || { echo 'Error: git not found in PATH' >&2; exit 1; }
+
+dest=/tmp/worktree
+rm -rf "$dest"
+mkdir -p "$dest"
+cp -R "${src%/}/." "$dest/"
+
+cd "$dest"
+# fresh git state for the snapshot
+rm -rf .git
+git init -q
+git add -A
+
+# `git now` (git-extras) commits tracked changes; fall back to plain commit.
+if command -v git-now >/dev/null 2>&1; then
+  git -c user.email=yek-snapshot@local -c user.name=yek-snapshot now >/dev/null
+else
+  git -c user.email=yek-snapshot@local -c user.name=yek-snapshot \
+    commit -q -m 'yek-snapshot' --allow-empty
+fi
+
+ts="$(date +%Y%m%d%H%M%S)"
+out="/tmp/yek-${ts}.md"
+yek >"$out"
+printf '%s\n' "$out"
