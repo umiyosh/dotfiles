@@ -2,6 +2,7 @@ return {
     {
         -- LLMを使ってコードを提案してくれるやつ
         "github/copilot.vim",
+        cmd = "Copilot",
         event = {
             "InsertEnter",
             "BufReadPre",    -- バッファ読み込み時に初期化
