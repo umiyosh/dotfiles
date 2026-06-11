@@ -11,6 +11,11 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   command = "set iminsert=0"
 })
 
+-- Karabiner「Change ¥ to Alt+¥」ハック対策
+-- 端末がOptionをMetaとして送ると¥キーが<M-\>として届き、未マップのALTコードは
+-- Esc+キー扱いでinsert/cmdlineモードが解除される(:help i_ALT, c_ALT)ため、素の \ にマップする
+vim.keymap.set({ 'i', 'c' }, '<M-Bslash>', '<Bslash>', { noremap = true })
+
 -- Tabキーを空白に変換
 vim.opt.expandtab = true
 
