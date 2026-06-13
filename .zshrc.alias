@@ -217,6 +217,8 @@ alias sc='sgpt --code'
 alias sr='sgpt --repl'
 alias sg='sgpt'
 
+alias cys="$HOME/dotfiles_private/bin/codex-yolo-safe"
+
 alias cs="ChatGptSearch.sh"
 # command_not_found_handler
 # function command_not_found_handler() {
@@ -280,4 +282,3 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
