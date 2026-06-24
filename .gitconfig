@@ -164,3 +164,9 @@
 	clean = git-lfs clean -- %f
 [github]
 	user = umiyosh
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
