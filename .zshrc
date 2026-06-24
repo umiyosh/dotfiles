@@ -44,8 +44,10 @@ source ~/dotfiles/.zshrc.devenv
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 if [[ -z "$TMUX" && -n "$PS1" ]]; then      # tmux外 & 対話シェルの場合
-  # $SSH_CLIENT変数が存在するかどうかで、SSH経由の接続かを判断
-  if [[ -n "$SSH_CLIENT" ]]; then # SSH経由の接続 (Termiusなど)
+  if [[ -n "$CMUX_WORKSPACE_ID" ]]; then # cmux workspaceごとにtmux serverを分離
+    cmux_tmux_socket="cmux-${CMUX_WORKSPACE_ID//[^A-Za-z0-9_.-]/_}"
+    exec tmux -L "$cmux_tmux_socket"
+  elif [[ -n "$SSH_CLIENT" ]]; then # SSH経由の接続 (Termiusなど)
     exec tmux new-session -A -s "claude"   # attach or create
   else # Mac本体のターミナルなど、ローカルでの接続
     tmux
