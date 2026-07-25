@@ -7,7 +7,12 @@ export LESSCHARSET=utf-8
 
 # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
 setopt auto_cd
-function chpwd() { eza --no-user --icons --git -la --long --header }
+# AGENT_SHELL=1（Claude Code 等のエージェント CLI）では定義しない。
+# chpwd は名前ベースの zsh フックでディレクトリ変更ごとに走るため、
+# eza の全件一覧がツール実行結果に毎回混入して出力を汚す。
+if [[ -z "$AGENT_SHELL" ]]; then
+  function chpwd() { eza --no-user --icons --git -la --long --header }
+fi
 
 # cd でTabを押すとdir list を表示
 setopt auto_pushd

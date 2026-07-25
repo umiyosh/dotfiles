@@ -17,7 +17,11 @@ function cwaf() {
 }
 
 # cd to zoxide
-alias cd=z
+# AGENT_SHELL=1（Claude Code 等のエージェント CLI）では張らない。
+# z 経由だと未知パスで zoxide query が走り、非対話シェルではハングの原因になる。
+if [[ -z "$AGENT_SHELL" ]]; then
+  alias cd=z
+fi
 
 # ls
 alias ll="ls -la"
