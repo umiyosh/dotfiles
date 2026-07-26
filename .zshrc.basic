@@ -10,7 +10,7 @@ setopt auto_cd
 # AGENT_SHELL=1（Claude Code 等のエージェント CLI）では定義しない。
 # chpwd は名前ベースの zsh フックでディレクトリ変更ごとに走るため、
 # eza の全件一覧がツール実行結果に毎回混入して出力を汚す。
-if [[ -z "$AGENT_SHELL" ]]; then
+if [[ -z "$AGENT_SHELL" && -z "$CLAUDECODE" ]]; then
   function chpwd() { eza --no-user --icons --git -la --long --header }
 fi
 
