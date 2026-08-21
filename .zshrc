@@ -83,7 +83,7 @@ if [[ -n "$BUFFER" ]]; then
     _sgpt_prev_cmd=$BUFFER
     BUFFER+="⌛"
     zle -I && zle redisplay
-    BUFFER=$(sgpt --shell --model gpt-5.4 <<< "$_sgpt_prev_cmd" --no-interaction)
+    BUFFER=$(sgpt --shell --model gpt-5.6-terra --temperature 1 <<< "$_sgpt_prev_cmd" --no-interaction)
     zle end-of-line
 fi
 }
