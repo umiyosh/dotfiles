@@ -2,6 +2,7 @@ return {
   {
     -- Geminiで文章を校正・推敲する。APIキーは $GEMINI_API_KEY から読む
     "umiyosh/ai-polish.nvim",
+    tag = "v0.0.1",
     cmd = "AiPolish",
     -- <leader>a* は claudecode が使っているので p(olish) に寄せる
     keys = {
