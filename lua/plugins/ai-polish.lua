@@ -5,7 +5,7 @@ return {
     -- PR #8 の動作確認用。戻すときは以下3項目を tag = "v0.0.1" に置き換える
     branch = "feat/jev-evaluation",
     version = false,
-    commit = "2d653ee4251a5e46a30122761d42a8af2a2a7acd",
+    commit = "5de71bd688ec10b850c87f67d45c39c5cbb5ef02",
     cmd = "AiPolish",
     -- <leader>a* は claudecode が使っているので p(olish) に寄せる
     keys = {
