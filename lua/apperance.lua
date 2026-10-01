@@ -2,8 +2,21 @@
 -- 表示 Appearance
 -- ----------------------------------------------------------------------------
 vim.opt.showmatch = true        -- 括弧の対応をハイライト
--- highlight MatchParen cterm=bold ctermbg=none ctermfg=red guibg=none guifg=red を設定して
-vim.cmd('highlight MatchParen ctermbg=LightBlue guibg=LightBlue')
+-- 明るい背景だと括弧の文字が埋もれるため、暗い背景＋明るい文字色で目立たせる
+local function match_paren()
+  vim.api.nvim_set_hl(0, 'MatchParen', {
+    bold = true,
+    ctermbg = 239,
+    ctermfg = 208,
+    bg = '#504945',
+    fg = '#fe8019'
+  })
+end
+vim.api.nvim_create_autocmd('ColorScheme', {
+  group = vim.api.nvim_create_augroup('MatchParenColor', { clear = true }),
+  callback = match_paren
+})
+match_paren()
 vim.opt.number = true           -- 行番号表示
 vim.opt.list = true             -- 不可視文字表示
 vim.opt.listchars = {           -- 不可視文字の表示形式
