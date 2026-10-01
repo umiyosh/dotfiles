@@ -2,16 +2,23 @@ return {
   {
     -- Geminiで文章を校正・推敲する。APIキーは $GEMINI_API_KEY から読む
     "umiyosh/ai-polish.nvim",
-    tag = "v0.0.1",
+    -- PR #8 の動作確認用。戻すときは以下3項目を tag = "v0.0.1" に置き換える
+    branch = "feat/jev-evaluation",
+    version = false,
+    commit = "0acd4ace2e39daf854648130a868e147b55ff5d0",
     cmd = "AiPolish",
     -- <leader>a* は claudecode が使っているので p(olish) に寄せる
     keys = {
       { "<leader>pp", "<Plug>(ai-polish-selection)", mode = "x", desc = "Proofread selection" },
       { "<leader>pp", "<Plug>(ai-polish-buffer)", mode = "n", desc = "Proofread buffer" },
       { "<leader>pr", "<Plug>(ai-polish-review)", mode = "n", desc = "Review suggestions" },
+      { "<leader>pe", "<Plug>(ai-polish-evaluate)", mode = { "n", "x" }, desc = "Evaluate text (Jev)" },
+      { "<leader>pt", "<Plug>(ai-polish-evaluation-toggle)", mode = { "n", "x" }, desc = "Toggle evaluation" },
+      { "<leader>pd", "<cmd>AiPolish details<CR>", mode = "n", desc = "Evaluation details" },
     },
     opts = {
-        locale = "ja", -- "en" | "ja" | "zh"。消すと v:lang から自動で判定する
+      locale = "ja", -- "en" | "ja" | "zh"。消すと v:lang から自動で判定する
+      -- Jevは任意。$TYPESAFE_API_KEY が未設定なら評価UIを表示しない
     },
   },
 }
