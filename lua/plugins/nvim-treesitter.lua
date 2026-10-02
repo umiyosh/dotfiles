@@ -2,12 +2,13 @@ return {
   {
     -- 高度なシンタックスハイライトと構文解析を提供するプラグイン
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     cond = not vim.g.vscode,
+    -- main ブランチは遅延ロード非対応
+    lazy = false,
     build = ':TSUpdate',
-    event = { "BufReadPost", "BufNewFile" },
-    main = 'nvim-treesitter.configs',
-    opts = {
-      ensure_installed = {
+    config = function()
+      require('nvim-treesitter').install({
        "angular",
        "asm",
        "awk",
@@ -92,7 +93,6 @@ return {
        "sql",
        "ssh_config",
        "terraform",
-       "tmux",
        "toml",
        "tsv",
        "typescript",
@@ -104,12 +104,16 @@ return {
        "vue",
        "xml",
        "yaml",
-      },
-      highlight = {
-        enable = true,
-        disable = {},
-      },
-    },
+      })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('treesitter_start', { clear = true }),
+        callback = function(args)
+          -- パーサー未導入の filetype では失敗するので握りつぶす
+          pcall(vim.treesitter.start, args.buf)
+        end,
+      })
+    end,
   },
 }
 
