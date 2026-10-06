@@ -2,7 +2,8 @@ return {
   {
     -- Geminiで文章を校正・推敲する。APIキーは $GEMINI_API_KEY から読む
     "umiyosh/ai-polish.nvim",
-    tag = "v0.1.0",
+    -- Undo/Redo（PR #12）は v0.1.0 より新しい。次のタグを打ったら tag 固定へ戻す
+    branch = "master",
     cmd = "AiPolish",
     -- <leader>a* は claudecode が使っているので p(olish) に寄せる
     keys = {
