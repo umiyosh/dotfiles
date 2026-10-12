@@ -33,7 +33,11 @@ vim.api.nvim_create_autocmd({'WinEnter', 'BufRead'}, {
 })
 
 -- カーソル行のハイライト色の設定
-vim.api.nvim_set_hl(0, "CursorLine", { underline = true, bg = "black" })
+-- 背景色だけにする。下線を付けると CursorLine がほかのハイライトより上に重なり、
+-- カーソル行の波線（診断・ai-polish）が普通の下線に上書きされる
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "black" })
+-- 1段落が1行の文章で段落全体を塗らないよう、折り返した画面上の1行と行番号だけを強調する
+vim.opt.cursorlineopt = "screenline,number"
 
 -- ハイライト on
 vim.cmd('syntax enable')
