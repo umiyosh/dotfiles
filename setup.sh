@@ -143,6 +143,11 @@ function deployTmuxPowerline() {
   fi
 }
 
+function installTerminfo() {
+  # tmux の中の Neovim が波線と下線の色を出せるよう、Smulx・Setulc を足した tmux-256color を入れる
+  tic -x -o "$HOME/.terminfo" "$HOME/dotfiles/terminfo/tmux-256color.src"
+}
+
 : "install" && {
   deployDotfiles
   changeShell
@@ -152,5 +157,6 @@ function deployTmuxPowerline() {
   installFzf
   setupNeovimPlugins
   deployTmuxPowerline
+  installTerminfo
   setupGhAliases
 }
