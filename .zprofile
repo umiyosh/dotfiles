@@ -9,13 +9,15 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=$PATH:${HOME}/.nodebrew/current/bin
 export PATH=$PATH:${HOME}/.composer/vendor/bin
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-if [[ -f $HOME/.gvm/scripts/gvm ]]; then
+# 対話シェルでは .zshrc.devenv が Go の環境を設定するので、非対話のときだけ読む
+if [[ ! -o interactive && -f $HOME/.gvm/scripts/gvm ]]; then
   source $HOME/.gvm/scripts/gvm
 fi
 
 
 ## local zshrc settings for macvim
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+# 対話シェルでは .zshrc が読むので、二重に読まないよう非対話のときだけ読む
+[[ ! -o interactive && -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 

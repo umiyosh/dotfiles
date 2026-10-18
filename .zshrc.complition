@@ -2,10 +2,21 @@
 #
 # completion
 # fpath=($fpath $HOME/local/functions(N))
-fpath=(~/.zsh/functions/Completion ${fpath})
+# brew shellenv はログインシェルでだけ Homebrew の補完を fpath に足す。
+# 通常のシェルでも足して件数を揃えないと、交互に起動するたびに .zcompdump が作り直される
+typeset -gU fpath
+fpath=(~/.zsh/functions/Completion ${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/site-functions(N) ${fpath})
 
 autoload -Uz compinit
-compinit -u
+# .zcompdump が 24 時間以内に更新されていれば、fpath の走査を省いて読む。
+# 走査した日は、件数が同じでもダンプが書き換わらないので更新時刻だけ進める
+_zcompdump_fresh=(${ZDOTDIR:-$HOME}/.zcompdump(N.mh-24))
+if (( $#_zcompdump_fresh )); then
+  compinit -C -u
+else
+  compinit -u && touch ${ZDOTDIR:-$HOME}/.zcompdump
+fi
+unset _zcompdump_fresh
 
 # sudoも補完の対象
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin

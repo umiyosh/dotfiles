@@ -104,8 +104,6 @@ esac
 # この行は絶対に.zshrcの最後に置くこと
 unset -f cd 2>/dev/null
 
-[[ -s ~/.gvm/scripts/gvm ]] && source ~/.gvm/scripts/gvm
-
 # >>> otty shell integration >>>
 # Added by Otty — toggle in Settings > Shell > Shell Integration.
 # Inert unless launched by Otty (it sets $OTTY_SHELL_INTEGRATION).

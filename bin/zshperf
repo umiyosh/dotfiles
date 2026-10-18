@@ -1,0 +1,121 @@
+#!/usr/bin/env zsh
+# zsh の起動時間・補完ダンプの書き換え・プロンプトの描画時間をまとめて測る
+# usage: zshperf [-n 回数] [-d プロンプトを測るディレクトリ] [-c oh-my-posh の設定]
+emulate -L zsh
+zmodload zsh/datetime zsh/stat
+setopt extended_glob
+
+integer runs=10
+local dir=$PWD config=~/dotfiles/omp.json opt
+while getopts n:d:c:h opt; do
+  case $opt in
+    n) runs=$OPTARG ;;
+    d) dir=$OPTARG ;;
+    c) config=$OPTARG ;;
+    *) print -u2 "usage: ${0:t} [-n 回数] [-d ディレクトリ] [-c omp の設定]"; exit 2 ;;
+  esac
+done
+
+# tmux の外では .zshrc が tmux を起動するため、zsh -i の計測にならない
+if [[ -z $TMUX ]]; then
+  print -u2 "${0:t}: tmux の中で実行してください"
+  exit 1
+fi
+
+local dump=${ZDOTDIR:-$HOME}/.zcompdump
+local -A summary
+
+# 外部コマンド 1 回の起動にかかる時間。起動時間の大半はこれの回数で決まる
+function measure_fork() {
+  local t=$EPOCHREALTIME i
+  for i in {1..50}; do /usr/bin/true; done
+  printf '%.1f' $(( (EPOCHREALTIME - t) * 1000 / 50 ))
+}
+
+# $1: zsh に渡すオプション。経過時間と CPU 時間（user + sys）を runs 回測る
+function measure_startup() {
+  local TIMEFMT='%mE %mU %mS' line
+  local -a e c
+  integer i
+  for i in {1..$runs}; do
+    line=$( { time zsh ${=1} -c exit >/dev/null 2>&1 } 2>&1 )
+    line=${line//ms/}
+    local -a f=(${=line})
+    e+=($f[1]) c+=($(( f[2] + f[3] )))
+  done
+  local -a s=(${(n)e})
+  integer esum=$(( ${(j:+:)e} )) csum=$(( ${(j:+:)c} ))
+  printf '平均 %.2f s（最小 %.2f / 最大 %.2f） CPU %.2f s / 待ち %d%%' \
+    $(( esum / 1000.0 / runs )) $(( s[1] / 1000.0 )) $(( s[-1] / 1000.0 )) \
+    $(( csum / 1000.0 / runs )) $(( 100 - 100 * csum / esum ))
+}
+
+function dump_state() {
+  local -a m
+  local head
+  zstat -A m +mtime -- $dump 2>/dev/null || { print "なし"; return }
+  read -r head < $dump
+  print "$m[1] ${${head#\#files: }%%[[:space:]]*}"
+}
+
+# 通常のシェルとログインシェルを交互に起動し、そのたびに .zcompdump が書き換わるかを見る
+function measure_dump() {
+  local before=$(dump_state) after mode
+  local -a counts
+  integer rewrites=0
+  for mode in "-i" "-l -i" "-i"; do
+    zsh ${=mode} -c exit >/dev/null 2>&1
+    after=$(dump_state)
+    [[ $after != $before ]] && (( rewrites++ ))
+    counts+=(${after#* })
+    before=$after
+  done
+  print "3 回中 $rewrites 回書き換わった（件数: ${(j: → :)counts}）"
+}
+
+# 実際のプロンプトと同じく --save-cache 付きで 3 回描画する。2 回目以降は部品のキャッシュが効く。
+# 部品ごとの内訳は debug で取る（debug はキャッシュを使わない）
+function measure_prompt() {
+  local out sid=zshperf-$$ t
+  local -a ms
+  integer i
+  pushd -q $dir
+  for i in {1..3}; do
+    t=$EPOCHREALTIME
+    POSH_SESSION_ID=$sid oh-my-posh print primary --save-cache --shell zsh --config $config >/dev/null 2>&1
+    ms+=($(printf '%.0f' $(( (EPOCHREALTIME - t) * 1000 ))))
+  done
+  out=$(oh-my-posh debug --config $config --plain 2>/dev/null)
+  popd -q
+  print "描画: ${(j: / :)ms} ms（1 回目 / 2 回目 / 3 回目）"
+  print "部品ごとの内訳（debug、キャッシュなし）:"
+  print -l -- ${(M)${(f)out}:#* - *[0-9] ms}
+  local -a slow=(${(On)${(M)${(f)out}:#* - *[0-9] ms}//(#b)([^ ]#) #- #([0-9]##) ms/$match[2] $match[1]})
+  summary[prompt]="描画 ${(j: / :)ms} ms（1〜3 回目） / 最も遅い部品: ${slow[1]#* } ${slow[1]%% *} ms"
+}
+
+print "== 外部コマンド 1 回の起動時間（50 回の平均）"
+summary[fork]="$(measure_fork) ms"
+print $summary[fork]
+
+print "\n== 通常のシェルの起動（zsh -i、$runs 回）"
+summary[normal]=$(measure_startup "-i")
+print $summary[normal]
+
+print "\n== ログインシェルの起動（zsh -l -i、$runs 回。tmux のペインと同じ）"
+summary[login]=$(measure_startup "-l -i")
+print $summary[login]
+
+print "\n== 補完ダンプの書き換え（$dump）"
+summary[dump]=$(measure_dump)
+print $summary[dump]
+
+print "\n== プロンプトの描画（$dir、$config）"
+measure_prompt
+
+print "\n== 要約"
+print "外部コマンド 1 回 : $summary[fork]"
+print "通常のシェル     : $summary[normal]"
+print "ログインシェル   : $summary[login]"
+print "補完ダンプ       : $summary[dump]"
+print "プロンプト       : $summary[prompt]"
