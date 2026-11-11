@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# ant: Anthropic CLI（FinOps 用）を専用の設定ディレクトリで実行する
+#
+# 認証情報を既定の設定ディレクトリに書かせないため、ANTHROPIC_CONFIG_DIR が
+# 未設定または空のときは FinOps 専用ディレクトリを指してから実体を exec する。
+
+set -e
+
+base="$HOME/Library/Application Support/finops-fetch"
+real="$base/bin/ant"
+
+if [[ ! -x $real ]]; then
+  echo "ant: 実体が見つからないか実行できません: $real" >&2
+  exit 127
+fi
+
+export ANTHROPIC_CONFIG_DIR="${ANTHROPIC_CONFIG_DIR:-$base/anthropic}"
+exec "$real" "$@"
