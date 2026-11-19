@@ -100,6 +100,14 @@ esac
 # pnpm end
 . "${HOME}/.deno/env"
 
+# cmux 配下の tmux ペインでは cmux のシェル連携が読み込まれず、claude が cmux の
+# 差し替え版（状態通知のフックを注入する）を通らないため、サイドバーにエージェントの
+# 状態が出ない。tmux サーバーから引き継いだ差し替え版のディレクトリを PATH の先頭へ戻す。
+# 他の PATH 設定より後に置くこと。
+if [[ -n "$TMUX" && -n "$CMUX_SURFACE_ID" && -x "${CMUX_CLAUDE_WRAPPER_SHIM_ROOT:-}/claude" ]]; then
+  path=("$CMUX_CLAUDE_WRAPPER_SHIM_ROOT" ${path:#$CMUX_CLAUDE_WRAPPER_SHIM_ROOT})
+fi
+
 # gvmのcdフックを最終的に無効化（Claude Code環境対策）
 # この行は絶対に.zshrcの最後に置くこと
 unset -f cd 2>/dev/null
