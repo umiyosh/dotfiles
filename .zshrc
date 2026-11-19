@@ -103,9 +103,15 @@ esac
 # cmux 配下の tmux ペインでは cmux のシェル連携が読み込まれず、claude が cmux の
 # 差し替え版（状態通知のフックを注入する）を通らないため、サイドバーにエージェントの
 # 状態が出ない。tmux サーバーから引き継いだ差し替え版のディレクトリを PATH の先頭へ戻す。
-# 他の PATH 設定より後に置くこと。
+# インストーラーが .zshrc の末尾へ PATH を追記しても負けないよう、初期化がすべて
+# 終わった最初のプロンプトの直前に 1 度だけ行う（cmux の _cmux_fix_path と同じ方式）。
 if [[ -n "$TMUX" && -n "$CMUX_SURFACE_ID" && -x "${CMUX_CLAUDE_WRAPPER_SHIM_ROOT:-}/claude" ]]; then
-  path=("$CMUX_CLAUDE_WRAPPER_SHIM_ROOT" ${path:#$CMUX_CLAUDE_WRAPPER_SHIM_ROOT})
+  _cmux_shim_first() {
+    path=("$CMUX_CLAUDE_WRAPPER_SHIM_ROOT" ${path:#$CMUX_CLAUDE_WRAPPER_SHIM_ROOT})
+    add-zsh-hook -d precmd _cmux_shim_first
+  }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook precmd _cmux_shim_first
 fi
 
 # gvmのcdフックを最終的に無効化（Claude Code環境対策）
