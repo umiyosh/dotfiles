@@ -114,6 +114,19 @@ if [[ -n "$TMUX" && -n "$CMUX_SURFACE_ID" && -x "${CMUX_CLAUDE_WRAPPER_SHIM_ROOT
   add-zsh-hook precmd _cmux_shim_first
 fi
 
+# cmux 配下の tmux ペインで cd したら、選択中のペインに限り、移動先を cmux のサイドバーへ知らせる。
+# ペインやウィンドウの切り替えは .tmux.conf のフックが知らせるが、tmux にはディレクトリ移動の
+# フックが無いため、ここから同じ処理（@cmux_report_pwd）を呼ぶ。
+if [[ -n "$TMUX" && -n "$CMUX_SURFACE_ID" ]]; then
+  _cmux_tmux_report_pwd() {
+    (( ZSH_SUBSHELL == 0 )) || return 0
+    [[ "$(tmux display -p -t "$TMUX_PANE" '#{pane_active}#{window_active}' 2>/dev/null)" == 11 ]] || return 0
+    tmux run-shell -b -t "$TMUX_PANE" '#{E:@cmux_report_pwd}' 2>/dev/null
+  }
+  autoload -Uz add-zsh-hook
+  add-zsh-hook chpwd _cmux_tmux_report_pwd
+fi
+
 # gvmのcdフックを最終的に無効化（Claude Code環境対策）
 # この行は絶対に.zshrcの最後に置くこと
 unset -f cd 2>/dev/null
